@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -389,7 +389,7 @@ MonoBehaviour:
   - {fileID: 7053823586712582103, guid: 51448c5480098c84d9847d5d6715085e, type: 3}
   - {fileID: 2729273414848999428, guid: ae9007fe06ff8004691216fcc1e7e74b, type: 3}
   - {fileID: 5452005106169276354, guid: 7208987e3660fd6438db36a10154c98f, type: 3}
-  maxNStages: 2
+  maxNStages: 3
   BossRoom: {fileID: 2026990877045549196, guid: 2a0fd00fe0e4631498b7624083b7d621,
     type: 3}
   StageStart: {fileID: 7779319510762537195, guid: 36ddaf09e24c5004f9600616d7a440a4,
