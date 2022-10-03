@@ -27,6 +27,7 @@ public class PlateScript : MonoBehaviour
         if(PlatePorc >= 1f)
         {
             PlateCompleted = true;
+            PlatePorc = 0f;
         }
     }
     private void OnTriggerEnter(Collider other)
