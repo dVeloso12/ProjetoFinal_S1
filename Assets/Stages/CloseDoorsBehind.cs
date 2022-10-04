@@ -6,13 +6,21 @@ public class CloseDoorsBehind : MonoBehaviour
 {
     [SerializeField] GameObject Door;
     bool canCloseDoor;
+    float timer;
 
     private void Update()
     {
         if(canCloseDoor)
         {
-            Door.SetActive(true);
-            //porta nao aparece 
+            timer += Time.deltaTime;
+            if(timer > 3f)
+            {
+                Door.SetActive(true);
+                timer = 0;
+                canCloseDoor = false;
+            }
+            
+          
         }
     }
 
@@ -21,7 +29,6 @@ public class CloseDoorsBehind : MonoBehaviour
          
         if(other.transform.name == "Player")
         {
-            Debug.Log(other.transform.name);
             canCloseDoor = true;
         }
     }

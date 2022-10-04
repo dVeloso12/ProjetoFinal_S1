@@ -7,7 +7,6 @@ public class PlateScript : MonoBehaviour
     [SerializeField] GameObject Crystal;
     CrystalScript ScpCrystal;
     bool startedPlate;
-    [SerializeField] float Speed;
     [SerializeField] float IncreaseAmout; //0.3f
     [SerializeField] public bool PlateCompleted;
 
@@ -45,7 +44,7 @@ public class PlateScript : MonoBehaviour
         {
             if (!PlateCompleted)
             {
-                PlatePorc += IncreaseAmout * Speed * Time.deltaTime;
+                PlatePorc += IncreaseAmout * 0.005f * Time.deltaTime;
                 ScpCrystal.FillPorc = PlatePorc;
             }
       

@@ -7,15 +7,17 @@ public class DoorDeffScript : MonoBehaviour
     [SerializeField] GameObject Plate;
     [SerializeField] GameObject Door;
     PlateScript plateScrp;
+    bool doorOpened;
     void Start()
     {
         plateScrp = Plate.GetComponent<PlateScript>();   
     }
     void Update()
     {
-        if(plateScrp.PlateCompleted)
+        if(plateScrp.PlateCompleted && !doorOpened)
         {
             Door.SetActive(false);
+            doorOpened = true;
             
         }
     }
