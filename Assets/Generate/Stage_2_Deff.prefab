@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crystal: {fileID: 2773943475934750549}
-  IncreaseAmout: 3
+  IncreaseAmout: 30
   PlateCompleted: 0
   PlatePorc: 0
 --- !u!65 &2773943474018332917

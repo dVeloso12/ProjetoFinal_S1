@@ -26,7 +26,7 @@ public class CloseDoorsBehind : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-         
+     
         if(other.transform.name == "Player")
         {
             canCloseDoor = true;
