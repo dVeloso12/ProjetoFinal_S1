@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     bool IsGrounded;
     bool IsRunning;
 
+
+    public Transform cameraTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
 
         playerInput.Player.Enable();
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         playerInput.Player.Jump.performed += Jump;
         playerInput.Player.Run.performed += Run;
         playerInput.Player.Run.canceled += Run;
@@ -45,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
 
         Movement();
 
+        Vector3 camRotation = cameraTransform.eulerAngles;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
     }
 
     void Movement()
