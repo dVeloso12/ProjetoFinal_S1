@@ -9,10 +9,14 @@ public class TurnPlayer : MonoBehaviour
     [SerializeField] float mouseSensivity;
     [SerializeField] Camera firstPersonCamera;
 
+
+    float mouseRotationX, mouseRotationY;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        mouseRotationX = 0f;
+        mouseRotationY = 0f;
     }
 
     // Update is called once per frame
@@ -29,15 +33,16 @@ public class TurnPlayer : MonoBehaviour
         mouseX = Input.GetAxisRaw("Mouse X") * mouseSensivity * Time.fixedDeltaTime;
         mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensivity * Time.fixedDeltaTime;
 
+        mouseRotationX += mouseX;
+        mouseRotationY -= mouseY;
 
-        transform.eulerAngles += new Vector3(0f, mouseX, 0f);
+
+        mouseRotationY = Mathf.Clamp(mouseRotationY, -90f, 90f);
 
 
+        transform.rotation = Quaternion.Euler(0f, mouseRotationX, 0f);
 
-        float rotationX = Mathf.Clamp(firstPersonCamera.transform.eulerAngles.x - mouseY , -90f, 90f);
 
-        Debug.Log("Camera rotation : " + rotationX);
-
-        firstPersonCamera.transform.eulerAngles = new Vector3(rotationX, firstPersonCamera.transform.eulerAngles.y, firstPersonCamera.transform.eulerAngles.z);
+        firstPersonCamera.transform.rotation = Quaternion.Euler(mouseRotationY, mouseRotationX, 0f);
     }
 }

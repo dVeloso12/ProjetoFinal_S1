@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float playerSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] float runningModifier;
 
     [SerializeField] GameObject GroundCheck;
     [SerializeField] LayerMask groundLayerMask;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody playerRB;
 
     bool IsGrounded;
+    bool IsRunning;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
 
         IsGrounded = false;
+        IsRunning = false;
     }
 
     private void Awake()
@@ -33,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Player.Enable();
 
         playerInput.Player.Jump.performed += Jump;
+        playerInput.Player.Run.performed += Run;
+        playerInput.Player.Run.canceled += Run;
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -80,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
     void CheckIsGrounded()
     {
         
-        float radius = 0.2f;
+        float radius = 0.5f;
 
         Collider[] groundColliders = Physics.OverlapSphere(GroundCheck.transform.position, radius, groundLayerMask);
 
@@ -100,11 +105,26 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Run(InputAction.CallbackContext context)
+    {
+
+        if (IsRunning)
+        {
+            IsRunning = false;
+            playerSpeed /= runningModifier;
+        }
+        else
+        {
+            IsRunning = true;
+            playerSpeed *= runningModifier;
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawSphere(GroundCheck.transform.position, 0.2f);
+        Gizmos.DrawSphere(GroundCheck.transform.position, 0.5f);
     }
 
 }

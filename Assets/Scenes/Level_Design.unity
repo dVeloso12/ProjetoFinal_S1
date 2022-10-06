@@ -3873,6 +3873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 4
   jumpForce: 5
+  runningModifier: 2
   GroundCheck: {fileID: 1420706198}
   groundLayerMask:
     serializedVersion: 2
