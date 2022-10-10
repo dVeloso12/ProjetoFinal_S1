@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,18 +15,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundLayerMask;
 
     PlayerInput playerInput;
-    Rigidbody playerRB;
+
+    private CharacterController controller;
 
     bool IsGrounded;
     bool IsRunning;
+    bool jump = false;
+    bool groundedPlayer;
+    float gravityValue = -10;
 
 
     public Transform cameraTransform;
 
+    Vector3 movement,playerVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerRB = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
 
         IsGrounded = false;
         IsRunning = false;
@@ -46,47 +52,71 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Player.Run.canceled += Run;
     }
     // Update is called once per frame
-    void FixedUpdate()
+
+    private void Update()
     {
-
-        Movement();
-
         Vector3 camRotation = cameraTransform.eulerAngles;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
+    }
+    void FixedUpdate()
+    {
+        if (jump)
+        {
+
+            if (groundedPlayer)
+            {
+                playerVelocity.y = Mathf.Sqrt(jumpForce * -3.0f * -10);
+            }
+            jump = false;
+        }
+
+        Move();
+
+     
     }
 
     void Movement()
     {
+        CheckIsGrounded();
 
         Vector2 _movement = playerInput.Player.Movement.ReadValue<Vector2>();
 
         Debug.Log("X : " + _movement.x + "; Y : ;" +  _movement.y);
 
 
-
-
-        Vector3 movement = transform.forward * _movement.y + transform.right * _movement.x;
         
-        movement *= playerSpeed * Time.fixedDeltaTime;
+
+        movement = transform.forward * _movement.y + transform.right * _movement.x;
+
+        if (IsGrounded && movement.y < 0)
+        {
+            movement.y = 0f;
+        }
+
+
+
+        movement *= playerSpeed;
 
         Debug.Log("Movement: " + movement);
 
+        movement.y += -10*Time.deltaTime;
+
         float step = playerSpeed * Time.fixedDeltaTime;
 
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + movement, step);
+        //transform.position = Vector3.MoveTowards(transform.position, transform.position + movement, step);
+
+        controller.Move(movement*Time.deltaTime);
+
+        //playerVelocity.y += gravityValue * Time.deltaTime;
 
     }
 
     private void Jump(InputAction.CallbackContext obj)
     {
 
-        CheckIsGrounded();
+        jump = true;
 
-        if (IsGrounded)
-        {
-            float finalJumpForce = playerRB.mass * 5f + jumpForce;
-            playerRB.AddForce(transform.up * finalJumpForce, ForceMode.Impulse);
-        }
+        Debug.Log("Jump");
 
     }
 
@@ -133,6 +163,42 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
 
         Gizmos.DrawSphere(GroundCheck.transform.position, 0.5f);
+    }
+
+
+
+    private void Move()
+    {
+        groundedPlayer = controller.isGrounded;
+
+
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
+            playerVelocity.y = 0f;
+        }
+
+
+        Vector3 camRotation = cameraTransform.eulerAngles;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
+
+        Vector2 playerMovement = playerInput.Player.Movement.ReadValue<Vector2>();
+        Vector3 move = new Vector3(playerMovement.x, 0, playerMovement.y);
+
+        //move.z = w+s; move.x = a+d; forward = para onde estamos a olhar; right = movimento dos lados
+        move = transform.forward * move.z + transform.right * move.x;
+        move.y = 0f;
+
+        move.Normalize(); //para evitar movimento mais r�pido na diagonal
+
+       controller.Move(move * Time.deltaTime * playerSpeed);
+
+       playerVelocity.y += gravityValue * Time.deltaTime;
+
+       controller.Move(playerVelocity * Time.deltaTime);
+
+
+
+
     }
 
 }
