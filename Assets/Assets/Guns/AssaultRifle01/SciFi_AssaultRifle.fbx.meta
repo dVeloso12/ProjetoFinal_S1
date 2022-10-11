@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad3e9878302bb5b4c9e51cad0cc1673c
+guid: 16a015f07f6dd2d43860fb9fd41042c1
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,33 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BlackDetails
-    second: {fileID: 2100000, guid: 947cb94331a9f9a4a93ec00bd6b14b00, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: BlueEmission
-    second: {fileID: 2100000, guid: ba83b31399d5c6345a933b73a64bd5a4, type: 2}
+    second: {fileID: 2100000, guid: fa382aad7590fa14b9f7ce5a1719d195, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Details
-    second: {fileID: 2100000, guid: b0fb6d5b2d3fda74c811f3058add98d4, type: 2}
+    second: {fileID: 2100000, guid: a85a5261fa4deef4295cdc89e622022c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Glass
-    second: {fileID: 2100000, guid: 3fac0837ca2b309459ae1d5eba6982e5, type: 2}
+    second: {fileID: 2100000, guid: dee84d16dcee7e2429322c72d487d2ca, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MainBody
-    second: {fileID: 2100000, guid: 1c4e4c81fe1fe6a41a88cf9f0749c5b0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RedEmission.001
-    second: {fileID: 2100000, guid: 41c2618f9ad573d4aada0de4f724d0d3, type: 2}
+    second: {fileID: 2100000, guid: a16dcb790847be340a6690ffc6f9795a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
