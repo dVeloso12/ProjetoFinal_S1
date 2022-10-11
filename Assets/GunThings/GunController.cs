@@ -17,6 +17,7 @@ public class GunController : MonoBehaviour
     public float FireRate;
 
     float FireRateCounting;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +51,7 @@ public class GunController : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
+
         FireRateCounting = FireRate;
 
     }

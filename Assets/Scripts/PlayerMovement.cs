@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     bool IsRunning;
     bool jump = false;
     bool groundedPlayer;
-    float gravityValue = -10;
+    float gravityValue = -15;
 
 
     public Transform cameraTransform;

@@ -13,11 +13,17 @@ public class HookShot : MonoBehaviour
 
     //private CharacterController controller;
 
-    bool activeHook=false;
+    bool activeHook = false;
+
+
 
     float[] mult = new float[3];
 
     private CharacterController controller;
+
+    public GameObject hook;
+
+    public Transform origin;
 
     public float speed, dist;
     // Start is called before the first frame update
@@ -33,7 +39,9 @@ public class HookShot : MonoBehaviour
 
         playerInput.Player.Enable();
 
-        playerInput.Player.Hook.performed += HookActivate;
+        //playerInput.Player.Hook.performed += HookActivate;
+
+        playerInput.Player.Hook.performed += HookShoot;
     }
 
     // Update is called once per frame
@@ -114,5 +122,21 @@ public class HookShot : MonoBehaviour
         mult[0] = 0;
         mult[1] = 0;
         mult[2] = 0;
+    }
+
+    public void ActivateHook (Vector3 pos)
+    {
+        MovePos = pos - (transform.position);
+
+        startpos = pos;
+
+        activeHook = true;
+
+
+    }
+
+    public void HookShoot (InputAction.CallbackContext obj)
+    {
+        Instantiate(hook, origin.position, origin.rotation,transform);
     }
 }

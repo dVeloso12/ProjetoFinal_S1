@@ -4395,7 +4395,6 @@ GameObject:
   - component: {fileID: 1427288570}
   - component: {fileID: 1427288569}
   - component: {fileID: 1427288573}
-  - component: {fileID: 1427288574}
   - component: {fileID: 1427288575}
   - component: {fileID: 1427288578}
   - component: {fileID: 1427288577}
@@ -4487,27 +4486,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 4
-  jumpForce: 5
+  jumpForce: 3
   runningModifier: 2
   GroundCheck: {fileID: 1420706198}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
   cameraTransform: {fileID: 1186637029}
---- !u!114 &1427288574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427288567}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4314f00a2b0b3ea409c4c076aa2541ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensivity: 100
-  firstPersonCamera: {fileID: 1186637032}
 --- !u!114 &1427288575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4550,6 +4535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1186637032}
+  hook: {fileID: 1708445655036256337, guid: 610ad778430abce48934c0175101b025, type: 3}
+  origin: {fileID: 1567286844}
   speed: 0.4
   dist: 0
 --- !u!143 &1427288578
