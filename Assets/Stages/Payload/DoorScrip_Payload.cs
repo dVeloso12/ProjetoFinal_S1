@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorScrip_Payload : MonoBehaviour
 {
     [SerializeField] GameObject payload;
+
     bool doorOpened;
 
     void Update()
