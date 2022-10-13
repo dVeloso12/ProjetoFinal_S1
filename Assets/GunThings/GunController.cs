@@ -10,49 +10,49 @@ public class GunController : MonoBehaviour
 
     public Transform ShotingPlace;
 
-    PlayerInput playerInput;
+    protected PlayerInput playerInput;
 
-    bool shoot=false;
+    protected bool shoot=false;
 
     public float FireRate;
 
-    float FireRateCounting;
+    protected float FireRateCounting;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         playerInput = new PlayerInput();
 
         playerInput.Player.Enable();
 
         playerInput.Player.Shoot.performed += ActivateShoot;
-        playerInput.Player.Shoot.canceled += ActivateShoot;
 
         FireRateCounting = FireRate;
     }
 
     // Update is called once per frame
-    void Update()
+    protected  virtual void Update()
     {
-        if (shoot && FireRateCounting<=0)
+        if (shoot)
             Shoot();
 
         FireRateCounting -= Time.deltaTime;
     }
 
-    public void ActivateShoot(InputAction.CallbackContext obj)
+    public virtual void ActivateShoot(InputAction.CallbackContext obj)
     {
 
+        if(FireRateCounting<=0)
             shoot = !shoot;
 
 
     }
 
-    void Shoot()
+    protected virtual void Shoot()
     {
-        Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
+       // Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
 
-        FireRateCounting = FireRate;
+      //  FireRateCounting = FireRate;
 
     }
 }
