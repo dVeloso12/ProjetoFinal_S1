@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -13,10 +14,21 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     private UpgradeEffects Effects;
 
     public string EffectName;
+
+
+    public string Description;
+
+    public TextMeshProUGUI TextDescription;
+
+
+
+
     void Start()
     {
         OriginScale = transform.localScale;
         Effects = GetComponent<UpgradeEffects>();
+
+        TextDescription.text = Description;
     }
 
     // Update is called once per frame

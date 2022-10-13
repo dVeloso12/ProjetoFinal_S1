@@ -7,13 +7,12 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public static GameManager Instance;
+    public float FireRate = 1;
 
-    public static float i;
+   
 
     private void Awake()
     {
-        Instance = this;
     }
 
     void Start()
