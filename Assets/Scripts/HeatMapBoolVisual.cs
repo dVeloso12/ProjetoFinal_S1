@@ -52,7 +52,7 @@ public class HeatMapBoolVisual : MonoBehaviour
 
                 Vector3 quadSize = new Vector3(1, 1) * heatMapGrid.GetCellSize();
 
-                bool gridValue = heatMapGrid.GetValue(x, y);
+                bool gridValue = heatMapGrid.GetGridObj(x, y);
                 float gridValueNormalized = gridValue ? 1f : 0f;
 
                 Vector2 gridValueUV = new Vector2(gridValueNormalized, 0f);

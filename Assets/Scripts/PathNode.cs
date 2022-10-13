@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class PathNode
 {
-    //private MapGrid<PathNode> grid;
+    private MapGrid<PathNode> grid;
 
+    public int x, y;
 
+    public int gCost, hCost, fCost;
 
+    public PathNode previousNode;
 
+    public PathNode(MapGrid<PathNode> grid, int x, int y)
+    {
+        this.grid = grid;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void CalculateFCost()
+    {
+        fCost = gCost + hCost;
+    }
+
+    public override string ToString()
+    {
+        return x + " , " + y;
+    }
 
 }

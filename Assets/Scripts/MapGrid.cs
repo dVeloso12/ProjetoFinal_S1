@@ -25,19 +25,26 @@ public class MapGrid<TGridObject>
 
     Vector3 originPosition;
 
-    public MapGrid(int _width, int _larg, int _height, float _cellSize, Vector3 _originPosition)
+    public MapGrid(int _width, int _larg, int _height, float _cellSize, Vector3 _originPosition, Func<MapGrid<TGridObject>, int, int, TGridObject> createGridObj)
     {
 
         width = _width;
         larg = _larg;
         height = _height;
-
         cellSize = _cellSize;
-
         originPosition = _originPosition;
 
         GridArray = new TGridObject[width, height];
         //TrigridArray = new TGridObject[width, larg, height];
+
+        for(int x = 0; x < GridArray.GetLength(0); x++)
+        {
+            for(int y = 0; y < GridArray.GetLength(1); y++)
+            {
+                GridArray[x, y] = createGridObj(this, x, y);
+            }
+        }
+
 
         debugTextArray = new TextMesh[width, height];
 
@@ -46,7 +53,7 @@ public class MapGrid<TGridObject>
             for(int y = 0; y < GridArray.GetLength(1); y++)
             {
 
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y].ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
@@ -60,7 +67,7 @@ public class MapGrid<TGridObject>
 
         OnGridValueChanged += (object sender, OnGridValueChangedEventArgs eventArgs) =>
         {
-            debugTextArray[eventArgs.x, eventArgs.y].text = GridArray[eventArgs.x, eventArgs.y].ToString();
+            debugTextArray[eventArgs.x, eventArgs.y].text = GridArray[eventArgs.x, eventArgs.y]?.ToString();
         };
 
     }
@@ -98,7 +105,7 @@ public class MapGrid<TGridObject>
 
     }
 
-    public void SetValue(int x, int y, TGridObject value)
+    public void SetGridObj(int x, int y, TGridObject value)
     {
         if(x >= 0 && x < width && y >= 0 && y < height && value != null)
         {
@@ -110,15 +117,20 @@ public class MapGrid<TGridObject>
 
     }
 
-    public void SetValue(Vector3 worldPosition, TGridObject value)
+    public void SetGridObj(Vector3 worldPosition, TGridObject value)
     {
         int x, y;
         GetXY(worldPosition, out x, out y);
 
-        SetValue(x, y, value);
+        SetGridObj(x, y, value);
     }
 
-    public TGridObject GetValue(int x, int y)
+    public void TriggerGridObjectChanged(int x, int y)
+    {
+        if (OnGridValueChanged != null) OnGridValueChanged(this, new OnGridValueChangedEventArgs { x = x, y = y });
+    }
+
+    public TGridObject GetGridObj(int x, int y)
     {        
 
         if (x >= 0 && x < width && y >= 0 && y < height)
@@ -132,13 +144,13 @@ public class MapGrid<TGridObject>
 
     }
 
-    public TGridObject GetValue(Vector3 worldPosition)
+    public TGridObject GetGridObj(Vector3 worldPosition)
     {
         int x, y;
 
         GetXY(worldPosition, out x, out y);
 
-        return GetValue(x, y);
+        return GetGridObj(x, y);
 
     }
 
