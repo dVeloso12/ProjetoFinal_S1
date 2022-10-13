@@ -50,6 +50,8 @@ public class MapGrid<TGridObject>
 
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+
+              
             }
         }
 
@@ -62,6 +64,10 @@ public class MapGrid<TGridObject>
         };
 
     }
+
+
+
+
 
     public int GetWidth()
     {
