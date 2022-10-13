@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] GameObject PlayerObject;
 
 
+    [SerializeField] float gunRange;
 
 
     // Start is called before the first frame update
@@ -20,15 +21,50 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         
-        
+        if(Vector3.Distance(transform.position, PlayerObject.transform.position) < gunRange)
+        {
+
+            if (Aim())
+                Shoot();
+            else
+                FollowPlayer();
+
+        }
+        else
+        {
+
+            FollowPlayer();
+
+        }
+    }
+    
+
+
+    public bool Aim()
+    {
+
+        RaycastHit hitInfo;
+        Vector3 target = PlayerObject.transform.position;
+
+        transform.LookAt(target);
+
+        if(Physics.Raycast(transform.position, transform.forward, out hitInfo))
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
     }
 
-    public void Aim()
+    public void Shoot()
     {
 
-
-
+        //Shooting
+        Debug.Log("Shooting");
     }
 
     public void FollowPlayer()
