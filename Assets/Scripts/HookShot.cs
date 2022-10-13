@@ -26,6 +26,8 @@ public class HookShot : MonoBehaviour
     public Transform origin;
 
     public float speed, dist;
+
+    public bool projectile;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +41,10 @@ public class HookShot : MonoBehaviour
 
         playerInput.Player.Enable();
 
-        //playerInput.Player.Hook.performed += HookActivate;
 
+        if(!projectile)
+            playerInput.Player.Hook.performed += HookActivate;
+        else
         playerInput.Player.Hook.performed += HookShoot;
     }
 
