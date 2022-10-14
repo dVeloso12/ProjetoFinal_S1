@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7642057016816043298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7642057016816043300}
+  - component: {fileID: 7642057016816043299}
+  m_Layer: 0
+  m_Name: Generate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7642057016816043300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642057016816043298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7642057016816043299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642057016816043298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51d3dcb613734d40aa92c072836a41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListStages:
+  - {fileID: 7226158457161330035, guid: 8e45785485beb79479f9e45ce3ada24c, type: 3}
+  - {fileID: 846282554252985859, guid: be82985e5f38421488c28027a6ca4f3b, type: 3}
+  - {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c, type: 3}
+  maxNStages: 2
+  BossRoom: {fileID: 2026990877045549196, guid: 2a0fd00fe0e4631498b7624083b7d621,
+    type: 3}
+  StageStart: {fileID: 7779319510762537195, guid: 36ddaf09e24c5004f9600616d7a440a4,
+    type: 3}
+  Player: {fileID: 6504896650162048298, guid: bc0a64542fa007743b4664b1a628927a, type: 3}
+  StageRenders: {fileID: 649394191090396273, guid: a1fe9ff356913904faa2444118d04699,
+    type: 3}

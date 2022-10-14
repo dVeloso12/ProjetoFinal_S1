@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crystal: {fileID: 6316873466424054544}
-  IncreaseAmout: 3
+  IncreaseAmout: 10
   PlateCompleted: 0
   PlatePorc: 0
 --- !u!65 &6316873467707392418
