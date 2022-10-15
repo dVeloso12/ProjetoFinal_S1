@@ -9,15 +9,11 @@ public class GenerateRun : MonoBehaviour
     [SerializeField]int maxNStages;
     [SerializeField] GameObject BossRoom;
     [SerializeField] GameObject StageStart;
-    //[SerializeField] GameObject Player;
-
 
     void Start()
-    {
-     
+    {    
         saveStagesList();
         Generate();
-       //Instantiate(Player, StageStart.GetComponent<StageInfos>().StageSize, Quaternion.identity);
     }
     void saveStagesList()
     {
