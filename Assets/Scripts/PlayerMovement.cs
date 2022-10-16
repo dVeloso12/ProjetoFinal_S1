@@ -29,10 +29,14 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 movement,playerVelocity;
 
+    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        gm = FindObjectOfType<GameManager>();
 
         IsGrounded = false;
         IsRunning = false;
@@ -195,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
         move.Normalize(); //para evitar movimento mais r�pido na diagonal
 
-       controller.Move(move * Time.deltaTime * playerSpeed);
+       controller.Move(move * Time.deltaTime * playerSpeed*gm.MoveSpeedMod);
 
        playerVelocity.y += gravityValue * Time.deltaTime;
 

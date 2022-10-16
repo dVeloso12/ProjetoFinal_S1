@@ -21,10 +21,11 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public TextMeshProUGUI TextDescription;
 
 
-
+    GameManager gm;
 
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         OriginScale = transform.localScale;
         Effects = GetComponent<UpgradeEffects>();
 
@@ -52,6 +53,8 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     {
         
         Effects.Invoke(EffectName,0);
+
+        gm.CloseAddUpgrade();
     }
     
 }

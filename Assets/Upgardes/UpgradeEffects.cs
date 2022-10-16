@@ -21,4 +21,24 @@ public class UpgradeEffects : MonoBehaviour
     {
         gm.FireRateMod *= .9f;
     }
+
+    public void Damage_10()
+    {
+        gm.DamageMod*=1.1f;
+    }
+
+    public void MovSpeed_10()
+    {
+        gm.MoveSpeedMod *= 1.1f;
+    }
+
+    public void FireRate_15()
+    {
+        gm.FireRateMod *= .85f;
+    }
+
+    public void FireRate_20()
+    {
+        gm.FireRateMod *= .8f;
+    }
 }
