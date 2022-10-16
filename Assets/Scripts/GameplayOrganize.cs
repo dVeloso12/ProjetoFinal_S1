@@ -25,13 +25,15 @@ public class GameplayOrganize : MonoBehaviour
     public bool goToShop;
     public GameObject playerIns;
 
-
+    private CharacterController PController;
     void Start()
     {
         saveStages = null;
         playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
         //Player.transform.position = PlayerLobbySpawn;
         Generate_Delete_Looby(true, false);
+
+        PController = playerIns.GetComponentInChildren<CharacterController>();
     }
 
     void Update()
@@ -65,10 +67,12 @@ public class GameplayOrganize : MonoBehaviour
     }
     void PlayerMove(Vector3 newPos)
     {
-        Destroy(playerIns);
-        playerIns = null;
-        playerIns = Instantiate(Player, newPos, Quaternion.identity);
-        //playerIns.transform.position = newPos;
+        //Destroy(playerIns);
+        //playerIns = null;
+        //playerIns = Instantiate(Player, newPos, Quaternion.identity);
+        PController.enabled = false;
+        playerIns.transform.position = newPos;
+        PController.enabled = true;
     }
     void Generate_Detele_Stages(bool canGenerateStages,bool canDeleteStages)
     {

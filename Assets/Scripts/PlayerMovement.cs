@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerInput playerInput;
 
-    private CharacterController controller;
+    public CharacterController controller;
 
     bool IsGrounded;
     bool IsRunning;
