@@ -25,7 +25,6 @@ public class GameplayOrganize : MonoBehaviour
     public bool goToShop;
     public GameObject playerIns;
 
-    private CharacterController PController;
     void Start()
     {
         saveStages = null;
@@ -33,7 +32,6 @@ public class GameplayOrganize : MonoBehaviour
         //Player.transform.position = PlayerLobbySpawn;
         Generate_Delete_Looby(true, false);
 
-        PController = playerIns.GetComponentInChildren<CharacterController>();
     }
 
     void Update()
@@ -70,9 +68,9 @@ public class GameplayOrganize : MonoBehaviour
         //Destroy(playerIns);
         //playerIns = null;
         //playerIns = Instantiate(Player, newPos, Quaternion.identity);
-        PController.enabled = false;
         playerIns.transform.position = newPos;
-        PController.enabled = true;
+
+        Physics.SyncTransforms();
     }
     void Generate_Detele_Stages(bool canGenerateStages,bool canDeleteStages)
     {
