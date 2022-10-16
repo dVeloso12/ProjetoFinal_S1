@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float FireRate = 1;
-
+    public float FireRateMod = 1,DamageMod=1,SpeedMod=1;
+    
    
 
     private void Awake()

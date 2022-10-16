@@ -18,6 +18,8 @@ public class GunController : MonoBehaviour
 
     protected float FireRateCounting;
 
+    protected GameManager gm;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -28,6 +30,8 @@ public class GunController : MonoBehaviour
         playerInput.Player.Shoot.performed += ActivateShoot;
 
         FireRateCounting = FireRate;
+
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -50,9 +54,9 @@ public class GunController : MonoBehaviour
 
     protected virtual void Shoot()
     {
-       // Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
+        // Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
 
-      //  FireRateCounting = FireRate;
+        FireRateCounting = FireRate*gm.FireRateMod;
 
     }
 }

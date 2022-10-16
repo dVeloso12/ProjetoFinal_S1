@@ -45,7 +45,7 @@ public class AssaultRifle : GunController
 
 
 
-            FireRateCounting = FireRate;
+            base.Shoot();
         }
     }
 }

@@ -32,8 +32,9 @@ public class Shotgun : GunController
             Instantiate(bullet, ShotingPlace.position, rotation);
         }
 
-        FireRateCounting = FireRate;
 
         shoot = !shoot;
+
+        base.Shoot();
     }
 }

@@ -40,8 +40,9 @@ public class Pistol : GunController
         
         //Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
 
-        FireRateCounting = FireRate;
 
         shoot = !shoot;
+
+        base.Shoot();
     }
 }

@@ -19,6 +19,6 @@ public class UpgradeEffects : MonoBehaviour
 
     public void FireRate_10()
     {
-        gm.FireRate *= 1.1f;
+        gm.FireRateMod *= .9f;
     }
 }
