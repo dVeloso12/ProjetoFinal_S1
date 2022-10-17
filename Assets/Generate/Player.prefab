@@ -1532,7 +1532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504896649903577145}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 452.00006, y: -657.42, z: 10.03006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1717,8 +1717,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7657076051010084587}
   - {fileID: 9119896650656055761}
+  - {fileID: 7657076051010084587}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2148,15 +2148,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657076051010084584}
-  m_LocalRotation: {x: -0.08787951, y: 0.87247026, z: -0.17060794, w: -0.4494061}
+  m_LocalRotation: {x: 0.17150295, y: -0.8242892, z: 0.3329507, w: 0.42459142}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7657076050435699509}
   m_Father: {fileID: 6504896650162048294}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 43.99, y: -125.494, z: 0}
 --- !u!114 &7657076051010084586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2186,7 +2186,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0304708, y: 1}
+    m_SensorSize: {x: 1.6852424, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2791,7 +2791,7 @@ Transform:
   - {fileID: 6504896649903577144}
   - {fileID: 6504896650139761994}
   m_Father: {fileID: 6504896650162048294}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &9119896650656055760
 MeshFilter:
@@ -2862,6 +2862,11 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  controller: {fileID: 0}
+  jumpTimer: 0
+  DashSpeed: 100
+  DashCooldown: 3
+  DashTime: 0.1
   cameraTransform: {fileID: 6504896649903577144}
 --- !u!143 &9119896650656055848
 CharacterController:
@@ -2908,7 +2913,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 9119896650656055773}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 1
   m_Direction: 1
