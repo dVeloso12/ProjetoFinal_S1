@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 846282554252985859, guid: be82985e5f38421488c28027a6ca4f3b, type: 3}
   - {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c, type: 3}
   maxNStages: 2
-  BossRoom: {fileID: 1422000883687176487, guid: df9c7b43966f846469d647d58570a7a9,
+  BossRoom: {fileID: 2026990877045549196, guid: 2a0fd00fe0e4631498b7624083b7d621,
     type: 3}
   StageStart: {fileID: 7779319510762537195, guid: 36ddaf09e24c5004f9600616d7a440a4,
     type: 3}
