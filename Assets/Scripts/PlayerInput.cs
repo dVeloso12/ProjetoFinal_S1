@@ -98,6 +98,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Granade"",
+                    ""type"": ""Button"",
+                    ""id"": ""28022215-53fe-498b-a8cb-12cda13f2552"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b88684e4-627a-472e-a50c-86d6ff422f39"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Granade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Hook = m_Player.FindAction("Hook", throwIfNotFound: true);
         m_Player_Debug = m_Player.FindAction("Debug", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Granade = m_Player.FindAction("Granade", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Hook;
     private readonly InputAction m_Player_Debug;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Granade;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -327,6 +349,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Hook => m_Wrapper.m_Player_Hook;
         public InputAction @Debug => m_Wrapper.m_Player_Debug;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Granade => m_Wrapper.m_Player_Granade;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -360,6 +383,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Granade.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGranade;
+                @Granade.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGranade;
+                @Granade.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGranade;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -388,6 +414,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Granade.started += instance.OnGranade;
+                @Granade.performed += instance.OnGranade;
+                @Granade.canceled += instance.OnGranade;
             }
         }
     }
@@ -402,5 +431,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnHook(InputAction.CallbackContext context);
         void OnDebug(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnGranade(InputAction.CallbackContext context);
     }
 }
