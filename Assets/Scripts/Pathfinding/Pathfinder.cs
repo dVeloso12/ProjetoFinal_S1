@@ -17,10 +17,10 @@ public class Pathfinder
     public static Pathfinder Instance;
     GameObject groundCheck;
 
-    public Pathfinder(int width, int height, float cellSize, GameObject groundCheck, float raycastHeight, LayerMask groundLayerMask)
+    public Pathfinder(int width, int height, float cellSize, GameObject groundCheck, float raycastHeight, Vector3 originPosition, LayerMask groundLayerMask)
     {
 
-        grid = new MapGrid<PathNode>(width, 0, height, cellSize, Vector3.zero, groundCheck, groundLayerMask, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y)); ;
+        grid = new MapGrid<PathNode>(width, 0, height, cellSize, originPosition, groundCheck, groundLayerMask, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y)); ;
         Instance = this;
         this.groundCheck = groundCheck;
         this.raycastHeight = raycastHeight;

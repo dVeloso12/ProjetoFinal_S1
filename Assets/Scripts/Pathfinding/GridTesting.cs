@@ -8,7 +8,7 @@ public class GridTesting : MonoBehaviour
 {
     [SerializeField] int width, height;
     [SerializeField] float cellSize;
-
+    [SerializeField] Vector3 originPosition;
     [SerializeField] float raycastHeight;
     [SerializeField] float speed;
 
@@ -35,9 +35,12 @@ public class GridTesting : MonoBehaviour
         width = groundCheck.GetComponent<NodeGroundCheck>().mapWidth / 15;
         height = groundCheck.GetComponent<NodeGroundCheck>().mapHeight / 15;
 
+        Debug.Log("Width : " + width);
+        Debug.Log("Height : " + height);
+
         Debug.Log("Helo");
 
-        pathfinder = new Pathfinder(width, height, cellSize, groundCheck, raycastHeight, groundLayerMask);
+        pathfinder = new Pathfinder(width, height, cellSize, groundCheck, raycastHeight, originPosition, groundLayerMask);
         visual.SetGrid(pathfinder.GetGrid());
         isWalkingTowardsPlayer = false;
 
