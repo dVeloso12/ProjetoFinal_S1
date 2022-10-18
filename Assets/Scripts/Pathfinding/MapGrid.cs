@@ -25,7 +25,10 @@ public class MapGrid<TGridObject>
 
     Vector3 originPosition;
 
-    public MapGrid(int _width, int _larg, int _height, float _cellSize, Vector3 _originPosition, Func<MapGrid<TGridObject>, int, int, TGridObject> createGridObj)
+    public GameObject groundCheck;
+    public LayerMask groundLayer;
+
+    public MapGrid(int _width, int _larg, int _height, float _cellSize, Vector3 _originPosition, GameObject groundCheck, LayerMask groundLayer, Func<MapGrid<TGridObject>, int, int, TGridObject> createGridObj)
     {
 
         width = _width;
@@ -33,9 +36,10 @@ public class MapGrid<TGridObject>
         height = _height;
         cellSize = _cellSize;
         originPosition = _originPosition;
+        this.groundCheck = groundCheck;
+        this.groundLayer = groundLayer;
 
         GridArray = new TGridObject[width, height];
-        //TrigridArray = new TGridObject[width, larg, height];
 
         for(int x = 0; x < GridArray.GetLength(0); x++)
         {
@@ -45,6 +49,10 @@ public class MapGrid<TGridObject>
             }
         }
 
+        //Debug.Log("Width : " + GridArray.GetLength(0));
+        //Debug.Log("Height : " + GridArray.GetLength(1));
+
+        //Debug.Log("Value : " + GetWorldPosition((int)(GridArray.GetLength(0)), (int)(GridArray.GetLength(1))));
 
         debugTextArray = new TextMesh[width, height];
 
@@ -53,12 +61,34 @@ public class MapGrid<TGridObject>
             for(int y = 0; y < GridArray.GetLength(1); y++)
             {
 
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                //debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
+                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
 
-              
+                Vector3 worldPosition = GetWorldPosition(x, y);
+                Vector3 worldPositionYPlus1 = GetWorldPosition(x, y + 1);
+                Vector3 worldPositionXPlus1 = GetWorldPosition(x + 1, y);
+
+                //Debug.Log("World Position 01 : " + worldPosition);
+                //Debug.Log("World Position 02 : " + worldPositionYPlus1);
+                //Debug.Log("World Position 03 : " + worldPositionXPlus1);
+
+                //string toDebug = GridArray[x, y]?.ToString() + GridArray[x, y].
+
+                
+
+                debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, new Vector3(worldPosition.x, 0, worldPosition.y) + new Vector3(cellSize, 0, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+
+                Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
+                    , new Vector3(worldPositionYPlus1.x, 0, worldPositionYPlus1.y)
+                    , Color.white, 100f);
+
+
+                Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
+                    , new Vector3(worldPositionXPlus1.x, 0, worldPositionXPlus1.y)
+                    , Color.white, 100f);
+
             }
         }
 
@@ -71,10 +101,15 @@ public class MapGrid<TGridObject>
         };
 
     }
-
-
-
-
+        
+    public LayerMask GetGroundLayer()
+    {
+        return groundLayer;
+    }
+    public GameObject GetGroundCheck()
+    {
+        return groundCheck;
+    }
 
     public int GetWidth()
     {
@@ -97,10 +132,16 @@ public class MapGrid<TGridObject>
 
     }
 
-    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    public void GetWorldPositionsOnMap(int x, int y)
     {
 
+    }
+
+    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    {
+        //Debug.Log("WOrld position x : " + worldPosition.x);
         x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
+        //Debug.Log("Grid X : " + x);
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
 
     }

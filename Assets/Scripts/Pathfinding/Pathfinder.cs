@@ -6,23 +6,50 @@ public class Pathfinder
 {
     private const int MOVE_STRAIGHT_COST = 10, MOVE_DIAGONAL_COST = 14;
 
+    float raycastHeight;
+
+    LayerMask groundLayerMask;
 
     MapGrid<PathNode> grid;
 
     List<PathNode> openList, closedList;
-    
-    public Pathfinder(int widtth, int height, float cellSize)
+
+    public static Pathfinder Instance;
+    GameObject groundCheck;
+
+    public Pathfinder(int width, int height, float cellSize, GameObject groundCheck, float raycastHeight, LayerMask groundLayerMask)
     {
 
-        grid = new MapGrid<PathNode>(widtth, 0, height, cellSize, Vector3.zero, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
-
+        grid = new MapGrid<PathNode>(width, 0, height, cellSize, Vector3.zero, groundCheck, groundLayerMask, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y)); ;
+        Instance = this;
+        this.groundCheck = groundCheck;
+        this.raycastHeight = raycastHeight;
+        this.groundLayerMask = groundLayerMask;
     }
 
-    private List<PathNode> FindPath(int startX, int startY, int endX, int endY)
+    public LayerMask GetGroundLayer()
+    {
+        return groundLayerMask;
+    }
+    public MapGrid<PathNode> GetGrid()
+    {
+        return grid;
+    }
+
+    public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
 
         PathNode startNode = grid.GetGridObj(startX, startY);
         PathNode endNode = grid.GetGridObj(endX, endY);
+
+        if(startNode == null)
+        {
+            Debug.Log("Start Node e nula");
+        }
+        if(endNode == null)
+        {
+            Debug.Log("End node e nula");
+        }
 
         openList = new List<PathNode> { startNode };
         closedList = new List<PathNode>();
@@ -53,6 +80,7 @@ public class Pathfinder
             if(currentNode == endNode)
             {
                 //Final Node
+                Debug.Log("Final Node");
                 return CalculatePath(endNode);
             }
 
@@ -63,6 +91,21 @@ public class Pathfinder
             foreach(PathNode neighborNode in GetNeighborNodes(currentNode))
             {
                 if (closedList.Contains(neighborNode)) continue;
+
+                if (!neighborNode.isWalkable)
+                {
+                    closedList.Add(neighborNode);
+                    continue;
+                }
+
+                if (currentNode == null)
+                {
+                    Debug.Log("current Node e nula");
+                }
+                if (neighborNode == null)
+                {
+                    Debug.Log("neighbor  Node e nula");
+                }
 
                 int tentativeCost = currentNode.gCost + CalculateDistance(currentNode, neighborNode);
                 if(tentativeCost < neighborNode.gCost)
@@ -79,12 +122,46 @@ public class Pathfinder
 
         }
 
+        Debug.Log("out of Nodes");
         //Out of nodes on openList. No available path
         return null;
 
     }
 
-    private List<PathNode> GetNeighborNodes(PathNode currentNode)
+    public List<Vector3> FindPathPositionsOnMap(List<PathNode> pathList)
+    {
+        List<Vector3> PathPositionsOnMap = new List<Vector3>();
+
+        if (pathList == null) return null;
+
+        foreach(PathNode node in pathList)
+        {
+
+            float height = -1f;
+            Debug.Log("Height : " + height);
+
+            Vector3 worldPosition = grid.GetWorldPosition(node.x, node.y);
+
+            RaycastHit hit;
+            if(Physics.Raycast(new Vector3(worldPosition.x, raycastHeight, worldPosition.y), -Vector3.up, out hit, 100f, groundLayerMask))
+            {
+
+                height = hit.point.y + 0.5f;
+                Debug.Log("tutsjsHeight : " + height);
+            }
+
+            Vector3 tempPos = grid.GetWorldPosition((int)hit.point.x, (int) hit.point.y);
+
+            Vector3 position = new Vector3(worldPosition.x, height, worldPosition.y);
+
+            PathPositionsOnMap.Add(position);
+
+        }
+
+        return PathPositionsOnMap;
+    }
+
+    public List<PathNode> GetNeighborNodes(PathNode currentNode)
     {
         List<PathNode> neighborNodes = new List<PathNode>();
 
@@ -118,16 +195,28 @@ public class Pathfinder
         return neighborNodes;
     }
 
-    private PathNode GetNode(int x, int y)
+    public PathNode GetNode(int x, int y)
     {
         return grid.GetGridObj(x, y);
     }
 
-    private List<PathNode> CalculatePath(PathNode endNode)
+    public List<PathNode> CalculatePath(PathNode endNode)
     {
 
-        return null;
+        List<PathNode> path = new List<PathNode>();
 
+        path.Add(endNode);
+        PathNode currentNode = endNode;
+
+        while(currentNode.previousNode != null)
+        {
+            path.Add(currentNode.previousNode);
+            currentNode = currentNode.previousNode;
+        }
+
+        path.Reverse();
+
+        return path;
     }
 
     private int CalculateDistance(PathNode a, PathNode b)

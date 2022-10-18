@@ -1,27 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils;
 
-
-public class GridTesting : MonoBehaviour
+public class NavMesh : MonoBehaviour
 {
-    [SerializeField] int width, height;
-    [SerializeField] float cellSize;
 
-    MapGrid<PathNode> grid; 
+    Pathfinder pathfinder;
 
     // Start is called before the first frame update
     void Start()
     {
-        Pathfinder pathfinder = new Pathfinder(width, height, cellSize);
+        pathfinder = Pathfinder.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         
-
     }
 }
