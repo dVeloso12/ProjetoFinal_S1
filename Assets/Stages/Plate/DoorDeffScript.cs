@@ -8,9 +8,11 @@ public class DoorDeffScript : MonoBehaviour
     [SerializeField] GameObject Door;
     PlateScript plateScrp;
     bool doorOpened;
+    GameManager gm;
     void Start()
     {
-        plateScrp = Plate.GetComponent<PlateScript>();   
+        plateScrp = Plate.GetComponent<PlateScript>();
+        gm = FindObjectOfType<GameManager>();
     }
     void Update()
     {
@@ -18,7 +20,9 @@ public class DoorDeffScript : MonoBehaviour
         {
             Door.SetActive(false);
             doorOpened = true;
-            
+
+            gm.AddUpgrade();
+
         }
     }
 }

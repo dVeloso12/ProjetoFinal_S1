@@ -12,6 +12,8 @@ public class PayloadScript : MonoBehaviour
     public float EndPoint;
     public bool PayloadCompleted;
 
+
+   
     void Update()
     {
         if (canMove)

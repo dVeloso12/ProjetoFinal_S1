@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -46,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
     GameManager gm;
 
+    TextMeshProUGUI Timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
         IsGrounded = false;
         IsRunning = false;
+
+        Timer = GameObject.Find("DashC").GetComponent<TextMeshProUGUI>();
     }
 
     private void Awake()
@@ -93,8 +98,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         if (TDashCooldown > 0)
+        {
             TDashCooldown -= Time.deltaTime;
-     
+            Timer.text = Mathf.Round(TDashCooldown).ToString();
+        }
     }
 
     private void CheckJump(InputAction.CallbackContext obj)

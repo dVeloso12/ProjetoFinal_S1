@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,11 @@ public class Granade : MonoBehaviour
 
     public Transform place;
 
+    TextMeshProUGUI Timer;
+
+    public float NadeCooldown;
+    private float NadeTimer;
+
     void Start()
     {
         playerInput = new PlayerInput();
@@ -20,17 +26,28 @@ public class Granade : MonoBehaviour
 
         playerInput.Player.Granade.performed += CreateNade;
 
+        Timer = GameObject.Find("GranadeC").GetComponent<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (NadeTimer > 0)
+        {
+            NadeTimer -= Time.deltaTime;
+            Timer.text = Mathf.Round(NadeTimer).ToString();
+        }
     }
 
     void CreateNade(InputAction.CallbackContext context)
     {
-        Instantiate(Granada,place.position,place.rotation);
+        if (NadeTimer <= 0)
+        {
+            Instantiate(Granada, place.position, place.rotation);
+            NadeTimer = NadeCooldown;
+        }
+
     }
 
 }

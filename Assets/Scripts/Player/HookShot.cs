@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class HookShot : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class HookShot : MonoBehaviour
     public float speed, dist;
 
     public bool projectile;
+
+    public float HookCooldown;
+
+    float HookTimer=0;
+
+    public TextMeshProUGUI Timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,34 +53,28 @@ public class HookShot : MonoBehaviour
             playerInput.Player.Hook.performed += HookActivate;
         else
         playerInput.Player.Hook.performed += HookShoot;
+
+        Timer = GameObject.Find("HookC").GetComponent<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (HookTimer > 0)
+        {
+            HookTimer -= Time.deltaTime;
+            Timer.text = Mathf.Round(HookTimer).ToString();
+        }
+
         if(activeHook)
             controller.Move((MovePos.normalized) * speed);
-        //controller.Move(()*speed);
-
-        //Debug.Log((MovePos - hookPos).magnitude);
-
         
-
         if (activeHook)
         {
-            //Debug.Log("Magnitude"+((transform.position) - hookPos).magnitude);
-            //if (((transform.position) - hookPos).magnitude < dist)
-            //{
-            //    activeHook = false;
-            //    Debug.Log("Off Dist");
-            //    Clean();
-            //}
-
             mult[0] = (transform.position.x - startpos.x) / MovePos.x;
             mult[1] = (transform.position.y - startpos.y) / MovePos.y;
             mult[2] = (transform.position.z - startpos.z) / MovePos.z;
-
 
             if (mult[0] >= 0 || mult[1] >=0 || mult[2] >= 0)
             {
@@ -81,38 +82,39 @@ public class HookShot : MonoBehaviour
                 Debug.Log("OFF Plus");
                 Clean();
             }
-
-            
         }
     }
     public void HookActivate(InputAction.CallbackContext obj)
     {
-
-        hookPos = Vector3.zero;
-        
-
-        Ray EyeRay = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        RaycastHit hit;
-        Physics.Raycast(EyeRay, out hit, 30);
-
-        Debug.Log("Ponto "+hit.point);
-
-        hookPos = hit.point;
-
-        if (hookPos == Vector3.zero)
+        if (HookTimer <= 0)
         {
-            activeHook = false;
-            return;
+            hookPos = Vector3.zero;
+
+
+            Ray EyeRay = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+            RaycastHit hit;
+            Physics.Raycast(EyeRay, out hit, 30);
+
+            Debug.Log("Ponto " + hit.point);
+
+            hookPos = hit.point;
+
+            if (hookPos == Vector3.zero)
+            {
+                activeHook = false;
+                return;
+            }
+
+            Debug.DrawRay(_camera.transform.position, _camera.transform.forward * 20, Color.red, 5);
+
+            MovePos = hit.point - (transform.position);
+
+            startpos = hit.point;
+
+            activeHook = true;
+
+            HookTimer = HookCooldown;
         }
-
-        Debug.DrawRay(_camera.transform.position, _camera.transform.forward *20,Color.red,5);
-
-        MovePos =hit.point- (transform.position);
-
-        startpos = hit.point;
-
-        activeHook = true;
-
     }
 
     void Clean()

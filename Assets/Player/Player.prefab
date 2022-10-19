@@ -2187,7 +2187,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.023084, y: 1}
+    m_SensorSize: {x: 2.3519092, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   jumpTimer: 0
   DashSpeed: 100
-  DashCooldown: 3
+  DashCooldown: 2
   DashTime: 0.1
   cameraTransform: {fileID: 6504896649903577144}
 --- !u!143 &9119896650656055848
@@ -2906,6 +2906,8 @@ MonoBehaviour:
   speed: 0.4
   dist: 0
   projectile: 0
+  HookCooldown: 5
+  Timer: {fileID: 0}
 --- !u!136 &9119896650656055850
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2988,6 +2990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Granada: {fileID: 2890465971416483998, guid: 820ff90a5ec5f384ab835be2d71a348f, type: 3}
   place: {fileID: 6861929995873933908}
+  NadeCooldown: 8
 --- !u!1 &9133375195057009950
 GameObject:
   m_ObjectHideFlags: 0

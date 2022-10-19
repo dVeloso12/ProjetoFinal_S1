@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
+    
+
 
     private void Awake()
     {
@@ -39,9 +41,12 @@ public class GameManager : MonoBehaviour
     {
         AddUpgrade();
     }
-    void AddUpgrade()
+    public void AddUpgrade()
     {
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        //FindObjectOfType<PlayerMovement>().GetComponent<GunController>().enabled=false;
 
 
     }
@@ -49,5 +54,8 @@ public class GameManager : MonoBehaviour
     public void CloseAddUpgrade()
     {
         SceneManager.UnloadSceneAsync("AddUpgrade");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        //FindObjectOfType<PlayerMovement>().GetComponent<GunController>().enabled = true;
     }
 }
