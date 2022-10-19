@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class GunController : MonoBehaviour
 {
+    [SerializeField] protected ParticleSystem muzzleFlash;
 
     public GameObject bullet;
 
@@ -55,6 +56,8 @@ public class GunController : MonoBehaviour
     protected virtual void Shoot()
     {
         // Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
+
+        muzzleFlash.Play();
 
         FireRateCounting = FireRate*gm.FireRateMod;
 
