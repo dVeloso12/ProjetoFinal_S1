@@ -3,7 +3,17 @@ guid: 6fb19b796ed75dd43a564ae0d8076867
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emission_Lanterna
+    second: {fileID: 2100000, guid: fa1f5cdfc0edd234499c6f7635485cae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MaterialBase_Lanterna
+    second: {fileID: 2100000, guid: 677230ef4c5ef3b45a1406f21c1e9256, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
