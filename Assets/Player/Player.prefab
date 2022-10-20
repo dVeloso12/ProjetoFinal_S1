@@ -1518,6 +1518,7 @@ GameObject:
   - component: {fileID: 6504896649903577146}
   - component: {fileID: 6504896649903577147}
   - component: {fileID: 6504896649903577140}
+  - component: {fileID: 6683153500242592328}
   m_Layer: 0
   m_Name: 1stPersonCamera
   m_TagString: Untagged
@@ -1659,6 +1660,29 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6683153500242592328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6504896649903577145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d47369094e1800458cfe70740b46e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linesMaterial: {fileID: 2100000, guid: 96712a97161f7b14ca63bb38b95a3494, type: 2}
+  pointPrefab: {fileID: 4561920289957326244, guid: 8c3183bf1695d4c4b97f4e5fe60a6177,
+    type: 3}
+  SpawnTarget: {x: -599.26, y: -10.9, z: 199.5}
+  dimension: 13
+  Size: 7
+  MAXTRANSPARENCY: 0.16
+  _show: 1
+  points: {fileID: 0}
+  pointsMaterial: {fileID: 2100000, guid: 265fa1e096809ee4eba1a9c0509c2e26, type: 2}
+  createNewPoints: 0
 --- !u!1 &6504896650139761995
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2211,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3519092, y: 1}
+    m_SensorSize: {x: 2.6660616, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
