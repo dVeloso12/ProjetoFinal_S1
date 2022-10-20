@@ -7,6 +7,7 @@ public class GranadeEffect : MonoBehaviour
     // Start is called before the first frame update
     public float timer;
     public float throwForce;
+    public float dmg;
 
     bool Exploded = false;
     void Start()
@@ -28,19 +29,19 @@ public class GranadeEffect : MonoBehaviour
     void Explode()
     {
         Exploded = true;
-        Collider[] collsions = Physics.OverlapSphere(transform.position, transform.localScale.x);
+        Collider[] collsions = Physics.OverlapSphere(transform.position, transform.localScale.x*3);
 
 
         for (int i = 0; i < collsions.Length; i++)
         {
 
 
-            //if (collsions[i].gameObject.CompareTag("Enemy") == true)
-            //{
+            if (collsions[i].gameObject.CompareTag("Enemy") == true)
+            {
+                collsions[i].GetComponent<EnemyManager>().ETakeDmg(dmg);
 
 
-
-            //}
+            }
 
         }
         StartCoroutine(BigPop());

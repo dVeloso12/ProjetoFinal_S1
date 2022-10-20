@@ -31,17 +31,26 @@ public class AssaultRifle : GunController
     }
     protected override void Shoot()
     {
-        if (FireRateCounting <= 0)
+        if (FireRateCounting <= 0&& Ammo>0)
         {
 
-            Quaternion rotation = ShotingPlace.rotation;
+            Vector3 ShootDir = _camera.forward;
 
-            rotation.x += Random.Range(-RandomDeviation, RandomDeviation);
-            rotation.y += Random.Range(-RandomDeviation, RandomDeviation);
-            rotation.z += Random.Range(-RandomDeviation, RandomDeviation);
-            rotation.w += Random.Range(-RandomDeviation, RandomDeviation);
+            ShootDir.x += Random.Range(-RandomDeviation, RandomDeviation);
+            ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
+            ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
-            Instantiate(bullet, ShotingPlace.position, rotation);
+
+            if (Physics.Raycast(_camera.position, ShootDir, out collisionDetected, Distance))
+            {
+                Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
+                Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
+
+
+                if (collisionDetected.transform.tag == "Enemy")
+                    collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
+
+            }
 
 
 

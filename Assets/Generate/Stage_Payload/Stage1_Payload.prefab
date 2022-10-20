@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 171274547215676187}
   m_Layer: 0
   m_Name: Barrier
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 171274547388419647}
   m_Layer: 0
   m_Name: Path
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,14 +107,14 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -40.07414, y: 0, z: -95.38476}
-      - {x: -39.158558, y: 0, z: -95.03391}
-      - {x: 21.876383, y: 0, z: -93.61413}
-      - {x: 22.059444, y: 0, z: -93.4694}
-      - {x: 23.860683, y: 0, z: -92.045334}
-      - {x: 36.87394, y: 0, z: -86.04777}
-      - {x: 37.24049, y: 0, z: -81.38476}
-      - {x: 38.09528, y: 0, z: -70.5107}
+      - {x: -40.07549, y: 0, z: -95.38746}
+      - {x: -39.16126, y: 0, z: -95.039314}
+      - {x: 21.876385, y: 0, z: -93.61953}
+      - {x: 22.059444, y: 0, z: -93.4721}
+      - {x: 23.84695, y: 0, z: -92.03252}
+      - {x: 36.876343, y: 0, z: -86.05317}
+      - {x: 37.24184, y: 0, z: -81.38746}
+      - {x: 38.09347, y: 0, z: -70.5161}
       - {x: 40.302814, y: 0, z: 15.3035755}
       - {x: 40.13091, y: 0, z: 16.503206}
       - {x: 39.62543, y: 0, z: 20.030603}
@@ -130,14 +130,14 @@ MonoBehaviour:
       - {x: -20.628365, y: 0, z: 37.509438}
       - {x: -22.76173, y: 0, z: 38.179146}
       - {x: -24.046225, y: 0, z: 38.582375}
-      - {x: -36.584866, y: 0, z: 45.73865}
-      - {x: -36.669823, y: 0, z: 46.067284}
-      - {x: -38.42916, y: 0, z: 52.872784}
-      - {x: -42.05718, y: 0, z: 76.09834}
-      - {x: -41.169807, y: 0, z: 86.65957}
-      - {x: -40.899254, y: 0, z: 89.879616}
-      - {x: -41.10955, y: 0, z: 96.66627}
-      - {x: -41.111366, y: 0, z: 95.197426}
+      - {x: -36.587566, y: 0, z: 45.741352}
+      - {x: -36.671173, y: 0, z: 46.068634}
+      - {x: -38.41157, y: 0, z: 52.8815}
+      - {x: -42.053135, y: 0, z: 76.10373}
+      - {x: -41.171158, y: 0, z: 86.66227}
+      - {x: -40.901955, y: 0, z: 89.88502}
+      - {x: -41.11225, y: 0, z: 96.67437}
+      - {x: -41.114067, y: 0, z: 95.20013}
       isClosed: 0
       space: 2
       controlMode: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 171274547422476498}
   m_Layer: 0
   m_Name: Payload
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 171274548009146954}
   m_Layer: 0
   m_Name: Front
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 171274548063353503}
   m_Layer: 0
   m_Name: StartPlate
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 171274548586951805}
   m_Layer: 0
   m_Name: EndPlate
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 171274548609280288}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 171274548871331559}
   m_Layer: 0
   m_Name: EncounterMechanics
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 171274548919013423}
   m_Layer: 0
   m_Name: CloseByBox
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 3399150985627687253}
   m_Layer: 0
   m_Name: Stage_Payload
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 2478713575009861648}
   m_Layer: 0
   m_Name: door
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 2384929711549648539}
   m_Layer: 0
   m_Name: Colisions
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 5544400338199517597}
   m_Layer: 0
   m_Name: CloseBehind
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +1003,7 @@ GameObject:
   - component: {fileID: 3313018219131240128}
   m_Layer: 0
   m_Name: Colision_1
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 1735495504655528755}
   m_Layer: 0
   m_Name: Stage1_Payload
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

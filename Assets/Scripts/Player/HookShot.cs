@@ -99,7 +99,8 @@ public class HookShot : MonoBehaviour
 
             hookPos = hit.point;
 
-            if (hookPos == Vector3.zero)
+            //if (hookPos == Vector3.zero||hit.transform.tag!="Terrain")
+            if(hookPos==Vector3.zero)
             {
                 activeHook = false;
                 return;

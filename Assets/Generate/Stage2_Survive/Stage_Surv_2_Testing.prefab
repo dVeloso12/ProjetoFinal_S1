@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 8431280287932354098}
   m_Layer: 0
   m_Name: Stage_Surv_2_Testing
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

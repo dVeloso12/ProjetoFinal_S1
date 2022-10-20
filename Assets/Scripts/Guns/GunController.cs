@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GunController : MonoBehaviour
 {
@@ -17,9 +18,27 @@ public class GunController : MonoBehaviour
 
     public float FireRate;
 
+    public float dmg;
+
     protected float FireRateCounting;
 
     protected GameManager gm;
+
+
+    public float ReloadSpeed;
+    public int AmmoClipSize;
+    protected int Ammo;
+
+    TextMeshProUGUI AmmoCount;
+
+    public Transform _camera;
+
+    protected RaycastHit collisionDetected;
+
+    public GameObject MarkSprite;
+
+    public float Distance;
+
 
     // Start is called before the first frame update
     protected void Start()
@@ -29,10 +48,17 @@ public class GunController : MonoBehaviour
         playerInput.Player.Enable();
 
         playerInput.Player.Shoot.performed += ActivateShoot;
+        playerInput.Player.Reload.performed += ActivateReload;
 
         FireRateCounting = FireRate;
 
         gm = FindObjectOfType<GameManager>();
+
+        Ammo = AmmoClipSize;
+
+        AmmoCount = GameObject.Find("AmmoC").GetComponent<TextMeshProUGUI>();
+
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 
     // Update is called once per frame
@@ -47,7 +73,7 @@ public class GunController : MonoBehaviour
     public virtual void ActivateShoot(InputAction.CallbackContext obj)
     {
 
-        if(FireRateCounting<=0)
+        if(FireRateCounting<=0 && Ammo>0)
             shoot = !shoot;
 
 
@@ -55,11 +81,29 @@ public class GunController : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        // Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
 
         muzzleFlash.Play();
 
+
         FireRateCounting = FireRate*gm.FireRateMod;
 
+        Ammo--;
+
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+    }
+
+
+
+    public virtual void ActivateReload(InputAction.CallbackContext obj)
+    {
+        StartCoroutine(Reload());
+    }
+
+    IEnumerator Reload()
+    {
+        Ammo = 0;
+        yield return new WaitForSeconds(ReloadSpeed);
+        Ammo = AmmoClipSize;
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 }
