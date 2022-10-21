@@ -7,11 +7,6 @@ public class Pistol : GunController
 {
 
 
-    public GameObject markSprite;
-
-    private RaycastHit collisionDetected;
-
-    public Transform _camera;
     
     // Start is called before the first frame update
     void Start()
@@ -27,19 +22,16 @@ public class Pistol : GunController
 
     protected override void Shoot()
     {
-        if (Physics.Raycast(_camera.position, _camera.forward, out collisionDetected))
+        if (Physics.Raycast(_camera.position, _camera.forward, out collisionDetected, Distance))
         {
-            Instantiate(markSprite, collisionDetected.point+(collisionDetected.normal*.1f), Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right*90);
+            Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
+            Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
 
-            Debug.Log("Shoot");
 
-
+            if (collisionDetected.transform.tag == "Enemy")
+                collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
 
         }
-        
-        
-        //Instantiate(bullet, ShotingPlace.position, ShotingPlace.rotation);
-
 
         shoot = !shoot;
 

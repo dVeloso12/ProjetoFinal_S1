@@ -9,12 +9,11 @@ public class GameManager : MonoBehaviour
 
     public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1;
 
+    public int Money;
+
      PlayerInput playerInput;
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
-
-    
-
 
     private void Awake()
     {
@@ -46,9 +45,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        //FindObjectOfType<PlayerMovement>().GetComponent<GunController>().enabled=false;
-
-
     }
 
     public void CloseAddUpgrade()
@@ -56,6 +52,5 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync("AddUpgrade");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        //FindObjectOfType<PlayerMovement>().GetComponent<GunController>().enabled = true;
     }
 }
