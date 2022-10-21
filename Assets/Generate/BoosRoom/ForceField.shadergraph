@@ -779,10 +779,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1155.9998779296875,
-            "y": 291.0,
-            "width": 207.99993896484376,
-            "height": 278.0
+            "x": -1233.0,
+            "y": 91.99998474121094,
+            "width": 208.0001220703125,
+            "height": 278.00006103515627
         }
     },
     "m_Slots": [
@@ -1889,7 +1889,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 2,
+    "m_Space": 0,
     "m_PositionSource": 0
 }
 
@@ -2092,11 +2092,11 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": 0.75,
     "m_FloatType": 1,
     "m_RangeValues": {
-        "x": -8.100000381469727,
-        "y": 0.0
+        "x": -0.5,
+        "y": 1.0
     }
 }
 
