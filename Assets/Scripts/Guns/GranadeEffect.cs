@@ -42,6 +42,11 @@ public class GranadeEffect : MonoBehaviour
 
 
             }
+            //Dano no Boss
+            if (collsions[i].transform.tag == "Boss")
+            {
+                collsions[i].transform.GetComponent<BossPart>().TakeDmgBoss(collsions[i].transform.gameObject, dmg);
+            }
 
         }
         StartCoroutine(BigPop());

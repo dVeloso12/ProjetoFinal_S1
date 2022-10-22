@@ -6,6 +6,7 @@ using TMPro;
 
 public class GunController : MonoBehaviour
 {
+    
     [SerializeField] protected ParticleSystem muzzleFlash;
 
     public GameObject bullet;

@@ -50,6 +50,12 @@ public class AssaultRifle : GunController
                 if (collisionDetected.transform.tag == "Enemy")
                     collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
 
+                //Dano no Boss
+                if (collisionDetected.transform.tag == "Boss")
+                {
+                    collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject, base.dmg * gm.DamageMod);
+                }
+
             }
 
 
