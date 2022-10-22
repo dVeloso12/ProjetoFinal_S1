@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] float gunRange;
     [SerializeField] float enemyFOV;
-    [SerializeField] float turnSpeed;
+    [SerializeField] float turnSpeed, movementSpeed;
 
     Pathfinder pathfinderInstance;
 
@@ -22,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     List<Vector3> pathPositionsList;
 
     bool isWalkingTowardsPlayer;
+
+    int enemyPositionIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,8 @@ public class EnemyAI : MonoBehaviour
 
 
         isWalkingTowardsPlayer = false;
+
+        enemyPositionIndex = 0;
     }
 
     // Update is called once per frame
@@ -43,14 +47,30 @@ public class EnemyAI : MonoBehaviour
             CheckIfPlayerMoved();
             isWalkingTowardsPlayer = true;
 
+            if(Vector3.Distance(transform.position, PlayerObject.transform.position) >= gunRange)
+            {
+
+                FollowPlayer();
+
+            }
+            else
+            {
+
+                LookTowardsPlayer();
+
+            }
+
         }
         else
         {
+
+            CheckIfPlayerMoved();
 
             if(Vector3.Distance(transform.position, PlayerObject.transform.position) < gunRange)
             {
                 LookTowardsPlayer();
             }
+
 
         }
         
@@ -82,14 +102,28 @@ public class EnemyAI : MonoBehaviour
         int startX, startY;
         int endX, endY;
 
-        pathfinderInstance.GetGrid().GetXY(transform.position, out startX, out startY);
-        pathfinderInstance.GetGrid().GetXY(PlayerObject.transform.position, out endX, out endY);
+        Vector3 tempPos = new Vector3(transform.position.x, transform.position.z);
+
+        pathfinderInstance.GetGrid().GetXY(tempPos, out startX, out startY);
+
+        tempPos = new Vector3(PlayerObject.transform.position.x, PlayerObject.transform.position.z);
+
+        pathfinderInstance.GetGrid().GetXY(tempPos, out endX, out endY);
+
+        Debug.Log("Start X = " + startX);
+        Debug.Log("End Pos = " + endX + " , " + endY);
 
         List<PathNode> tempPath;
 
+        if (pathfinderInstance == null) Debug.Log("Pathfinder e nulo");
+
         tempPath = pathfinderInstance.FindPath(startX, startY, endX, endY);
 
+        if (tempPath == null) Debug.Log("Path e nulo");
+
         pathPositionsList = pathfinderInstance.FindPathPositionsOnMap(tempPath);
+
+        if (pathPositionsList == null) Debug.Log("Path  Positions e nulo");
 
     }
 
@@ -150,8 +184,20 @@ public class EnemyAI : MonoBehaviour
 
     public void FollowPlayer()
     {
+        float step = movementSpeed * Time.deltaTime;
 
+        Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position).normalized;
 
+        transform.position += directionToMove * step;
+
+        if (Vector3.Distance(transform.position, pathPositionsList[enemyPositionIndex]) <= .5f)
+        {
+
+            transform.position = pathPositionsList[enemyPositionIndex];
+
+            enemyPositionIndex++;
+
+        }
 
     }
 

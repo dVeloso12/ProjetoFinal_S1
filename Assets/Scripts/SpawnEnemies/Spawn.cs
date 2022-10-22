@@ -52,6 +52,8 @@ public class Spawn : MonoBehaviour
             Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
 
         }
+
+        ToSpawnEnemies = false;
     }
 
 
@@ -61,7 +63,9 @@ public class Spawn : MonoBehaviour
         List<PathNode> walkableNodes = new List<PathNode>();
 
         MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
-                
+
+        Debug.Log("Width : " + grid.GetWidth());
+        Debug.Log("Height : " + grid.GetHeight());
 
         for (int x = 0; x < grid.GetWidth(); x++)
         {
@@ -69,13 +73,22 @@ public class Spawn : MonoBehaviour
             {
 
                 PathNode node = grid.GetGridObj(x, y);
+
                 if (node.isWalkable)
-                {
+                {  
                     walkableNodes.Add(node);
                 }
 
             }
         }
+
+        //foreach(PathNode node in walkableNodes)
+        //{
+
+        //    Vector3 nodeWorldPosition = grid.GetWorldPosition(node.x, node.y);
+
+        //    Debug.DrawLine(nodeWorldPosition, nodeWorldPosition + Vector3.up * 50f, Color.red, 100f);
+        //}
 
         int gridLenght = walkableNodes.Count - 1;
 
@@ -84,16 +97,24 @@ public class Spawn : MonoBehaviour
             bool canSpawn = false;
             float cellSize = grid.GetCellSize();
             System.Random rand = new System.Random();
+            Vector3 worldPosition = Vector3.zero;
 
-            while (!canSpawn)
+            int counter = 0;
+
+            while (!canSpawn/* || counter < 1000*/)
             {
 
                 int nodeNum = rand.Next(0, gridLenght);
+                //Debug.Log("Node Num : " + nodeNum);
+
+                //Debug.Log("Node Position On Grid : " + walkableNodes[nodeNum].x + " , " + walkableNodes[nodeNum].y);
+
                 float randX = (float)rand.NextDouble() * (float)rand.Next(-1, 1) * cellSize / 2f, randY = (float)rand.NextDouble() * (float) rand.Next(-1, 1) * cellSize / 2f;
 
                 PathNode tempNode = walkableNodes[nodeNum];
 
-                Vector3 worldPosition = grid.GetWorldPosition(tempNode.x, tempNode.y);
+                worldPosition = grid.GetWorldPosition(tempNode.x, tempNode.y);
+                worldPosition.z = worldPosition.y;
                 worldPosition.x += randX;
                 worldPosition.z += randY;
                 worldPosition.y = RaycastHeight;
@@ -103,20 +124,29 @@ public class Spawn : MonoBehaviour
                 if(Physics.Raycast(worldPosition, Vector3.down,out hitInfo, 100f, groundLayerMask))
                 {
 
-                    if(hitInfo.collider.gameObject.layer == groundLayerMask)
+                    if (hitInfo.collider.gameObject.tag == "Ground")
                     {
-                        worldPosition.y = hitInfo.transform.position.y;
+                        //Debug.Log("World position : " + worldPosition);
+
+                        Vector3 direction = hitInfo.point - worldPosition;
+
+                        //Debug.DrawLine(worldPosition, worldPosition + Vector3.down * 100f, Color.blue, 100f);
+                        //Debug.DrawLine(worldPosition, worldPosition + direction, Color.red, 100f);
+
+                        worldPosition.y = hitInfo.point.y + enemiesPrefab.transform.localScale.y / 2;
+                        canSpawn = true;
                     }
-                    canSpawn = true;
 
                 }
 
-                positionsToSpawn.Add(worldPosition);
+                counter++;
                 
 
             }
 
+            if (!canSpawn) Debug.Log("Can't find position");
 
+            if(worldPosition != Vector3.zero) positionsToSpawn.Add(worldPosition);
 
 
 

@@ -60,8 +60,8 @@ public class PathNode
         groundCheck.transform.position = new Vector3(newPosition.x, groundCheck.transform.position.y, newPosition.y);
         isWalkable = groundCheck.GetComponent<NodeGroundCheck>().CheckIfIsWalkable(groundLayer);
 
-        if (isWalkable)
-            Debug.Log(newPosition);
+        //if (isWalkable)
+        //    Debug.Log(newPosition);
 
         //Debug.Log("Position : " + x + " , " + y);
 

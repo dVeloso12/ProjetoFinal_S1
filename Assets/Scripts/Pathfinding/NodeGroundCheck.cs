@@ -31,9 +31,9 @@ public class NodeGroundCheck : MonoBehaviour
         //Debug.Log("Hit Name : " + hit.collider.name);
         //Debug.Log("Hit Tag : " + hit.collider.tag);
 
-        Debug.DrawLine(new Vector3(transform.position.x, RaycastHeight, transform.position.z),
-            new Vector3(transform.position.x, RaycastHeight, transform.position.z) - transform.up * 100f,
-            Color.red, 100f);
+        //Debug.DrawLine(new Vector3(transform.position.x, RaycastHeight, transform.position.z),
+        //    new Vector3(transform.position.x, RaycastHeight, transform.position.z) - transform.up * 100f,
+        //    Color.red, 100f);
 
 
         //Debug.Log("Has Collided ? : " + hasCollided);
