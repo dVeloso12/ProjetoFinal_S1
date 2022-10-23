@@ -17,7 +17,7 @@ public class GameplayOrganize : MonoBehaviour
     [Header("Shop Stuff")]
     [SerializeField] GameObject Shop;
     [SerializeField] Vector3 ShopSpawnPos;
-    [SerializeField] Vector3 PlayerShopSpawn;
+    [SerializeField] public Vector3 PlayerShopSpawn;
     [Header("Gameplay")]
     public bool toLobby;
     public bool toGame;
@@ -41,7 +41,7 @@ public class GameplayOrganize : MonoBehaviour
             Generate_Detele_Stages(true, false);
             Generate_Delete_Shop(true, false);
             Generate_Delete_Looby(false, true);
-            goToStage = true;
+            GoToStage();
             toGame = false;
         }
         if(toLobby)
@@ -52,17 +52,25 @@ public class GameplayOrganize : MonoBehaviour
             PlayerMove(PlayerLobbySpawn);
             toLobby = false;
         }
-        if(goToStage)
-        {
-            PlayerMove(PlayerStageSpawn);
-            goToStage = false;
-        }
-        if(goToShop)
-        {
-            PlayerMove(PlayerShopSpawn);
-            goToShop = false;
-        }
+       
     }
+    public void GoToShop()
+    {
+        PlayerMove(PlayerShopSpawn);
+    }
+
+    public void GoToStage()
+    {
+        PlayerMove(PlayerStageSpawn);
+    }
+
+    public void Player_Move(Vector2 newPos , GameObject player)
+    {
+        player.transform.position = newPos;
+
+        Physics.SyncTransforms();
+    }
+
     void PlayerMove(Vector3 newPos)
     {
         //Destroy(playerIns);
