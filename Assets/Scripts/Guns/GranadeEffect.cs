@@ -47,6 +47,10 @@ public class GranadeEffect : MonoBehaviour
             {
                 collsions[i].transform.GetComponent<BossPart>().TakeDmgBoss(collsions[i].transform.gameObject, dmg);
             }
+            if (collsions[i].transform.tag == "Turret")
+            {
+                collsions[i].transform.GetComponent<TurretScript>().TakeDmg(dmg);
+            }
 
         }
         StartCoroutine(BigPop());

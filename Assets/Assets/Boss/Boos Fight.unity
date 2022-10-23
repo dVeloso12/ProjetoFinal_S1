@@ -2017,7 +2017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1619080666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2051,6 +2051,8 @@ MonoBehaviour:
   RateOfFire: 1
   pointOfBarrel: {fileID: 1783285717}
   firing: 0
+  TurretHp: 0
+  isAlive: 1
 --- !u!4 &1619080668
 Transform:
   m_ObjectHideFlags: 0
@@ -3654,6 +3656,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 2708090006803820533, guid: 73790978633238b45b6a5a9d46ac6a41,
+        type: 3}
+      propertyPath: m_TagString
+      value: Turret
+      objectReference: {fileID: 0}
     - target: {fileID: 2708090006803820538, guid: 73790978633238b45b6a5a9d46ac6a41,
         type: 3}
       propertyPath: m_RootOrder
@@ -3714,6 +3721,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 154963919}
+    - target: {fileID: 2708090006803820539, guid: 73790978633238b45b6a5a9d46ac6a41,
+        type: 3}
+      propertyPath: TurretHp
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73790978633238b45b6a5a9d46ac6a41, type: 3}
 --- !u!4 &2712683100613427134
@@ -10546,7 +10558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504896649680038235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.510396, y: 1.801, z: -5.1541224}
+  m_LocalPosition: {x: -1.18, y: 1.83, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10570,7 +10582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &6504896649690765626
 GameObject:
   m_ObjectHideFlags: 0
@@ -11170,7 +11182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657076050561366681}
   m_LocalRotation: {x: 0.17150295, y: -0.8242892, z: 0.3329507, w: 0.42459142}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12110,7 +12122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119896650073384364}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: -6.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12187,7 +12199,7 @@ MonoBehaviour:
   GroundCheck: {fileID: 6504896649690765626}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 129
   controller: {fileID: 9119896650073384537}
   jumpTimer: 0
   DashSpeed: 100

@@ -36,6 +36,11 @@ public class Pistol : GunController
             {
                 collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject, base.dmg * gm.DamageMod);
             }
+            if (collisionDetected.transform.tag == "Turret")
+            {
+                collisionDetected.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+            }
+
 
         }
 

@@ -15,17 +15,30 @@ public class TurretScript : MonoBehaviour
     [SerializeField] GameObject pointOfBarrel;
     public bool firing;
     float fireTimer;
+    [Header("General Stuff")]
+    [SerializeField] float TurretHp;
+    public bool isAlive = true;
 
 
     private void Update()
     {
 
-        if (canAim)
+        if (canAim && isAlive)
         {
             RotateTurret();
             Shoot();
         }
 
+    }
+
+    public void TakeDmg(float dmg)
+    {
+        TurretHp -= dmg;
+
+        if(TurretHp <= 0)
+        {
+            isAlive = false;
+        }
     }
 
     private void RotateTurret()

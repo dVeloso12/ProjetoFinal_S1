@@ -18,8 +18,13 @@ public class BarrelScript : MonoBehaviour
     }
 
     private void Update()
-    {
-        line.SetPosition(0, transform.position);
+    {  
+        if (Turret.isAlive) line.SetPosition(0, transform.position);
+
+        if (Turret.isAlive) line.enabled = true;
+        else line.enabled = false;
+
+
     }
 
     void FixedUpdate()
@@ -29,7 +34,7 @@ public class BarrelScript : MonoBehaviour
         layerMask = ~layerMask;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxRange,layerMask))
         {
-            if (hit.collider)
+            if (hit.collider && Turret.isAlive)
             {
                 line.SetPosition(1,hit.point);
             }
@@ -38,7 +43,7 @@ public class BarrelScript : MonoBehaviour
         }
         else
         {      
-            line.SetPosition(1, transform.forward * MaxRange);
+            if(Turret.isAlive) line.SetPosition(1, transform.forward * MaxRange);
         }    
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Terrain
   - Boss
+  - Turret
   layers:
   - Default
   - TransparentFX

@@ -33,6 +33,7 @@ public class Shotgun : GunController
             {
                 Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
                 Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
+                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * collisionDetected.distance, Color.green);
 
 
                 if (collisionDetected.transform.tag == "Enemy")
@@ -41,9 +42,15 @@ public class Shotgun : GunController
                 //Dano no Boss
                 if(collisionDetected.transform.tag == "Boss")
                 {
+
                     collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject,base.dmg * gm.DamageMod); 
                 }
-               
+                //Debug.Log(collisionDetected.transform.tag);
+                if (collisionDetected.transform.tag == "Turret")
+                {
+                    collisionDetected.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                }
+
             }
         }
 
