@@ -5,6 +5,10 @@ using UnityEngine;
 public class Spawn : MonoBehaviour
 {
 
+    enum SpawnType { AllMap, Localized }
+
+    [SerializeField] SpawnType spawnType;
+
     [SerializeField] bool ToSpawnEnemies;
 
     [SerializeField] GameObject enemiesPrefab;
@@ -15,14 +19,32 @@ public class Spawn : MonoBehaviour
 
     [SerializeField] LayerMask groundLayerMask;
 
+    [SerializeField] List<GameObject> spawners;
+
+    [SerializeField] int nSpawners;
+
     Pathfinder pathfinderInstance;
+    EnemyManager enemyManagerInstance;
+
+    public List<GameObject> activeEnemiesList;
 
     // Start is called before the first frame update
     void Start()
     {
         pathfinderInstance = Pathfinder.Instance;
+        enemyManagerInstance = EnemyManager.Instance;  
+        MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
+        activeEnemiesList = new List<GameObject>();
+        //List<Vector3> spawnerPos = new List<Vector3>();
+
+        //for(int i = 0; i < nSpawners; i++)
+        //{
+
+        //    int gridLenght = grid.GetWidth() * grid.GetHeight();
 
 
+
+        //}
     }
 
     // Update is called once per frame
@@ -30,7 +52,11 @@ public class Spawn : MonoBehaviour
     {
         if (ToSpawnEnemies)
         {
-            SpawnEnemies();
+
+            if (spawnType == SpawnType.AllMap)
+                SpawnEnemies();
+            else
+                SpawnEnemiesLocalized();
         }   
     }
 
@@ -49,13 +75,41 @@ public class Spawn : MonoBehaviour
 
             Quaternion rotationToSpawn = new Quaternion(0, randY, 0, 0);
 
-            Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
+            GameObject tempEnemy = Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
+            enemyManagerInstance.ActivateEnemy(tempEnemy);
 
         }
 
         ToSpawnEnemies = false;
     }
 
+    public void SpawnEnemiesLocalized()
+    {
+        
+        foreach(GameObject spawner in spawners)
+        {
+            Spawner spawnerSCript = spawner.GetComponent<Spawner>();
+            List<Vector3> positionsToSpawn = GetPositionsToSpawn(spawner.transform.position, spawnerSCript.radius, spawnerSCript.enemiesToSpawn_Quantity);
+            System.Random rand = new System.Random();
+
+            if (positionsToSpawn == null) Debug.Log("Positions to spawn e nulo");
+
+            foreach(Vector3 pos in positionsToSpawn)
+            {
+
+                float rotY = rand.Next(-180, 180) + (float) rand.NextDouble();
+                Quaternion rot = new Quaternion(0, rotY, 0, 0);
+
+                GameObject tempEnemy = Instantiate(enemiesPrefab, pos, rot, enemiesParent.transform);
+                enemyManagerInstance.ActivateEnemy(tempEnemy);
+
+            }
+        }
+
+
+        ToSpawnEnemies = false;
+
+    }
 
     public List<Vector3> GetPositionsToSpawn()
     {
@@ -158,4 +212,58 @@ public class Spawn : MonoBehaviour
 
         return positionsToSpawn;
     }
+
+    public List<Vector3> GetPositionsToSpawn(Vector3 spawnerPosition, float spawnerRadius, int enemiesToSpawn_Quantity)
+    {
+        List<Vector3> positionsToSpawn = new List<Vector3>();
+        bool canSpawn = false;
+        System.Random rand = new System.Random();  
+
+        for(int i = 0; i < enemiesToSpawn_Quantity; i++)
+        {
+            Vector3 tempPosition = new Vector3();
+            while (!canSpawn)
+            {
+
+                float randX = spawnerPosition.x + rand.Next(0, (int)spawnerRadius) * rand.Next(-1, 1) + (float)rand.NextDouble(), 
+                    randZ = spawnerPosition.z + rand.Next(0, (int)spawnerRadius) * rand.Next(-1, 1) * (float)rand.NextDouble();
+
+                tempPosition = new Vector3(randX, RaycastHeight, randZ);
+
+                RaycastHit hitInfo;
+
+                if(Physics.Raycast(tempPosition, -Vector3.up, out hitInfo, 100f, groundLayerMask))
+                {
+
+                    tempPosition.y = hitInfo.point.y;
+                    canSpawn = true;
+
+                }
+
+            }
+
+            if(tempPosition != null)
+                positionsToSpawn.Add(tempPosition);
+
+        }
+
+
+        return positionsToSpawn;
+    }
+
+    public void AddEnemiesToList(GameObject enemyToAdd)
+    {
+
+        activeEnemiesList.Add(enemyToAdd);
+
+    }
+
+    public void RemoveEnemiesFromList(GameObject enemyToRemove)
+    {
+
+        activeEnemiesList.Remove(enemyToRemove);
+
+    }
+
+
 }

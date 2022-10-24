@@ -22,6 +22,7 @@ public class GridTesting : MonoBehaviour
     MapGrid<PathNode> grid;
 
     private Pathfinder pathfinder;
+    private EnemyManager enemyManager;
 
     List<Vector3> pathPositions;
 
@@ -41,6 +42,8 @@ public class GridTesting : MonoBehaviour
         //Debug.Log("Helo");
 
         pathfinder = new Pathfinder(width, height, cellSize, groundCheck, raycastHeight, originPosition, groundLayerMask);
+        enemyManager = new EnemyManager();
+
         visual.SetGrid(pathfinder.GetGrid());
         //isWalkingTowardsPlayer = false;
 

@@ -138,7 +138,7 @@ public class Pathfinder
         {
 
             float height = -1f;
-            Debug.Log("Height : " + height);
+            //Debug.Log("Height : " + height);
 
             Vector3 worldPosition = grid.GetWorldPosition(node.x, node.y);
 
@@ -147,7 +147,7 @@ public class Pathfinder
             {
 
                 height = hit.point.y + 0.5f;
-                Debug.Log("tutsjsHeight : " + height);
+                //Debug.Log("tutsjsHeight : " + height);
             }
 
             Vector3 tempPos = grid.GetWorldPosition((int)hit.point.x, (int) hit.point.y);

@@ -38,8 +38,8 @@ public class GranadeEffect : MonoBehaviour
 
             if (collsions[i].gameObject.CompareTag("Enemy") == true)
             {
-                collsions[i].GetComponent<EnemyManager>().ETakeDmg(dmg);
-
+                //collsions[i].GetComponent<EnemyManager>().ETakeDmg(dmg);
+                collsions[i].GetComponent<EnemyStatus>().Damage(dmg);
 
             }
             //Dano no Boss
