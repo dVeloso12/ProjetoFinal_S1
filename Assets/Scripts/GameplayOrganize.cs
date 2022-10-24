@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameplayOrganize : MonoBehaviour
 {
-    GameObject saveStages,savelobby,saveshop;
+   public GameObject saveStages,savelobby,saveshop;
     [Header("Player Stuff")]
     [SerializeField] GameObject Player;
     [Header("Stages Stuff")]
@@ -24,6 +24,8 @@ public class GameplayOrganize : MonoBehaviour
     public bool goToStage;
     public bool goToShop;
     public GameObject playerIns;
+    public GameObject saveBossRoom;
+    bool saved;
 
     void Start()
     {
@@ -52,7 +54,43 @@ public class GameplayOrganize : MonoBehaviour
             PlayerMove(PlayerLobbySpawn);
             toLobby = false;
         }
-       
+        if(goToShop)
+        {
+            GoToShop();
+            goToShop = false;
+        }
+        if(saveStages.GetComponent<GenerateRun>().doUrJob)
+        {
+            saveBossRoom = saveStages.GetComponent<GenerateRun>().getBossRoom();
+            saveStages.GetComponent<GenerateRun>().doUrJob = false;
+            saved = true;
+        }
+        if(saved)
+        {
+            if (saveBossRoom.GetComponent<BossStageInfo>().getCollidePortal() == true)
+            {
+                Debug.Log("AQUI BOSS-GameORG");
+                GoToShop();
+            }
+        }
+        if (saveshop.GetComponent<SaveInfosShop>().getCollideButton() == true)
+        {
+            ResetGenerator();
+            saveshop.GetComponent<SaveInfosShop>().setCollideButton(false);
+        }
+        if (saveshop.GetComponent<SaveInfosShop>().getCollidePortal() == true)
+        {
+            Debug.Log("ENTREI - 1");
+            GotoStageFromShop();
+            saveshop.GetComponent<SaveInfosShop>().setCollidePortal(false);
+
+        }
+    }
+
+    void ResetGenerator()
+    {
+        Generate_Detele_Stages(false, true);
+        Generate_Detele_Stages(true, false);
     }
     public void GoToShop()
     {
@@ -61,23 +99,18 @@ public class GameplayOrganize : MonoBehaviour
 
     public void GoToStage()
     {
-        PlayerMove(PlayerStageSpawn);
+        PlayerMove(PlayerStageSpawn);    
     }
 
-    public void Player_Move(Vector2 newPos , GameObject player)
+    public void GotoStageFromShop()
     {
-        player.transform.position = newPos;
-
-        Physics.SyncTransforms();
+        PlayerMove(PlayerStageSpawn);
     }
 
     void PlayerMove(Vector3 newPos)
     {
-        //Destroy(playerIns);
-        //playerIns = null;
-        //playerIns = Instantiate(Player, newPos, Quaternion.identity);
         playerIns.transform.position = newPos;
-
+        Debug.Log("ENTREI - 2");
         Physics.SyncTransforms();
     }
     void Generate_Detele_Stages(bool canGenerateStages,bool canDeleteStages)
@@ -86,11 +119,14 @@ public class GameplayOrganize : MonoBehaviour
         if(canGenerateStages)
         {
             saveStages = Instantiate(StageRender, Vector3.zero, Quaternion.identity);
+            Debug.Log("New Stage");
             canGenerateStages = false;
+           
         }
         if(canDeleteStages)
         {
             Destroy(saveStages);
+            Debug.Log("Deleted Stage");
             saveStages = null;
             canDeleteStages = false;
         }

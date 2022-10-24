@@ -9,6 +9,8 @@ public class GenerateRun : MonoBehaviour
     [SerializeField]int maxNStages;
     [SerializeField] GameObject BossRoom;
     [SerializeField] GameObject StageStart;
+    public GameObject saveBossStage;
+    public bool doUrJob;
 
     void Start()
     {    
@@ -18,6 +20,10 @@ public class GenerateRun : MonoBehaviour
     void saveStagesList()
     {
         UseStage = new List<GameObject>(ListStages);
+    }
+     public GameObject getBossRoom()
+    {
+        return saveBossStage;
     }
     void Generate()
     {
@@ -36,6 +42,8 @@ public class GenerateRun : MonoBehaviour
 
         var bossStg = Instantiate(BossRoom, nextPosition,Quaternion.identity);
         bossStg.transform.parent = this.transform;
+        saveBossStage = bossStg;
+        doUrJob = true;
 
     }
 

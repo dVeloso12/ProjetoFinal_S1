@@ -1,19 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndBossPortal : MonoBehaviour
 {
-    [SerializeField] Vector3 Shop;
+    [SerializeField] Vector3 ShopPos;
+    public bool canTp;
 
-    
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.name);
+
         if (other.transform.name == "Player")
         {
-            other.gameObject.transform.position = Shop;
-            Physics.SyncTransforms();
+            canTp = true;
+            //other.transform.position = ShopPos;
+            //Physics.SyncTransforms();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+
+        if (other.transform.name == "Player")
+        {
+            canTp = false;
         }
     }
 

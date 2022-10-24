@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1422000883687176485}
-  - component: {fileID: 1422000883687176484}
+  - component: {fileID: 1908102271325285872}
   m_Layer: 0
   m_Name: BossRoom
   m_TagString: Untagged
@@ -118,7 +118,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1422000883687176484
+--- !u!114 &1908102271325285872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,11 +127,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422000883687176487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73776ca426fcfb94ca04ae83f9dbd807, type: 3}
+  m_Script: {fileID: 11500000, guid: 1325cdeb50741b74e936986aedabd31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StageSize: {x: 0, y: 0, z: 0}
-  Stage_Id: 0
+  BossPortal: {fileID: 6755031633943429377}
 --- !u!1 &1422000883780653291
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,8 +685,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 10.2165985, z: 10.400284}
-  m_Center: {x: 0, y: 4.6082993, z: 0.09291077}
+  m_Size: {x: 1.3358154, y: 10.2165985, z: 10.400284}
+  m_Center: {x: -0.16790771, y: 4.6082993, z: 0.09291077}
 --- !u!114 &5036204106025454385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,7 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6c40e5be3cf443bd864d69cbfe0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shop: {x: -584.1884, y: 0.7399999, z: 239.37695}
+  ShopPos: {x: -584.1884, y: 0.7399999, z: 239.37695}
+  canTp: 0
 --- !u!1 &6931774558836814931
 GameObject:
   m_ObjectHideFlags: 0
