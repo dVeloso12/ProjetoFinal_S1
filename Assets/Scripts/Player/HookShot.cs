@@ -48,6 +48,7 @@ public class HookShot : MonoBehaviour
 
         playerInput.Player.Enable();
 
+        dist = hook.GetComponent<HookGrappler>().Reach;
 
         if(!projectile)
             playerInput.Player.Hook.performed += HookActivate;
@@ -99,8 +100,11 @@ public class HookShot : MonoBehaviour
 
             hookPos = hit.point;
 
+            float speed = Instantiate(hook, _camera.transform.position, _camera.transform.rotation).
+            GetComponent<HookGrappler>().Speed;
+
             //if (hookPos == Vector3.zero||hit.transform.tag!="Terrain")
-            if(hookPos==Vector3.zero)
+            if (hookPos==Vector3.zero)
             {
                 activeHook = false;
                 return;
@@ -112,7 +116,11 @@ public class HookShot : MonoBehaviour
 
             startpos = hit.point;
 
-            activeHook = true;
+            //activeHook = true;
+            
+
+            StartCoroutine(HookOn(MovePos.magnitude/speed));
+
 
             HookTimer = HookCooldown;
         }
@@ -145,5 +153,12 @@ public class HookShot : MonoBehaviour
     public void HookShoot (InputAction.CallbackContext obj)
     {
         Instantiate(hook, origin.position, origin.rotation,transform);
+    }
+
+    IEnumerator HookOn(float sec)
+    {
+        Debug.Log("fhgd");
+        yield return new WaitForSeconds(sec);
+        activeHook = true;
     }
 }

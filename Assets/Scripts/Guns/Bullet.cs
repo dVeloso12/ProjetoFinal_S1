@@ -19,15 +19,18 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        transform.position = Vector3.zero;
         StartPos = transform.position;
         
-        Velocity = transform.forward * 3;
+        Velocity = transform.forward;
+
+        StartCoroutine(Des());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + Velocity, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + Velocity, Time.deltaTime);
         
         if((transform.position-StartPos).magnitude>MaxDistance)
             Destroy(gameObject);
@@ -37,6 +40,16 @@ public class Bullet : MonoBehaviour
     {
 
 
+        Destroy(gameObject);
+    }
+
+    IEnumerator Des()
+    {
+
+        Debug.Log(transform.position);
+        yield return new WaitForSeconds(2);
+
+        Debug.Log(transform.position);
         Destroy(gameObject);
     }
 }

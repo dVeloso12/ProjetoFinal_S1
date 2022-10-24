@@ -387,7 +387,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireRateMod: 1
   DamageMod: 1
-  SpeedMod: 1
+  MoveSpeedMod: 1
+  Money: 0
   Upgrades:
   - {fileID: 386185769267273100, guid: e246554db2da5c6489dcbbe25628ac5f, type: 3}
   - {fileID: 2112212179344269612, guid: 1eb02beeafde69a4598262492d8519fe, type: 3}
