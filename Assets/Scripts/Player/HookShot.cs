@@ -6,6 +6,7 @@ using TMPro;
 
 public class HookShot : MonoBehaviour
 {
+    GameManager gm;
 
     PlayerInput playerInput;
     public Camera _camera;
@@ -15,8 +16,6 @@ public class HookShot : MonoBehaviour
     //private CharacterController controller;
 
     bool activeHook = false;
-
-
 
     float[] mult = new float[3];
 
@@ -56,6 +55,8 @@ public class HookShot : MonoBehaviour
         playerInput.Player.Hook.performed += HookShoot;
 
         Timer = GameObject.Find("HookC").GetComponent<TextMeshProUGUI>();
+
+        gm = FindObjectOfType<GameManager>();
 
     }
 
@@ -122,7 +123,7 @@ public class HookShot : MonoBehaviour
             StartCoroutine(HookOn(MovePos.magnitude/speed));
 
 
-            HookTimer = HookCooldown;
+            HookTimer = HookCooldown/gm.CooldownReduction;
         }
     }
 

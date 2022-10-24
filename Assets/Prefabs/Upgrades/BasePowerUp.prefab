@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectName: FireRate_10
-  Description: Sample T
+  Description: Money Earned +10%
   TextDescription: {fileID: 7738137254536916109}
 --- !u!114 &7738137255732208445
 MonoBehaviour:

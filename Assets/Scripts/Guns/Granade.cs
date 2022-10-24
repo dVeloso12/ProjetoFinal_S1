@@ -18,6 +18,8 @@ public class Granade : MonoBehaviour
     public float NadeCooldown;
     private float NadeTimer;
 
+    GameManager gm;
+
     void Start()
     {
         playerInput = new PlayerInput();
@@ -28,6 +30,7 @@ public class Granade : MonoBehaviour
 
         Timer = GameObject.Find("GranadeC").GetComponent<TextMeshProUGUI>();
 
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class Granade : MonoBehaviour
         if (NadeTimer <= 0)
         {
             Instantiate(Granada, place.position, place.rotation);
-            NadeTimer = NadeCooldown;
+            NadeTimer = NadeCooldown/gm.CooldownReduction;
         }
 
     }

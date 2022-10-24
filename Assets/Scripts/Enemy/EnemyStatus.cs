@@ -9,12 +9,13 @@ public class EnemyStatus : MonoBehaviour
     float currentHealth;
 
     EnemyManager enemyManagerInstance;
-
+    GameManager gm;
     private void Start()
     {
         currentHealth = maxHealth;
 
         enemyManagerInstance = EnemyManager.Instance;
+        gm = FindObjectOfType<GameManager>();
     }
 
     public void Damage(float dmg)
@@ -33,6 +34,9 @@ public class EnemyStatus : MonoBehaviour
     {
 
         enemyManagerInstance.DeActivateEnemy(gameObject);
+
+        gm.Money += (int)(50*gm.MoneyMult);
+
 
         gameObject.SetActive(false);
 

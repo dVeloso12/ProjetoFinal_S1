@@ -202,7 +202,7 @@ public class PlayerMovement : MonoBehaviour
             DashActive = true;
             DashDir = move;
             DashDir.y = 0;
-            TDashCooldown = DashCooldown;
+            TDashCooldown = DashCooldown/gm.CooldownReduction;
         }
     }
 
