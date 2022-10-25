@@ -35,8 +35,8 @@ public class GridTesting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        width = groundCheck.GetComponent<NodeGroundCheck>().mapWidth / 15;
-        height = groundCheck.GetComponent<NodeGroundCheck>().mapHeight / 15;
+        width = groundCheck.GetComponent<NodeGroundCheck>().mapWidth / (int)cellSize;
+        height = groundCheck.GetComponent<NodeGroundCheck>().mapHeight / (int)cellSize;
 
         instantiatedPlayer = Instantiate(player, initialPosition, Quaternion.identity);
 

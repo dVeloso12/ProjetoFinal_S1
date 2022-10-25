@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8121905845089733736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 257.12, y: 29.767, z: 116.09964}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,9 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySearchMode: 0
-  PlayerObject: {fileID: 5607618892093603261, guid: 1fcd76f9f54507d45938b7085acbb3ca,
-    type: 3}
   gunRange: 50
+  sightRange: 10
   enemyFOV: 180
   turnSpeed: 20
-  movementSpeed: 5
+  defaultMovementSpeed: 30
