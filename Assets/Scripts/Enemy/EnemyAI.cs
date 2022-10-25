@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 
 
     [SerializeField] EnemySearchMode enemySearchMode;
-    [SerializeField] GameObject PlayerObject;
+    GameObject PlayerObject;
     
 
     [SerializeField] float gunRange;
@@ -33,15 +33,29 @@ public class EnemyAI : MonoBehaviour
         pathPositionsList = new List<Vector3>();
 
 
+        previousPlayerPosition = new Vector3(-100, -100, -100);
+
         isWalkingTowardsPlayer = false;
 
         enemyPositionIndex = 0;
     }
 
+    public void SetPlayerObject(GameObject playerObject)
+    {
+        Debug.Log("Setting Player");
+        PlayerObject = playerObject;
+        Debug.Log("Player : " + playerObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(enemySearchMode == EnemySearchMode.AlwaysSearchingMode)
+
+        if (PlayerObject == null) Debug.Log("Player e nulo");
+
+        
+
+        if (enemySearchMode == EnemySearchMode.AlwaysSearchingMode)
         {
 
             CheckIfPlayerMoved();
@@ -50,7 +64,10 @@ public class EnemyAI : MonoBehaviour
             if(Vector3.Distance(transform.position, PlayerObject.transform.position) >= gunRange)
             {
 
-                FollowPlayer();
+                
+
+                if (isWalkingTowardsPlayer)
+                    FollowPlayer();
 
             }
             else
@@ -80,22 +97,27 @@ public class EnemyAI : MonoBehaviour
     
     public void CheckIfPlayerMoved()
     {
-        if (previousPlayerPosition == null)
+        if (previousPlayerPosition == new Vector3(-100, -100, -100) )
         {
-
+            Debug.LogWarning("Primeiro movimento");
             FindPathToPlayer();
-            previousPlayerPosition = PlayerObject.transform.position;
+            //previousPlayerPosition = PlayerObject.transform.position;
 
         }
         else if (previousPlayerPosition != PlayerObject.transform.position)
         {
-
+            Debug.LogWarning("Jogador moveu se");
             FindPathToPlayer();
-            previousPlayerPosition = PlayerObject.transform.position;
+            //previousPlayerPosition = PlayerObject.transform.position;
 
         }
+        else
+        {
+            Debug.Log("Previous Position : " + previousPlayerPosition);
+            Debug.Log("Player Positionm : " + PlayerObject.transform.position);
+        }
     }
-
+    
     public void FindPathToPlayer()
     {
 
@@ -110,8 +132,8 @@ public class EnemyAI : MonoBehaviour
 
         pathfinderInstance.GetGrid().GetXY(tempPos, out endX, out endY);
 
-        Debug.Log("Start X = " + startX);
-        Debug.Log("End Pos = " + endX + " , " + endY);
+        //Debug.Log("Start X = " + startX);
+        //Debug.Log("End Pos = " + endX + " , " + endY);
 
         List<PathNode> tempPath;
 
@@ -122,6 +144,8 @@ public class EnemyAI : MonoBehaviour
         if (tempPath == null) Debug.Log("Path e nulo");
 
         pathPositionsList = pathfinderInstance.FindPathPositionsOnMap(tempPath);
+
+        previousPlayerPosition = PlayerObject.transform.position;
 
         if (pathPositionsList == null) Debug.Log("Path  Positions e nulo");
 
@@ -135,12 +159,16 @@ public class EnemyAI : MonoBehaviour
         float angleDiference = Vector3.Angle(directionToLook, transform.forward);
 
 
-        Debug.DrawLine(transform.position, transform.position + directionToLook * gunRange);
 
         if (angleDiference <= 1f || angleDiference >= -1f)
         {
 
-            Shoot();
+            if (Aim(directionToLook))
+            {
+                Debug.DrawLine(transform.position, transform.position + directionToLook * gunRange);
+                Shoot();
+            }
+            
 
         }
         else if (Vector3.Angle(transform.forward, directionToLook) < enemyFOV)
@@ -156,23 +184,29 @@ public class EnemyAI : MonoBehaviour
 
     
 
-    public bool Aim()
+    public bool Aim(Vector3 direction)
     {
+
+
+        bool hitPlayer = false;
 
         RaycastHit hitInfo;
         Vector3 target = PlayerObject.transform.position;
 
+        Debug.LogWarning("Target : " + target);
+
         transform.LookAt(target);
 
-        if(Physics.Raycast(transform.position, transform.forward, out hitInfo))
+        if(Physics.Raycast(transform.position, direction, out hitInfo))
         {
+            if (hitInfo.collider.tag == "PlayerTesting")
+                hitPlayer = true;
+            else
+                Debug.Log("Hit : " + hitInfo.collider.name);
 
-            return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return hitPlayer;
 
     }
 
@@ -187,6 +221,13 @@ public class EnemyAI : MonoBehaviour
     {
         float step = movementSpeed * Time.deltaTime;
 
+        if (Vector3.Distance(transform.position, PlayerObject.transform.position) < gunRange || enemyPositionIndex >= pathPositionsList.Count)
+        {
+            enemyPositionIndex = 0;
+            isWalkingTowardsPlayer = false;
+            return;
+        }
+
         Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position).normalized;
 
         transform.position += directionToMove * step;
@@ -199,6 +240,8 @@ public class EnemyAI : MonoBehaviour
             enemyPositionIndex++;
 
         }
+
+       
 
     }
 
