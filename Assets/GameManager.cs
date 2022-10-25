@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
+   
     private void Awake()
     {
         playerInput = new PlayerInput();

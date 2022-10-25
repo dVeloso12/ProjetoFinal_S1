@@ -38,10 +38,10 @@ public class HookGrappler : MonoBehaviour
         Debug.Log("aSD");
 
 
-        gameObject.GetComponentInParent<HookShot>().ActivateHook(transform.position);
+        //gameObject.GetComponentInParent<HookShot>().ActivateHook(transform.position);
 
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,9 +49,9 @@ public class HookGrappler : MonoBehaviour
         Debug.Log("aSD");
 
 
-        gameObject.GetComponentInParent<HookShot>().ActivateHook(transform.position);
+        //gameObject.GetComponentInParent<HookShot>().ActivateHook(transform.position);
 
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
