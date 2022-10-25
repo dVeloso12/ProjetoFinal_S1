@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &154963916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -517,6 +517,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &167778992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2708090007148386713, guid: 73790978633238b45b6a5a9d46ac6a41,
+    type: 3}
+  m_PrefabInstance: {fileID: 2708090006434658658}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324786a412b1704449f9d6656a47cbc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &176547970
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TurretGameobject: {fileID: 1619080665}
+  savePlayer: {fileID: 0}
 --- !u!135 &215935976
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1367,7 +1380,7 @@ GameObject:
   - component: {fileID: 926295873}
   - component: {fileID: 926295875}
   - component: {fileID: 926295876}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LoadPlateRight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1770,7 @@ GameObject:
   - component: {fileID: 1385659565}
   - component: {fileID: 1385659567}
   - component: {fileID: 1385659568}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LoadPlateRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1868,7 +1881,7 @@ GameObject:
   - component: {fileID: 1398010799}
   - component: {fileID: 1398010798}
   - component: {fileID: 1398010800}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: PlateRight
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -2052,7 +2065,9 @@ MonoBehaviour:
   pointOfBarrel: {fileID: 1783285717}
   firing: 0
   TurretHp: 0
+  Boss: {fileID: 0}
   isAlive: 1
+  detect: {fileID: 0}
 --- !u!4 &1619080668
 Transform:
   m_ObjectHideFlags: 0
@@ -2224,6 +2239,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 723562259}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1959211332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1959211334}
+  - component: {fileID: 1959211333}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1959211333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959211332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireRateMod: 1
+  DamageMod: 1
+  MoveSpeedMod: 1
+  Money: 0
+  Upgrades: []
+--- !u!4 &1959211334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959211332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -86.131485, y: 11.696226, z: 87.3479}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2050641488
 GameObject:
@@ -2876,7 +2940,7 @@ GameObject:
   - component: {fileID: 543450652259909849}
   - component: {fileID: 919132148321507940}
   m_Layer: 0
-  m_Name: Shock Bot_2
+  m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2897,8 +2961,11 @@ MonoBehaviour:
   ListParts:
   - {fileID: 3674959811250580555}
   - {fileID: 6444272882603217265}
+  BossWall: {fileID: 176547970}
+  DmgPhaseTimer: 5
   BossHp: 100
   isDead: 0
+  resetTurrets: 0
 --- !u!1 &1023764442952492884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3718,9 +3785,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2708090006803820539, guid: 73790978633238b45b6a5a9d46ac6a41,
         type: 3}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 919132148321507939}
+    - target: {fileID: 2708090006803820539, guid: 73790978633238b45b6a5a9d46ac6a41,
+        type: 3}
+      propertyPath: detect
+      value: 
+      objectReference: {fileID: 167778992}
+    - target: {fileID: 2708090006803820539, guid: 73790978633238b45b6a5a9d46ac6a41,
+        type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 154963919}
+      objectReference: {fileID: 0}
     - target: {fileID: 2708090006803820539, guid: 73790978633238b45b6a5a9d46ac6a41,
         type: 3}
       propertyPath: TurretHp
@@ -10426,7 +10503,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -10533,7 +10610,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
-  m_Antialiasing: 0
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -10558,7 +10635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504896649680038235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.18, y: 1.83, z: 0.27}
+  m_LocalPosition: {x: 1.9, y: 0.79, z: 10.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11219,7 +11296,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.023084, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
