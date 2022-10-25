@@ -28,11 +28,19 @@ public class Spawn : MonoBehaviour
 
     public List<GameObject> activeEnemiesList;
 
+    GameObject instantiatedPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
         pathfinderInstance = Pathfinder.Instance;
-        enemyManagerInstance = EnemyManager.Instance;  
+        enemyManagerInstance = EnemyManager.Instance;
+
+        instantiatedPlayer = enemyManagerInstance.InstantiatedPlayer;
+
+        if(instantiatedPlayer == null)
+            Debug.LogWarning("No spawn player e nulo");
+
         MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
         activeEnemiesList = new List<GameObject>();
         //List<Vector3> spawnerPos = new List<Vector3>();
@@ -76,6 +84,11 @@ public class Spawn : MonoBehaviour
             Quaternion rotationToSpawn = new Quaternion(0, randY, 0, 0);
 
             GameObject tempEnemy = Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
+
+            Debug.Log("Going to set player obj");
+
+            tempEnemy.GetComponent<EnemyAI>().SetPlayerObject(instantiatedPlayer);
+
             enemyManagerInstance.ActivateEnemy(tempEnemy);
 
         }
@@ -101,6 +114,11 @@ public class Spawn : MonoBehaviour
                 Quaternion rot = new Quaternion(0, rotY, 0, 0);
 
                 GameObject tempEnemy = Instantiate(enemiesPrefab, pos, rot, enemiesParent.transform);
+
+                Debug.Log("Going to set player obj");
+
+                tempEnemy.GetComponent<EnemyAI>().SetPlayerObject(instantiatedPlayer);
+
                 enemyManagerInstance.ActivateEnemy(tempEnemy);
 
             }
@@ -118,8 +136,8 @@ public class Spawn : MonoBehaviour
 
         MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
 
-        Debug.Log("Width : " + grid.GetWidth());
-        Debug.Log("Height : " + grid.GetHeight());
+        //Debug.Log("Width : " + grid.GetWidth());
+        //Debug.Log("Height : " + grid.GetHeight());
 
         for (int x = 0; x < grid.GetWidth(); x++)
         {

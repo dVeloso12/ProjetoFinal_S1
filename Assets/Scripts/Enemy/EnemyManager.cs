@@ -9,14 +9,22 @@ public class EnemyManager
 
     private List<GameObject> activeEnemiesList;
 
+    private GameObject instantiatedPlayer;
 
+
+    public GameObject InstantiatedPlayer
+    {
+        get { return instantiatedPlayer; }
+    }
     public List<GameObject> ActiveEnemiesList
     {
         get { return activeEnemiesList; }
     }
 
-    public EnemyManager()
+    public EnemyManager(GameObject playerObject)
     {
+
+        instantiatedPlayer = playerObject;
 
         Instance = this;
         activeEnemiesList = new List<GameObject>();

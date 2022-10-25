@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae60701ce32f32440a364d70eb23e3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySearchMode: 1
+  enemySearchMode: 0
   PlayerObject: {fileID: 5607618892093603261, guid: 1fcd76f9f54507d45938b7085acbb3ca,
     type: 3}
   gunRange: 50
