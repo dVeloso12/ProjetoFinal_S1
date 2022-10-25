@@ -205,7 +205,7 @@ public class Spawn : MonoBehaviour
                         //Debug.DrawLine(worldPosition, worldPosition + Vector3.down * 100f, Color.blue, 100f);
                         //Debug.DrawLine(worldPosition, worldPosition + direction, Color.red, 100f);
 
-                        worldPosition.y = hitInfo.point.y + enemiesPrefab.transform.localScale.y / 2;
+                        worldPosition.y = hitInfo.point.y + enemiesPrefab.transform.lossyScale.y / 2;
                         canSpawn = true;
                     }
 
