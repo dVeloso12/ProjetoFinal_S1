@@ -59,10 +59,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapWidth: 400
-  mapHeight: 900
+  mapHeight: 700
   mapCenter: {x: 200, y: 0, z: 330}
   drawGizmos: 0
-  RaycastHeight: 50
+  RaycastHeight: 0
 --- !u!1 &7926635169217884135
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 7298857376624014685}
   - component: {fileID: 5973210758851787512}
   - component: {fileID: 8431280287932354098}
-  - component: {fileID: 149929187}
   m_Layer: 0
   m_Name: Stage_Surv_2_Testing
   m_TagString: Terrain
@@ -148,17 +147,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &149929187
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7926635169217884135}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8898683801879418663, guid: 835eda165c48893469d30c7a811279be, type: 3}

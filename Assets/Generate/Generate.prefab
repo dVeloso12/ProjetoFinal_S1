@@ -51,7 +51,5 @@ MonoBehaviour:
   maxNStages: 2
   BossRoom: {fileID: 1422000883687176487, guid: df9c7b43966f846469d647d58570a7a9,
     type: 3}
-  StageStart: {fileID: 5163347092726083996, guid: 008070c272c516e46acbf92b1439473b,
+  StageStart: {fileID: 7779319510762537195, guid: 36ddaf09e24c5004f9600616d7a440a4,
     type: 3}
-  saveBossStage: {fileID: 0}
-  doUrJob: 0

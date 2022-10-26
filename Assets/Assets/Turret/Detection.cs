@@ -5,7 +5,6 @@ using UnityEngine;
 public class Detection : MonoBehaviour
 {
     [SerializeField] GameObject TurretGameobject;
-    public Transform savePlayer;
     TurretScript Turret;
     private void Start()
     {
@@ -13,11 +12,9 @@ public class Detection : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.transform.name);
         if(other.transform.name == "Player")
         {
             Turret.canAim = true;
-            savePlayer = other.transform;
         }
     }
     private void OnTriggerExit(Collider other)

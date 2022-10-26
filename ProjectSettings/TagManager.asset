@@ -9,7 +9,6 @@ TagManager:
   - Terrain
   - Boss
   - Turret
-  - PlayerTesting
   layers:
   - Default
   - TransparentFX
