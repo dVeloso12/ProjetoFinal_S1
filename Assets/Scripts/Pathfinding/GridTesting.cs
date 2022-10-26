@@ -17,12 +17,14 @@ public class GridTesting : MonoBehaviour
     [SerializeField] PathfindingVisual visual;
     [SerializeField] GameObject groundCheck;
     [SerializeField] GameObject player;
-
+    [SerializeField] Vector3 initialPosition;
 
     MapGrid<PathNode> grid;
 
     private Pathfinder pathfinder;
     private EnemyManager enemyManager;
+
+    GameObject instantiatedPlayer;
 
     List<Vector3> pathPositions;
 
@@ -33,8 +35,10 @@ public class GridTesting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        width = groundCheck.GetComponent<NodeGroundCheck>().mapWidth / 15;
-        height = groundCheck.GetComponent<NodeGroundCheck>().mapHeight / 15;
+        width = groundCheck.GetComponent<NodeGroundCheck>().mapWidth / (int)cellSize;
+        height = groundCheck.GetComponent<NodeGroundCheck>().mapHeight / (int)cellSize;
+
+        instantiatedPlayer = Instantiate(player, initialPosition, Quaternion.identity);
 
         //Debug.Log("Width : " + width);
         //Debug.Log("Height : " + height);
@@ -42,7 +46,7 @@ public class GridTesting : MonoBehaviour
         //Debug.Log("Helo");
 
         pathfinder = new Pathfinder(width, height, cellSize, groundCheck, raycastHeight, originPosition, groundLayerMask);
-        enemyManager = new EnemyManager();
+        enemyManager = new EnemyManager(instantiatedPlayer);
 
         visual.SetGrid(pathfinder.GetGrid());
         //isWalkingTowardsPlayer = false;

@@ -55,7 +55,7 @@ public class PathNode
     public void CheckIfIsWalkable()
     {
         Debug.Log("Checking if is walkable");
-        Vector3 newPosition = grid.GetWorldPosition(x, y) + new Vector3(1, 0, 1) * grid.GetCellSize() * 0.5f;
+        Vector3 newPosition = grid.GetWorldPosition(x, y) /*+ new Vector3(1, 0, 1) * grid.GetCellSize() * 0.5f*/;
 
         groundCheck.transform.position = new Vector3(newPosition.x, groundCheck.transform.position.y, newPosition.y);
         isWalkable = groundCheck.GetComponent<NodeGroundCheck>().CheckIfIsWalkable(groundLayer);

@@ -9,12 +9,12 @@ public class EnemyAI : MonoBehaviour
 
 
     [SerializeField] EnemySearchMode enemySearchMode;
-    [SerializeField] GameObject PlayerObject;
-    
+    GameObject PlayerObject;
 
-    [SerializeField] float gunRange;
+
+    [SerializeField] float gunRange, sightRange;
     [SerializeField] float enemyFOV;
-    [SerializeField] float turnSpeed, movementSpeed;
+    [SerializeField] float turnSpeed, defaultMovementSpeed;
 
     Pathfinder pathfinderInstance;
 
@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     List<Vector3> pathPositionsList;
 
     bool isWalkingTowardsPlayer;
-
+    float movementSpeed;
     int enemyPositionIndex;
 
     // Start is called before the first frame update
@@ -32,70 +32,72 @@ public class EnemyAI : MonoBehaviour
 
         pathPositionsList = new List<Vector3>();
 
+        movementSpeed = defaultMovementSpeed;
+
+        previousPlayerPosition = new Vector3(-100, -100, -100);
 
         isWalkingTowardsPlayer = false;
 
         enemyPositionIndex = 0;
     }
 
+    public void SetPlayerObject(GameObject playerObject)
+    {
+        Debug.Log("Setting Player");
+        PlayerObject = playerObject;
+        Debug.Log("Player : " + playerObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(enemySearchMode == EnemySearchMode.AlwaysSearchingMode)
+
+        if (PlayerObject == null) Debug.LogWarning("Player e nulo");
+
+        if (enemySearchMode == EnemySearchMode.AlwaysSearchingMode)
         {
 
-            CheckIfPlayerMoved();
-            isWalkingTowardsPlayer = true;
-
-            if(Vector3.Distance(transform.position, PlayerObject.transform.position) >= gunRange)
+            if (!CheckPlayerInSight())
             {
 
+                CheckIfPlayerMoved();
                 FollowPlayer();
 
             }
-            else
-            {
-
-                LookTowardsPlayer();
-
-            }
 
         }
-        else
+        else if (enemySearchMode == EnemySearchMode.WithinRangeSearchingMode)
         {
 
-            CheckIfPlayerMoved();
-
-            if(Vector3.Distance(transform.position, PlayerObject.transform.position) < gunRange)
-            {
-                LookTowardsPlayer();
-            }
 
 
         }
-        
-
 
     }
-    
+
     public void CheckIfPlayerMoved()
     {
-        if (previousPlayerPosition == null)
+        if (previousPlayerPosition == new Vector3(-100, -100, -100) )
         {
-
+            Debug.LogWarning("Primeiro movimento");
             FindPathToPlayer();
-            previousPlayerPosition = PlayerObject.transform.position;
+            //previousPlayerPosition = PlayerObject.transform.position;
 
         }
         else if (previousPlayerPosition != PlayerObject.transform.position)
         {
-
+            Debug.LogWarning("Jogador moveu se");
             FindPathToPlayer();
-            previousPlayerPosition = PlayerObject.transform.position;
+            //previousPlayerPosition = PlayerObject.transform.position;
 
         }
+        //else
+        //{
+        //    Debug.Log("Previous Position : " + previousPlayerPosition);
+        //    Debug.Log("Player Positionm : " + PlayerObject.transform.position);
+        //}
     }
-
+    
     public void FindPathToPlayer()
     {
 
@@ -110,8 +112,8 @@ public class EnemyAI : MonoBehaviour
 
         pathfinderInstance.GetGrid().GetXY(tempPos, out endX, out endY);
 
-        Debug.Log("Start X = " + startX);
-        Debug.Log("End Pos = " + endX + " , " + endY);
+        //Debug.Log("Start X = " + startX);
+        //Debug.Log("End Pos = " + endX + " , " + endY);
 
         List<PathNode> tempPath;
 
@@ -123,59 +125,85 @@ public class EnemyAI : MonoBehaviour
 
         pathPositionsList = pathfinderInstance.FindPathPositionsOnMap(tempPath);
 
+        previousPlayerPosition = PlayerObject.transform.position;
+
         if (pathPositionsList == null) Debug.Log("Path  Positions e nulo");
 
     }
 
-    public void LookTowardsPlayer()
-    {
+    //public void LookTowardsPlayer()
+    //{
 
-        Vector3 directionToLook = (PlayerObject.transform.position - transform.position).normalized;
+    //    Vector3 directionToLook = (PlayerObject.transform.position - transform.position).normalized;
 
-        float angleDiference = Vector3.Angle(directionToLook, transform.forward);
-
-
-        Debug.DrawLine(transform.position, transform.position + directionToLook * gunRange);
-
-        if (angleDiference <= 1f || angleDiference >= -1f)
-        {
-
-            Shoot();
-
-        }
-        else if (Vector3.Angle(transform.forward, directionToLook) < enemyFOV)
-        {
-
-            transform.Rotate(Vector3.up * angleDiference * turnSpeed * Time.deltaTime);
-
-        }
+    //    float angleDiference = Vector3.Angle(directionToLook, transform.forward);
 
 
-    }
+
+    //    if (angleDiference <= 1f || angleDiference >= -1f)
+    //    {
+
+    //        if (Aim(directionToLook))
+    //        {
+    //            Debug.DrawLine(transform.position, transform.position + directionToLook * gunRange);
+    //            Shoot();
+    //        }
+            
+
+    //    }
+    //    else if (Vector3.Angle(transform.forward, directionToLook) < enemyFOV)
+    //    {
+
+    //        transform.Rotate(Vector3.up * angleDiference * turnSpeed * Time.deltaTime);
+
+    //    }
+
+
+    //}
         
-
-    
-
-    public bool Aim()
+    public bool CheckPlayerInSight()
     {
 
-        RaycastHit hitInfo;
-        Vector3 target = PlayerObject.transform.position;
+        bool isPlayerInSight = false;
 
-        transform.LookAt(target);
+        Vector3 directionToLook = (PlayerObject.transform.position - transform.position);
+        float angleDiference = Vector3.Angle(directionToLook.normalized, transform.forward);
 
-        if(Physics.Raycast(transform.position, transform.forward, out hitInfo))
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, directionToLook.normalized, out hit, gunRange))
         {
+            if(hit.collider.tag == "Player")
+            {
+                isPlayerInSight = true;
 
-            return true;
+                Debug.LogWarning("Player is Shot");
+                Shoot();
+
+                Debug.DrawLine(transform.position, transform.position + directionToLook, Color.red, 1f);
+
+
+                if(angleDiference > .5f || angleDiference < -.5f)
+                {
+
+                    transform.LookAt(PlayerObject.transform);
+
+                }
+
+                transform.Rotate(Vector3.up * angleDiference * turnSpeed * Time.deltaTime);
+
+            }
+
+
         }
         else
         {
-            return false;
+            isWalkingTowardsPlayer = true;
         }
 
+        return isPlayerInSight;
     }
-
+   
     public void Shoot()
     {
 
@@ -187,9 +215,50 @@ public class EnemyAI : MonoBehaviour
     {
         float step = movementSpeed * Time.deltaTime;
 
-        Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position).normalized;
+        if (CheckPlayerInSight() || enemyPositionIndex >= pathPositionsList.Count)
+        {
+            enemyPositionIndex = 0;
+            isWalkingTowardsPlayer = false;
+            return;
+        }
 
-        transform.position += directionToMove * step;
+        if (enemyPositionIndex == 0)
+            enemyPositionIndex++;
+
+        Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position);
+        Vector3 directionToMoveNormalized = directionToMove.normalized;
+
+        transform.LookAt(pathPositionsList[enemyPositionIndex]);
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, directionToMoveNormalized, out hit, directionToMove.x * directionToMove.z))
+        {
+
+            if (hit.collider.tag == "Enemy")
+            {
+                Debug.DrawLine(transform.position, transform.position + directionToMoveNormalized * (directionToMove.x * directionToMove.z), Color.green, 0.5f);
+
+                Vector3 tempPosition = RecalculateNextPosition();
+
+                if (tempPosition != transform.position)
+                {
+                    pathPositionsList[enemyPositionIndex] = tempPosition;
+                    if(movementSpeed != defaultMovementSpeed)
+                    {
+                        movementSpeed *= 3f;
+                    }
+                }
+                else
+                {
+                    movementSpeed /= 3f;
+                }
+
+            }
+
+        }
+
+        transform.position += directionToMoveNormalized * step;
 
         if (Vector3.Distance(transform.position, pathPositionsList[enemyPositionIndex]) <= .5f)
         {
@@ -200,6 +269,68 @@ public class EnemyAI : MonoBehaviour
 
         }
 
+       
+
     }
 
+    public Vector3 RecalculateNextPosition()
+    {
+
+        Vector3 nextPosition = transform.position;
+
+        int tempX, tempY;
+
+        pathfinderInstance.GetGrid().GetXY(pathPositionsList[enemyPositionIndex], out tempX, out tempY);
+
+        List<PathNode> tempNodeList = pathfinderInstance.GetNeighborNodes(pathfinderInstance.GetNode(tempX, tempY));
+
+
+
+        foreach(PathNode node in tempNodeList)
+        {
+            if (!node.isWalkable)
+            {
+                tempNodeList.Remove(node);
+            }
+        }
+
+        float leastAngle = -1000f;
+        PathNode nodeToSwitchTo = null;
+
+        foreach(PathNode node in tempNodeList)
+        {
+
+            Vector3 tempWorldPosition = pathfinderInstance.GetGrid().GetWorldPosition(node.x, node.y);
+            Vector3 tempDirection = tempWorldPosition - transform.position;
+
+            float tempAngle = Vector3.Angle(transform.forward, tempDirection);
+
+            if(leastAngle != -1000f)
+            {
+                if (Mathf.Abs(tempAngle) < Mathf.Abs(leastAngle))
+                {
+                    leastAngle = tempAngle;
+                    nodeToSwitchTo = node;
+                }
+            }
+            else
+            {
+                tempAngle = leastAngle;
+                nodeToSwitchTo = node;
+            }
+
+        }
+
+        if(nodeToSwitchTo == null)
+        {
+
+            Debug.LogWarning("No different nodes to switch to.");
+            nextPosition = transform.position;
+
+        }
+
+        return nextPosition;
+    }
+
+    
 }

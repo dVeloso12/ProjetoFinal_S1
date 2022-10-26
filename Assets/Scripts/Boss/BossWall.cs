@@ -46,6 +46,7 @@ public class BossWall : MonoBehaviour
             timerWall = -0.5f;
             this.GetComponent<BoxCollider>().enabled = false;
             WallUp = false;
+
         }
     }
     void IncreaseWall()

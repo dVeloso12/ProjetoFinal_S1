@@ -17,18 +17,37 @@ public class TurretScript : MonoBehaviour
     float fireTimer;
     [Header("General Stuff")]
     [SerializeField] float TurretHp;
+    float saveMaxHp;
+    [SerializeField] GameObject Boss;
+    BossScript bosscp;
     public bool isAlive = true;
+    public Detection detect;
 
-
+    private void Start()
+    {
+        bosscp = Boss.GetComponent<BossScript>();
+        saveMaxHp = TurretHp;
+    }
     private void Update()
     {
-
+     
         if (canAim && isAlive)
         {
+            target = detect.savePlayer;
             RotateTurret();
             Shoot();
         }
+        if(bosscp.resetTurrets)
+        {
+            ResetTurret();
+        }
 
+    }
+
+    public void ResetTurret()
+    {
+        TurretHp = saveMaxHp;
+        isAlive = true;
     }
 
     public void TakeDmg(float dmg)
