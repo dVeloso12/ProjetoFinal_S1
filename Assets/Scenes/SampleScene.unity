@@ -388,9 +388,6 @@ MonoBehaviour:
   FireRateMod: 1
   DamageMod: 1
   MoveSpeedMod: 1
-  MoneyMult: 1
-  CooldownReduction: 1
-  ClipModifier: 1
   Money: 0
   Upgrades:
   - {fileID: 386185769267273100, guid: e246554db2da5c6489dcbbe25628ac5f, type: 3}

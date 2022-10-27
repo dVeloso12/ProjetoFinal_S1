@@ -109,8 +109,7 @@ public class GameplayOrganize : MonoBehaviour
 
     void PlayerMove(Vector3 newPos)
     {
-        playerIns.GetComponentInChildren<PlayerMovement>().transform.position = newPos;
-
+        playerIns.transform.position = newPos;
         Debug.Log("ENTREI - 2");
         Physics.SyncTransforms();
     }

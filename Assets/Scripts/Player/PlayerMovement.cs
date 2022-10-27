@@ -202,13 +202,8 @@ public class PlayerMovement : MonoBehaviour
             DashActive = true;
             DashDir = move;
             DashDir.y = 0;
-            TDashCooldown = DashCooldown/gm.CooldownReduction;
+            TDashCooldown = DashCooldown;
         }
-    }
-
-    public void ResetPos()
-    {
-        transform.position = Vector3.zero;
     }
 
 }

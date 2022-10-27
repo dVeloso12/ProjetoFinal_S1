@@ -59,7 +59,7 @@ public class GunController : MonoBehaviour
 
         AmmoCount = GameObject.Find("AmmoC").GetComponent<TextMeshProUGUI>();
 
-        AmmoCount.text = Ammo.ToString() + "/" + ((int)(AmmoClipSize*gm.ClipModifier)).ToString();
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 
     // Update is called once per frame
@@ -86,11 +86,11 @@ public class GunController : MonoBehaviour
         muzzleFlash.Play();
 
 
-        FireRateCounting = FireRate/gm.FireRateMod;
+        FireRateCounting = FireRate*gm.FireRateMod;
 
         Ammo--;
 
-        AmmoCount.text = Ammo.ToString() + "/" + ((int)(AmmoClipSize * gm.ClipModifier)).ToString();
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 
 
@@ -104,7 +104,7 @@ public class GunController : MonoBehaviour
     {
         Ammo = 0;
         yield return new WaitForSeconds(ReloadSpeed);
-        Ammo = (int)(AmmoClipSize*gm.ClipModifier);
-        AmmoCount.text = Ammo.ToString() + "/" + ((int)(AmmoClipSize * gm.ClipModifier)).ToString();
+        Ammo = AmmoClipSize;
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 }

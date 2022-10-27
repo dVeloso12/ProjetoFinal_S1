@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,
-    MoneyMult=1,CooldownReduction=1,ClipModifier=1;
+    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1;
 
     public int Money;
 

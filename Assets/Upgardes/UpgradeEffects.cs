@@ -19,32 +19,26 @@ public class UpgradeEffects : MonoBehaviour
 
     public void FireRate_10()
     {
-        gm.FireRateMod += .1f;
+        gm.FireRateMod *= .9f;
     }
 
     public void Damage_10()
     {
-        gm.DamageMod+=.1f;
+        gm.DamageMod*=1.1f;
     }
 
     public void MovSpeed_10()
     {
-        gm.MoveSpeedMod += .1f;
+        gm.MoveSpeedMod *= 1.1f;
     }
 
-    public void Cooldown_10()
+    public void FireRate_15()
     {
-        gm.CooldownReduction += .1f;
+        gm.FireRateMod *= .85f;
     }
 
-   
-    public void Money_10()
+    public void FireRate_20()
     {
-        gm.MoneyMult += .1f;
-    }
-
-    public  void ClipSize_20()
-    {
-        gm.ClipModifier +=.2f;
+        gm.FireRateMod *= .8f;
     }
 }

@@ -54,46 +54,53 @@ public class MapGrid<TGridObject>
 
         //Debug.Log("Value : " + GetWorldPosition((int)(GridArray.GetLength(0)), (int)(GridArray.GetLength(1))));
 
-        debugTextArray = new TextMesh[width, height];
+        bool ToDebug = false;
 
-        for(int x = 0; x < GridArray.GetLength(0); x++)
+
+        if (ToDebug)
         {
-            for(int y = 0; y < GridArray.GetLength(1); y++)
+
+            debugTextArray = new TextMesh[width, height];
+
+            for(int x = 0; x < GridArray.GetLength(0); x++)
             {
+                for(int y = 0; y < GridArray.GetLength(1); y++)
+                {
 
-                //debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                    //debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
-                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                    //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
+                    //Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
 
-                Vector3 worldPosition = GetWorldPosition(x, y);
-                Vector3 worldPositionYPlus1 = GetWorldPosition(x, y + 1);
-                Vector3 worldPositionXPlus1 = GetWorldPosition(x + 1, y);
+                    Vector3 worldPosition = GetWorldPosition(x, y);
+                    Vector3 worldPositionYPlus1 = GetWorldPosition(x, y + 1);
+                    Vector3 worldPositionXPlus1 = GetWorldPosition(x + 1, y);
 
-                //Debug.Log("World Position 01 : " + worldPosition);
-                //Debug.Log("World Position 02 : " + worldPositionYPlus1);
-                //Debug.Log("World Position 03 : " + worldPositionXPlus1);
+                    //Debug.Log("World Position 01 : " + worldPosition);
+                    //Debug.Log("World Position 02 : " + worldPositionYPlus1);
+                    //Debug.Log("World Position 03 : " + worldPositionXPlus1);
 
-                //string toDebug = GridArray[x, y]?.ToString() + GridArray[x, y].
+                    //string toDebug = GridArray[x, y]?.ToString() + GridArray[x, y].
 
                 
 
-                debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, new Vector3(worldPosition.x, 0, worldPosition.y) + new Vector3(cellSize, 0, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                    debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, new Vector3(worldPosition.x, 0, worldPosition.y) + new Vector3(cellSize, 0, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
-                Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
-                    , new Vector3(worldPositionYPlus1.x, 0, worldPositionYPlus1.y)
-                    , Color.white, 100f);
+                    Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
+                        , new Vector3(worldPositionYPlus1.x, 0, worldPositionYPlus1.y)
+                        , Color.white, 100f);
 
 
-                Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
-                    , new Vector3(worldPositionXPlus1.x, 0, worldPositionXPlus1.y)
-                    , Color.white, 100f);
+                    Debug.DrawLine(new Vector3(worldPosition.x, 0, worldPosition.y)
+                        , new Vector3(worldPositionXPlus1.x, 0, worldPositionXPlus1.y)
+                        , Color.white, 100f);
 
+                }
             }
-        }
 
-        Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+            Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
+            Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
+        }
 
         OnGridValueChanged += (object sender, OnGridValueChangedEventArgs eventArgs) =>
         {
