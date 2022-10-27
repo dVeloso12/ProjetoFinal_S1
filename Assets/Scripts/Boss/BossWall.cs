@@ -8,7 +8,6 @@ public class BossWall : MonoBehaviour
     [SerializeField] GameObject PlateLeft;
     [SerializeField] GameObject PlateRight;
     [Header("Wall")]
-    [SerializeField] GameObject Wall;
     [SerializeField] Material matWall;
     [Header("General Stuff")]
     float timerWall;

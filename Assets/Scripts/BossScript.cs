@@ -5,18 +5,12 @@ using UnityEngine;
 public class BossScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> ListParts;
-    [SerializeField] GameObject BossWall;
+    [SerializeField] List<BossWall> BossWalls;
     [SerializeField] float DmgPhaseTimer;
-    BossWall wall;
     public float BossHp;
     public bool isDead;
     public bool resetTurrets;
     float timer;
-    private void Start()
-    {
-        wall = BossWall.GetComponent<BossWall>();
-    }
-
     void Update()
     {
         checkIfDead(BossHp);
@@ -26,7 +20,7 @@ public class BossScript : MonoBehaviour
 
     void checkIfCanDmg()
     {
-        if(wall.WallUp == false)
+        if (BossWalls[0].WallUp == false && BossWalls[1].WallUp == false)
         {
             timer += Time.deltaTime;
             Debug.Log(timer);
@@ -34,7 +28,8 @@ public class BossScript : MonoBehaviour
             {
                 if (!isDead)
                 {
-                    wall.canIncrease = true;
+                    BossWalls[0].canIncrease = true;
+                    BossWalls[1].canIncrease = true;
                     resetTurrets = true;
                     
                 }

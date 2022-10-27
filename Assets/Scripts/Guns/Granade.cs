@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Granade : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Granade : MonoBehaviour
     public float NadeCooldown;
     private float NadeTimer;
 
+    public Image GranadeIcon;
+    public float fillAmount;
+
     void Start()
     {
         playerInput = new PlayerInput();
@@ -27,6 +31,7 @@ public class Granade : MonoBehaviour
         playerInput.Player.Granade.performed += CreateNade;
 
         Timer = GameObject.Find("GranadeC").GetComponent<TextMeshProUGUI>();
+        GranadeIcon = GameObject.Find("granade").GetComponent<Image>();
 
     }
 
@@ -36,7 +41,9 @@ public class Granade : MonoBehaviour
         if (NadeTimer > 0)
         {
             NadeTimer -= Time.deltaTime;
+            fillAmount += Time.deltaTime * (1 / NadeCooldown);
             Timer.text = Mathf.Round(NadeTimer).ToString();
+            GranadeIcon.fillAmount = fillAmount;
         }
     }
 
@@ -46,6 +53,7 @@ public class Granade : MonoBehaviour
         {
             Instantiate(Granada, place.position, place.rotation);
             NadeTimer = NadeCooldown;
+            fillAmount = 0;
         }
 
     }
