@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -812, y: 269}
+  m_AnchoredPosition: {x: -812, y: 290}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &57999536
@@ -6476,7 +6476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 793, y: -317}
+  m_AnchoredPosition: {x: 793, y: -330}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2139976511
@@ -10610,6 +10610,8 @@ MonoBehaviour:
   _camera: {fileID: 395316143426020432}
   MarkSprite: {fileID: 0}
   Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
 --- !u!136 &2425779209711533634
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10668,6 +10670,8 @@ MonoBehaviour:
   _camera: {fileID: 0}
   MarkSprite: {fileID: 0}
   Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
   RandomDeviation: 0.001
 --- !u!114 &2425779209711533639
 MonoBehaviour:
@@ -10691,6 +10695,8 @@ MonoBehaviour:
   _camera: {fileID: 0}
   MarkSprite: {fileID: 0}
   Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
   RandomDeviation: 0.03
   Pellets: 9
 --- !u!114 &2425779209711533640

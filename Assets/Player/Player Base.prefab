@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 276367052945306370}
   - component: {fileID: 276367052945306369}
   - component: {fileID: 276367052945306371}
-  - component: {fileID: 276367052945306373}
   - component: {fileID: 276367052945306372}
   - component: {fileID: 7985577584841819198}
   m_Layer: 6
@@ -282,6 +281,8 @@ MonoBehaviour:
   DashSpeed: 100
   DashCooldown: 2
   DashTime: 0.1
+  dashIcon: {fileID: 0}
+  fillAmount: 0
   cameraTransform: {fileID: 2811287370881411346}
 --- !u!143 &276367052945306370
 CharacterController:
@@ -321,6 +322,8 @@ MonoBehaviour:
   projectile: 0
   HookCooldown: 5
   Timer: {fileID: 0}
+  Grapple: {fileID: 0}
+  fillAmount: 0
 --- !u!114 &276367052945306371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,31 +347,8 @@ MonoBehaviour:
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 30
---- !u!114 &276367052945306373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276367052945305847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1ffa2bea83ace44a9099491ace5cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 6071170131615175671}
-  bullet: {fileID: 1238667338858886626, guid: c404821122f797045b587a4f398a9bf8, type: 3}
-  ShotingPlace: {fileID: 2485919959757482878}
-  FireRate: 2
-  dmg: 7
-  ReloadSpeed: 1
-  AmmoClipSize: 6
-  _camera: {fileID: 2811287370881411346}
-  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
-    type: 3}
-  Distance: 10
-  RandomDeviation: 0.1
-  Pellets: 9
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 4436494442283045638}
 --- !u!114 &276367052945306372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +372,8 @@ MonoBehaviour:
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 50
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
   RandomDeviation: 0.01
 --- !u!114 &7985577584841819198
 MonoBehaviour:
@@ -408,6 +390,8 @@ MonoBehaviour:
   Granada: {fileID: 2890465971416483998, guid: 820ff90a5ec5f384ab835be2d71a348f, type: 3}
   place: {fileID: 2485919959757482878}
   NadeCooldown: 8
+  GranadeIcon: {fileID: 0}
+  fillAmount: 0
 --- !u!1 &356024025619833777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,8 +1074,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811287370881411347}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.058481075, y: -0.8993798, z: 0.12697989, w: -0.41421276}
+  m_LocalPosition: {x: 14.988222, y: 3.5703735, z: 274.6639}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1330,9 +1314,9 @@ Transform:
   m_LocalScale: {x: 0.19999999, y: 0.4, z: 0.39999998}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4873074740320899255}
+  - {fileID: 4436494442283045638}
   - {fileID: 2485919959757482878}
-  - {fileID: 6071170131615175665}
+  - {fileID: 4873074740320899255}
   m_Father: {fileID: 2811287370881411346}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 83.869, z: 0}
@@ -2092,6 +2076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4873074740320899255}
+  - component: {fileID: 411671222351431144}
   m_Layer: 0
   m_Name: SciFi_AssaultRifle 1
   m_TagString: Untagged
@@ -2116,9 +2101,37 @@ Transform:
   - {fileID: 2643262969847604240}
   - {fileID: 1634628034645252151}
   - {fileID: 2811287371311147527}
+  - {fileID: 6071170131615175665}
   m_Father: {fileID: 2811287372767266845}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411671222351431144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5254419854604225037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1ffa2bea83ace44a9099491ace5cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 6071170131615175671}
+  bullet: {fileID: 1238667338858886626, guid: c404821122f797045b587a4f398a9bf8, type: 3}
+  ShotingPlace: {fileID: 2485919959757482878}
+  FireRate: 2
+  dmg: 7
+  ReloadSpeed: 1
+  AmmoClipSize: 6
+  _camera: {fileID: 2811287370881411346}
+  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
+    type: 3}
+  Distance: 10
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 4436494442283045638}
+  RandomDeviation: 0.1
+  Pellets: 9
 --- !u!1 &5730555948842840412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2464,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7427238330270567244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4436494442283045638}
+  m_Layer: 0
+  m_Name: Aim Down Sights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4436494442283045638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427238330270567244}
+  m_LocalRotation: {x: -0.0001345009, y: 0.02792135, z: -0.0048152, w: 0.9995985}
+  m_LocalPosition: {x: 1.6, y: 0.07, z: -0.655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2811287372767266845}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 3.2, z: -0.552}
 --- !u!1 &7540942411314230235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,47 +2908,47 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2811287372767266845}
+    m_TransformParent: {fileID: 4873074740320899255}
     m_Modifications:
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.971
+      value: -1.9711916
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.893
+      value: 0.8928812
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.005
+      value: -0.0049519544
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.000000014373754
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.000000027149296
       objectReference: {fileID: 0}
     - target: {fileID: 6477443314750911504, guid: 41d39073bfcf4d4478244764ab20b84a,
         type: 3}

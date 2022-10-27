@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Cinemachine;
 
 public class GunController : MonoBehaviour
 {
@@ -34,13 +35,20 @@ public class GunController : MonoBehaviour
 
     public Transform _camera;
 
+    public CinemachineVirtualCamera Camera;
+
     protected RaycastHit collisionDetected;
 
     public GameObject MarkSprite;
 
     public float Distance;
 
+    public Transform GunPos,DwonSights;
 
+    Transform origin;
+
+    bool AimingDown=false;
+    
     // Start is called before the first frame update
     protected void Start()
     {
@@ -51,6 +59,9 @@ public class GunController : MonoBehaviour
         playerInput.Player.Shoot.performed += ActivateShoot;
         playerInput.Player.Reload.performed += ActivateReload;
 
+        playerInput.Player.Aim.performed += AimDown;
+        playerInput.Player.Aim.canceled += AimDown;
+
         FireRateCounting = FireRate;
 
         gm = FindObjectOfType<GameManager>();
@@ -60,6 +71,9 @@ public class GunController : MonoBehaviour
         AmmoCount = GameObject.Find("AmmoC").GetComponent<TextMeshProUGUI>();
 
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+
+        origin = GunPos;
+
     }
 
     // Update is called once per frame
@@ -69,6 +83,22 @@ public class GunController : MonoBehaviour
             Shoot();
 
         FireRateCounting -= Time.deltaTime;
+
+        if (AimingDown)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, DwonSights.localPosition, 3*Time.deltaTime);
+            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, .6f*60,3*Time.deltaTime));
+
+        }
+        else
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 3 * Time.deltaTime);
+            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, 60, 3 * Time.deltaTime));
+    }
+
+
+    void SetFOV(float fov)
+    {
+       Camera.m_Lens.FieldOfView = fov;
     }
 
     public virtual void ActivateShoot(InputAction.CallbackContext obj)
@@ -106,5 +136,10 @@ public class GunController : MonoBehaviour
         yield return new WaitForSeconds(ReloadSpeed);
         Ammo = AmmoClipSize;
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+    }
+
+    public virtual void AimDown(InputAction.CallbackContext obj)
+    {
+        AimingDown = !AimingDown;
     }
 }
