@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class HookShot : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class HookShot : MonoBehaviour
     float HookTimer=0;
 
     public TextMeshProUGUI Timer;
+
+    public Image Grapple;
+    public float fillAmount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,15 +62,23 @@ public class HookShot : MonoBehaviour
 
         Timer = GameObject.Find("HookC").GetComponent<TextMeshProUGUI>();
 
+        Grapple = GameObject.Find("grapple").GetComponent<Image>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
+
+         
         if (HookTimer > 0)
         {
             HookTimer -= Time.deltaTime;
             Timer.text = Mathf.Round(HookTimer).ToString();
+            fillAmount += Time.deltaTime * (1 / HookCooldown);
+            Grapple.fillAmount = fillAmount;
+
         }
 
         if(activeHook)
@@ -123,6 +136,7 @@ public class HookShot : MonoBehaviour
 
 
             HookTimer = HookCooldown;
+            fillAmount = 0;
         }
     }
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     public float DashTime;
     float VDashTime;
     Vector3 DashDir;
+    public Image dashIcon;
+    public float fillAmount;
 
 
     public Transform cameraTransform;
@@ -60,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
         IsRunning = false;
 
         Timer = GameObject.Find("DashC").GetComponent<TextMeshProUGUI>();
+        dashIcon = GameObject.Find("dash").GetComponent<Image>();
     }
 
     private void Awake()
@@ -100,7 +104,9 @@ public class PlayerMovement : MonoBehaviour
         if (TDashCooldown > 0)
         {
             TDashCooldown -= Time.deltaTime;
+            fillAmount += Time.deltaTime * (1 / DashCooldown);
             Timer.text = Mathf.Round(TDashCooldown).ToString();
+            dashIcon.fillAmount = fillAmount;
         }
     }
 
@@ -174,10 +180,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 controller.Move(DashDir * DashSpeed * Time.deltaTime);
                 VDashTime -= Time.deltaTime;
+
             }
             else
             {
                 VDashTime = DashTime;
+
                 DashActive = false;
             }
         }
@@ -203,6 +211,7 @@ public class PlayerMovement : MonoBehaviour
             DashDir = move;
             DashDir.y = 0;
             TDashCooldown = DashCooldown;
+            fillAmount = 0;
         }
     }
 
