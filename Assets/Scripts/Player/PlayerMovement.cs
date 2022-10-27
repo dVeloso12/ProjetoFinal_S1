@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public float DashSpeed;
     bool DashActive;
     public float DashCooldown;
-    float TDashCooldown;
+    float TDashCooldown=0;
     public float DashTime;
     float VDashTime;
     Vector3 DashDir;
@@ -79,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Player.Run.performed += Run;
         playerInput.Player.Run.canceled += Run;
         playerInput.Player.Dash.performed += ActivateDash;
+
+        VDashTime = DashTime;
     }
     // Update is called once per frame
 
@@ -208,7 +210,10 @@ public class PlayerMovement : MonoBehaviour
         if (TDashCooldown <= 0)
         {
             DashActive = true;
-            DashDir = move;
+            if (move != Vector3.zero)
+                DashDir = move;
+            else
+                DashDir = transform.forward;
             DashDir.y = 0;
             TDashCooldown = DashCooldown;
             fillAmount = 0;
