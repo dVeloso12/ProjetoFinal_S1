@@ -35,12 +35,13 @@ public class TurretScript : MonoBehaviour
     }
     private void Update()
     {
-        UIManager();
+       
         if (canAim && isAlive)
         {
             target = detect.savePlayer;
             RotateTurret();
-            Shoot();
+            Shoot(); 
+            UIManager();
         }
         if(bosscp.resetTurrets)
         {
@@ -58,6 +59,11 @@ public class TurretScript : MonoBehaviour
         {
             HpBar.enabled = false;
 
+        }
+
+        if(HpBar.enabled)
+        {
+            HpBar.gameObject.gameObject.transform.rotation = Quaternion.LookRotation(HpBar.gameObject.gameObject.transform.position - Camera.main.transform.position);
         }
         
       
