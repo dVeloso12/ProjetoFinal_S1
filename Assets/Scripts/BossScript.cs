@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossScript : MonoBehaviour
 {
@@ -11,13 +12,43 @@ public class BossScript : MonoBehaviour
     public bool isDead;
     public bool resetTurrets;
     float timer;
+
+
+    public Image bossHp;
+    public Image border;
+    public bool activateUIHP;
+    float saveMaxHp;
+
+    private void Start()
+    {
+        border = GameObject.Find("Border").GetComponent<Image>();
+        border.enabled = false;
+        bossHp = GameObject.Find("bosshp").GetComponent<Image>();
+        bossHp.enabled = false;
+        saveMaxHp = BossHp;
+    }
     void Update()
     {
         checkIfDead(BossHp);
         checkIfCanDmg();
+        UIManager();
         //Debug.Log(isDead);
     }
-
+    void UIManager()
+    {
+        if (activateUIHP)
+        {
+            border.enabled = true;
+            bossHp.enabled = true;
+        }
+        else
+        {
+            border.enabled = false;
+            bossHp.enabled = false;
+        }
+    }
+    
+ 
     void checkIfCanDmg()
     {
         if (BossWalls[0].WallUp == false && BossWalls[1].WallUp == false)
@@ -32,6 +63,12 @@ public class BossScript : MonoBehaviour
                     BossWalls[1].canIncrease = true;
                     resetTurrets = true;
                     
+                }
+                else
+                {
+                    BossWalls[0].canIncrease = false;
+                    BossWalls[1].canIncrease = false;
+                    resetTurrets = false;
                 }
                
             }
@@ -48,7 +85,9 @@ public class BossScript : MonoBehaviour
         if(hp <= 0f)
         {
             isDead = true;
+            activateUIHP = false;
             gameObject.SetActive(false);
+            
         }
         else
         {
@@ -59,6 +98,7 @@ public class BossScript : MonoBehaviour
     public void TakeDmg(float dmgToTake)
     {
         BossHp -= dmgToTake;
+        bossHp.fillAmount = BossHp / saveMaxHp;
     }
   
 }

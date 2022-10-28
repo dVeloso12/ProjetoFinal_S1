@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretScript : MonoBehaviour
 {
@@ -22,15 +23,19 @@ public class TurretScript : MonoBehaviour
     BossScript bosscp;
     public bool isAlive = true;
     public Detection detect;
+    [SerializeField] Image HpBar;
+    public bool showUI;
 
     private void Start()
     {
         bosscp = Boss.GetComponent<BossScript>();
         saveMaxHp = TurretHp;
+        HpBar.enabled = false;
+        HpBar.fillAmount = 1f;
     }
     private void Update()
     {
-     
+        UIManager();
         if (canAim && isAlive)
         {
             target = detect.savePlayer;
@@ -43,6 +48,20 @@ public class TurretScript : MonoBehaviour
         }
 
     }
+    void UIManager()
+    {
+        if (showUI)
+        {
+            HpBar.enabled = true;
+        }
+        else
+        {
+            HpBar.enabled = false;
+
+        }
+        
+      
+    }
 
     public void ResetTurret()
     {
@@ -53,9 +72,11 @@ public class TurretScript : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         TurretHp -= dmg;
+        HpBar.fillAmount = TurretHp / saveMaxHp;
 
         if(TurretHp <= 0)
         {
+            showUI = false;
             isAlive = false;
         }
     }

@@ -36,7 +36,7 @@ public class BossWall : MonoBehaviour
             IncreaseWall();
         }
     }
-    void DecreaseWall()
+   public void DecreaseWall()
     {
         timerWall -= Time.deltaTime * speed;
         matWall.SetFloat("_Fill", timerWall);
