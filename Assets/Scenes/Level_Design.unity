@@ -629,7 +629,7 @@ MonoBehaviour:
   Player: {fileID: 6504896650162048298, guid: bc0a64542fa007743b4664b1a628927a, type: 3}
   StageRender: {fileID: 7642057016816043298, guid: 34efefea8bb7e014ba3e1b119d3f07ec,
     type: 3}
-  PlayerStageSpawn: {x: 241.5, y: 5.5, z: 0}
+  PlayerStageSpawn: {x: -107.5, y: 29, z: 0}
   Looby: {fileID: 429777246018059791, guid: 77c44dc6b87042d40838536c501a0f99, type: 3}
   LobbySpawnPos: {x: 0, y: -658, z: -452}
   PlayerLobbySpawn: {x: 0, y: -658, z: -452}
@@ -1837,6 +1837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Plate: {fileID: 737289657}
   Door: {fileID: 706916642}
+  Chest: {fileID: 0}
 --- !u!1 &723045312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payload: {fileID: 5717875868490263055}
+  chest: {fileID: 0}
 --- !u!1 &737289657
 GameObject:
   m_ObjectHideFlags: 0
@@ -18846,6 +18848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payload: {fileID: 5717875868490263055}
+  chest: {fileID: 0}
 --- !u!33 &8025322558434546379
 MeshFilter:
   m_ObjectHideFlags: 0

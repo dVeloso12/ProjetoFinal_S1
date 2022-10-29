@@ -40,10 +40,10 @@ public class TurretScript : MonoBehaviour
         {
             target = detect.savePlayer;
             RotateTurret();
-            Shoot(); 
+            Shoot();
             UIManager();
         }
-        if(bosscp.resetTurrets)
+        if (bosscp.resetTurrets)
         {
             ResetTurret();
         }

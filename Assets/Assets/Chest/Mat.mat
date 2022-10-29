@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6377589858996553520
+--- !u!114 &-7413657253387059545
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoadBeamRIGHT
-  m_Shader: {fileID: -6465566751694194690, guid: f1b9ec1f9275ff4468a776b91dd14103,
+  m_Name: Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 17273b0a8d59fdf4c945d5cfae6eb2d0,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -48,10 +48,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: -0.087868005
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors:
-    - _BaseColor: {r: 0.6698113, g: 0.29847577, b: 0.07266819, a: 0}
-    - _EmissionColor: {r: 1, g: 0.2720772, b: 0, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []

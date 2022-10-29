@@ -6,13 +6,14 @@ public class DoorDeffScript : MonoBehaviour
 {
     [SerializeField] GameObject Plate;
     [SerializeField] GameObject Door;
+    [SerializeField] ChestScript Chest;
     PlateScript plateScrp;
     bool doorOpened;
-    GameManager gm;
+    //GameManager gm;
     void Start()
     {
         plateScrp = Plate.GetComponent<PlateScript>();
-        gm = FindObjectOfType<GameManager>();
+        //gm = FindObjectOfType<GameManager>();
     }
     void Update()
     {
@@ -20,8 +21,8 @@ public class DoorDeffScript : MonoBehaviour
         {
             Door.SetActive(false);
             doorOpened = true;
-
-            gm.AddUpgrade();
+            Chest.canAppear = true;
+            //gm.AddUpgrade();
 
         }
     }

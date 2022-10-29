@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public void AddUpgrade()
     {
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
+        Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
     public void CloseAddUpgrade()
     {
         SceneManager.UnloadSceneAsync("AddUpgrade");
+        Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

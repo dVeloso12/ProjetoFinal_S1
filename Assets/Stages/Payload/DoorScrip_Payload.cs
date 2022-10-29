@@ -5,15 +5,15 @@ using UnityEngine;
 public class DoorScrip_Payload : MonoBehaviour
 {
     [SerializeField] GameObject payload;
-
+    [SerializeField] ChestScript chest;
     bool doorOpened;
 
-    GameManager gm;
+
 
 
     private void Start()
     {
-        gm = FindObjectOfType<GameManager>();
+        
     }
 
     void Update()
@@ -22,8 +22,9 @@ public class DoorScrip_Payload : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             doorOpened = true;
+            chest.canAppear = true;
 
-            gm.AddUpgrade();
+
         }
     }
 }
