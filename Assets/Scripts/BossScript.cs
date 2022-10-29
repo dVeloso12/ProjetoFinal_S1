@@ -9,6 +9,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] List<BossWall> BossWalls;
     [SerializeField] float DmgPhaseTimer;
     [SerializeField] ChestScript Chest;
+    [SerializeField] GameObject portal;
 
     public float BossHp;
     public bool isDead;
@@ -90,6 +91,7 @@ public class BossScript : MonoBehaviour
             activateUIHP = false;
             gameObject.SetActive(false);
             Chest.canAppear = true;
+            portal.SetActive(true);
             
         }
         else

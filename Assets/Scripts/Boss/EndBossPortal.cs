@@ -3,7 +3,7 @@ using UnityEngine;
 public class EndBossPortal : MonoBehaviour
 {
     [SerializeField] Vector3 ShopPos;
-    public bool canTp;
+      public bool canTp;
 
     private void OnTriggerEnter(Collider other)
     {
