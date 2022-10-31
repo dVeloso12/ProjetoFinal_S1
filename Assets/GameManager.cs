@@ -1,11 +1,20 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+public enum WeaponType
+{
+    Shotgun,
+    AR,
+    Pistol
+};
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public WeaponType weaponType;
 
     public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1;
 
@@ -15,8 +24,11 @@ public class GameManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
-    public int HP;
-   
+    TextMeshProUGUI MoneyText;
+
+    [HideInInspector]
+    public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -24,17 +36,19 @@ public class GameManager : MonoBehaviour
         playerInput.Player.Enable();
 
         playerInput.Player.Debug.performed += DebugFunction;
+
+        MoneyText= GameObject.Find("MoneyC").GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
     {
-        
+        CreateUpgradeLists();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        MoneyText.text = Money.ToString()+" $";
     }
 
 
@@ -56,5 +70,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void CreateUpgradeLists()
+    {
+        foreach(Upgrade upgrade in Upgrades)
+        {
+            if (upgrade.General)
+                GeneralUpgrades.Add(upgrade);
+            else if (upgrade.WeaponAffected == weaponType)
+                WeaponUpgrades.Add(upgrade);
+        }
     }
 }
