@@ -110,9 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae60701ce32f32440a364d70eb23e3e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySearchMode: 0
+  enemySearchMode: 1
   gunRange: 50
   sightRange: 10
   enemyFOV: 180
   turnSpeed: 20
   defaultMovementSpeed: 30
+  isRigidbody: 0
+  movementForce: 200
+  bulletPrefab: {fileID: 0}

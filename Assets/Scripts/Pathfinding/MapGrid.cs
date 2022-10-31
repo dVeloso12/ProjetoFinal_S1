@@ -54,7 +54,41 @@ public class MapGrid<TGridObject>
 
         //Debug.Log("Value : " + GetWorldPosition((int)(GridArray.GetLength(0)), (int)(GridArray.GetLength(1))));
 
-        bool ToDebug = false;
+        DrawGrid();
+        
+        OnGridValueChanged += (object sender, OnGridValueChangedEventArgs eventArgs) =>
+        {
+            debugTextArray[eventArgs.x, eventArgs.y].text = GridArray[eventArgs.x, eventArgs.y]?.ToString();
+        };
+
+    }
+        
+
+    public void ResetGrid(int width, int height, Vector3 originPosition, GameObject groundCheck, Func<MapGrid<TGridObject>, int, int, TGridObject> createGridObj)
+    {
+        this.width = width; this.height = height;
+
+        this.originPosition = originPosition;
+
+        this.groundCheck = groundCheck;
+
+        GridArray = new TGridObject[width, height];
+
+        for(int x = 0;  x < GridArray.GetLength(0); x++)
+        {
+            for(int y = 0; y < GridArray.GetLength(1); y++)
+            {
+                GridArray[x, y] = createGridObj(this, x, y);
+            }
+        }
+
+        DrawGrid();
+
+    }
+
+    public void DrawGrid()
+    {
+        bool ToDebug = true;
 
 
         if (ToDebug)
@@ -62,9 +96,9 @@ public class MapGrid<TGridObject>
 
             debugTextArray = new TextMesh[width, height];
 
-            for(int x = 0; x < GridArray.GetLength(0); x++)
+            for (int x = 0; x < GridArray.GetLength(0); x++)
             {
-                for(int y = 0; y < GridArray.GetLength(1); y++)
+                for (int y = 0; y < GridArray.GetLength(1); y++)
                 {
 
                     //debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
@@ -82,7 +116,7 @@ public class MapGrid<TGridObject>
 
                     //string toDebug = GridArray[x, y]?.ToString() + GridArray[x, y].
 
-                
+
 
                     debugTextArray[x, y] = UtilsClass.CreateWorldText(GridArray[x, y]?.ToString(), null, new Vector3(worldPosition.x, 0, worldPosition.y) + new Vector3(cellSize, 0, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
 
@@ -102,13 +136,8 @@ public class MapGrid<TGridObject>
             Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
         }
 
-        OnGridValueChanged += (object sender, OnGridValueChangedEventArgs eventArgs) =>
-        {
-            debugTextArray[eventArgs.x, eventArgs.y].text = GridArray[eventArgs.x, eventArgs.y]?.ToString();
-        };
-
     }
-        
+
     public LayerMask GetGroundLayer()
     {
         return groundLayer;

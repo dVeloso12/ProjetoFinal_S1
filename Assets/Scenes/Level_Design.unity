@@ -11048,6 +11048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51d3dcb613734d40aa92c072836a41a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesManagerPrefab: {fileID: 0}
   ListStages:
   - {fileID: 7226158457161330035, guid: 8e45785485beb79479f9e45ce3ada24c, type: 3}
   - {fileID: 846282554252985859, guid: be82985e5f38421488c28027a6ca4f3b, type: 3}

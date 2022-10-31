@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GenerateRun : MonoBehaviour
 {
-    [SerializeField] List<GameObject> ListStages;
+    [SerializeField] GameObject enemiesManagerPrefab;
+
+    [SerializeField] public List<GameObject> ListStages;
     List<GameObject> UseStage;
     [SerializeField]int maxNStages;
     [SerializeField] GameObject BossRoom;
@@ -12,14 +14,30 @@ public class GenerateRun : MonoBehaviour
     public GameObject saveBossStage;
     public bool doUrJob;
 
+  
+
+    List<Vector3> stageStartPositions;
+
+    int currentStage;
+
+    public static GenerateRun instance;
+
+    private void Awake()
+    {
+        instance = this;
+        Instantiate(enemiesManagerPrefab);
+    }
+
     void Start()
-    {    
+    {
+        currentStage = 0;
         saveStagesList();
         Generate();
     }
     void saveStagesList()
     {
         UseStage = new List<GameObject>(ListStages);
+        stageStartPositions = new List<Vector3>();
     }
      public GameObject getBossRoom()
     {
@@ -29,7 +47,9 @@ public class GenerateRun : MonoBehaviour
     {
         var st0 = Instantiate(StageStart, Vector3.zero, Quaternion.identity);
         st0.transform.parent = this.transform;
-        Vector3 nextPosition = Vector3.zero;  
+        Vector3 nextPosition = Vector3.zero;
+
+        stageStartPositions.Add(nextPosition);
 
         for (int i = 0; i < maxNStages; i++)
         {
@@ -37,6 +57,7 @@ public class GenerateRun : MonoBehaviour
             var st1 = Instantiate(UseStage[ran], nextPosition, Quaternion.identity);
             st1.transform.parent = this.transform;
             nextPosition += UseStage[ran].GetComponent<StageInfos>().StageSize;
+            stageStartPositions.Add(nextPosition);
             UseStage.RemoveAt(ran);
         }
 
@@ -64,5 +85,55 @@ public class GenerateRun : MonoBehaviour
 
         return stageNumbers;
     }
+
+    private void ResetMapGrid()
+    {
+
+        Vector3 pos = stageStartPositions[currentStage];
+        GameObject stage = ListStages[currentStage];
+
+        GameObject groundCheck = null;
+
+        foreach (GameObject obj in stage.GetComponentsInChildren<GameObject>())
+        {
+            if(obj.name == "GroundCheck")
+            {
+                groundCheck = obj;
+            }
+        }
+
+        if(groundCheck == null)
+        {
+            Debug.Log("Ground check e nulo. (Ao dar reset da grid)");
+            return;
+        }
+
+
+
+        NodeGroundCheck tempScript = groundCheck.GetComponent<NodeGroundCheck>();
+        MapGrid<PathNode> tempGrid = Pathfinder.Instance.GetGrid();
+
+        Vector3 finalGridPosition = pos + tempScript.gridOriginPositionOffset;
+
+        int width = tempScript.mapWidth / (int)tempGrid.GetCellSize()
+            , height = tempScript.mapHeight / (int)tempGrid.GetCellSize();
+
+
+        Debug.Log("Final Grid Position : " + finalGridPosition);
+
+        Pathfinder.Instance.GetGrid().ResetGrid(width, height, finalGridPosition, groundCheck, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+
+        
+
+    }
+
+    public void PassedDoor()
+    {
+        currentStage++;
+        Debug.Log("Current Stage : " + currentStage);
+        ResetMapGrid();
+
+    }
+
 }
     
