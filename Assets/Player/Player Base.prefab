@@ -177,12 +177,12 @@ GameObject:
   - component: {fileID: 276367052945305851}
   - component: {fileID: 276367052945305850}
   - component: {fileID: 276367052945305849}
-  - component: {fileID: 276367052945305853}
   - component: {fileID: 276367052945306370}
+  - component: {fileID: 276367052945305853}
   - component: {fileID: 276367052945306369}
-  - component: {fileID: 276367052945306371}
-  - component: {fileID: 276367052945306372}
   - component: {fileID: 7985577584841819198}
+  - component: {fileID: 3965854562953358549}
+  - component: {fileID: -877147717488237420}
   m_Layer: 6
   m_Name: Player Base
   m_TagString: Player
@@ -257,6 +257,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!143 &276367052945306370
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276367052945305847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3
+  m_Radius: 0.5000001
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &276367052945305853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,24 +302,6 @@ MonoBehaviour:
   dashIcon: {fileID: 0}
   fillAmount: 0
   cameraTransform: {fileID: 2811287370881411346}
---- !u!143 &276367052945306370
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276367052945305847}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 3
-  m_Radius: 0.5000001
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &276367052945306369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,57 +324,6 @@ MonoBehaviour:
   Timer: {fileID: 0}
   Grapple: {fileID: 0}
   fillAmount: 0
---- !u!114 &276367052945306371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276367052945305847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8443d34fef8b72a4e80a8f3f95f599b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 6071170131615175671}
-  bullet: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3, type: 3}
-  ShotingPlace: {fileID: 2485919959757482878}
-  FireRate: 0.9
-  dmg: 10
-  ReloadSpeed: 0.3
-  AmmoClipSize: 10
-  _camera: {fileID: 2811287370881411346}
-  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
-    type: 3}
-  Distance: 30
-  GunPos: {fileID: 0}
-  DwonSights: {fileID: 4436494442283045638}
---- !u!114 &276367052945306372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276367052945305847}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe1ffbb87dbc96e4b83c26dbb1c3bfe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 6071170131615175671}
-  bullet: {fileID: 8647809537578768864, guid: a885da6cc889d25429be45deea72d839, type: 3}
-  ShotingPlace: {fileID: 2485919959757482878}
-  FireRate: 0.5
-  dmg: 4
-  ReloadSpeed: 0.8
-  AmmoClipSize: 30
-  _camera: {fileID: 2811287370881411346}
-  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
-    type: 3}
-  Distance: 50
-  GunPos: {fileID: 0}
-  DwonSights: {fileID: 0}
-  RandomDeviation: 0.01
 --- !u!114 &7985577584841819198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +341,33 @@ MonoBehaviour:
   NadeCooldown: 8
   GranadeIcon: {fileID: 0}
   fillAmount: 0
+--- !u!114 &3965854562953358549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276367052945305847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c05bce5850b6a40b58aaf8a3053217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHp: 100
+--- !u!114 &-877147717488237420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276367052945305847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e9e1113674c5045b7428500397c36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxCount: 2
+  HealAmount: 20
 --- !u!1 &356024025619833777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,6 +2101,7 @@ MonoBehaviour:
   ReloadSpeed: 1
   AmmoClipSize: 6
   _camera: {fileID: 2811287370881411346}
+  Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 10

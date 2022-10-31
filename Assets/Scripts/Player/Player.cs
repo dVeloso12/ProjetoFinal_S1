@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        UpdateUI();   
+        if (PlayerHp > saveMaxHP)
+            PlayerHp = saveMaxHP;
+        UpdateUI();
+       
     }
 
     void UpdateUI()

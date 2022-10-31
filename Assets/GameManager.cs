@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
+    public int HP;
    
     private void Awake()
     {
