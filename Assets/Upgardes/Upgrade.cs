@@ -24,7 +24,8 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public TextMeshProUGUI TextDescription;
 
-
+    [HideInInspector]
+    public int price;
 
     GameManager gm;
 
@@ -57,9 +58,23 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public void OnPointerClick(PointerEventData eventData)
     {
         
-        Effects.Invoke(EffectName,0);
 
-        gm.CloseAddUpgrade();
+        if (gm.gameState == 0)
+        {
+            Effects.Invoke(EffectName, 0);
+            gm.CloseAddUpgrade();
+
+        }
+        else
+        {
+            if (gm.Money >= price)
+            {
+                Effects.Invoke(EffectName, 0);
+                gm.Money -= price;
+                Destroy(gameObject);
+            }
+        }
     }
+
     
 }

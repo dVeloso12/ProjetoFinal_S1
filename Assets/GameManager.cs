@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
 
+    public int gameState;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         playerInput.Player.Debug.performed += DebugFunction;
 
-        MoneyText= GameObject.Find("MoneyC").GetComponent<TextMeshProUGUI>();
+        //MoneyText = GameObject.Find("MoneyC").GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
@@ -48,17 +50,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoneyText.text = Money.ToString()+" $";
+        //MoneyText.text = Money.ToString()+" $";
     }
 
 
     public void DebugFunction(InputAction.CallbackContext obj)
     {
+        gameState = 1;
         AddUpgrade();
     }
     public void AddUpgrade()
     {
+        if(gameState==0)
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
+        else if(gameState==1)
+            SceneManager.LoadScene("ShopUpgrade", LoadSceneMode.Additive);
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -66,7 +72,10 @@ public class GameManager : MonoBehaviour
 
     public void CloseAddUpgrade()
     {
-        SceneManager.UnloadSceneAsync("AddUpgrade");
+        if (gameState == 0)
+            SceneManager.UnloadSceneAsync("AddUpgrade");
+        else if (gameState == 1)
+            SceneManager.UnloadSceneAsync("ShopUpgrade");
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -31,12 +31,12 @@ public class Add_Upgrade : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
 
-            int r = Random.Range(0, gm.Upgrades.Count);
+            int r = Random.Range(0, gm.GeneralUpgrades.Count);
 
             while (r==r_numb[0]||r==r_numb[1])
-            r= Random.Range(0, gm.Upgrades.Count);
+            r= Random.Range(0, gm.GeneralUpgrades.Count);
 
-            upg_choice[i] = Instantiate(gm.Upgrades[r],canvas.transform);
+            upg_choice[i] = Instantiate(gm.GeneralUpgrades[r],canvas.transform);
             upg_choice[i].transform.localPosition = new Vector3(-250+(i*250),50);
 
             r_numb[i] = r;
