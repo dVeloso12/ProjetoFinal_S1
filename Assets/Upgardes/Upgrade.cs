@@ -13,12 +13,17 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     private UpgradeEffects Effects;
 
+    public bool General = true;
+
+    public WeaponType WeaponAffected;
+
     public string EffectName;
 
 
     public string Description;
 
     public TextMeshProUGUI TextDescription;
+
 
 
     GameManager gm;

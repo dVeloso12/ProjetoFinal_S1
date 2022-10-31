@@ -6,6 +6,8 @@ public class UpgradeEffects : MonoBehaviour
 {
     // Start is called before the first frame update
     GameManager gm;
+
+    
     void Start()
     {
         gm = FindObjectOfType<GameManager>();

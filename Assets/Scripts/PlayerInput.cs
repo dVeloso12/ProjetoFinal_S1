@@ -125,6 +125,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bdf7715-b384-41f4-8aed-623ed19c9a6a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3410d8b4-71ce-4a98-94c1-c574d4342944"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Granade = m_Player.FindAction("Granade", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +402,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Granade;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Heal;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -396,6 +418,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Granade => m_Wrapper.m_Player_Granade;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -475,6 +501,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
             }
         }
     }
@@ -492,5 +521,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnGranade(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
     }
 }
