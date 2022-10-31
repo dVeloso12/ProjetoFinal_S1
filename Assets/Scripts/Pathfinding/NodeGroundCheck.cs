@@ -11,6 +11,8 @@ public class NodeGroundCheck : MonoBehaviour
 
     [SerializeField] float RaycastHeight;
 
+    [SerializeField] public Vector3 gridOriginPositionOffset;
+
     private void Start()
     {
     }
@@ -25,6 +27,29 @@ public class NodeGroundCheck : MonoBehaviour
         RaycastHit hit;
 
         hasCollided = Physics.Raycast(new Vector3(transform.position.x, RaycastHeight, transform.position.z), -transform.up, out hit, 100f, groundLayer);
+
+        Vector3 originVector = new Vector3(transform.position.x, RaycastHeight, transform.position.z);
+
+        if (hasCollided)
+        {
+            Vector3 destinationVector = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            Debug.DrawLine(originVector, destinationVector, Color.green, 100f);
+
+        }
+        else
+        {
+            Vector3 destinationVector = new Vector3(transform.position.x, RaycastHeight - 100f, transform.position.z);
+            Debug.DrawLine(originVector, destinationVector, Color.red, 100f);
+
+        }
+
+        //if (Physics.Raycast(new Vector3(transform.position.x, RaycastHeight, transform.position.z), -transform.up, out hit, 100f))
+        //{
+        //    Vector3 destinationVector = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+        //    Debug.DrawLine(originVector, destinationVector, Color.magenta, 100f);
+        //    Debug.Log("hit : " + hit.collider.name);
+        //    Debug.Log("Position : " + hit.point);
+        //}
 
         //Debug.Log("Num of hits : " + hit.)
 

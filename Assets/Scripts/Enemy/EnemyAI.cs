@@ -6,7 +6,7 @@ public class EnemyAI : MonoBehaviour
 {
 
     enum EnemySearchMode { AlwaysSearchingMode, WithinRangeSearchingMode }
-
+    
 
     [SerializeField] EnemySearchMode enemySearchMode;
     GameObject PlayerObject;
@@ -16,14 +16,32 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float enemyFOV;
     [SerializeField] float turnSpeed, defaultMovementSpeed;
 
+    [SerializeField] bool isRigidbody;
+
     Pathfinder pathfinderInstance;
 
     Vector3 previousPlayerPosition;
     List<Vector3> pathPositionsList;
 
-    bool isWalkingTowardsPlayer;
+    bool isWalkingTowardsPlayer, pathImpeded;
     float movementSpeed;
     int enemyPositionIndex;
+
+    [Header("Rigidbody")]
+    [SerializeField] float movementForce = 200f;
+
+    Rigidbody enemyRB;
+
+    [Header("Shooting")]
+    [SerializeField] GameObject bulletPrefab;
+
+
+
+    private void Awake()
+    {
+        if(isRigidbody)
+            enemyRB = GetComponent<Rigidbody>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +55,7 @@ public class EnemyAI : MonoBehaviour
         previousPlayerPosition = new Vector3(-100, -100, -100);
 
         isWalkingTowardsPlayer = false;
-
+        pathImpeded = false;
         enemyPositionIndex = 0;
     }
 
@@ -69,6 +87,10 @@ public class EnemyAI : MonoBehaviour
         else if (enemySearchMode == EnemySearchMode.WithinRangeSearchingMode)
         {
 
+            if(Vector3.Distance(transform.position, PlayerObject.transform.position) <= gunRange * 2)
+            {
+                CheckPlayerInSight();
+            }
 
 
         }
@@ -190,7 +212,7 @@ public class EnemyAI : MonoBehaviour
 
                 }
 
-                transform.Rotate(Vector3.up * angleDiference * turnSpeed * Time.deltaTime);
+                transform.LookAt(hit.transform);
 
             }
 
@@ -215,7 +237,7 @@ public class EnemyAI : MonoBehaviour
     {
         float step = movementSpeed * Time.deltaTime;
 
-        if (CheckPlayerInSight() || enemyPositionIndex >= pathPositionsList.Count)
+        if (CheckPlayerInSight() || enemyPositionIndex >= pathPositionsList.Count/* || pathImpeded*/)
         {
             enemyPositionIndex = 0;
             isWalkingTowardsPlayer = false;
@@ -228,37 +250,60 @@ public class EnemyAI : MonoBehaviour
         Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position);
         Vector3 directionToMoveNormalized = directionToMove.normalized;
 
+        Debug.DrawLine(transform.position, transform.position + directionToMoveNormalized * directionToMove.magnitude, Color.green, 10f);
+
         transform.LookAt(pathPositionsList[enemyPositionIndex]);
 
-        RaycastHit hit;
+        //RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, directionToMoveNormalized, out hit, directionToMove.x * directionToMove.z))
+        //float distanceToStop = 5f;
+
+        //if (Physics.Raycast(transform.position, directionToMoveNormalized, out hit, distanceToStop))
+        //{
+
+        //    //if (hit.collider.tag == "Enemy")
+        //    //{
+        //    //    Debug.DrawLine(transform.position, transform.position + directionToMoveNormalized * distanceToStop, Color.green, 0.5f);
+
+        //    //    Vector3 tempPosition = RecalculateNextPosition();
+
+        //    //    if (tempPosition != transform.position)
+        //    //    {
+        //    //        pathPositionsList[enemyPositionIndex] = tempPosition;
+        //    //        if (movementSpeed != defaultMovementSpeed)
+        //    //        {
+        //    //            movementSpeed *= 3f;
+        //    //        }
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        movementSpeed /= 3f;
+
+        //    //        float scale = transform.lossyScale.z / 2f + PlayerObject.transform.lossyScale.z / 2f;
+
+        //    //        if (Vector3.Distance(transform.position, hit.collider.transform.position) < scale + distanceToStop)
+        //    //        {
+
+        //    //            pathImpeded = true;
+
+
+        //    //        }
+        //    //    }
+
+        //    //}
+
+
+
+
+
+        //}
+
+        if (!isRigidbody)
+            transform.position += directionToMoveNormalized * step;
+        else
         {
-
-            if (hit.collider.tag == "Enemy")
-            {
-                Debug.DrawLine(transform.position, transform.position + directionToMoveNormalized * (directionToMove.x * directionToMove.z), Color.green, 0.5f);
-
-                Vector3 tempPosition = RecalculateNextPosition();
-
-                if (tempPosition != transform.position)
-                {
-                    pathPositionsList[enemyPositionIndex] = tempPosition;
-                    if(movementSpeed != defaultMovementSpeed)
-                    {
-                        movementSpeed *= 3f;
-                    }
-                }
-                else
-                {
-                    movementSpeed /= 3f;
-                }
-
-            }
-
+            enemyRB.AddForce(movementForce * Time.deltaTime * transform.forward);
         }
-
-        transform.position += directionToMoveNormalized * step;
 
         if (Vector3.Distance(transform.position, pathPositionsList[enemyPositionIndex]) <= .5f)
         {
@@ -273,64 +318,76 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    public Vector3 RecalculateNextPosition()
-    {
+    //public Vector3 RecalculateNextPosition()
+    //{
 
-        Vector3 nextPosition = transform.position;
+    //    Vector3 nextPosition = transform.position;
 
-        int tempX, tempY;
+    //    int tempX, tempY;
 
-        pathfinderInstance.GetGrid().GetXY(pathPositionsList[enemyPositionIndex], out tempX, out tempY);
+    //    pathfinderInstance.GetGrid().GetXY(pathPositionsList[enemyPositionIndex], out tempX, out tempY);
 
-        List<PathNode> tempNodeList = pathfinderInstance.GetNeighborNodes(pathfinderInstance.GetNode(tempX, tempY));
+    //    List<PathNode> tempNodeList = pathfinderInstance.GetNeighborNodes(pathfinderInstance.GetNode(tempX, tempY));
 
 
+    //    for(int i = 0; i < tempNodeList.Count; i++)
+    //    {
 
-        foreach(PathNode node in tempNodeList)
-        {
-            if (!node.isWalkable)
-            {
-                tempNodeList.Remove(node);
-            }
-        }
+    //        if (!tempNodeList[i].isWalkable)
+    //        {
+    //            tempNodeList.RemoveAt(i);
+    //        }
 
-        float leastAngle = -1000f;
-        PathNode nodeToSwitchTo = null;
+    //    }
 
-        foreach(PathNode node in tempNodeList)
-        {
+    //    //foreach(PathNode node in tempNodeList)
+    //    //{
+    //    //    if (!node.isWalkable)
+    //    //    {
+    //    //        tempNodeList.Remove(node);
+    //    //    }
+    //    //}
 
-            Vector3 tempWorldPosition = pathfinderInstance.GetGrid().GetWorldPosition(node.x, node.y);
-            Vector3 tempDirection = tempWorldPosition - transform.position;
+    //    float leastAngle = -1000f;
+    //    PathNode nodeToSwitchTo = null;
 
-            float tempAngle = Vector3.Angle(transform.forward, tempDirection);
+    //    foreach(PathNode node in tempNodeList)
+    //    {
 
-            if(leastAngle != -1000f)
-            {
-                if (Mathf.Abs(tempAngle) < Mathf.Abs(leastAngle))
-                {
-                    leastAngle = tempAngle;
-                    nodeToSwitchTo = node;
-                }
-            }
-            else
-            {
-                tempAngle = leastAngle;
-                nodeToSwitchTo = node;
-            }
+    //        Vector3 tempWorldPosition = pathfinderInstance.GetGrid().GetWorldPosition(node.x, node.y);
+    //        Vector3 tempDirection = tempWorldPosition - transform.position;
 
-        }
+    //        float tempAngle = Vector3.Angle(transform.forward, tempDirection);
 
-        if(nodeToSwitchTo == null)
-        {
+    //        if(leastAngle != -1000f)
+    //        {
+    //            if (Mathf.Abs(tempAngle) < Mathf.Abs(leastAngle))
+    //            {
+    //                leastAngle = tempAngle;
+    //                nodeToSwitchTo = node;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            tempAngle = leastAngle;
+    //            nodeToSwitchTo = node;
+    //        }
 
-            Debug.LogWarning("No different nodes to switch to.");
-            nextPosition = transform.position;
+    //    }
 
-        }
+    //    Debug.Log("Node to switch pos: " + nodeToSwitchTo.x + " , " + nodeToSwitchTo.y);
+    //    Debug.Log("Angle : " + leastAngle);
 
-        return nextPosition;
-    }
+    //    if(nodeToSwitchTo == null)
+    //    {
+
+    //        Debug.LogWarning("No different nodes to switch to.");
+    //        nextPosition = transform.position;
+
+    //    }
+
+    //    return nextPosition;
+    //}
 
     
 }

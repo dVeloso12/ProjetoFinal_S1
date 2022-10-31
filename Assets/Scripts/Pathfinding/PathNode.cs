@@ -64,7 +64,8 @@ public class PathNode
         //    Debug.Log(newPosition);
 
         //Debug.Log("Position : " + x + " , " + y);
-
+        //Debug.Log("Is Walkable : " + isWalkable);
+                
 
     }
 

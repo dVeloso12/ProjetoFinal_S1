@@ -64,7 +64,11 @@ public class Spawn : MonoBehaviour
             if (spawnType == SpawnType.AllMap)
                 SpawnEnemies();
             else
+            {
+                spawners.Clear();
+                spawners.Add(instantiatedPlayer);
                 SpawnEnemiesLocalized();
+            }
         }   
     }
 
@@ -101,8 +105,22 @@ public class Spawn : MonoBehaviour
         
         foreach(GameObject spawner in spawners)
         {
-            Spawner spawnerSCript = spawner.GetComponent<Spawner>();
-            List<Vector3> positionsToSpawn = GetPositionsToSpawn(spawner.transform.position, spawnerSCript.radius, spawnerSCript.enemiesToSpawn_Quantity);
+
+            float spawnRadius = 100f;
+            int spawnEnemiesToSpawn = 10;
+
+            if(spawner.tag != "Player")
+            {
+                Spawner spawnerSCript = spawner.GetComponent<Spawner>();
+                spawnRadius = spawnerSCript.radius;
+                spawnEnemiesToSpawn = spawnerSCript.enemiesToSpawn_Quantity;
+
+            }
+            
+
+
+            List<Vector3> positionsToSpawn = GetPositionsToSpawn(spawner.transform.position, spawnRadius, spawnEnemiesToSpawn);
+
             System.Random rand = new System.Random();
 
             if (positionsToSpawn == null) Debug.Log("Positions to spawn e nulo");
@@ -235,10 +253,17 @@ public class Spawn : MonoBehaviour
     {
         List<Vector3> positionsToSpawn = new List<Vector3>();
         bool canSpawn = false;
-        System.Random rand = new System.Random();  
+        System.Random rand = new System.Random();
+
+
+        Debug.Log("Spawning Quantity : " + enemiesToSpawn_Quantity);
 
         for(int i = 0; i < enemiesToSpawn_Quantity; i++)
         {
+            Debug.Log("Spawning Count " + i);
+
+            canSpawn = false;
+
             Vector3 tempPosition = new Vector3();
             while (!canSpawn)
             {
@@ -248,13 +273,22 @@ public class Spawn : MonoBehaviour
 
                 tempPosition = new Vector3(randX, RaycastHeight, randZ);
 
+                Debug.Log("Rand X : " + randX);
+                Debug.Log("Rand Z : " + randZ);
+
                 RaycastHit hitInfo;
 
                 if(Physics.Raycast(tempPosition, -Vector3.up, out hitInfo, 100f, groundLayerMask))
                 {
 
-                    tempPosition.y = hitInfo.point.y;
-                    canSpawn = true;
+                    if(hitInfo.collider.tag == "Ground")
+                    {
+                        Debug.DrawLine(tempPosition, tempPosition - Vector3.up * 100f, Color.magenta, 1f);
+
+                        tempPosition.y = hitInfo.point.y + enemiesPrefab.transform.lossyScale.y / 2;
+                        canSpawn = true;
+
+                    }
 
                 }
 
