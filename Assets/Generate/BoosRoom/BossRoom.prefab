@@ -60,10 +60,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapWidth: 100
   mapHeight: 100
-  mapCenter: {x: 90, y: -20, z: 0}
-  drawGizmos: 1
-  RaycastHeight: 40
-  gridOriginPositionOffset: {x: 50, y: -50, z: 0}
+  mapCenter: {x: 216.2933, y: -149.9007, z: -57.92751}
+  drawGizmos: 0
+  RaycastHeight: 7
+  gridOriginPositionOffset: {x: 0, y: -50, z: 0}
 --- !u!1 &5691559673522638
 GameObject:
   m_ObjectHideFlags: 0

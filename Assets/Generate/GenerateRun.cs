@@ -14,13 +14,23 @@ public class GenerateRun : MonoBehaviour
     public GameObject saveBossStage;
     public bool doUrJob;
 
-  
 
+    List<GameObject> stagesOrder;
     List<Vector3> stageStartPositions;
 
     int currentStage;
 
     public static GenerateRun instance;
+
+
+    public List<GameObject> StagesOrder
+    {
+        get { return stagesOrder; }
+    }
+    public List<Vector3> StageStartPositions
+    {
+        get { return stageStartPositions; }
+    }
 
     private void Awake()
     {
@@ -37,7 +47,9 @@ public class GenerateRun : MonoBehaviour
     void saveStagesList()
     {
         UseStage = new List<GameObject>(ListStages);
+
         stageStartPositions = new List<Vector3>();
+        stagesOrder = new List<GameObject>();
     }
      public GameObject getBossRoom()
     {
@@ -57,7 +69,10 @@ public class GenerateRun : MonoBehaviour
             var st1 = Instantiate(UseStage[ran], nextPosition, Quaternion.identity);
             st1.transform.parent = this.transform;
             nextPosition += UseStage[ran].GetComponent<StageInfos>().StageSize;
+
+            stagesOrder.Add(st1);
             stageStartPositions.Add(nextPosition);
+
             UseStage.RemoveAt(ran);
         }
 
@@ -66,6 +81,7 @@ public class GenerateRun : MonoBehaviour
         saveBossStage = bossStg;
         doUrJob = true;
 
+        stagesOrder.Add(bossStg);
     }
 
     private int Choose_Stage(List<GameObject> ToUseStages)
@@ -90,15 +106,15 @@ public class GenerateRun : MonoBehaviour
     {
 
         Vector3 pos = stageStartPositions[currentStage];
-        GameObject stage = ListStages[currentStage];
+        GameObject stage = stagesOrder[currentStage];
 
         GameObject groundCheck = null;
 
-        foreach (GameObject obj in stage.GetComponentsInChildren<GameObject>())
+        foreach (Transform obj in stage.GetComponentsInChildren<Transform>())
         {
             if(obj.name == "GroundCheck")
             {
-                groundCheck = obj;
+                groundCheck = obj.gameObject;
             }
         }
 

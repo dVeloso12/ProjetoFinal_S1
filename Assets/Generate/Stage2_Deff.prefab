@@ -61,8 +61,8 @@ MonoBehaviour:
   mapWidth: 50
   mapHeight: 100
   mapCenter: {x: 27.92, y: -10, z: 0}
-  drawGizmos: 1
-  RaycastHeight: 20
+  drawGizmos: 0
+  RaycastHeight: 7
   gridOriginPositionOffset: {x: 0, y: -50, z: 0}
 --- !u!1 &182329174579545225
 GameObject:

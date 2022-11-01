@@ -66,6 +66,13 @@ public class MapGrid<TGridObject>
 
     public void ResetGrid(int width, int height, Vector3 originPosition, GameObject groundCheck, Func<MapGrid<TGridObject>, int, int, TGridObject> createGridObj)
     {
+        Debug.Log("Reseting grid");
+
+        Debug.Log("Width : " + width);
+        Debug.Log("Height : " + height);
+
+        Debug.Log("Position : " + originPosition);
+
         this.width = width; this.height = height;
 
         this.originPosition = originPosition;
@@ -88,7 +95,7 @@ public class MapGrid<TGridObject>
 
     public void DrawGrid()
     {
-        bool ToDebug = true;
+        bool ToDebug = false;
 
 
         if (ToDebug)
