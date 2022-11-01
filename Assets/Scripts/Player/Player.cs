@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [Header("General Stuff")]
     [SerializeField] public float PlayerHp;
     float saveMaxHP;
+    public bool isdead;
 
     Image hp_head,hp_bar;
     void Start()
@@ -37,6 +38,10 @@ public class Player : MonoBehaviour
     {
         PlayerHp -= dmg;
         Debug.LogWarning("Player Hit. HP : " + PlayerHp);
+        if(PlayerHp <= 0)
+        {
+            isdead = true;
+        }
     }
 
 }
