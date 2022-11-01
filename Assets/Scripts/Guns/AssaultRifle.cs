@@ -51,6 +51,8 @@ public class AssaultRifle : GunController
                 {
                     //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
                     collisionDetected.transform.GetComponent<EnemyStatus>().Damage(dmg * gm.DamageMod);
+                //    Instantiate(dmgText,collisionDetected.point + (collisionDetected.normal * .1f),
+                //Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
                 }
                 if (collisionDetected.transform.tag == "Head")
                 {

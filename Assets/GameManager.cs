@@ -81,6 +81,15 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void GameOver()
+    {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+            
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     void CreateUpgradeLists()
     {
         foreach(Upgrade upgrade in Upgrades)
