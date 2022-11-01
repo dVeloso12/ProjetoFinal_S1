@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public WeaponType weaponType;
 
-    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1;
+    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2;
 
     public int Money;
 

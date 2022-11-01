@@ -22,6 +22,8 @@ public class GunController : MonoBehaviour
 
     public float dmg;
 
+
+
     protected float FireRateCounting;
 
     protected GameManager gm;

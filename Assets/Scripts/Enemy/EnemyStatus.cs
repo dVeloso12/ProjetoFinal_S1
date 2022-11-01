@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] float maxHealth;
-    float currentHealth;
+    [SerializeField] float currentHealth;
+
+    public TextMeshProUGUI HealthBar;
 
     EnemyManager enemyManagerInstance;
 
@@ -14,14 +17,17 @@ public class EnemyStatus : MonoBehaviour
         currentHealth = maxHealth;
 
         enemyManagerInstance = EnemyManager.Instance;
+
+        HealthBar.text = maxHealth.ToString() + "/" + maxHealth.ToString();
     }
 
     public void Damage(float dmg)
     {
 
         currentHealth -= dmg;
+        HealthBar.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Death();
         }
@@ -36,6 +42,7 @@ public class EnemyStatus : MonoBehaviour
         enemyManagerInstance.survivalScript.ZombieKilled();
 
         gameObject.SetActive(false);
+        Destroy(gameObject);
 
     }
 

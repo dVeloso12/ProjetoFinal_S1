@@ -9,6 +9,7 @@ TagManager:
   - Terrain
   - Boss
   - Turret
+  - Head
   layers:
   - Default
   - TransparentFX
