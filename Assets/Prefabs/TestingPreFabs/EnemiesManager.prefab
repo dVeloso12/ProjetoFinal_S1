@@ -71,11 +71,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnType: 0
-  ToSpawnEnemies: 0
+  ToSpawnEnemies: 1
   enemiesPrefab: {fileID: 8686631361806460244, guid: 9b52ebd022a959247b1fb141bffa707d,
     type: 3}
   enemiesParent: {fileID: 7220906309362943887}
-  enemiesToSpawnQuantity: 20
+  enemiesToSpawnQuantity: 3
   RaycastHeight: 50
   groundLayerMask:
     serializedVersion: 2

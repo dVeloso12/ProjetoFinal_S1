@@ -225,7 +225,7 @@ public class EnemyAI : MonoBehaviour
 
             Quaternion directionToShoot = new Quaternion(directionToLook.x, directionToLook.y, directionToLook.z, 1f);
 
-            GameObject tempBullet = Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
+            Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
 
             shootingTimer = 0f;
         }
