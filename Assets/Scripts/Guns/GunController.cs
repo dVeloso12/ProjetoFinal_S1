@@ -50,6 +50,8 @@ public class GunController : MonoBehaviour
     Transform origin;
 
     bool AimingDown=false;
+
+    public GameObject dmgText;
     
     // Start is called before the first frame update
     protected void Start()

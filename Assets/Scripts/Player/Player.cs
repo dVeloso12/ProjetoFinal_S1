@@ -10,10 +10,12 @@ public class Player : MonoBehaviour
     [SerializeField] public float PlayerHp;
     float saveMaxHP;
     public bool isdead;
+    GameManager gm;
 
     Image hp_head,hp_bar;
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         hp_head = GameObject.Find("Bar-HpHead").GetComponent<Image>();
         hp_bar = GameObject.Find("Hp-Bar").GetComponent<Image>();
         saveMaxHP = PlayerHp;
@@ -25,7 +27,12 @@ public class Player : MonoBehaviour
         if (PlayerHp > saveMaxHP)
             PlayerHp = saveMaxHP;
         UpdateUI();
-       
+        if (isdead)
+        {
+            gm.GameOver();
+            isdead = false;
+        }
+
     }
 
     void UpdateUI()
@@ -40,7 +47,8 @@ public class Player : MonoBehaviour
         Debug.LogWarning("Player Hit. HP : " + PlayerHp);
         if(PlayerHp <= 0)
         {
-            isdead = true;
+            
+            gm.GameOver();
         }
     }
 
