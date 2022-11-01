@@ -9,8 +9,8 @@ public class EnemyManager
 
     private List<GameObject> activeEnemiesList;
 
-    private GameObject instantiatedPlayer;
-
+    public GameObject instantiatedPlayer;
+    public SurvivalScript survivalScript;
 
     public GameObject InstantiatedPlayer
     {
@@ -21,13 +21,18 @@ public class EnemyManager
         get { return activeEnemiesList; }
     }
 
-    public EnemyManager(GameObject playerObject)
+    public EnemyManager(GameObject playerObject, GameObject survivalMap)
     {
 
         instantiatedPlayer = playerObject;
 
         Instance = this;
         activeEnemiesList = new List<GameObject>();
+
+        survivalScript = survivalMap.GetComponentInChildren<SurvivalScript>();
+
+        if (survivalMap == null) Debug.Log("survival e nulo");
+
 
     }
 

@@ -586,9 +586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
-  FireRateMod: 1
-  DamageMod: 1
+  weaponType: 1
+  FireRateMod: 0.2
+  DamageMod: 2
   MoveSpeedMod: 1
   Money: 0
   Upgrades:
@@ -599,6 +599,7 @@ MonoBehaviour:
   - {fileID: 5965232406241214392, guid: 2fdfa4db6bafbe74caf933c91a26d6a8, type: 3}
   GeneralUpgrades: []
   WeaponUpgrades: []
+  gameState: 0
 --- !u!4 &166003452
 Transform:
   m_ObjectHideFlags: 0

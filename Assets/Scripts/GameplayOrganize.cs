@@ -27,10 +27,18 @@ public class GameplayOrganize : MonoBehaviour
     public GameObject saveBossRoom;
     bool saved;
 
+    public static GameplayOrganize instance;
+
+    private void Awake()
+    {
+        instance = this;
+        playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
+
+    }
     void Start()
     {
         saveStages = null;
-        playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
+        //playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
         //Player.transform.position = PlayerLobbySpawn;
         Generate_Delete_Looby(true, false);
 

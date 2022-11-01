@@ -19,6 +19,7 @@ public class GridTesting : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Vector3 initialPosition;
 
+    [SerializeField] GameObject survivalMap;
 
     private Pathfinder pathfinder;
     private EnemyManager enemyManager;
@@ -71,8 +72,12 @@ public class GridTesting : MonoBehaviour
 
         //instantiatedPlayer = Instantiate(player, initialPosition, Quaternion.identity);
 
+        player = GameplayOrganize.instance.playerIns;
+
+        if (player == null) Debug.LogWarning("Player e nulo no grid testing");
+
         pathfinder = new Pathfinder(width, height, cellSize, groundCheck, raycastHeight, originPosition, groundLayerMask);
-        enemyManager = new EnemyManager(player);
+        enemyManager = new EnemyManager(player, survivalMap);
 
         //visual.SetGrid(pathfinder.GetGrid());
         

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -14,14 +14,14 @@ public class Bullet : MonoBehaviour
 
     private Vector3 StartPos;
 
-   Vector3 Velocity;
+    Vector3 Velocity;
 
 
     void Start()
     {
         transform.position = Vector3.zero;
         StartPos = transform.position;
-        
+
         Velocity = transform.forward;
 
         StartCoroutine(Des());
@@ -31,25 +31,30 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, transform.position + Velocity, Time.deltaTime);
-        
-        if((transform.position-StartPos).magnitude>MaxDistance)
+
+        if ((transform.position - StartPos).magnitude > MaxDistance)
             Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.collider.tag == "Player")
+        {
 
+            Debug.Log("Damaged Player");
+            collision.collider.GetComponent<Player>().Damage(Damage);
 
+        }
         Destroy(gameObject);
     }
 
     IEnumerator Des()
     {
 
-        //Debug.Log(transform.position);
+        Debug.Log(transform.position);
         yield return new WaitForSeconds(2);
 
-        //Debug.Log(transform.position);
+        Debug.Log(transform.position);
         Destroy(gameObject);
     }
 }

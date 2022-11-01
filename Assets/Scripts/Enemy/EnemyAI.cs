@@ -34,8 +34,12 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Shooting")]
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject bulletsParent;
+
+    [SerializeField] float fireRate = 60f;
 
 
+    float shootingTimer;
 
     private void Awake()
     {
@@ -57,19 +61,28 @@ public class EnemyAI : MonoBehaviour
         isWalkingTowardsPlayer = false;
         pathImpeded = false;
         enemyPositionIndex = 0;
+        shootingTimer = 0f;
     }
 
     public void SetPlayerObject(GameObject playerObject)
     {
         Debug.Log("Setting Player");
-        PlayerObject = playerObject;
+        //PlayerObject = playerObject;
+
+        foreach(Transform temp in playerObject.GetComponentsInChildren<Transform>())
+        {
+            if(temp.tag == "Player")
+            {
+                PlayerObject = temp.gameObject;
+            }
+        }
         Debug.Log("Player : " + playerObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        shootingTimer += Time.deltaTime;
         if (PlayerObject == null) Debug.LogWarning("Player e nulo");
 
         if (enemySearchMode == EnemySearchMode.AlwaysSearchingMode)
@@ -103,23 +116,22 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.LogWarning("Primeiro movimento");
             FindPathToPlayer();
-            //previousPlayerPosition = PlayerObject.transform.position;
+            previousPlayerPosition = PlayerObject.transform.position;
 
         }
         else if (previousPlayerPosition != PlayerObject.transform.position)
         {
             Debug.LogWarning("Jogador moveu se");
             FindPathToPlayer();
-            //previousPlayerPosition = PlayerObject.transform.position;
-
+            previousPlayerPosition = PlayerObject.transform.position;
         }
-        //else
-        //{
-        //    Debug.Log("Previous Position : " + previousPlayerPosition);
-        //    Debug.Log("Player Positionm : " + PlayerObject.transform.position);
-        //}
+        else
+        {
+            Debug.Log("Previous Position : " + previousPlayerPosition);
+            Debug.Log("Player Positionm : " + PlayerObject.transform.position);
+        }
     }
-    
+
     public void FindPathToPlayer()
     {
 
@@ -143,7 +155,11 @@ public class EnemyAI : MonoBehaviour
 
         tempPath = pathfinderInstance.FindPath(startX, startY, endX, endY);
 
-        if (tempPath == null) Debug.Log("Path e nulo");
+        if (tempPath == null)
+        {
+            Debug.Log("Path e nulo");
+            return;
+        }
 
         pathPositionsList = pathfinderInstance.FindPathPositionsOnMap(tempPath);
 
@@ -152,37 +168,7 @@ public class EnemyAI : MonoBehaviour
         if (pathPositionsList == null) Debug.Log("Path  Positions e nulo");
 
     }
-
-    //public void LookTowardsPlayer()
-    //{
-
-    //    Vector3 directionToLook = (PlayerObject.transform.position - transform.position).normalized;
-
-    //    float angleDiference = Vector3.Angle(directionToLook, transform.forward);
-
-
-
-    //    if (angleDiference <= 1f || angleDiference >= -1f)
-    //    {
-
-    //        if (Aim(directionToLook))
-    //        {
-    //            Debug.DrawLine(transform.position, transform.position + directionToLook * gunRange);
-    //            Shoot();
-    //        }
-            
-
-    //    }
-    //    else if (Vector3.Angle(transform.forward, directionToLook) < enemyFOV)
-    //    {
-
-    //        transform.Rotate(Vector3.up * angleDiference * turnSpeed * Time.deltaTime);
-
-    //    }
-
-
-    //}
-        
+    
     public bool CheckPlayerInSight()
     {
 
@@ -200,10 +186,7 @@ public class EnemyAI : MonoBehaviour
                 isPlayerInSight = true;
 
                 Debug.LogWarning("Player is Shot");
-                Shoot();
-
-                Debug.DrawLine(transform.position, transform.position + directionToLook, Color.red, 1f);
-
+                Shoot(directionToLook);
 
                 if(angleDiference > .5f || angleDiference < -.5f)
                 {
@@ -223,14 +206,26 @@ public class EnemyAI : MonoBehaviour
             isWalkingTowardsPlayer = true;
         }
 
+        Debug.Log("IS player in sight : " + isPlayerInSight);
+        Debug.Log("Name : " + gameObject.name);
+
         return isPlayerInSight;
     }
    
-    public void Shoot()
+    public void Shoot(Vector3 directionToLook)
     {
 
-        //Shooting
-        Debug.Log("Shooting");
+        if(shootingTimer > 1f / fireRate)
+        {
+            //Shooting
+            Debug.Log("Shooting");
+            Debug.DrawLine(transform.position, transform.position + directionToLook, Color.red, 1f);
+
+            Instantiate(bulletPrefab, bulletsParent.transform.position, Quaternion.identity, bulletsParent.transform);
+            shootingTimer = 0f;
+        }
+
+
     }
 
     public void FollowPlayer()
@@ -246,6 +241,13 @@ public class EnemyAI : MonoBehaviour
 
         if (enemyPositionIndex == 0)
             enemyPositionIndex++;
+
+        if(enemyPositionIndex >= pathPositionsList.Count)
+        {
+            enemyPositionIndex = pathPositionsList.Count - 1;
+            isWalkingTowardsPlayer = false;
+            return;
+        }
 
         Vector3 directionToMove = (pathPositionsList[enemyPositionIndex] - transform.position);
         Vector3 directionToMoveNormalized = directionToMove.normalized;

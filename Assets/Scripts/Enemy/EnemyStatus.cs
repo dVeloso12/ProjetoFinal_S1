@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-
     [SerializeField] float maxHealth;
     float currentHealth;
 
@@ -33,6 +32,8 @@ public class EnemyStatus : MonoBehaviour
     {
 
         enemyManagerInstance.DeActivateEnemy(gameObject);
+
+        enemyManagerInstance.survivalScript.ZombieKilled();
 
         gameObject.SetActive(false);
 

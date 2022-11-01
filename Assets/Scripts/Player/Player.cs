@@ -33,4 +33,10 @@ public class Player : MonoBehaviour
         hp_head.fillAmount = (PlayerHp+ 20) * 0.824f / saveMaxHP;
     }
 
+    public void Damage(float dmg)
+    {
+        PlayerHp -= dmg;
+        Debug.LogWarning("Player Hit. HP : " + PlayerHp);
+    }
+
 }

@@ -56,6 +56,8 @@ MonoBehaviour:
     m_Bits: 128
   player: {fileID: 6504896650162048298, guid: bc0a64542fa007743b4664b1a628927a, type: 3}
   initialPosition: {x: 22, y: -18.77, z: 138.2}
+  survivalMap: {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c,
+    type: 3}
 --- !u!114 &7220906309362943873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnType: 0
   ToSpawnEnemies: 0
-  enemiesPrefab: {fileID: 8121905845089733736, guid: f9fa25e40a78c9d47b96bb76bf18ee26,
+  enemiesPrefab: {fileID: 8686631361806460244, guid: 9b52ebd022a959247b1fb141bffa707d,
     type: 3}
   enemiesParent: {fileID: 7220906309362943887}
   enemiesToSpawnQuantity: 50

@@ -36,7 +36,7 @@ public class Spawn : MonoBehaviour
         pathfinderInstance = Pathfinder.Instance;
         enemyManagerInstance = EnemyManager.Instance;
 
-        instantiatedPlayer = enemyManagerInstance.InstantiatedPlayer;
+        instantiatedPlayer = enemyManagerInstance.instantiatedPlayer;
 
         if(instantiatedPlayer == null)
             Debug.LogWarning("No spawn player e nulo");

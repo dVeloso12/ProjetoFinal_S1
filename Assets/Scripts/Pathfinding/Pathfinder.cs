@@ -69,6 +69,19 @@ public class Pathfinder
             }
         }
 
+        if (endNode == null)
+        {
+            Debug.LogWarning("Player is out of grid"); 
+            return null;
+        }
+
+        if(startNode == null)
+        {
+            Debug.LogWarning("Enemy is out of grid");
+            return null;
+        }
+
+
         startNode.gCost = 0;
         startNode.hCost = CalculateDistance(startNode, endNode);
         startNode.CalculateFCost();

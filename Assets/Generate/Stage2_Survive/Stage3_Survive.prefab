@@ -168,7 +168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5392477253147846370
 Transform:
   m_ObjectHideFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   mapWidth: 170
   mapHeight: 70
   mapCenter: {x: 229.4987, y: -133.8466, z: -157.5218}
+  cellSize: 0
   drawGizmos: 0
   RaycastHeight: 7
   gridOriginPositionOffset: {x: 0, y: -35, z: 0}
@@ -442,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 688276579036923266, guid: 530325a3e31256344bb3ee495978789b,
         type: 3}
       propertyPath: canAppear
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3610884293856400914, guid: 530325a3e31256344bb3ee495978789b,
         type: 3}
