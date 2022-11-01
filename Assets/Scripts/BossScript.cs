@@ -29,6 +29,8 @@ public class BossScript : MonoBehaviour
         bossHp = GameObject.Find("bosshp").GetComponent<Image>();
         bossHp.enabled = false;
         saveMaxHp = BossHp;
+        bossHp.fillAmount = 1f;
+        
     }
     void Update()
     {

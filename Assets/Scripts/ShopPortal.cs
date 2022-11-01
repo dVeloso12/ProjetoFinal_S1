@@ -13,6 +13,7 @@ public class ShopPortal : MonoBehaviour
         {
             Debug.Log(other.transform.name);
             playerColide = true;
+            gameObject.SetActive(false);
             //gameObject.SetActive(false);
         }
         
