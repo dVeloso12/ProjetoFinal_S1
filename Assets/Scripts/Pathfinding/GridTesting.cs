@@ -40,7 +40,7 @@ public class GridTesting : MonoBehaviour
 
         foreach(Transform obj in tempList)
         {
-            Debug.Log("Stage nane : " + obj.name);
+            //Debug.Log("Stage nane : " + obj.name);
 
             if(obj.name == "GroundCheck")
             {
@@ -57,18 +57,18 @@ public class GridTesting : MonoBehaviour
 
         NodeGroundCheck tempScript = groundCheck.GetComponent<NodeGroundCheck>();
 
-        Debug.Log("Width : " + tempScript.mapWidth);
-        Debug.Log("Height : " + tempScript.mapHeight);
+        //Debug.Log("Width : " + tempScript.mapWidth);
+        //Debug.Log("Height : " + tempScript.mapHeight);
 
         width = tempScript.mapWidth / (int)cellSize;
         height = tempScript.mapHeight / (int)cellSize;
 
         originPosition = tempScript.gridOriginPositionOffset + generator.StageStartPositions[0];
 
-        Debug.Log("Stage Position : " + generator.StageStartPositions[0]);
-        Debug.Log("Grid Starting Position : " + tempScript.gridOriginPositionOffset);
+        //Debug.Log("Stage Position : " + generator.StageStartPositions[0]);
+        //Debug.Log("Grid Starting Position : " + tempScript.gridOriginPositionOffset);
 
-        Debug.Log("Combined : " + originPosition);
+        //Debug.Log("Combined : " + originPosition);
 
         //instantiatedPlayer = Instantiate(player, initialPosition, Quaternion.identity);
 

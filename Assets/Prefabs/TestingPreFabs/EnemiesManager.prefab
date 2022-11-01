@@ -75,7 +75,7 @@ MonoBehaviour:
   enemiesPrefab: {fileID: 8686631361806460244, guid: 9b52ebd022a959247b1fb141bffa707d,
     type: 3}
   enemiesParent: {fileID: 7220906309362943887}
-  enemiesToSpawnQuantity: 50
+  enemiesToSpawnQuantity: 20
   RaycastHeight: 50
   groundLayerMask:
     serializedVersion: 2

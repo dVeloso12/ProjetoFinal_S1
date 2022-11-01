@@ -93,7 +93,7 @@ public class Pathfinder
             if(currentNode == endNode)
             {
                 //Final Node
-                Debug.Log("Final Node");
+                //Debug.Log("Final Node");
                 return CalculatePath(endNode);
             }
 

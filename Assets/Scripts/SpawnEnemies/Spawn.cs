@@ -30,6 +30,11 @@ public class Spawn : MonoBehaviour
 
     GameObject instantiatedPlayer;
 
+    bool hasStartedSpawning;
+
+
+    int quantityToSpawnOverTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,16 +48,11 @@ public class Spawn : MonoBehaviour
 
         MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
         activeEnemiesList = new List<GameObject>();
-        //List<Vector3> spawnerPos = new List<Vector3>();
 
-        //for(int i = 0; i < nSpawners; i++)
-        //{
+        quantityToSpawnOverTime = 1;
 
-        //    int gridLenght = grid.GetWidth() * grid.GetHeight();
+        hasStartedSpawning = false;
 
-
-
-        //}
     }
 
     // Update is called once per frame
@@ -69,7 +69,18 @@ public class Spawn : MonoBehaviour
                 spawners.Add(instantiatedPlayer);
                 SpawnEnemiesLocalized();
             }
-        }   
+        }
+
+        if (hasStartedSpawning)
+        {
+            if(activeEnemiesList.Count <= enemiesToSpawnQuantity / 3f)
+            {
+
+                SpawnEnemies(quantityToSpawnOverTime, quantityToSpawnOverTime);
+
+            }
+        }
+
     }
 
 
@@ -77,6 +88,7 @@ public class Spawn : MonoBehaviour
     {
         List<Vector3> positionsToSpawn = GetPositionsToSpawn();
 
+        Debug.LogWarning("Beginning to spawn enemies");
 
         foreach(Vector3 position in positionsToSpawn)
         {
@@ -317,5 +329,17 @@ public class Spawn : MonoBehaviour
 
     }
 
+    public void SpawnEnemies(int quantityToSpawn, int quantityToSpawnOverTime)
+    {
+        Debug.LogWarning("Spawning " + quantityToSpawn + " enemies.");
+
+        this.quantityToSpawnOverTime = quantityToSpawnOverTime;
+        enemiesToSpawnQuantity = quantityToSpawn;
+
+        ToSpawnEnemies = true;
+
+        hasStartedSpawning = true;
+
+    }
 
 }

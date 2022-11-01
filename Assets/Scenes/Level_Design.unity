@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  FireRateMod: 1
-  DamageMod: 2
+  FireRateMod: 0.3
+  DamageMod: 4
   MoveSpeedMod: 1
   HSMod: 2
   Money: 0
@@ -11433,6 +11433,7 @@ MonoBehaviour:
   Distance: 0
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
 --- !u!136 &2425779209711533634
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11494,6 +11495,7 @@ MonoBehaviour:
   Distance: 0
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.001
 --- !u!114 &2425779209711533639
 MonoBehaviour:
@@ -11520,6 +11522,7 @@ MonoBehaviour:
   Distance: 0
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.03
   Pellets: 9
 --- !u!114 &2425779209711533640
