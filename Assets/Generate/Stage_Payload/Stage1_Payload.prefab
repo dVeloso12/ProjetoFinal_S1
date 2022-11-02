@@ -501,7 +501,7 @@ MonoBehaviour:
   mapWidth: 230
   mapHeight: 110
   mapCenter: {x: 125, y: -10, z: -35}
-  cellSize: 0
+  cellSize: 10
   drawGizmos: 0
   RaycastHeight: 7
   gridOriginPositionOffset: {x: 0, y: -90, z: 0}
@@ -1234,8 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantityTospawn: 20
   quantityToSpawnOverTime: 10
-  spawnScript: {fileID: 7220906309362943873, guid: fe30d99690f79d34b8b80e28e98e3d3f,
-    type: 3}
+  survivalScript: {fileID: 0}
 --- !u!54 &3635820561500379400
 Rigidbody:
   m_ObjectHideFlags: 0

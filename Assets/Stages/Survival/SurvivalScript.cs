@@ -6,14 +6,21 @@ public class SurvivalScript : MonoBehaviour
 {
     [SerializeField] DoorScript_Survival survivalDoor;
     [SerializeField] int nObjective;
-    int zombiesKilled;
+    int enemiesKilled;
 
     public bool isSurvivalCompleted;
+
+
+    public int EnemiesKilled
+    {
+        get { return enemiesKilled; }
+        set { enemiesKilled = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        zombiesKilled = 0;
+        enemiesKilled = 0;
     }
 
     // Update is called once per frame
@@ -25,11 +32,11 @@ public class SurvivalScript : MonoBehaviour
 
     public void ZombieKilled()
     {
-        zombiesKilled++;
+        enemiesKilled++;
 
-        Debug.Log("Zombies killed : " + zombiesKilled);
+        Debug.Log("Enemies killed : " + enemiesKilled);
 
-        if(zombiesKilled == nObjective)
+        if(enemiesKilled == nObjective)
         {
             survivalDoor.CompleteSurvival();
         }

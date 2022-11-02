@@ -60,9 +60,11 @@ public class GridTesting : MonoBehaviour
         //Debug.Log("Width : " + tempScript.mapWidth);
         //Debug.Log("Height : " + tempScript.mapHeight);
 
+        cellSize = tempScript.cellSize;
+
         width = tempScript.mapWidth / (int)cellSize;
         height = tempScript.mapHeight / (int)cellSize;
-
+        
         originPosition = tempScript.gridOriginPositionOffset + generator.StageStartPositions[0];
 
         //Debug.Log("Stage Position : " + generator.StageStartPositions[0]);
