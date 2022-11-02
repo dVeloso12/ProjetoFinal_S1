@@ -154,6 +154,8 @@ public class GenerateRun : MonoBehaviour
         Debug.Log("Current Stage : " + currentStage);
         ResetMapGrid();
 
+        enemiesManagerInstantiated.GetComponent<Spawn>().StartOvertTimeSpawning();
+
     }
 
 }

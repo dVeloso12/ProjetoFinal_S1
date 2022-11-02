@@ -89,7 +89,7 @@ public class Spawn : MonoBehaviour
         {
             if(activeEnemiesList.Count <= enemiesToSpawnQuantity / 3f)
             {
-
+                Debug.Log("Spawn enemies with qntity on update");
                 SpawnEnemiesWithQuantity(quantityToSpawnOverTime, quantityToSpawnOverTime);
 
             }
@@ -115,9 +115,11 @@ public class Spawn : MonoBehaviour
 
             GameObject tempEnemy = Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
 
-            Debug.Log("Going to set player obj");
+            AddEnemiesToList(tempEnemy);
 
-            if(instantiatedPlayer == null)
+            //Debug.Log("Going to set player obj");
+
+            if (instantiatedPlayer == null)
                 Debug.LogWarning("Player is null");
 
             tempEnemy.GetComponent<EnemyAI>().SetPlayerObject(instantiatedPlayer);
@@ -162,7 +164,9 @@ public class Spawn : MonoBehaviour
 
                 GameObject tempEnemy = Instantiate(enemiesPrefab, pos, rot, enemiesParent.transform);
 
-                Debug.Log("Going to set player obj");
+                AddEnemiesToList(tempEnemy);
+
+                //Debug.Log("Going to set player obj");
 
                 tempEnemy.GetComponent<EnemyAI>().SetPlayerObject(instantiatedPlayer);
 
@@ -344,6 +348,15 @@ public class Spawn : MonoBehaviour
 
     }
 
+    public void StopOverTimeSpawning()
+    {
+        hasStartedSpawning = false;
+    }
+
+    public void StartOvertTimeSpawning()
+    {
+        hasStartedSpawning = true;
+    }
     public void SpawnEnemiesWithQuantity(int quantityToSpawn, int quantityToSpawnOverTime)
     {
         Debug.LogWarning("Spawning " + quantityToSpawn + " enemies.");

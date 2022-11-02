@@ -66,7 +66,7 @@ public class EnemyAI : MonoBehaviour
 
     public void SetPlayerObject(GameObject playerObject)
     {
-        Debug.Log("Setting Player");
+        //Debug.Log("Setting Player");
         //PlayerObject = playerObject;
 
         foreach(Transform temp in playerObject.GetComponentsInChildren<Transform>())
@@ -76,7 +76,7 @@ public class EnemyAI : MonoBehaviour
                 PlayerObject = temp.gameObject;
             }
         }
-        Debug.Log("Player : " + playerObject);
+        //Debug.Log("Player : " + playerObject);
     }
 
     // Update is called once per frame
@@ -206,8 +206,8 @@ public class EnemyAI : MonoBehaviour
             isWalkingTowardsPlayer = true;
         }
 
-        Debug.Log("IS player in sight : " + isPlayerInSight);
-        Debug.Log("Name : " + gameObject.name);
+        //Debug.Log("IS player in sight : " + isPlayerInSight);
+        //Debug.Log("Name : " + gameObject.name);
 
         return isPlayerInSight;
     }

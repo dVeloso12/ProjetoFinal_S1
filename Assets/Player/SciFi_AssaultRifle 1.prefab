@@ -495,6 +495,7 @@ MonoBehaviour:
   Distance: 30
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
 --- !u!114 &-8313886676532812766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +523,7 @@ MonoBehaviour:
   Distance: 10
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.1
   Pellets: 9
 --- !u!114 &1400524774216878351
@@ -551,6 +553,7 @@ MonoBehaviour:
   Distance: 50
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.01
 --- !u!1 &1304499678792703638
 GameObject:

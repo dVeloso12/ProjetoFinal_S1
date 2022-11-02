@@ -35,13 +35,13 @@ public class NodeGroundCheck : MonoBehaviour
         if (hasCollided)
         {
             Vector3 destinationVector = new Vector3(transform.position.x, hit.point.y, transform.position.z);
-            //Debug.DrawLine(originVector, destinationVector, Color.green, 100f);
+            Debug.DrawLine(originVector, destinationVector, Color.green, 100f);
 
         }
         else
         {
             Vector3 destinationVector = new Vector3(transform.position.x, RaycastHeight - 100f, transform.position.z);
-            //Debug.DrawLine(originVector, destinationVector, Color.red, 100f);
+            Debug.DrawLine(originVector, destinationVector, Color.red, 100f);
 
         }
 

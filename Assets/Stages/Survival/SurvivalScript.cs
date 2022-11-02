@@ -27,6 +27,8 @@ public class SurvivalScript : MonoBehaviour
     {
         zombiesKilled++;
 
+        Debug.Log("Zombies killed : " + zombiesKilled);
+
         if(zombiesKilled == nObjective)
         {
             survivalDoor.CompleteSurvival();

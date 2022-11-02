@@ -12,6 +12,8 @@ public class EnemyStatus : MonoBehaviour
 
     EnemyManager enemyManagerInstance;
 
+    Spawn spawnScript;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -19,6 +21,8 @@ public class EnemyStatus : MonoBehaviour
         enemyManagerInstance = EnemyManager.Instance;
 
         HealthBar.text = maxHealth.ToString() + "/" + maxHealth.ToString();
+
+        spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
     }
 
     public void Damage(float dmg)
@@ -38,6 +42,8 @@ public class EnemyStatus : MonoBehaviour
     {
 
         enemyManagerInstance.DeActivateEnemy(gameObject);
+
+        spawnScript.RemoveEnemiesFromList(gameObject);
 
         enemyManagerInstance.survivalScript.ZombieKilled();
 

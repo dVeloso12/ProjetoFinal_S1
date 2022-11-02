@@ -8,11 +8,15 @@ public class ChestScript : MonoBehaviour
     public bool canAppear;
    bool canUpgrade,setcollider;
 
+    Spawn spawnScript;
+
     private void Start()
     {
         GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
         gm = FindObjectOfType<GameManager>();
+
+        spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
     }
     void Update()
     {
@@ -37,6 +41,10 @@ public class ChestScript : MonoBehaviour
             canUpgrade = true;
             canAppear = false;
             gameObject.GetComponent<Collider>().enabled = false;
+
+            spawnScript.StopOverTimeSpawning();
+            spawnScript.activeEnemiesList.Clear();
+
         }
     }
 }

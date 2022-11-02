@@ -226,7 +226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5392477253147846370
 Transform:
   m_ObjectHideFlags: 0
@@ -495,8 +495,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantityTospawn: 20
   quantityToSpawnOverTime: 10
-  spawnScript: {fileID: 7220906309362943873, guid: fe30d99690f79d34b8b80e28e98e3d3f,
-    type: 3}
 --- !u!54 &6793048705834506684
 Rigidbody:
   m_ObjectHideFlags: 0
