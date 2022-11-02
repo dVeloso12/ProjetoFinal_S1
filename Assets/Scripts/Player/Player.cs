@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -13,12 +13,41 @@ public class Player : MonoBehaviour
     GameManager gm;
 
     Image hp_head,hp_bar;
+
+    CinemachineVirtualCamera vCam;
+
+    [SerializeField] float mouseSensivity;
+
+    float previousMouseSensivity;
+
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
         hp_head = GameObject.Find("Bar-HpHead").GetComponent<Image>();
         hp_bar = GameObject.Find("Hp-Bar").GetComponent<Image>();
         saveMaxHP = PlayerHp;
+
+        GameObject temp = gameObject.transform.parent.gameObject;
+
+      
+        if (temp == null) Debug.LogWarning("obj is null");
+
+        //foreach(Transform obj in temp.GetComponentsInChildren<Transform>())
+        //{
+
+        //    if(obj.gameObject.name == "PlayerVCam")
+        //    {
+        //        Debug.Log("Found Camera");
+        //        vCam = obj.GetComponent<CinemachineVirtualCamera>();
+        //    }
+        //}
+
+        vCam = temp.GetComponentInChildren<CinemachineVirtualCamera>();
+
+        if (vCam == null) Debug.LogWarning("virtual camera e nula");
+
+        mouseSensivity = vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed;
+        previousMouseSensivity = mouseSensivity;
     }
 
     
@@ -31,6 +60,15 @@ public class Player : MonoBehaviour
         {
             gm.GameOver();
             isdead = false;
+        }
+
+        if(mouseSensivity != previousMouseSensivity)
+        {
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = mouseSensivity;
+            vCam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = mouseSensivity;
+
+            previousMouseSensivity = mouseSensivity;
+
         }
 
     }

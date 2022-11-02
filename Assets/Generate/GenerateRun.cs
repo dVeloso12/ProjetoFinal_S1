@@ -21,8 +21,13 @@ public class GenerateRun : MonoBehaviour
     int currentStage;
 
     public static GenerateRun instance;
+    GameObject enemiesManagerInstantiated;
 
 
+    public GameObject EnemiesManagerInstantiated
+    {
+        get { return enemiesManagerInstantiated; }
+    }
     public List<GameObject> StagesOrder
     {
         get { return stagesOrder; }
@@ -35,7 +40,7 @@ public class GenerateRun : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Instantiate(enemiesManagerPrefab);
+        enemiesManagerInstantiated = Instantiate(enemiesManagerPrefab);
     }
 
     void Start()

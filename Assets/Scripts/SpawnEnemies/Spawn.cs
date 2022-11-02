@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour
 
     [SerializeField] SpawnType spawnType;
 
-    [SerializeField] bool ToSpawnEnemies;
+    [SerializeField] public bool ToSpawnEnemies;
 
     [SerializeField] GameObject enemiesPrefab;
     [SerializeField] GameObject enemiesParent;
@@ -51,15 +51,29 @@ public class Spawn : MonoBehaviour
 
         quantityToSpawnOverTime = 1;
 
+        ToSpawnEnemies = false;
         hasStartedSpawning = false;
+
+        Debug.LogWarning("Starting Spawn");
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Update - To Spawn nemeis : " + ToSpawnEnemies);
+
+        //if(pathfinderInstance == null)
+        //    Debug.Log("Update - Pathfinder e nulo ");
+        //else
+        //    Debug.Log("Update - Pathfinder nao e nulo ");
+
+
         if (ToSpawnEnemies)
         {
+
+            //Debug.Log("Update - will spawn enemies");
 
             if (spawnType == SpawnType.AllMap)
                 SpawnEnemies();
@@ -76,7 +90,7 @@ public class Spawn : MonoBehaviour
             if(activeEnemiesList.Count <= enemiesToSpawnQuantity / 3f)
             {
 
-                SpawnEnemies(quantityToSpawnOverTime, quantityToSpawnOverTime);
+                SpawnEnemiesWithQuantity(quantityToSpawnOverTime, quantityToSpawnOverTime);
 
             }
         }
@@ -102,6 +116,9 @@ public class Spawn : MonoBehaviour
             GameObject tempEnemy = Instantiate(enemiesPrefab, position, rotationToSpawn, enemiesParent.transform);
 
             Debug.Log("Going to set player obj");
+
+            if(instantiatedPlayer == null)
+                Debug.LogWarning("Player is null");
 
             tempEnemy.GetComponent<EnemyAI>().SetPlayerObject(instantiatedPlayer);
 
@@ -164,11 +181,11 @@ public class Spawn : MonoBehaviour
         List<Vector3> positionsToSpawn = new List<Vector3>();
         List<PathNode> walkableNodes = new List<PathNode>();
 
+        if (pathfinderInstance == null) Debug.Log("Pathfinder e nulo na funcao");
+
         MapGrid<PathNode> grid = pathfinderInstance.GetGrid();
 
-        //Debug.Log("Width : " + grid.GetWidth());
-        //Debug.Log("Height : " + grid.GetHeight());
-
+       
         for (int x = 0; x < grid.GetWidth(); x++)
         {
             for (int y = 0; y < grid.GetHeight(); y++)
@@ -228,8 +245,6 @@ public class Spawn : MonoBehaviour
 
                     if (hitInfo.collider.gameObject.tag == "Ground")
                     {
-                        //Debug.Log("World position : " + worldPosition);
-
                         Vector3 direction = hitInfo.point - worldPosition;
 
                         //Debug.DrawLine(worldPosition, worldPosition + Vector3.down * 100f, Color.blue, 100f);
@@ -329,10 +344,10 @@ public class Spawn : MonoBehaviour
 
     }
 
-    public void SpawnEnemies(int quantityToSpawn, int quantityToSpawnOverTime)
+    public void SpawnEnemiesWithQuantity(int quantityToSpawn, int quantityToSpawnOverTime)
     {
         Debug.LogWarning("Spawning " + quantityToSpawn + " enemies.");
-
+             
         this.quantityToSpawnOverTime = quantityToSpawnOverTime;
         enemiesToSpawnQuantity = quantityToSpawn;
 
@@ -340,6 +355,10 @@ public class Spawn : MonoBehaviour
 
         hasStartedSpawning = true;
 
+        Debug.Log("Spawn01 : " + ToSpawnEnemies);
+
     }
+
+
 
 }
