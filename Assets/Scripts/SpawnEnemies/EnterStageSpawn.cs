@@ -8,7 +8,11 @@ public class EnterStageSpawn : MonoBehaviour
     [SerializeField] int quantityTospawn;
     [SerializeField] int quantityToSpawnOverTime;
 
+    [SerializeField] SurvivalScript survivalScript;
+
     Spawn spawnScript;
+
+
 
     private void Start()
     {
@@ -21,6 +25,12 @@ public class EnterStageSpawn : MonoBehaviour
 
         if(other.tag == "Player")
         {
+
+            if(transform.parent.gameObject.name == "Stage3_Survive")
+            {
+                survivalScript.EnemiesKilled = 0;
+            }
+
             //Debug.Log("Colliding with player 01");
             spawnScript.SpawnEnemiesWithQuantity(quantityTospawn, quantityToSpawnOverTime);
             Collider collider = this.GetComponent<Collider>();

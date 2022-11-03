@@ -47,8 +47,8 @@ public class EnemyStatus : MonoBehaviour
 
         enemyManagerInstance.survivalScript.ZombieKilled();
 
-        gameObject.SetActive(false);
-        Destroy(gameObject);
+        //gameObject.SetActive(false);
+        //Destroy(gameObject);
 
     }
 

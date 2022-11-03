@@ -254,8 +254,11 @@ public class Spawn : MonoBehaviour
                         //Debug.DrawLine(worldPosition, worldPosition + Vector3.down * 100f, Color.blue, 100f);
                         //Debug.DrawLine(worldPosition, worldPosition + direction, Color.red, 100f);
 
-                        worldPosition.y = hitInfo.point.y + enemiesPrefab.transform.lossyScale.y / 2;
-                        canSpawn = true;
+                        worldPosition.y = hitInfo.point.y + enemiesPrefab.transform.lossyScale.y;
+
+                        if(Vector3.Distance(worldPosition, instantiatedPlayer.transform.position) >= 10f)
+                            canSpawn = true;
+
                     }
 
                 }
@@ -345,6 +348,7 @@ public class Spawn : MonoBehaviour
     {
 
         activeEnemiesList.Remove(enemyToRemove);
+        Destroy(enemyToRemove);
 
     }
 

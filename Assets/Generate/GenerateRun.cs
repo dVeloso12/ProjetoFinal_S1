@@ -136,13 +136,15 @@ public class GenerateRun : MonoBehaviour
 
         Vector3 finalGridPosition = pos + tempScript.gridOriginPositionOffset;
 
-        int width = tempScript.mapWidth / (int)tempGrid.GetCellSize()
-            , height = tempScript.mapHeight / (int)tempGrid.GetCellSize();
+        float cellSize = tempScript.cellSize;
+
+        int width = tempScript.mapWidth / (int)cellSize
+            , height = tempScript.mapHeight / (int)cellSize;
 
 
         Debug.Log("Final Grid Position : " + finalGridPosition);
 
-        Pathfinder.Instance.GetGrid().ResetGrid(width, height, finalGridPosition, groundCheck, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+        Pathfinder.Instance.GetGrid().ResetGrid(width, height, cellSize, finalGridPosition, groundCheck, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 
         
 

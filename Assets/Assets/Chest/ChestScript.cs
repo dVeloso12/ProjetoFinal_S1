@@ -38,12 +38,19 @@ public class ChestScript : MonoBehaviour
     {
         if (other.transform.name == "Player")
         {
+
             canUpgrade = true;
             canAppear = false;
             gameObject.GetComponent<Collider>().enabled = false;
 
             spawnScript.StopOverTimeSpawning();
-            spawnScript.activeEnemiesList.Clear();
+            //spawnScript.activeEnemiesList.Clear();
+
+            for(int i = 0; i < spawnScript.activeEnemiesList.Count; i++)
+            {
+                spawnScript.RemoveEnemiesFromList(spawnScript.activeEnemiesList[i]);
+            }
+
 
         }
     }
