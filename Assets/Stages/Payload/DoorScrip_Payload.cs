@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class DoorScrip_Payload : MonoBehaviour
 {
-    [SerializeField] GameObject payload;
+    [SerializeField] Payload payload;
     [SerializeField] ChestScript chest;
     bool doorOpened;
 
-
-
-
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
-        if(payload.GetComponent<PayloadScript>().PayloadCompleted && !doorOpened)
+        if(payload.Ended && !doorOpened)
         {
             this.gameObject.SetActive(false);
             doorOpened = true;
