@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 2104398893443273941}
   - component: {fileID: 3845287631868680745}
   - component: {fileID: 3637513578216900078}
-  - component: {fileID: 5842511662089049606}
-  - component: {fileID: 3342080638026472739}
   m_Layer: 0
   m_Name: Stage_Surv_2
   m_TagString: Untagged
@@ -118,47 +116,6 @@ MonoBehaviour:
   survivalDoor: {fileID: 2115862539085546582}
   nObjective: 5
   isSurvivalCompleted: 0
---- !u!114 &5842511662089049606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447175592040133888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d280427a9a2544e83915be10272ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3342080638026472739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447175592040133888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
 --- !u!1 &754035898734855016
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,8 +328,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5012299610166739931}
   - component: {fileID: 5012299610166739930}
+  - component: {fileID: -2298616763385690660}
   m_Layer: 0
-  m_Name: Stage3_Survive
+  m_Name: Stage3_Survive 1
   m_TagString: Terrain
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -412,6 +370,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageSize: {x: 165.359, y: 5.214, z: 0}
   Stage_Id: 3
+--- !u!114 &-2298616763385690660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012299610166739929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10476ffd9b1f1842891192fc4959c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startpos: {x: 0, y: 0, z: 0}
+  a: 1
 --- !u!1 &6907827855458171320
 GameObject:
   m_ObjectHideFlags: 0
@@ -835,6 +807,48 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -342022678739707196, guid: 1a9716868b6d8c849b8c3410721c641d, type: 3}
+--- !u!114 &500859561840614861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038453591526618866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d280427a9a2544e83915be10272ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: 0
+--- !u!114 &3604611273024020414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038453591526618866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 81.537025, y: 94.99631, z: 144.32393}
+  m_Center: {x: 31.448513, y: 10.97831, z: 67.161964}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 247
+  m_UseGeometry: 1
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!4 &6379125812927425608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a9716868b6d8c849b8c3410721c641d,

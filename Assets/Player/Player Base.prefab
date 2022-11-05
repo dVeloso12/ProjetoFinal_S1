@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23810298c1a14874c9de94c489636e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 4
+  playerSpeed: 20
   jumpForce: 3
   runningModifier: 2
   GroundCheck: {fileID: 2811287371117055073}
@@ -189,6 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHp: 100
   isdead: 0
+  mouseSensivity: 0
 --- !u!114 &-877147717488237420
 MonoBehaviour:
   m_ObjectHideFlags: 0

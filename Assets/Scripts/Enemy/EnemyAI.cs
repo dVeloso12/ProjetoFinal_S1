@@ -217,13 +217,9 @@ public class EnemyAI : MonoBehaviour
 
         if(shootingTimer > 1f / fireRate)
         {
-            //Shooting
             Debug.Log("Shooting");
-            //Debug.DrawLine(transform.position, transform.position + directionToLook, Color.red, 1f);
 
             bulletsParent.transform.LookAt(PlayerObject.transform);
-
-            Quaternion directionToShoot = new Quaternion(directionToLook.x, directionToLook.y, directionToLook.z, 1f);
 
             Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
 
