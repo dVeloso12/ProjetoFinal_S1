@@ -45,8 +45,11 @@ public class AssaultRifle : GunController
             {
                 Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
                 Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
+                hiteffect.transform.position = collisionDetected.point;
+                hiteffect.transform.forward = collisionDetected.normal;
+                hiteffect.Emit(1);
 
-                
+
                 if (collisionDetected.transform.tag == "Enemy")
                 {
                     //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);

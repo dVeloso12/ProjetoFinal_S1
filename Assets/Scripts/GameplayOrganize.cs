@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayOrganize : MonoBehaviour
-{
-   public GameObject saveStages,savelobby,saveshop;
+{   
     [Header("Player Stuff")]
     [SerializeField] GameObject Player;
     [Header("Stages Stuff")]
@@ -23,10 +22,11 @@ public class GameplayOrganize : MonoBehaviour
     public bool toGame;
     public bool goToStage;
     public bool goToShop;
+    bool saved;
+    [Header("Debug Stuff")]
     public GameObject playerIns;
     public GameObject saveBossRoom;
-    bool saved;
-
+    public GameObject saveStages, savelobby, saveshop;
     public static GameplayOrganize instance;
 
     private void Awake()

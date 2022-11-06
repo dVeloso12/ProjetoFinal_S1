@@ -615,6 +615,8 @@ MonoBehaviour:
   DashSpeed: 0
   DashCooldown: 0
   DashTime: 0
+  dashIcon: {fileID: 0}
+  fillAmount: 0
   cameraTransform: {fileID: 3030996923938829558}
 --- !u!143 &1064585651290926822
 CharacterController:
@@ -652,6 +654,10 @@ MonoBehaviour:
   speed: 0.4
   dist: 0
   projectile: 0
+  HookCooldown: 0
+  Timer: {fileID: 0}
+  Grapple: {fileID: 0}
+  fillAmount: 0
 --- !u!136 &1064585651290926820
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -679,12 +685,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 0}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3, type: 3}
   ShotingPlace: {fileID: 4288137825719502999}
   FireRate: 0.9
-  markSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
-    type: 3}
+  dmg: 0
+  ReloadSpeed: 0
+  AmmoClipSize: 0
   _camera: {fileID: 3030996923938829558}
+  Camera: {fileID: 0}
+  MarkSprite: {fileID: 0}
+  Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
 --- !u!114 &1064585651290926817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,9 +712,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 0}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 1238667338858886626, guid: c404821122f797045b587a4f398a9bf8, type: 3}
   ShotingPlace: {fileID: 4288137825719502999}
   FireRate: 2
+  dmg: 0
+  ReloadSpeed: 0
+  AmmoClipSize: 0
+  _camera: {fileID: 0}
+  Camera: {fileID: 0}
+  MarkSprite: {fileID: 0}
+  Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.03
   Pellets: 9
 --- !u!114 &1064585651290926816
@@ -716,9 +741,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 0}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 8647809537578768864, guid: a885da6cc889d25429be45deea72d839, type: 3}
   ShotingPlace: {fileID: 4288137825719502999}
   FireRate: 0.5
+  dmg: 0
+  ReloadSpeed: 0
+  AmmoClipSize: 0
+  _camera: {fileID: 0}
+  Camera: {fileID: 0}
+  MarkSprite: {fileID: 0}
+  Distance: 0
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.001
 --- !u!114 &1064585651290926830
 MonoBehaviour:
@@ -734,6 +770,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Granada: {fileID: 2890465971416483998, guid: 820ff90a5ec5f384ab835be2d71a348f, type: 3}
   place: {fileID: 3030996924214072825}
+  NadeCooldown: 0
+  GranadeIcon: {fileID: 0}
+  fillAmount: 0
 --- !u!1 &1361737656715231742
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,13 +881,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750050045473280197}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.99, y: 0.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.9900023, y: 0.8000001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3030996924214072825}
-  m_RootOrder: 0
+  m_Father: {fileID: 5670967567548730707}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!198 &1750050045473280192
 ParticleSystem:
@@ -1477,7 +1516,7 @@ ParticleSystem:
         m_RotationOrder: 4
   ShapeModule:
     serializedVersion: 6
-    enabled: 1
+    enabled: 0
     type: 8
     angle: 25
     length: 1
@@ -5871,7 +5910,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0746849, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -6381,9 +6420,7 @@ Transform:
   m_LocalScale: {x: 0.19999999, y: 0.4, z: 0.39999998}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1750050045473280198}
   - {fileID: 5670967567548730707}
-  - {fileID: 4288137825719502999}
   m_Father: {fileID: 3030996923938829558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 83.869, z: 0}
@@ -6825,13 +6862,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4288137825719502992}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.48, y: 0.87, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -2.480002, y: 0.87000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3030996924214072825}
-  m_RootOrder: 2
+  m_Father: {fileID: 5670967567548730707}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &4797731196916608184
 GameObject:
@@ -6949,8 +6986,10 @@ Transform:
   - {fileID: 3007613959910242804}
   - {fileID: 1998662368840484307}
   - {fileID: 3030996923303311331}
+  - {fileID: 1750050045473280198}
+  - {fileID: 4288137825719502999}
   m_Father: {fileID: 3030996924214072825}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5215562404490686678
 GameObject:

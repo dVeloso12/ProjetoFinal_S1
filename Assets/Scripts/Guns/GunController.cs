@@ -9,6 +9,8 @@ public class GunController : MonoBehaviour
 {
     
     [SerializeField] protected ParticleSystem muzzleFlash;
+    [SerializeField] protected ParticleSystem hiteffect;
+
 
     public GameObject bullet;
 
@@ -90,12 +92,12 @@ public class GunController : MonoBehaviour
 
         if (AimingDown)
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, DwonSights.localPosition, 3*Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, DwonSights.localPosition, 20*Time.deltaTime);
             SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, .6f*60,3*Time.deltaTime));
 
         }
         else
-            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 3 * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 20 * Time.deltaTime);
             SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, 60, 3 * Time.deltaTime));
     }
 
