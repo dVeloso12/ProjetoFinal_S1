@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BIgPipesSecondary
+    second: {fileID: 2100000, guid: af09942a335d16744ba8d6b77edff3d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BigPipesBase
+    second: {fileID: 2100000, guid: 0d6258cb5c7cf0c42bea9746fadcc4ab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: 4215ac7b3bdca8846a256a60bbc84e0a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GreenButton
+    second: {fileID: 2100000, guid: cb0344e5fd37ae64491b6c1122884647, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -19,6 +34,36 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Metal
     second: {fileID: 2100000, guid: 1024da94c54fb9f44b69ccfcedbb9848, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedButton
+    second: {fileID: 2100000, guid: 53b4e55e32779e340830235aa1533cea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Second Material
+    second: {fileID: 2100000, guid: 610aa7d548d4a5f44a46990afc247f8b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StageBaseColor
+    second: {fileID: 2100000, guid: f2062fec30f0084489544e1e4dd6d33c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VentiladorBaseColor
+    second: {fileID: 2100000, guid: 1d0ecf08ef1e34b4bbb6ca7784468426, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VentiladorRodaColor
+    second: {fileID: 2100000, guid: 8a0d321d18eede04dbdd1d96771146f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VentiladorSecondColor
+    second: {fileID: 2100000, guid: b8cddd3e1fad8d242aef07910add14b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
