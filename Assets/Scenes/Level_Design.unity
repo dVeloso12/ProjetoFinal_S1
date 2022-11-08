@@ -385,7 +385,7 @@ RectTransform:
   m_GameObject: {fileID: 63835781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.17840429, y: 0.17840429, z: 0.17840429}
+  m_LocalScale: {x: 0.07931071, y: 0.07931071, z: 0.07931071}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1080976917}
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  weaponType: 2
   FireRateMod: 1
   DamageMod: 1
   MoveSpeedMod: 1
@@ -11575,6 +11575,8 @@ MonoBehaviour:
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
   dmgText: {fileID: 0}
+  CritRate: 10
+  CritDmg: 1.5
 --- !u!136 &2425779209711533634
 CapsuleCollider:
   m_ObjectHideFlags: 0

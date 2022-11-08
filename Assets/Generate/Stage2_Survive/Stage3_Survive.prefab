@@ -429,7 +429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7313256753144141658
 Transform:
   m_ObjectHideFlags: 0
@@ -487,8 +487,8 @@ GameObject:
   m_Component:
   - component: {fileID: 159395485844098042}
   - component: {fileID: 6939519859072918949}
-  - component: {fileID: 6846480252719022981}
   - component: {fileID: 6793048705834506684}
+  - component: {fileID: 3184697264818408682}
   m_Layer: 0
   m_Name: SpawnCollider
   m_TagString: Untagged
@@ -524,21 +524,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 4, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6846480252719022981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7332632800022087648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec56822c48281c144baf9f1c00d5704c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quantityTospawn: 20
-  quantityToSpawnOverTime: 10
-  survivalScript: {fileID: 0}
 --- !u!54 &6793048705834506684
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -555,6 +540,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3184697264818408682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332632800022087648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 8686631361806460244, guid: 069ded4e0ecdca04181203b4673e10c1, type: 3}
+  activeEnemiesList: []
+  enemiesToSpawnQuantity: 2
+  ActivateSpawn: 0
+  areaName: DeffStage
 --- !u!1 &8009464338807910584
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1a9716868b6d8c849b8c3410721c641d,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a9716868b6d8c849b8c3410721c641d,
+        type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
@@ -835,47 +843,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -342022678739707196, guid: 1a9716868b6d8c849b8c3410721c641d, type: 3}
---- !u!114 &5449856214331433462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6038453591526618866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d280427a9a2544e83915be10272ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6545164640770807125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6038453591526618866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
 --- !u!4 &6379125812927425608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a9716868b6d8c849b8c3410721c641d,

@@ -6,7 +6,8 @@ using UnityEngine;
 public class Pistol : GunController
 {
 
-
+    [SerializeField] int CritRate=10;
+    [SerializeField] float CritDmg=1.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -27,11 +28,46 @@ public class Pistol : GunController
             Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
             Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
 
+            int r = UnityEngine.Random.Range(0, 100);
+
+
 
             if (collisionDetected.transform.tag == "Enemy")
             {
-                //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
-                collisionDetected.transform.GetComponent<EnemyStatus>().Damage(dmg * gm.DamageMod);
+                finaldmg = dmg * gm.DamageMod;
+                if (r < CritRate)
+                    finaldmg *= CritDmg;
+                collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+
+
+                Color color = Color.white;
+
+                GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                Quaternion.LookRotation(collisionDetected.normal));
+                dmgnum.transform.parent = collisionDetected.transform;
+                dmgnum.transform.Rotate(Vector3.up * 180);
+                if (r < CritRate)
+                    color = Color.yellow;
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color);
+            }
+
+            if (collisionDetected.transform.tag == "Head")
+            {
+                finaldmg = dmg * gm.HSMod * gm.DamageMod;
+                if (r < CritRate)
+                    finaldmg *= CritDmg;
+                collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+
+
+                Color color = Color.red;
+
+                GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                Quaternion.LookRotation(collisionDetected.normal));
+                dmgnum.transform.parent = collisionDetected.transform;
+                dmgnum.transform.Rotate(Vector3.up * 180);
+                if (r < CritRate)
+                    color = Color.cyan;
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color);
             }
 
             //Dano no Boss

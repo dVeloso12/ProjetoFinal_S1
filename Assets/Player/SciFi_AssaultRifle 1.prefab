@@ -497,7 +497,9 @@ MonoBehaviour:
   Distance: 30
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
-  dmgText: {fileID: 0}
+  dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
+  CritRate: 60
+  CritDmg: 1.5
 --- !u!114 &-8313886676532812766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +528,7 @@ MonoBehaviour:
   Distance: 10
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
-  dmgText: {fileID: 0}
+  dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
   RandomDeviation: 0.1
   Pellets: 9
 --- !u!114 &1400524774216878351
