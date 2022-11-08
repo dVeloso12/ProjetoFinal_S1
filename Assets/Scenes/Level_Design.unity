@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  FireRateMod: 0.3
-  DamageMod: 4
+  FireRateMod: 1
+  DamageMod: 1
   MoveSpeedMod: 1
   HSMod: 2
   Money: 0

@@ -557,7 +557,7 @@ MonoBehaviour:
   Distance: 50
   GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
-  dmgText: {fileID: 0}
+  dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
   RandomDeviation: 0.01
 --- !u!1 &1304499678792703638
 GameObject:

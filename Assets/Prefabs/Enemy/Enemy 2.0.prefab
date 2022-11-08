@@ -621,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2656431569202500175
 Transform:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ SphereCollider:
   m_GameObject: {fileID: 2855336980904198910}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.52
   m_Center: {x: 0, y: 0, z: 0}
@@ -2338,6 +2338,7 @@ GameObject:
   - component: {fileID: 7586319431831666836}
   - component: {fileID: -8750819944733779266}
   - component: {fileID: -3141984115702054479}
+  - component: {fileID: 3189725833204142546}
   m_Layer: 0
   m_Name: Enemy 2.0
   m_TagString: Enemy
@@ -2440,6 +2441,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e410b0e44b3ff04eb29a60cd494236e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  bulletsParent: {fileID: 0}
+  fireRate: 60
 --- !u!195 &-3141984115702054479
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2462,6 +2466,20 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &3189725833204142546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686631361806460244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8728195085443473880
 GameObject:
   m_ObjectHideFlags: 0

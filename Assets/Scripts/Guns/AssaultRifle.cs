@@ -53,14 +53,25 @@ public class AssaultRifle : GunController
                 if (collisionDetected.transform.tag == "Enemy")
                 {
                     //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
-                    collisionDetected.transform.GetComponent<EnemyStatus>().Damage(dmg * gm.DamageMod);
-                //    Instantiate(dmgText,collisionDetected.point + (collisionDetected.normal * .1f),
-                //Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
+                    finaldmg = dmg * gm.DamageMod;
+
+                    collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                    Quaternion.LookRotation(collisionDetected.normal));
+                    dmgnum.transform.parent = collisionDetected.transform;
+                    dmgnum.transform.Rotate(Vector3.up * 180);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red);
                 }
                 if (collisionDetected.transform.tag == "Head")
                 {
-                    //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
-                    collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(dmg*gm.HSMod* gm.DamageMod);
+                    finaldmg = dmg * gm.HSMod * gm.DamageMod;
+
+                    collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+
+                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                    Quaternion.LookRotation(collisionDetected.normal));
+                    dmgnum.transform.Rotate(Vector3.up * 180);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red);
                 }
                 //Dano no Boss
                 if (collisionDetected.transform.tag == "Boss")

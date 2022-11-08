@@ -33,7 +33,9 @@ public class Shotgun : GunController
             {
                 Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
                 Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
-                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * collisionDetected.distance, Color.green);
+                hiteffect.transform.position = collisionDetected.point;
+                hiteffect.transform.forward = collisionDetected.normal;
+                hiteffect.Emit(1);
 
 
                 if (collisionDetected.transform.tag == "Enemy")

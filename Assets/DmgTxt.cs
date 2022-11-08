@@ -6,6 +6,9 @@ public class DmgTxt : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]TextMeshPro text;
+    [SerializeField] float descSpeed;
+    [SerializeField] float timer;
+    [SerializeField] float alphaSpeed;
     void Start()
     {
         StartCoroutine(DestroySelf());
@@ -14,14 +17,20 @@ public class DmgTxt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= new Vector3(0, 1, 0);
-        text.alpha -= .01f;
+        transform.position -= new Vector3(0, descSpeed, 0);
+        text.alpha -= alphaSpeed;
     }
 
     IEnumerator DestroySelf()
     {
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(timer);
         Destroy(gameObject);
+    }
+
+    public void ChangeText(int dmg,Color color)
+    {
+        text.text = dmg.ToString();
+        text.color = color;
     }
 }

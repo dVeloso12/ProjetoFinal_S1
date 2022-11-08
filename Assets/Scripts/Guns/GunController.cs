@@ -54,7 +54,9 @@ public class GunController : MonoBehaviour
     bool AimingDown=false;
 
     public GameObject dmgText;
-    
+
+    protected float finaldmg;
+
     // Start is called before the first frame update
     protected void Start()
     {
