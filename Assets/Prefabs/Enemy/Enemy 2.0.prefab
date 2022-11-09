@@ -2441,9 +2441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e410b0e44b3ff04eb29a60cd494236e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 0}
-  bulletsParent: {fileID: 0}
-  fireRate: 60
+  bulletPrefab: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3,
+    type: 3}
+  bulletsParent: {fileID: 1172760818194972229}
+  fireRate: 0.2
 --- !u!195 &-3141984115702054479
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2458,7 +2459,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3.01
+  m_StoppingDistance: 20
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

@@ -36,12 +36,15 @@ public class Enemy_AI_2 : MonoBehaviour
     {
         shootingTimer += Time.deltaTime;
         navagent.SetDestination(player.position);
+
+        if (navagent.remainingDistance<navagent.stoppingDistance+1)
+            Shoot();
     }
 
 
 
 
-    public void Shoot(Vector3 directionToLook)
+    public void Shoot()
     {
 
         if (shootingTimer > 1f / fireRate)
