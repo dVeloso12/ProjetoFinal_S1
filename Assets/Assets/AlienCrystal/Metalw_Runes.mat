@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6377589858996553520
+--- !u!114 &-7204521219948555878
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoadBeamRIGHT
-  m_Shader: {fileID: -6465566751694194690, guid: f1b9ec1f9275ff4468a776b91dd14103,
+  m_Name: Metalw_Runes
+  m_Shader: {fileID: -6465566751694194690, guid: c0b58fed47be03741ad79eb7af679552,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -34,6 +34,26 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 432455c2baf4e1a47b846d9226b8aa8c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlienRunes:
+        m_Texture: {fileID: 2800000, guid: a8efa5d59137a59459e90edfa26a5713, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Metalic:
+        m_Texture: {fileID: 2800000, guid: 0d425a0048f000645b335bfd5e68214a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: be91e588b2a4d8940a2b1b98ce777770, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughtness:
+        m_Texture: {fileID: 2800000, guid: 344b33f7f643f9348bbf403d023f5f10, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -48,10 +68,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: -0.083637
+    - _Fill: 1.0009907
+    - _ObjectHeight: 2
+    - _Offset: -2.99
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _BaseColor: {r: 0.6698113, g: 0.29847577, b: 0.07266819, a: 0}
-    - _EmissionColor: {r: 1, g: 0.2720772, b: 0, a: 0}
+    - _Emission_Color: {r: 1.827451, g: 0, b: 0, a: 0}
+    - _Offeset: {r: 1, g: 1, b: 0, a: 0}
+    - _Tilling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

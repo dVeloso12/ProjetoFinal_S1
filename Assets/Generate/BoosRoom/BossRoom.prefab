@@ -1095,7 +1095,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b61b721b0d48df9409f21234e02a2910, type: 2}
+  - {fileID: 2100000, guid: 0e6633e1d9c8c6344aedc91d147a64bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlateLoad: {fileID: 2100000, guid: e46cc026ae04626409a40f96f2fd3025, type: 2}
-  BeamCrystal: {fileID: 2100000, guid: b61b721b0d48df9409f21234e02a2910, type: 2}
+  BeamCrystal: {fileID: 2100000, guid: 0e6633e1d9c8c6344aedc91d147a64bb, type: 2}
   CablePlate: {fileID: 2903940371250321012}
   plateCompleted: 0
   _resetValues: 0
@@ -4726,7 +4726,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf6757f67a591564aa31a387b38a437f, type: 2}
+  - {fileID: 2100000, guid: f26d77bc764c22a4a8eb977452f37865, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5110,7 +5110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlateLoad: {fileID: 2100000, guid: 83263abe1680e554880dc7554b25f8c7, type: 2}
-  BeamCrystal: {fileID: 2100000, guid: cf6757f67a591564aa31a387b38a437f, type: 2}
+  BeamCrystal: {fileID: 2100000, guid: f26d77bc764c22a4a8eb977452f37865, type: 2}
   CablePlate: {fileID: 7224488243781051167}
   plateCompleted: 0
   _resetValues: 0

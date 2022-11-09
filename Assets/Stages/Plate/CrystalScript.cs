@@ -12,13 +12,14 @@ public class CrystalScript : MonoBehaviour
     bool goingUp;
     float timer;
 
+    private void Start()
+    {
+        CrystalMat.SetFloat("_Fill",0f);
+    }
     // Update is called once per frame
     void Update()
-    {
-        if(FillPorc < 0) FillPorc = 0.01f;
-        else if(FillPorc > 1) FillPorc = 1.01f;
-
-        CrystalMat.SetFloat("_ProgressBorder", FillPorc*Speed);
+    { 
+        CrystalMat.SetFloat("_Fill", FillPorc);
         CrystalAnims();
 
     }
