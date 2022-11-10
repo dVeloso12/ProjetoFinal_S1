@@ -37,6 +37,14 @@ public class Enemy_AI_2 : MonoBehaviour
         shootingTimer += Time.deltaTime;
         navagent.SetDestination(player.position);
 
+        Vector3 directionToLook = (player.position - transform.position);
+        float angleDiference = Vector3.Angle(directionToLook.normalized, transform.forward);
+
+        if (angleDiference > .5f || angleDiference < -.5f)
+        {
+            transform.LookAt(player);
+        }
+
         if (navagent.remainingDistance<navagent.stoppingDistance+1)
             Shoot();
     }

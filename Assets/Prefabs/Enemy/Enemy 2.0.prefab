@@ -2444,7 +2444,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3,
     type: 3}
   bulletsParent: {fileID: 1172760818194972229}
-  fireRate: 0.2
+  fireRate: 0.5
 --- !u!195 &-3141984115702054479
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2455,7 +2455,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

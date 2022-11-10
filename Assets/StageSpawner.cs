@@ -18,6 +18,8 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] string areaName;
 
+    [SerializeField] Transform spawnpoint;
+
     void Start()
     {
         enemyManagerInstance = EnemyManager.Instance;
@@ -45,7 +47,7 @@ public class StageSpawner : MonoBehaviour
         for(int i = 0; i < enemiesToSpawnQuantity; i++)
         {
             Vector2 randomcircle = (Random.insideUnitCircle * 30);
-            Vector3 randomPoint = transform.position + new Vector3(randomcircle.x,0,randomcircle.y);
+            Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
             bool sucess=false;
             int f = 60;
             while(f>0&&!sucess)
@@ -53,8 +55,8 @@ public class StageSpawner : MonoBehaviour
                     
                 f--;
                 Debug.Log(f + "Attempt: " + randomPoint+ "   "+ NavMesh.GetAreaFromName(areaName));
-                randomcircle = (Random.insideUnitCircle * 30);
-                randomPoint = transform.position + new Vector3(randomcircle.x,0,randomcircle.y);
+                randomcircle = (Random.insideUnitCircle * 70);
+                randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
                 if (NavMesh.SamplePosition(randomPoint, out hit, 4,-1))
                 {
                    sucess = true;
