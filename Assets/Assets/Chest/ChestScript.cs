@@ -15,7 +15,7 @@ public class ChestScript : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
         gm = FindObjectOfType<GameManager>();
-
+        canAppear = false;
         spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
     }
     void Update()

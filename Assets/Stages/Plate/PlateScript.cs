@@ -9,6 +9,7 @@ public class PlateScript : MonoBehaviour
     bool startedPlate;
     [SerializeField] float IncreaseAmout; //0.3f
     [SerializeField] public bool PlateCompleted;
+    [SerializeField] ChestScript Chest;
 
     public float PlatePorc;
     int enterPlateTimes;
@@ -27,6 +28,10 @@ public class PlateScript : MonoBehaviour
         {
             PlateCompleted = true;
             PlatePorc = 0f;
+        }
+        if(PlateCompleted)
+        {
+            Chest.canAppear = true;
         }
     }
     private void OnTriggerEnter(Collider other)

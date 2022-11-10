@@ -339,7 +339,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &154963916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1874,6 +1874,8 @@ MonoBehaviour:
   Boss: {fileID: 0}
   isAlive: 1
   detect: {fileID: 0}
+  HpBar: {fileID: 0}
+  showUI: 0
 --- !u!4 &1619080668
 Transform:
   m_ObjectHideFlags: 0
@@ -2062,7 +2064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1959211333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2075,11 +2077,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponType: 0
   FireRateMod: 1
   DamageMod: 1
   MoveSpeedMod: 1
+  HSMod: 2
   Money: 0
   Upgrades: []
+  GeneralUpgrades: []
+  WeaponUpgrades: []
+  gameState: 0
 --- !u!4 &1959211334
 Transform:
   m_ObjectHideFlags: 0
@@ -2614,6 +2621,8 @@ MonoBehaviour:
   Granada: {fileID: 2890465971416483998, guid: 820ff90a5ec5f384ab835be2d71a348f, type: 3}
   place: {fileID: 6861929995391925797}
   NadeCooldown: 8
+  GranadeIcon: {fileID: 0}
+  fillAmount: 0
 --- !u!33 &1411825197474015722
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -9268,7 +9277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &6504896649690765626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9671,7 +9680,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.023084, y: 1}
+    m_SensorSize: {x: 1.7765191, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10301,6 +10310,8 @@ MonoBehaviour:
   DashSpeed: 100
   DashCooldown: 2
   DashTime: 0.1
+  dashIcon: {fileID: 0}
+  fillAmount: 0
   cameraTransform: {fileID: 6504896649455123529}
 --- !u!1 &9119896650073384364
 GameObject:
@@ -10340,6 +10351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2955657545486255788}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3, type: 3}
   ShotingPlace: {fileID: 6861929995391925797}
   FireRate: 0.9
@@ -10347,9 +10359,15 @@ MonoBehaviour:
   ReloadSpeed: 0.3
   AmmoClipSize: 10
   _camera: {fileID: 6504896649455123529}
+  Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 30
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
+  CritRate: 10
+  CritDmg: 1.5
 --- !u!143 &9119896650073384537
 CharacterController:
   m_ObjectHideFlags: 0
@@ -10388,6 +10406,8 @@ MonoBehaviour:
   projectile: 0
   HookCooldown: 5
   Timer: {fileID: 0}
+  Grapple: {fileID: 0}
+  fillAmount: 0
 --- !u!114 &9119896650073384542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10401,6 +10421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2955657545486255788}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 1238667338858886626, guid: c404821122f797045b587a4f398a9bf8, type: 3}
   ShotingPlace: {fileID: 6861929995391925797}
   FireRate: 2
@@ -10408,9 +10429,13 @@ MonoBehaviour:
   ReloadSpeed: 1
   AmmoClipSize: 6
   _camera: {fileID: 6504896649455123529}
+  Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 10
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.1
   Pellets: 9
 --- !u!114 &9119896650073384543
@@ -10426,6 +10451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2955657545486255788}
+  hiteffect: {fileID: 0}
   bullet: {fileID: 8647809537578768864, guid: a885da6cc889d25429be45deea72d839, type: 3}
   ShotingPlace: {fileID: 6861929995391925797}
   FireRate: 0.5
@@ -10433,9 +10459,13 @@ MonoBehaviour:
   ReloadSpeed: 0.8
   AmmoClipSize: 30
   _camera: {fileID: 6504896649455123529}
+  Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 50
+  GunPos: {fileID: 0}
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 0}
   RandomDeviation: 0.01
 --- !u!1 &9133375194574590319
 GameObject:

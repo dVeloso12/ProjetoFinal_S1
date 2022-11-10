@@ -2344,6 +2344,7 @@ MonoBehaviour:
   Crystal: {fileID: 1577611807}
   IncreaseAmout: 3
   PlateCompleted: 0
+  Chest: {fileID: 0}
   PlatePorc: 0
 --- !u!65 &737289663
 BoxCollider:
