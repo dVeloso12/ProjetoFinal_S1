@@ -707,7 +707,7 @@ MonoBehaviour:
   Player: {fileID: 6504896650162048298, guid: bc0a64542fa007743b4664b1a628927a, type: 3}
   StageRender: {fileID: 7642057016816043298, guid: 34efefea8bb7e014ba3e1b119d3f07ec,
     type: 3}
-  PlayerStageSpawn: {x: -107.5, y: 29, z: 0}
+  PlayerStageSpawn: {x: 302.5, y: -2.71, z: 0.57}
   Looby: {fileID: 429777246018059791, guid: 77c44dc6b87042d40838536c501a0f99, type: 3}
   LobbySpawnPos: {x: 0, y: -658, z: -452}
   PlayerLobbySpawn: {x: 0, y: -658, z: -452}

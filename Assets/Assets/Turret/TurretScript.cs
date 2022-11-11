@@ -26,12 +26,15 @@ public class TurretScript : MonoBehaviour
     [SerializeField] Image HpBar;
     public bool showUI;
 
+    public Vector3 ofseet;
+
     private void Start()
     {
         bosscp = Boss.GetComponent<BossScript>();
-        saveMaxHp = TurretHp;
+        saveMaxHp = TurretHp;        
         HpBar.enabled = false;
         HpBar.fillAmount = 1f;
+
     }
     private void Update()
     {
@@ -64,7 +67,7 @@ public class TurretScript : MonoBehaviour
 
         if(HpBar.enabled)
         {
-            HpBar.gameObject.gameObject.transform.rotation = Quaternion.LookRotation(HpBar.gameObject.gameObject.transform.position - Camera.main.transform.position);
+            HpBar.gameObject.gameObject.transform.rotation = Quaternion.LookRotation(HpBar.gameObject.gameObject.transform.position + ofseet - Camera.main.transform.position);
         }
         
       
@@ -99,7 +102,7 @@ public class TurretScript : MonoBehaviour
         if (barrel != null)
         {
             //float angleX = vector3AngleOnPlane(target.position, transform.position, -transform.right, transform.forward);
-            float angleX = vector3AngleOnPlane(target.position, barrel.position, -transform.right, transform.forward);
+            float angleX = vector3AngleOnPlane(target.position - ofseet , barrel.position, -transform.right, transform.forward);
 
             Vector3 rotationX = new Vector3(angleX, 0, 0);
             barrel.localRotation = Quaternion.Euler(rotationX);
