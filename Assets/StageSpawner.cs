@@ -12,7 +12,8 @@ public class StageSpawner : MonoBehaviour
     GameObject instantiatedPlayer;
     public List<GameObject> activeEnemiesList;
 
-    [SerializeField] int enemiesToSpawnQuantity;
+    [SerializeField] float timertoSpwan;
+    [SerializeField] int maxQuantity, enemiesToSpawnQuantity,distance;
 
     [SerializeField] bool ActivateSpawn = false;
 
@@ -50,12 +51,12 @@ public class StageSpawner : MonoBehaviour
             Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
             bool sucess=false;
             int f = 60;
-            while(f>0&&!sucess)
+            while (!sucess&&f>0)
             {
-                    
+
                 f--;
-                Debug.Log(f + "Attempt: " + randomPoint+ "   "+ NavMesh.GetAreaFromName(areaName));
-                randomcircle = (Random.insideUnitCircle * 70);
+                Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                randomcircle = (Random.insideUnitCircle * distance);
                 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
                 if (NavMesh.SamplePosition(randomPoint, out hit, 4,-1))
                 {

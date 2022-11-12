@@ -77,6 +77,8 @@ GameObject:
   - component: {fileID: 4104556775490440180}
   - component: {fileID: 2239036588650086206}
   - component: {fileID: 2765825422158309315}
+  - component: {fileID: 6860874295415995468}
+  - component: {fileID: 9152405314691044734}
   m_Layer: 0
   m_Name: Stage_Deff (1)
   m_TagString: Untagged
@@ -166,6 +168,47 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 636940614925977330, guid: 1cf1b74e7fcd1c549b8cf9c67602b643, type: 3}
+--- !u!114 &6860874295415995468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293397643507834603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!114 &9152405314691044734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293397643507834603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d280427a9a2544e83915be10272ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &846282552990042285
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +339,7 @@ Transform:
   - {fileID: 3836181309183219693}
   - {fileID: 3659787887335058207}
   - {fileID: 2867226122529004592}
+  - {fileID: 2924131090228564773}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -447,6 +491,37 @@ MonoBehaviour:
   FillPorc: 0
   Speed: 1
   StartAnim: 0
+--- !u!1 &2454061918390989287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2924131090228564773}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2924131090228564773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2454061918390989287}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 28.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 846282554252985857}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3464117601073166122
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +782,7 @@ MonoBehaviour:
   Crystal: {fileID: 2073698889788779828}
   IncreaseAmout: 10
   PlateCompleted: 0
+  Chest: {fileID: 0}
   PlatePorc: 0
 --- !u!1 &4579286648533682570
 GameObject:
@@ -832,15 +908,15 @@ GameObject:
   m_Component:
   - component: {fileID: 3836181309183219693}
   - component: {fileID: 2873368760681747010}
-  - component: {fileID: 5951639638958516662}
   - component: {fileID: 2329534688135767103}
+  - component: {fileID: 2627821412647053385}
   m_Layer: 0
   m_Name: SpawnCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3836181309183219693
 Transform:
   m_ObjectHideFlags: 0
@@ -849,7 +925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5553270228054852198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.59, z: 0}
+  m_LocalPosition: {x: 0, y: 3.59, z: -0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -869,21 +945,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 7, z: 8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5951639638958516662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5553270228054852198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec56822c48281c144baf9f1c00d5704c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quantityTospawn: 9
-  quantityToSpawnOverTime: 5
-  survivalScript: {fileID: 0}
 --- !u!54 &2329534688135767103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -900,6 +961,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2627821412647053385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553270228054852198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 8686631361806460244, guid: 069ded4e0ecdca04181203b4673e10c1, type: 3}
+  activeEnemiesList: []
+  timertoSpwan: 0
+  maxQuantity: 0
+  enemiesToSpawnQuantity: 3
+  distance: 30
+  ActivateSpawn: 0
+  areaName: 
+  spawnpoint: {fileID: 2924131090228564773}
 --- !u!1 &6260724957896555402
 GameObject:
   m_ObjectHideFlags: 0
