@@ -41,13 +41,13 @@ public class EnemyStatus : MonoBehaviour
     private void Death()
     {
 
-        enemyManagerInstance.DeActivateEnemy(gameObject);
+        //enemyManagerInstance.DeActivateEnemy(gameObject);
 
-        spawnScript.RemoveEnemiesFromList(gameObject);
+        //spawnScript.RemoveEnemiesFromList(gameObject);
 
-        enemyManagerInstance.survivalScript.ZombieKilled();
+        //enemyManagerInstance.survivalScript.ZombieKilled();
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
         //Destroy(gameObject);
 
     }

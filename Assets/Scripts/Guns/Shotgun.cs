@@ -28,6 +28,9 @@ public class Shotgun : GunController
             ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
+            Vector3 textPos=Vector3.zero;
+            float textDmg = 0;
+            int head = 0, body = 0;
 
             if (Physics.Raycast(_camera.position, ShootDir, out collisionDetected, Distance))
             {
@@ -37,16 +40,42 @@ public class Shotgun : GunController
                 hiteffect.transform.forward = collisionDetected.normal;
                 hiteffect.Emit(1);
 
-
                 if (collisionDetected.transform.tag == "Enemy")
                 {
-                    //collisionDetected.transform.GetComponent<EnemyManager>().ETakeDmg(dmg * gm.DamageMod);
-                    collisionDetected.transform.GetComponent<EnemyStatus>().Damage(dmg * gm.DamageMod);
+
+
+                    finaldmg = dmg * gm.DamageMod;
+                    if (textPos == Vector3.zero)
+                        textPos = collisionDetected.point;
+                        collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                   Quaternion.LookRotation(collisionDetected.normal));
+                    dmgnum.transform.parent = collisionDetected.transform;
+                    dmgnum.transform.Rotate(Vector3.up * 180);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white);
+                    textDmg += finaldmg;
+                    body++;
 
                 }
 
-                //Dano no Boss
-                if(collisionDetected.transform.tag == "Boss")
+                if (collisionDetected.transform.tag == "Head")
+                {
+                    finaldmg = dmg * gm.HSMod * gm.DamageMod;
+                    if (textPos == Vector3.zero)
+                        textPos = collisionDetected.point;
+                    collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
+                    Quaternion.LookRotation(collisionDetected.normal));
+                    dmgnum.transform.parent = collisionDetected.transform;
+                    dmgnum.transform.Rotate(Vector3.up * 180);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red);
+
+                    textDmg += finaldmg;
+                    head++;
+                }
+
+                    //Dano no Boss
+                    if (collisionDetected.transform.tag == "Boss")
                 {
 
                     collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject,base.dmg * gm.DamageMod); 
@@ -56,6 +85,8 @@ public class Shotgun : GunController
                 {
                     collisionDetected.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
+
+                
 
             }
         }

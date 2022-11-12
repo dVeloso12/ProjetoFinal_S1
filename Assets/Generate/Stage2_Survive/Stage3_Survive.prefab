@@ -509,8 +509,7 @@ Transform:
   m_LocalPosition: {x: 19.3, y: 18.06, z: 33.73}
   m_LocalScale: {x: 4.057209, y: 3.5216537, z: 2.6267943}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7313256753144141658}
+  m_Children: []
   m_Father: {fileID: 5012299610166739931}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -635,71 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d280427a9a2544e83915be10272ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6907827855458171320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7313256753144141658}
-  - component: {fileID: 4128303200526626635}
-  - component: {fileID: 2477845792831601872}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &7313256753144141658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907827855458171320}
-  m_LocalRotation: {x: -0, y: -0, z: 0.28516987, w: 0.9584771}
-  m_LocalPosition: {x: 0, y: -0.52, z: 0}
-  m_LocalScale: {x: 1.0410663, y: 0.9565302, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6115168913207433599}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4128303200526626635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907827855458171320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1d082d91d488d489eef1f147c836f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapWidth: 170
-  mapHeight: 70
-  mapCenter: {x: 229.4987, y: -133.8466, z: -157.5218}
-  cellSize: 6
-  drawGizmos: 0
-  RaycastHeight: 7
-  gridOriginPositionOffset: {x: 0, y: -35, z: 0}
---- !u!65 &2477845792831601872
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6907827855458171320}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7332632800022087648
 GameObject:
   m_ObjectHideFlags: 0
