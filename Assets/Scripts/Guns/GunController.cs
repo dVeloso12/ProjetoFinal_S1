@@ -57,6 +57,8 @@ public class GunController : MonoBehaviour
 
     protected float finaldmg;
 
+    protected bool Modifier = false;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -69,6 +71,8 @@ public class GunController : MonoBehaviour
 
         playerInput.Player.Aim.performed += AimDown;
         playerInput.Player.Aim.canceled += AimDown;
+        playerInput.Player.Modifier.performed += _Modifier;
+        playerInput.Player.Modifier.canceled += _Modifier;
 
         FireRateCounting = FireRate;
 
@@ -149,5 +153,10 @@ public class GunController : MonoBehaviour
     public virtual void AimDown(InputAction.CallbackContext obj)
     {
         AimingDown = !AimingDown;
+    }
+
+    public virtual void _Modifier(InputAction.CallbackContext obj)
+    {
+        Modifier = !Modifier;
     }
 }

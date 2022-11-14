@@ -134,6 +134,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6deedea-78f7-428e-9fd1-7062ffee110f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -312,6 +321,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Heal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3dd00624-13b3-41bc-8a9e-397bdfea8271"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Modifier"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -332,6 +352,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_Modifier = m_Player.FindAction("Modifier", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +424,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_Modifier;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -419,6 +441,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @Modifier => m_Wrapper.m_Player_Modifier;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -464,6 +487,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
                 @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Modifier.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
+                @Modifier.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
+                @Modifier.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -504,6 +530,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Heal.started += instance.OnHeal;
                 @Heal.performed += instance.OnHeal;
                 @Heal.canceled += instance.OnHeal;
+                @Modifier.started += instance.OnModifier;
+                @Modifier.performed += instance.OnModifier;
+                @Modifier.canceled += instance.OnModifier;
             }
         }
     }
@@ -522,5 +551,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+        void OnModifier(InputAction.CallbackContext context);
     }
 }

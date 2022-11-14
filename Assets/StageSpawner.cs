@@ -74,5 +74,6 @@ public class StageSpawner : MonoBehaviour
     {
         if(other.tag=="Player")
         SpawnEnemies();
+        gameObject.SetActive(false);
     }
 }

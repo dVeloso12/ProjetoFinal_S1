@@ -20,7 +20,14 @@ public class Shotgun : GunController
 
     protected override void Shoot()
     {
-        for (int i = 0; i < Pellets; i++)
+        int qauntity = Pellets;
+        if (Modifier)
+        {
+            qauntity *= Ammo;
+            Ammo = 0;
+        }
+
+        for (int i = 0; i < qauntity; i++)
         {
             Vector3 ShootDir = _camera.forward;
 
@@ -45,15 +52,15 @@ public class Shotgun : GunController
 
 
                     finaldmg = dmg * gm.DamageMod;
-                    if (textPos == Vector3.zero)
-                        textPos = collisionDetected.point;
-                        collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                   
                     GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
                    Quaternion.LookRotation(collisionDetected.normal));
                     dmgnum.transform.parent = collisionDetected.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
                     dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white);
                     textDmg += finaldmg;
+                    collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+
                     body++;
 
                 }
