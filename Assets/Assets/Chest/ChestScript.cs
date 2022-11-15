@@ -51,7 +51,7 @@ public class ChestScript : MonoBehaviour
                 spawnScript.RemoveEnemiesFromList(spawnScript.activeEnemiesList[i]);
             }
 
-
+            //Destroy(gameObject);
         }
     }
 }

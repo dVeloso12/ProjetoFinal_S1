@@ -68,7 +68,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: 0
+    - _Fill: 1.0009907
     - _ObjectHeight: 2
     - _Offset: -2.99
     - _QueueControl: 0

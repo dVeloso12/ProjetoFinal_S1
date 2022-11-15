@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     public int gameState;
 
+
     private void Awake()
     {
         playerInput = new PlayerInput();

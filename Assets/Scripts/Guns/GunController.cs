@@ -12,7 +12,7 @@ public class GunController : MonoBehaviour
     [SerializeField] protected ParticleSystem hiteffect;
 
 
-    public GameObject bullet;
+    //public GameObject bullet;
 
     public Transform ShotingPlace;
 
@@ -47,7 +47,7 @@ public class GunController : MonoBehaviour
 
     public float Distance;
 
-    public Transform GunPos,DwonSights;
+    public Transform DwonSights;
 
     Transform origin;
 
@@ -69,8 +69,7 @@ public class GunController : MonoBehaviour
         playerInput.Player.Shoot.performed += ActivateShoot;
         playerInput.Player.Reload.performed += ActivateReload;
 
-        playerInput.Player.Aim.performed += AimDown;
-        playerInput.Player.Aim.canceled += AimDown;
+        
         playerInput.Player.Modifier.performed += _Modifier;
         playerInput.Player.Modifier.canceled += _Modifier;
 
@@ -84,7 +83,7 @@ public class GunController : MonoBehaviour
 
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
 
-        origin = GunPos;
+        //origin = GunPos;
 
     }
 
@@ -96,19 +95,11 @@ public class GunController : MonoBehaviour
 
         FireRateCounting -= Time.deltaTime;
 
-        if (AimingDown)
-        {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, DwonSights.localPosition, 20*Time.deltaTime);
-            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, .6f*60,3*Time.deltaTime));
-
-        }
-        else
-            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 20 * Time.deltaTime);
-            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, 60, 3 * Time.deltaTime));
+        AimDown();
     }
 
 
-    void SetFOV(float fov)
+    protected void SetFOV(float fov)
     {
        Camera.m_Lens.FieldOfView = fov;
     }
@@ -150,9 +141,18 @@ public class GunController : MonoBehaviour
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 
-    public virtual void AimDown(InputAction.CallbackContext obj)
+    public virtual void AimDown()
     {
-        AimingDown = !AimingDown;
+        if (Modifier)
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, DwonSights.localPosition, 20 * Time.deltaTime);
+            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, .7f * 60, 3 * Time.deltaTime));
+        }
+        else
+        {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, 20 * Time.deltaTime);
+            SetFOV(Mathf.Lerp(Camera.m_Lens.FieldOfView, 60, 3 * Time.deltaTime));
+        }
     }
 
     public virtual void _Modifier(InputAction.CallbackContext obj)

@@ -24,7 +24,7 @@ public class Shotgun : GunController
         if (Modifier)
         {
             qauntity *= Ammo;
-            Ammo = 0;
+            Ammo = 1;
         }
 
         for (int i = 0; i < qauntity; i++)

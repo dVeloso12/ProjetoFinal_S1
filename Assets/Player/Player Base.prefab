@@ -263,8 +263,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811287370881411347}
-  m_LocalRotation: {x: -0.058481075, y: -0.8993798, z: 0.12697989, w: -0.41421276}
-  m_LocalPosition: {x: 15.09, y: 4.05, z: 274.57}
+  m_LocalRotation: {x: -0.14950132, y: -0.73880607, z: -0.17433071, w: 0.63358015}
+  m_LocalPosition: {x: -8.7301235, y: 27.829678, z: -98.65447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -297,7 +297,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 59.99994
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -518,6 +518,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8313886676532812766, guid: 5ad51f4afe32e4a48820eecb7b761bef,
         type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -8313886676532812766, guid: 5ad51f4afe32e4a48820eecb7b761bef,
+        type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 2811287370881411346}
@@ -530,7 +535,7 @@ PrefabInstance:
         type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 66120717033671080}
     - target: {fileID: -8313886676532812766, guid: 5ad51f4afe32e4a48820eecb7b761bef,
         type: 3}
       propertyPath: ShotingPlace
@@ -610,12 +615,17 @@ PrefabInstance:
         type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 66120717033671080}
     - target: {fileID: 1400524774216878351, guid: 5ad51f4afe32e4a48820eecb7b761bef,
         type: 3}
       propertyPath: ShotingPlace
       value: 
       objectReference: {fileID: 2485919959757482878}
+    - target: {fileID: 4131942898972728604, guid: 5ad51f4afe32e4a48820eecb7b761bef,
+        type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4131942898972728604, guid: 5ad51f4afe32e4a48820eecb7b761bef,
         type: 3}
       propertyPath: _camera
@@ -630,7 +640,7 @@ PrefabInstance:
         type: 3}
       propertyPath: muzzleFlash
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 66120717033671080}
     - target: {fileID: 4131942898972728604, guid: 5ad51f4afe32e4a48820eecb7b761bef,
         type: 3}
       propertyPath: ShotingPlace
@@ -638,6 +648,12 @@ PrefabInstance:
       objectReference: {fileID: 2485919959757482878}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad51f4afe32e4a48820eecb7b761bef, type: 3}
+--- !u!198 &66120717033671080 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2441485199421648744, guid: 5ad51f4afe32e4a48820eecb7b761bef,
+    type: 3}
+  m_PrefabInstance: {fileID: 2381011857846609600}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2667443019034001956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 292633784408253668, guid: 5ad51f4afe32e4a48820eecb7b761bef,

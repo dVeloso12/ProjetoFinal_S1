@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.900097, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -329,11 +329,6 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
-    - target: {fileID: 1755437967490890716, guid: 42a59c3f6e7451540a5d4ee3e4790665,
-        type: 3}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 9056549188977440898}
     - target: {fileID: 2485919959757482878, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: m_RootOrder
@@ -419,16 +414,16 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
-    - target: {fileID: 3284295893118354146, guid: 42a59c3f6e7451540a5d4ee3e4790665,
-        type: 3}
-      propertyPath: muzzleFlash
-      value: 
-      objectReference: {fileID: 9056549188977440898}
     - target: {fileID: 3631208033975300047, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 3631208033975300047, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: SniperMult
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3631208033975300047, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: muzzleFlash

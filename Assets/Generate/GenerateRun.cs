@@ -107,56 +107,56 @@ public class GenerateRun : MonoBehaviour
         return stageNumbers;
     }
 
-    private void ResetMapGrid()
-    {
+    //private void ResetMapGrid()
+    //{
 
-        Vector3 pos = stageStartPositions[currentStage];
-        GameObject stage = stagesOrder[currentStage];
+    //    Vector3 pos = stageStartPositions[currentStage];
+    //    GameObject stage = stagesOrder[currentStage];
 
-        GameObject groundCheck = null;
+    //    GameObject groundCheck = null;
 
-        foreach (Transform obj in stage.GetComponentsInChildren<Transform>())
-        {
-            if(obj.name == "GroundCheck")
-            {
-                groundCheck = obj.gameObject;
-            }
-        }
+    //    foreach (Transform obj in stage.GetComponentsInChildren<Transform>())
+    //    {
+    //        if(obj.name == "GroundCheck")
+    //        {
+    //            groundCheck = obj.gameObject;
+    //        }
+    //    }
 
-        if(groundCheck == null)
-        {
-            Debug.Log("Ground check e nulo. (Ao dar reset da grid)");
-            return;
-        }
-
-
-
-        NodeGroundCheck tempScript = groundCheck.GetComponent<NodeGroundCheck>();
-        MapGrid<PathNode> tempGrid = Pathfinder.Instance.GetGrid();
-
-        Vector3 finalGridPosition = pos + tempScript.gridOriginPositionOffset;
-
-        float cellSize = tempScript.cellSize;
-
-        int width = tempScript.mapWidth / (int)cellSize
-            , height = tempScript.mapHeight / (int)cellSize;
+    //    if(groundCheck == null)
+    //    {
+    //        Debug.Log("Ground check e nulo. (Ao dar reset da grid)");
+    //        return;
+    //    }
 
 
-        Debug.Log("Final Grid Position : " + finalGridPosition);
 
-        Pathfinder.Instance.GetGrid().ResetGrid(width, height, cellSize, finalGridPosition, groundCheck, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
+    //    NodeGroundCheck tempScript = groundCheck.GetComponent<NodeGroundCheck>();
+    //    MapGrid<PathNode> tempGrid = Pathfinder.Instance.GetGrid();
+
+    //    Vector3 finalGridPosition = pos + tempScript.gridOriginPositionOffset;
+
+    //    float cellSize = tempScript.cellSize;
+
+    //    int width = tempScript.mapWidth / (int)cellSize
+    //        , height = tempScript.mapHeight / (int)cellSize;
+
+
+    //    Debug.Log("Final Grid Position : " + finalGridPosition);
+
+    //    Pathfinder.Instance.GetGrid().ResetGrid(width, height, cellSize, finalGridPosition, groundCheck, (MapGrid<PathNode> g, int x, int y) => new PathNode(g, x, y));
 
         
 
-    }
+    //}
 
     public void PassedDoor()
     {
         currentStage++;
         Debug.Log("Current Stage : " + currentStage);
-        ResetMapGrid();
+        //ResetMapGrid();
 
-        enemiesManagerInstantiated.GetComponent<Spawn>().StartOvertTimeSpawning();
+        //enemiesManagerInstantiated.GetComponent<Spawn>().StartOvertTimeSpawning();
 
     }
 

@@ -782,7 +782,7 @@ MonoBehaviour:
   Crystal: {fileID: 2073698889788779828}
   IncreaseAmout: 10
   PlateCompleted: 0
-  Chest: {fileID: 0}
+  Chest: {fileID: 2316427097686792164}
   PlatePorc: 0
 --- !u!1 &4579286648533682570
 GameObject:
