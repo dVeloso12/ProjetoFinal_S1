@@ -33,7 +33,7 @@ public class AssaultRifle : GunController
     {
 
             shoot = !shoot;
-            Debug.Log("Ãsd");
+            //Debug.Log("Ãsd");
 
 
     }
@@ -118,11 +118,11 @@ public class AssaultRifle : GunController
                 hiteffect.Emit(1);
 
                 TrailRenderer trail = Instantiate(btrail, ShotingPlace.position, Quaternion.identity);
-                StartCoroutine(SpawnTrail(trail, collisionDetected));
+                StartCoroutine(SpawnTrail(trail, collisionDetected.point));
 
                 if (collisionDetected.transform.tag == "Enemy")
                 {
-                    finaldmg = dmg * gm.DamageMod*SniperMult;
+                    finaldmg = dmg * gm.DamageMod * SniperMult;
                     collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
 
@@ -135,7 +135,7 @@ public class AssaultRifle : GunController
 
                 if (collisionDetected.transform.tag == "Head")
                 {
-                    finaldmg = dmg * gm.HSMod * gm.DamageMod*SniperMult;
+                    finaldmg = dmg * gm.HSMod * gm.DamageMod * SniperMult;
                     collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
 
 
@@ -157,6 +157,12 @@ public class AssaultRifle : GunController
                 }
 
             }
+            //else
+            //{
+            //    TrailRenderer trail = Instantiate(btrail, ShotingPlace.position, Quaternion.identity);
+            //    StartCoroutine(SpawnTrail(trail, ShootDir));
+            //}
+
             base.Shoot();
 
         }
@@ -200,10 +206,12 @@ public class AssaultRifle : GunController
     IEnumerator ActivateScope()
     {
         yield return new WaitForSeconds(.2f);
-        SetFOV(.3f * 60);
-        scope.SetActive(true);
-        Gun.SetActive(false);
-
+        if (Modifier)
+        {
+            SetFOV(.3f * 60);
+            scope.SetActive(true);
+            Gun.SetActive(false);
+        }
     }
     void DeactivateScope()
     {
@@ -212,7 +220,7 @@ public class AssaultRifle : GunController
         Gun.SetActive(true);
     }
 
-    IEnumerator SpawnTrail(TrailRenderer trail,RaycastHit hit)
+    IEnumerator SpawnTrail(TrailRenderer trail,Vector3 hit)
     {
         float time = 0;
         Vector3 startpos = trail.transform.position;
@@ -223,7 +231,7 @@ public class AssaultRifle : GunController
             yield return null;
 
         //}
-        trail.transform.position = hit.point;
+        trail.transform.position = hit;
 
         Destroy(trail.gameObject, trail.time);
     }

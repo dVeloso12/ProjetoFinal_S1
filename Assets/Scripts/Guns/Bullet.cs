@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         StartPos = transform.position;
         
         Velocity = transform.forward;
-        Debug.Log("NEW BULLET");
+        //Debug.Log("NEW BULLET");
         StartCoroutine(Des());
     }
 

@@ -72,8 +72,11 @@ public class StageSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Player")
-        SpawnEnemies();
-        gameObject.SetActive(false);
+        if (other.tag == "Player")
+        {
+            Debug.Log("Spwan"+other.name+other.transform.position);
+            SpawnEnemies();
+            gameObject.SetActive(false);
+        }
     }
 }

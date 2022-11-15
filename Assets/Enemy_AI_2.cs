@@ -57,7 +57,7 @@ public class Enemy_AI_2 : MonoBehaviour
 
         if (shootingTimer > 1f / fireRate)
         {
-            Debug.Log("Shooting");
+            //Debug.Log("Shooting");
 
             bulletsParent.transform.LookAt(player);
 
