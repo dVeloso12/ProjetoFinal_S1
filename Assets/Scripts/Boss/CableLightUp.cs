@@ -14,7 +14,7 @@ public class CableLightUp : MonoBehaviour
 
     private void Start()
     {
-        cableLight.SetFloat("_Fill", 0);
+        resetValues();
     }
 
     void Update()
@@ -28,16 +28,26 @@ public class CableLightUp : MonoBehaviour
         canLightUp = true;
         timerLight += Time.deltaTime * speed;
         cableLight.SetFloat("_Fill", timerLight);
-        if(timerLight >= 2f)
+        if(timerLight >= 17f)
         {
-            timerLight = 2f;
+            timerLight = 17f;
             plate.GetComponent<PlateBossRoom>().plateReady = true;
         }
     }
     public void resetValues()
     {
-        timerLight = 0f;
-        cableLight.SetFloat("_Fill", 0);
-        canLightUp = false;
+        
+        if(gameObject.name == "CableRight")
+        {
+            timerLight = -2f;
+            cableLight.SetFloat("_Fill", -2f);
+        }
+        else
+        {
+            timerLight = 0f;
+            cableLight.SetFloat("_Fill", 0);
+            canLightUp = false;
+        }
+   
     }
 }

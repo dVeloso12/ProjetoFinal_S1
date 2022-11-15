@@ -39,12 +39,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fill: 0
+    - _Fill: 1.49
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0.2
     m_Colors:
-    - _ColorEmission: {r: 1, g: 0.206695, b: 0, a: 0}
+    - _ColorEmission: {r: 0.7490196, g: 0.23921569, b: 0, a: 0}
     - _Tilling: {r: 9.41, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5652291710397831140
