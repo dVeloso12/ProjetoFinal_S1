@@ -6,7 +6,7 @@ public class ManageWeapon : MonoBehaviour
 {
     // Start is called before the first frame update
     GameManager gm;
-    void Start()
+    void Awake()
     {
         gm = FindObjectOfType<GameManager>();
 

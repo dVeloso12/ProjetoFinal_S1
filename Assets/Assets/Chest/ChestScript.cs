@@ -31,6 +31,7 @@ public class ChestScript : MonoBehaviour
         {
             gm.AddUpgrade();
             canUpgrade = false;
+            Destroy(gameObject);
         }
     }
 

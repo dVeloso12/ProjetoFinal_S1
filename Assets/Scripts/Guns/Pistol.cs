@@ -23,61 +23,61 @@ public class Pistol : GunController
 
     protected override void Shoot()
     {
-        if (Physics.Raycast(_camera.position, _camera.forward, out collisionDetected, Distance))
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance))
         {
-            Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
-            Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
+            Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
+            Quaternion.LookRotation(hit.normal), hit.transform).transform.Rotate(Vector3.right * 90);
 
             int r = UnityEngine.Random.Range(0, 100);
 
 
 
-            if (collisionDetected.transform.tag == "Enemy")
+            if (hit.transform.tag == "Enemy")
             {
                 finaldmg = dmg * gm.DamageMod;
                 if (r < CritRate)
                     finaldmg *= CritDmg;
-                collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
 
                 Color color = Color.white;
 
-                GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
-                Quaternion.LookRotation(collisionDetected.normal));
-                dmgnum.transform.parent = collisionDetected.transform;
+                GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
+                Quaternion.LookRotation(hit.normal));
+                //dmgnum.transform.parent = hit.transform;
                 dmgnum.transform.Rotate(Vector3.up * 180);
                 if (r < CritRate)
                     color = Color.yellow;
-                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color);
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color,hit.transform);
             }
 
-            if (collisionDetected.transform.tag == "Head")
+            if (hit.transform.tag == "Head")
             {
                 finaldmg = dmg * gm.HSMod * gm.DamageMod;
                 if (r < CritRate)
                     finaldmg *= CritDmg;
-                collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+                hit.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
 
 
                 Color color = Color.red;
 
-                GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
-                Quaternion.LookRotation(collisionDetected.normal));
-                dmgnum.transform.parent = collisionDetected.transform;
+                GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
+                Quaternion.LookRotation(hit.normal));
+                //dmgnum.transform.parent = hit.transform;
                 dmgnum.transform.Rotate(Vector3.up * 180);
                 if (r < CritRate)
                     color = Color.cyan;
-                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color);
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color,hit.transform);
             }
 
             //Dano no Boss
-            if (collisionDetected.transform.tag == "Boss")
+            if (hit.transform.tag == "Boss")
             {
-                collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject, base.dmg * gm.DamageMod);
+                hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject, base.dmg * gm.DamageMod);
             }
-            if (collisionDetected.transform.tag == "Turret")
+            if (hit.transform.tag == "Turret")
             {
-                collisionDetected.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
             }
 
 

@@ -41,7 +41,7 @@ public class GunController : MonoBehaviour
 
     public CinemachineVirtualCamera Camera;
 
-    protected RaycastHit collisionDetected;
+    protected RaycastHit hit;
 
     public GameObject MarkSprite;
 
@@ -73,7 +73,7 @@ public class GunController : MonoBehaviour
         playerInput.Player.Modifier.performed += _Modifier;
         playerInput.Player.Modifier.canceled += _Modifier;
 
-        FireRateCounting = FireRate;
+        FireRateCounting = 0;
 
         gm = FindObjectOfType<GameManager>();
 
@@ -130,13 +130,13 @@ public class GunController : MonoBehaviour
 
     public virtual void ActivateReload(InputAction.CallbackContext obj)
     {
-        StartCoroutine(Reload());
+        StartCoroutine(Reload(ReloadSpeed));
     }
 
-    IEnumerator Reload()
+    public IEnumerator Reload(float time)
     {
         Ammo = 0;
-        yield return new WaitForSeconds(ReloadSpeed);
+        yield return new WaitForSeconds(time);
         Ammo = AmmoClipSize;
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }

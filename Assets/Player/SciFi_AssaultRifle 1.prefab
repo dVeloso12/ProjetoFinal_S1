@@ -480,7 +480,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2441485199421648744}
   hiteffect: {fileID: 7168370357396704497}
-  bullet: {fileID: 2602262245937804743, guid: 26cc6a443e7d9a643b0cef6b4110e8d3, type: 3}
   ShotingPlace: {fileID: 2485919959757482878, guid: 42a59c3f6e7451540a5d4ee3e4790665,
     type: 3}
   FireRate: 0.9
@@ -492,7 +491,6 @@ MonoBehaviour:
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 30
-  GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
   CritRate: 60
@@ -511,10 +509,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2441485199421648744}
   hiteffect: {fileID: 7168370357396704497}
-  bullet: {fileID: 1238667338858886626, guid: c404821122f797045b587a4f398a9bf8, type: 3}
   ShotingPlace: {fileID: 2485919959757482878, guid: 42a59c3f6e7451540a5d4ee3e4790665,
     type: 3}
-  FireRate: 2.77
+  FireRate: 2
   dmg: 7
   ReloadSpeed: 1
   AmmoClipSize: 6
@@ -523,7 +520,6 @@ MonoBehaviour:
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 10
-  GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
   RandomDeviation: 0.1
@@ -542,7 +538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 2441485199421648744}
   hiteffect: {fileID: 7168370357396704497}
-  bullet: {fileID: 8647809537578768864, guid: a885da6cc889d25429be45deea72d839, type: 3}
   ShotingPlace: {fileID: 2485919959757482878, guid: 42a59c3f6e7451540a5d4ee3e4790665,
     type: 3}
   FireRate: 0.5
@@ -554,7 +549,6 @@ MonoBehaviour:
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
   Distance: 50
-  GunPos: {fileID: 0}
   DwonSights: {fileID: 0}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
   RandomDeviation: 0.01

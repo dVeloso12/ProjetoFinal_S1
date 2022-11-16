@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crystal: {fileID: 2073698889788779828}
-  IncreaseAmout: 10
+  IncreaseAmout: 30
   PlateCompleted: 0
   Chest: {fileID: 2316427097686792164}
   PlatePorc: 0
@@ -978,7 +978,7 @@ MonoBehaviour:
   activeEnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0
-  enemiesToSpawnQuantity: 3
+  enemiesToSpawnQuantity: 8
   distance: 30
   ActivateSpawn: 0
   areaName: 

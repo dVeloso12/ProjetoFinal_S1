@@ -39,58 +39,58 @@ public class Shotgun : GunController
             float textDmg = 0;
             int head = 0, body = 0;
 
-            if (Physics.Raycast(_camera.position, ShootDir, out collisionDetected, Distance))
+            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
-                Instantiate(MarkSprite, collisionDetected.point + (collisionDetected.normal * .1f),
-                Quaternion.LookRotation(collisionDetected.normal)).transform.Rotate(Vector3.right * 90);
-                hiteffect.transform.position = collisionDetected.point;
-                hiteffect.transform.forward = collisionDetected.normal;
+                Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
+                Quaternion.LookRotation(hit.normal),hit.transform).transform.Rotate(Vector3.right * 90);
+                hiteffect.transform.position = hit.point;
+                hiteffect.transform.forward = hit.normal;
                 hiteffect.Emit(1);
 
-                if (collisionDetected.transform.tag == "Enemy")
+                if (hit.transform.tag == "Enemy")
                 {
 
 
                     finaldmg = dmg * gm.DamageMod;
                    
-                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
-                   Quaternion.LookRotation(collisionDetected.normal));
-                    dmgnum.transform.parent = collisionDetected.transform;
+                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
+                   Quaternion.LookRotation(hit.normal));
+                    //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
                     textDmg += finaldmg;
-                    collisionDetected.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                    hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
                     body++;
 
                 }
 
-                if (collisionDetected.transform.tag == "Head")
+                if (hit.transform.tag == "Head")
                 {
                     finaldmg = dmg * gm.HSMod * gm.DamageMod;
                     if (textPos == Vector3.zero)
-                        textPos = collisionDetected.point;
-                    collisionDetected.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
-                    GameObject dmgnum = Instantiate(dmgText, collisionDetected.point + (collisionDetected.normal * .1f),
-                    Quaternion.LookRotation(collisionDetected.normal));
-                    dmgnum.transform.parent = collisionDetected.transform;
+                        textPos = hit.point;
+                    hit.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
+                    Quaternion.LookRotation(hit.normal));
+                    //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
 
                     textDmg += finaldmg;
                     head++;
                 }
 
                     //Dano no Boss
-                    if (collisionDetected.transform.tag == "Boss")
+                    if (hit.transform.tag == "Boss")
                 {
 
-                    collisionDetected.transform.GetComponent<BossPart>().TakeDmgBoss(collisionDetected.transform.gameObject,base.dmg * gm.DamageMod); 
+                    hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject,base.dmg * gm.DamageMod); 
                 }
                 //Debug.Log(collisionDetected.transform.tag);
-                if (collisionDetected.transform.tag == "Turret")
+                if (hit.transform.tag == "Turret")
                 {
-                    collisionDetected.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                    hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
 
                 

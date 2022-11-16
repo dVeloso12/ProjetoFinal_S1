@@ -55,7 +55,7 @@ public class StageSpawner : MonoBehaviour
             {
 
                 f--;
-                Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                //Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
                 randomcircle = (Random.insideUnitCircle * distance);
                 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
                 if (NavMesh.SamplePosition(randomPoint, out hit, 4,-1))

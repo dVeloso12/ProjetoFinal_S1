@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 4492457088327008711}
-  descSpeed: 0.001
-  timer: 0.5
-  alphaSpeed: 0.015
+  descSpeed: 0.0001
+  timer: 1
+  alphaSpeed: 0.01
 --- !u!114 &4492457088327008711
 MonoBehaviour:
   m_ObjectHideFlags: 0

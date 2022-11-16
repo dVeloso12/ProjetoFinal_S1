@@ -7,10 +7,11 @@ public class UpgradeEffects : MonoBehaviour
     // Start is called before the first frame update
     GameManager gm;
 
-    
+    GunController gunc;
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        gunc = FindObjectOfType<GunController>();
     }
 
     // Update is called once per frame
@@ -42,5 +43,11 @@ public class UpgradeEffects : MonoBehaviour
     public void FireRate_20()
     {
         gm.FireRateMod *= .8f;
+    }
+
+    public void ClipSize_20()
+    {
+        gunc.AmmoClipSize =(int)(gunc.AmmoClipSize* 1.2f);
+        StartCoroutine(gunc.Reload(0));
     }
 }
