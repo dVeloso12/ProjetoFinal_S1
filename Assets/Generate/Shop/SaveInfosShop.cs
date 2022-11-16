@@ -21,7 +21,7 @@ public class SaveInfosShop : MonoBehaviour
     }
     public void setCollideButton(bool change)
     {
-        Button.GetComponent<ShopPortal>().playerColide = change;
+        Button.GetComponent<ShopButtomPortal>().playerColide = change;
     }
 
 
