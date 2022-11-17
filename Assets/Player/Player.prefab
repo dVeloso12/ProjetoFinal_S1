@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 0
   m_VerticalAxis:
-    Value: 0
+    Value: 30.163858
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
-    Value: 0
+    Value: -49.397903
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -248,7 +248,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7781819, y: 1}
+    m_SensorSize: {x: 1.7740003, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -393,22 +393,22 @@ PrefabInstance:
     - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.33500195
       objectReference: {fileID: 0}
     - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.09027712
       objectReference: {fileID: 0}
     - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.90557706
       objectReference: {fileID: 0}
     - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.24403705
       objectReference: {fileID: 0}
     - target: {fileID: 2811287370881411359, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
@@ -500,8 +500,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2448532418229072738, guid: 42a59c3f6e7451540a5d4ee3e4790665, type: 3}
+    - target: {fileID: 6736966160591024349, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736966160591024349, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: Resolution
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a59c3f6e7451540a5d4ee3e4790665, type: 3}
 --- !u!198 &9056549188977440898 stripped
 ParticleSystem:
