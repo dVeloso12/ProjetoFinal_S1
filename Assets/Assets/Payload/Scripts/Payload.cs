@@ -25,7 +25,7 @@ public class Payload : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animation>();
-        maxIndex = ListPlates.Count;
+        maxIndex = ListPlates.Count-1;
         state = PayloadState.Iddle;
     }
 

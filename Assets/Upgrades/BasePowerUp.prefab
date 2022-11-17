@@ -281,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f851756a970a59d458ea02abd34d4095, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2112f74ef644ab4e8fe3d41ba8571eb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   General: 1
+  Rarity: 1
   WeaponAffected: 0
   EffectName: FireRate_10
   Description: Sample T

@@ -978,7 +978,7 @@ MonoBehaviour:
   activeEnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0
-  enemiesToSpawnQuantity: 8
+  enemiesToSpawnQuantity: 2
   distance: 30
   ActivateSpawn: 0
   areaName: 

@@ -12,6 +12,8 @@ public class ShopUpgrades : MonoBehaviour
 
     Upgrade[] upg_choice = new Upgrade[11];
 
+    public float[] prob = {75,20,5};
+
     public GameObject priceText;
 
     public Canvas canvas;

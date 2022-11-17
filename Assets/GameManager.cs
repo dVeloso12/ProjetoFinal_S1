@@ -24,10 +24,13 @@ public class GameManager : MonoBehaviour
 
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
+    [HideInInspector]
+    public List<int>[] Upgrade_Rarity=new List<int>[3];
+
     TextMeshProUGUI MoneyText;
 
-    [HideInInspector]
-    public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
+    //[HideInInspector]
+    //public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
 
     public int gameState;
 
@@ -48,11 +51,7 @@ public class GameManager : MonoBehaviour
         CreateUpgradeLists();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //MoneyText.text = Money.ToString()+" $";
-    }
+    
 
 
     public void DebugFunction(InputAction.CallbackContext obj)
@@ -93,12 +92,26 @@ public class GameManager : MonoBehaviour
 
     void CreateUpgradeLists()
     {
+        for (int j = 0; j < 3; j++)
+            Upgrade_Rarity[j] = new List<int>();
+
+        int i = 0;
         foreach(Upgrade upgrade in Upgrades)
         {
-            if (upgrade.General)
-                GeneralUpgrades.Add(upgrade);
-            else if (upgrade.WeaponAffected == weaponType)
-                WeaponUpgrades.Add(upgrade);
+            switch (upgrade.Rarity)
+            {
+                case 1:
+                    Upgrade_Rarity[0].Add(i);
+                    break;
+                case 2:
+                    Upgrade_Rarity[1].Add(i);
+                    break;
+                case 3:
+                    Upgrade_Rarity[2].Add(i);
+                    break;
+
+            }
+            i++;  
         }
     }
 }

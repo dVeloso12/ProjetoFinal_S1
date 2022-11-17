@@ -15,6 +15,8 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public bool General = true;
 
+    public int Rarity = 1;
+
     public WeaponType WeaponAffected;
 
     public string EffectName;

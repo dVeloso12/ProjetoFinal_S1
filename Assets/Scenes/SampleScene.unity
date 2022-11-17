@@ -397,8 +397,6 @@ MonoBehaviour:
   - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
   - {fileID: 7239278222423649501, guid: 826e0f1b4f3bd634c955d1dfdc7c8365, type: 3}
   - {fileID: 5965232406241214392, guid: 2fdfa4db6bafbe74caf933c91a26d6a8, type: 3}
-  GeneralUpgrades: []
-  WeaponUpgrades: []
   gameState: 0
 --- !u!4 &637063513
 Transform:
@@ -556,7 +554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2001940287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,7 +814,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f851756a970a59d458ea02abd34d4095,
+      objectReference: {fileID: 21300000, guid: e2112f74ef644ab4e8fe3d41ba8571eb,
         type: 3}
     - target: {fileID: 7738137255732208442, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}

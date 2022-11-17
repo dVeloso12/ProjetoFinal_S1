@@ -14,7 +14,7 @@ public class DmgTxt : MonoBehaviour
     void Start()
     {
         //despos = transform.position;
-        Debug.Log(despos);
+        //Debug.Log(despos);
         StartCoroutine(DestroySelf());
     }
 

@@ -713,8 +713,10 @@ MonoBehaviour:
   - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
   - {fileID: 7239278222423649501, guid: 826e0f1b4f3bd634c955d1dfdc7c8365, type: 3}
   - {fileID: 5965232406241214392, guid: 2fdfa4db6bafbe74caf933c91a26d6a8, type: 3}
-  GeneralUpgrades: []
-  WeaponUpgrades: []
+  - {fileID: 3699352609458583086, guid: 0df7f856ccc00f7448d71f49f34dc4dd, type: 3}
+  - {fileID: 2112212179344269612, guid: f5ef7d57177bba34d956ccd8aa7d158c, type: 3}
+  - {fileID: 1333748760100067114, guid: abe41c88ba3d0894eb1c47a180e16b63, type: 3}
+  - {fileID: 8190231314722129654, guid: c0af88319aff9a44bb29eb7255a80806, type: 3}
   gameState: 0
 --- !u!4 &166003452
 Transform:
@@ -1133,20 +1135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2cbc4a2ea4cc74ba605b5856567007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleCount: 8
-  ScatteringCoef: 0.855
-  ExtinctionCoef: 0.01
-  SkyboxExtinctionCoef: 0.9
-  MieG: 0.1
-  HeightFog: 0
-  HeightScale: 0.1
-  GroundLevel: 0
-  Noise: 0
-  NoiseScale: 0.015
-  NoiseIntensity: 1
-  NoiseIntensityOffset: 0.3
-  NoiseVelocity: {x: 3, y: 3}
-  MaxRayLength: 400
 --- !u!1 &295532542
 GameObject:
   m_ObjectHideFlags: 0
