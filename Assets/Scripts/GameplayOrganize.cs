@@ -67,32 +67,36 @@ public class GameplayOrganize : MonoBehaviour
             GoToShop();
             goToShop = false;
         }
-        if(saveStages.GetComponent<GenerateRun>().doUrJob)
+        if (toGame)
         {
-            saveBossRoom = saveStages.GetComponent<GenerateRun>().getBossRoom();
-            saveStages.GetComponent<GenerateRun>().doUrJob = false;
-            saved = true;
-        }
-        if(saved)
-        {
-            if (saveBossRoom.GetComponent<BossStageInfo>().getCollidePortal() == true)
+            if (saveStages.GetComponent<GenerateRun>().doUrJob)
             {
-                Debug.Log("AQUI BOSS-GameORG");
-                GoToShop();
+                saveBossRoom = saveStages.GetComponent<GenerateRun>().getBossRoom();
+                saveStages.GetComponent<GenerateRun>().doUrJob = false;
+                saved = true;
+            }
+            if (saved)
+            {
+                if (saveBossRoom.GetComponent<BossStageInfo>().getCollidePortal() == true)
+                {
+                    Debug.Log("AQUI BOSS-GameORG");
+                    GoToShop();
+                }
+            }
+            if (saveshop.GetComponent<SaveInfosShop>().getCollideButton() == true)
+            {
+                ResetGenerator();
+                saveshop.GetComponent<SaveInfosShop>().setCollideButton(false);
+            }
+            if (saveshop.GetComponent<SaveInfosShop>().getCollidePortal() == true)
+            {
+                Debug.Log("ENTREI - 1");
+                GotoStageFromShop();
+                saveshop.GetComponent<SaveInfosShop>().setCollidePortal(false);
+
             }
         }
-        if (saveshop.GetComponent<SaveInfosShop>().getCollideButton() == true)
-        {
-            ResetGenerator();
-            saveshop.GetComponent<SaveInfosShop>().setCollideButton(false);
-        }
-        if (saveshop.GetComponent<SaveInfosShop>().getCollidePortal() == true)
-        {
-            Debug.Log("ENTREI - 1");
-            GotoStageFromShop();
-            saveshop.GetComponent<SaveInfosShop>().setCollidePortal(false);
-
-        }
+       
     }
 
     void ResetGenerator()
