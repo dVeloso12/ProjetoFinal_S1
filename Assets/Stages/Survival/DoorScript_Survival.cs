@@ -9,19 +9,6 @@ public class DoorScript_Survival : MonoBehaviour
 
     bool doorOpened;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CompleteSurvival()
     {
         this.gameObject.SetActive(false);
