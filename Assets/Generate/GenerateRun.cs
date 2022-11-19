@@ -11,8 +11,8 @@ public class GenerateRun : MonoBehaviour
     [SerializeField]int maxNStages;
     [SerializeField] GameObject BossRoom;
     [SerializeField] GameObject StageStart;
-    public GameObject saveBossStage;
-    public bool doUrJob;
+    //public GameObject saveBossStage;
+    //public bool doUrJob;
 
 
     List<GameObject> stagesOrder;
@@ -56,10 +56,10 @@ public class GenerateRun : MonoBehaviour
         stageStartPositions = new List<Vector3>();
         stagesOrder = new List<GameObject>();
     }
-     public GameObject getBossRoom()
-    {
-        return saveBossStage;
-    }
+    // public GameObject getBossRoom()
+    //{
+    //    return saveBossStage;
+    //}
     void Generate()
     {
         var st0 = Instantiate(StageStart, Vector3.zero, Quaternion.identity);
@@ -83,8 +83,8 @@ public class GenerateRun : MonoBehaviour
 
         var bossStg = Instantiate(BossRoom, nextPosition,Quaternion.identity);
         bossStg.transform.parent = this.transform;
-        saveBossStage = bossStg;
-        doUrJob = true;
+        //saveBossStage = bossStg;
+        //doUrJob = true;
 
         stagesOrder.Add(bossStg);
     }

@@ -25,7 +25,7 @@ public class Payload : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animation>();
-        maxIndex = ListPlates.Count-1;
+        maxIndex = ListPlates.Count;
         state = PayloadState.Iddle;
     }
 
@@ -43,7 +43,6 @@ public class Payload : MonoBehaviour
         if(Ended)
         {
             GetComponent<Collider>().enabled = false;
-
         }
     }
     void PlayAnimations()

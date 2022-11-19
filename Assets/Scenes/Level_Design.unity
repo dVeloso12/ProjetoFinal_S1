@@ -653,8 +653,8 @@ MonoBehaviour:
   Shop: {fileID: 9099947202535907637, guid: a9418167e5a4cfc41b6eaf19008bbc7c, type: 3}
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
-  toLobby: 1
-  toGame: 0
+  toLobby: 0
+  toGame: 1
   goToStage: 0
   goToShop: 0
   playerIns: {fileID: 0}
@@ -16752,8 +16752,6 @@ MonoBehaviour:
     type: 3}
   StageStart: {fileID: 7779319510762537195, guid: 36ddaf09e24c5004f9600616d7a440a4,
     type: 3}
-  saveBossStage: {fileID: 0}
-  doUrJob: 0
 --- !u!4 &2335842683161252751
 Transform:
   m_ObjectHideFlags: 0
@@ -18030,10 +18028,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab2b9e62d83d2b44a5ce0d413dcadde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerColide: 0
   readyToGenerate: {fileID: 8936064076618782677}
   GeneratedFinished: {fileID: 8936064077751204696}
-  opened: 0
+  bt: {fileID: 0}
 --- !u!64 &2962878217533592417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29540,8 +29537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6c40e5be3cf443bd864d69cbfe0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShopPos: {x: 0, y: 0, z: 0}
-  canTp: 0
 --- !u!64 &6004928182038926127
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31419,8 +31414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a82c26325412546895efdf86e161ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Portal: {fileID: 4063961169772063948}
-  Button: {fileID: 8936064077921259184}
 --- !u!33 &7076822295412480440
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37918,7 +37911,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Portal: {fileID: 4063961169772063948}
-  playerColide: 0
+  cantGenerateMore: 0
+  opened: 0
+  readyToGenerate: {fileID: 0}
+  GeneratedFinished: {fileID: 0}
 --- !u!4 &8936064077921259199
 Transform:
   m_ObjectHideFlags: 0

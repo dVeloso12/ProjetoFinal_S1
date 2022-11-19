@@ -67,7 +67,7 @@ public class TurretScript : MonoBehaviour
 
         if(HpBar.enabled)
         {
-            HpBar.gameObject.gameObject.transform.rotation = Quaternion.LookRotation(HpBar.gameObject.gameObject.transform.position + ofseet - Camera.main.transform.position);
+            HpBar.transform.rotation = Quaternion.LookRotation(HpBar.transform.position + ofseet - Camera.main.transform.position);
         }
         
       

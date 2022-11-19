@@ -67,39 +67,10 @@ public class GameplayOrganize : MonoBehaviour
             GoToShop();
             goToShop = false;
         }
-        if (toGame)
-        {
-            if (saveStages.GetComponent<GenerateRun>().doUrJob)
-            {
-                saveBossRoom = saveStages.GetComponent<GenerateRun>().getBossRoom();
-                saveStages.GetComponent<GenerateRun>().doUrJob = false;
-                saved = true;
-            }
-            if (saved)
-            {
-                if (saveBossRoom.GetComponent<BossStageInfo>().getCollidePortal() == true)
-                {
-                    Debug.Log("AQUI BOSS-GameORG");
-                    GoToShop();
-                }
-            }
-            if (saveshop.GetComponent<SaveInfosShop>().getCollideButton() == true)
-            {
-                ResetGenerator();
-                saveshop.GetComponent<SaveInfosShop>().setCollideButton(false);
-            }
-            if (saveshop.GetComponent<SaveInfosShop>().getCollidePortal() == true)
-            {
-                Debug.Log("ENTREI - 1");
-                GotoStageFromShop();
-                saveshop.GetComponent<SaveInfosShop>().setCollidePortal(false);
-
-            }
-        }
-       
+            
     }
 
-    void ResetGenerator()
+   public void ResetGenerator()
     {
         Generate_Detele_Stages(false, true);
         Generate_Detele_Stages(true, false);
@@ -114,15 +85,14 @@ public class GameplayOrganize : MonoBehaviour
         PlayerMove(PlayerStageSpawn);    
     }
 
-    public void GotoStageFromShop()
-    {
-        PlayerMove(PlayerStageSpawn);
-    }
+    //public void GotoStageFromShop()
+    //{
+    //    PlayerMove(PlayerStageSpawn);
+    //}
 
     void PlayerMove(Vector3 newPos)
     {
         playerIns.GetComponentInChildren<PlayerMovement>().transform.position = newPos;
-        Debug.Log("ENTREI - 2");
         Physics.SyncTransforms();
     }
     void Generate_Detele_Stages(bool canGenerateStages,bool canDeleteStages)

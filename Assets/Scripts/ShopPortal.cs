@@ -5,17 +5,12 @@ using TMPro;
 
 public class ShopPortal : MonoBehaviour
 {
-    public bool playerColide;
     [SerializeField] TMPro.TextMeshProUGUI readyToGenerate, GeneratedFinished;
-    public bool opened;
-
-    private void Update()
+    GameplayOrganize game;
+    [SerializeField] ShopButtomPortal bt;
+    void Start()
     {
-        if(opened)
-        {
-            readyToGenerate.gameObject.SetActive(false);
-            GeneratedFinished.gameObject.SetActive(true);
-        }
+        game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,14 +18,13 @@ public class ShopPortal : MonoBehaviour
 
         if(other.transform.name == "Player")
         {
-            Debug.Log(other.transform.name);
-            playerColide = true;
             gameObject.SetActive(false);
-            readyToGenerate.gameObject.SetActive(true);
-            GeneratedFinished.gameObject.SetActive(false);
-            opened = false;
-            //gameObject.SetActive(false);
+            bt.cantGenerateMore = false;
+            bt.opened = false;
+            game.GoToStage();
         }
 
     }
+
+   
 }

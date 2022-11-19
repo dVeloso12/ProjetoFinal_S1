@@ -5,22 +5,44 @@ using UnityEngine;
 public class ShopButtomPortal : MonoBehaviour
 {
     [SerializeField] GameObject Portal;
-    public bool playerColide;
+    GameplayOrganize game;
+    public bool cantGenerateMore = false;
+    public bool opened = false;
+    [SerializeField] TMPro.TextMeshProUGUI readyToGenerate, GeneratedFinished;
 
+
+    void Start()
+    {
+        game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
+    }
+    private void Update()
+    {
+        UpdateScreenUI();
+    }
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.name == "Player" && Input.GetKey(KeyCode.H))
+        if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
         {
             Portal.SetActive(true);
-            playerColide = true;
-            Portal.GetComponent<ShopPortal>().opened = true;
+            game.ResetGenerator();
+            cantGenerateMore = true;
+            opened = true;
             
         }
-        else if(other.transform.name == "Player")
-        {
-            playerColide = false;
-            
-        }
+    }
 
+    void UpdateScreenUI()
+    {
+        if (opened)
+        {
+            readyToGenerate.enabled = false;
+            GeneratedFinished.enabled = true;
+        }
+        else
+        {
+            GeneratedFinished.enabled = false;
+            readyToGenerate.enabled = true;
+
+        }
     }
 }
