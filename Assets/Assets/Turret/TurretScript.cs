@@ -25,7 +25,7 @@ public class TurretScript : MonoBehaviour
     public Detection detect;
     [SerializeField] Image HpBar;
     public bool showUI;
-
+    Camera cam;
     public Vector3 ofseet;
 
     private void Start()
@@ -34,6 +34,7 @@ public class TurretScript : MonoBehaviour
         saveMaxHp = TurretHp;        
         HpBar.enabled = false;
         HpBar.fillAmount = 1f;
+        cam = GameObject.Find("1stPersonCamera").GetComponent<Camera>();
 
     }
     private void Update()
@@ -67,7 +68,7 @@ public class TurretScript : MonoBehaviour
 
         if(HpBar.enabled)
         {
-            HpBar.transform.rotation = Quaternion.LookRotation(HpBar.transform.position + ofseet - Camera.main.transform.position);
+            HpBar.transform.rotation = Quaternion.LookRotation(HpBar.transform.position + ofseet - cam.transform.position);
         }
         
       

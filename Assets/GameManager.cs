@@ -10,11 +10,18 @@ public enum WeaponType
     AR,
     Pistol
 };
+//public enum ScreenType
+//{
+//    inGame,
+//    outGame
+//};
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     public WeaponType weaponType;
+    public List<WeaponType> UiSaveTypes;
+    //public ScreenType screenType;
 
     public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2;
 
@@ -48,11 +55,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //screenType = ScreenType.inGame;
         CreateUpgradeLists();
+        SaveUiNames();
+
     }
 
     
-
+    void SaveUiNames()
+    {
+        UiSaveTypes.Add(WeaponType.Shotgun);
+        UiSaveTypes.Add(WeaponType.AR); 
+        UiSaveTypes.Add(WeaponType.Pistol);
+    }
 
     public void DebugFunction(InputAction.CallbackContext obj)
     {
@@ -88,6 +103,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+    public void toComputer()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void outComputer()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void CreateUpgradeLists()

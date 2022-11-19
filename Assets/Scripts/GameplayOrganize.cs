@@ -40,7 +40,7 @@ public class GameplayOrganize : MonoBehaviour
         saveStages = null;
         //playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
         //Player.transform.position = PlayerLobbySpawn;
-        Generate_Delete_Looby(true, false);
+        //Generate_Delete_Looby(true, false);
 
     }
 

@@ -14,8 +14,8 @@ public class Payload : MonoBehaviour
 
     [Header("For Debug")]
     [SerializeField] PayloadState state;
-    short index;
-    int maxIndex; 
+    public short index;
+    public int maxIndex; 
     bool canIddle;
     float animTimer;
     bool startTimerAnim;    
@@ -83,7 +83,7 @@ public class Payload : MonoBehaviour
     {
         if (!Ended)
         {
-            if (index < maxIndex)
+            if (index+1 <= maxIndex)
             {
                 if (state == PayloadState.onMoving && !forceRotate)
                 {
