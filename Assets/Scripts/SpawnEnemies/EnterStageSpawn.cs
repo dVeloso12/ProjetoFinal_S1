@@ -28,7 +28,7 @@ public class EnterStageSpawn : MonoBehaviour
 
             if(transform.parent.gameObject.name == "Stage3_Survive")
             {
-                survivalScript.EnemiesKilled = 0;
+                //survivalScript.EnemiesKilled = 0;
             }
 
             //Debug.Log("Colliding with player 01");

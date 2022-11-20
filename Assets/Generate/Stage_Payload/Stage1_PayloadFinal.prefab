@@ -432,7 +432,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8996049572581296402
 Transform:
@@ -475,6 +475,8 @@ MonoBehaviour:
   - {fileID: 6763927453004810413}
   - {fileID: 8136400795175213100}
   state: 0
+  index: 0
+  maxIndex: 0
 --- !u!111 &3040386369595869382
 Animation:
   m_ObjectHideFlags: 0
@@ -1178,7 +1180,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &6372337782792386793
 Transform:
@@ -3931,7 +3933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 8686631361806460244, guid: 069ded4e0ecdca04181203b4673e10c1, type: 3}
-  activeEnemiesList: []
+  EnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0
   enemiesToSpawnQuantity: 2
@@ -3956,7 +3958,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4349275079501591818
 Transform:
@@ -4056,7 +4058,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &41724134792149712
 Transform:
@@ -4299,7 +4301,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1446966614823951730
 Transform:
@@ -6106,7 +6108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1735413155477031686
 Transform:

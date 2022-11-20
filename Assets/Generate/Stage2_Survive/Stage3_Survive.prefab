@@ -275,14 +275,14 @@ GameObject:
   - component: {fileID: 9041599576176290119}
   - component: {fileID: 6529869407259172237}
   - component: {fileID: 4128693046797995420}
-  - component: {fileID: 2115862539085546582}
+  - component: {fileID: 486438381064149391}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5392477253147846370
 Transform:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 24.826948, y: 26.403507, z: 0.37157533}
   m_Center: {x: -0.0000009536743, y: 4.4005837, z: -0.18578576}
---- !u!114 &2115862539085546582
+--- !u!114 &486438381064149391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,7 +471,6 @@ GameObject:
   - component: {fileID: 7165977077470107354}
   - component: {fileID: 4942240336725565968}
   - component: {fileID: 3831807879521633364}
-  - component: {fileID: 3986952708820096231}
   m_Layer: 0
   m_Name: Survive_Stage
   m_TagString: Untagged
@@ -560,21 +559,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8898683801879418663, guid: 27dd1783c7192714bb3b2ab1f405e194, type: 3}
---- !u!114 &3986952708820096231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6887869798245319621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec07212e64a6aa40a792d18a40bc2c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  survivalDoor: {fileID: 2115862539085546582}
-  nObjective: 5
-  isSurvivalCompleted: 0
 --- !u!1 &7332632800022087648
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +571,7 @@ GameObject:
   - component: {fileID: 6939519859072918949}
   - component: {fileID: 6793048705834506684}
   - component: {fileID: 3184697264818408682}
+  - component: {fileID: 2370987351405485575}
   m_Layer: 0
   m_Name: SpawnCollider
   m_TagString: Untagged
@@ -602,7 +587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7332632800022087648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 1.83, z: 0}
+  m_LocalPosition: {x: 0.44, y: 1.83, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -652,14 +637,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 8686631361806460244, guid: 069ded4e0ecdca04181203b4673e10c1, type: 3}
-  activeEnemiesList: []
+  EnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0
-  enemiesToSpawnQuantity: 5
+  enemiesToSpawnQuantity: 8
   distance: 70
   ActivateSpawn: 0
   areaName: DeffStage
   spawnpoint: {fileID: 7415602674803316884}
+--- !u!114 &2370987351405485575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332632800022087648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec07212e64a6aa40a792d18a40bc2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  survivalDoor: {fileID: 486438381064149391}
+  nObjective: 5
+  isSurvivalCompleted: 0
 --- !u!1 &8009464338807910584
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8009464338807910584}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 165.131, y: 6.83, z: 0.21000004}
+  m_LocalPosition: {x: 165.131, y: 6.83, z: 0.6}
   m_LocalScale: {x: 0.18547113, y: 0.18547115, z: 0.18547113}
   m_ConstrainProportionsScale: 0
   m_Children: []

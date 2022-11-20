@@ -10,45 +10,42 @@ public class EnemyStatus : MonoBehaviour
 
     public TextMeshProUGUI HealthBar;
 
-    EnemyManager enemyManagerInstance;
+    GameManager gm;
 
-    Spawn spawnScript;
+    //Spawn spawnScript;
 
     private void Start()
     {
         currentHealth = maxHealth;
 
-        enemyManagerInstance = EnemyManager.Instance;
+        gm = FindObjectOfType<GameManager>();
+        Debug.Log(gm.tag);
 
         HealthBar.text = maxHealth.ToString() + "/" + maxHealth.ToString();
 
-        spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
+        /*awnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();*/
     }
 
     public void Damage(float dmg)
     {
-
-        currentHealth -= dmg;
-        HealthBar.text = currentHealth.ToString() + "/" + maxHealth.ToString();
-
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            Death();
-        }
+            currentHealth -= dmg;
+            HealthBar.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
+            if (currentHealth <= 0)
+            {
+                Death();
+            }
+        }
     }
 
     private void Death()
     {
+        gm.DeadEnemy(this.gameObject);
 
-        //enemyManagerInstance.DeActivateEnemy(gameObject);
-
-        //spawnScript.RemoveEnemiesFromList(gameObject);
-
-        //enemyManagerInstance.survivalScript.ZombieKilled();
-
-        gameObject.SetActive(false);
-        //Destroy(gameObject);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
 
     }
 

@@ -36,7 +36,7 @@ public class Payload : MonoBehaviour
         SetSomeOptions();
     }
 
-    #region Payload Functions
+    //#region Payload Functions
 
     void SetSomeOptions()
     {
@@ -53,6 +53,7 @@ public class Payload : MonoBehaviour
             canMove = false;
             startTimerAnim = true;
             state = PayloadState.IddleToMove;
+
         }
         if (canIddle)
         {
@@ -83,22 +84,9 @@ public class Payload : MonoBehaviour
     {
         if (!Ended)
         {
+            
             if (index+1 <= maxIndex)
             {
-                if (state == PayloadState.onMoving && !forceRotate)
-                {
-                    if (transform.localPosition != ListPlates[index].localPosition)
-                    {
-                        MoveToPlate(ListPlates[index]);
-                    }
-                    else if (transform.localPosition == ListPlates[index].localPosition)
-                    {
-
-                        state = PayloadState.onRotate;
-                        index++;
-                        forceRotate = true;
-                    }
-                }
                 if (state == PayloadState.onRotate || forceRotate)
                 {
                     if (transform.localRotation != ListPlates[index].localRotation)
@@ -111,14 +99,28 @@ public class Payload : MonoBehaviour
                         forceRotate = false;
                     }
                 }
-
             }
             else
             {
                 canIddle = true;
                 state = PayloadState.MoveToIddle;
                 startTimerAnim = true;
+            }
 
+
+            if (state == PayloadState.onMoving && !forceRotate)
+            {
+                if (transform.localPosition != ListPlates[index].localPosition)
+                {
+                    MoveToPlate(ListPlates[index]);
+                }
+                else if (transform.localPosition == ListPlates[index].localPosition)
+                {
+
+                    state = PayloadState.onRotate;
+                    index++;
+                    forceRotate = true;
+                }
             }
         }
      
@@ -133,12 +135,13 @@ public class Payload : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.localRotation, plate.localRotation, Time.deltaTime * speed * ROTATION_SPEED_OFFSET);
 
     }
-    #endregion
-    #region Payload Detection
+    //#endregion
+    //#region Payload Detection
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.name == "Player")
         {
+            Debug.Log(state);
             if(state == PayloadState.Iddle)
             {
               canMove = true;
@@ -164,5 +167,5 @@ public class Payload : MonoBehaviour
         }
     }
 
-    #endregion
+    //#endregion
 }

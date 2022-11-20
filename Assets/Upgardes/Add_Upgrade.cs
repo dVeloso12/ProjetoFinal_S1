@@ -50,7 +50,7 @@ public class Add_Upgrade : MonoBehaviour
             while ((rarity == rar_numb[0] || rarity == rar_numb[1]) && (r == r_numb[0] || r == r_numb[1])&&f>0)
             {
                 r = Random.Range(0, gm.Upgrade_Rarity[rarity].Count);
-                Debug.Log(rarity + " " + r);
+                //Debug.Log(rarity + " " + r);
                 f--;
             }
             upg_choice[i] = Instantiate(gm.Upgrades[gm.Upgrade_Rarity[rarity][r]],canvas.transform);

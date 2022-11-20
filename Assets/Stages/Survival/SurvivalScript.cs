@@ -1,44 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SurvivalScript : MonoBehaviour
 {
     [SerializeField] DoorScript_Survival survivalDoor;
-    [SerializeField] int nObjective;
-    int enemiesKilled;
+    [SerializeField]public int nObjective;
+    TextMeshProUGUI SurvText;
+
+    GameManager gm;
 
     public bool isSurvivalCompleted;
 
-
-    public int EnemiesKilled
+    private void Awake()
     {
-        get { return enemiesKilled; }
-        set { enemiesKilled = value; }
+        gm = FindObjectOfType<GameManager>();
+        SurvText = GameObject.Find("SurvText").GetComponent<TextMeshProUGUI>();
     }
-
-    // Start is called before the first frame update
     void Start()
     {
-        enemiesKilled = 0;
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isSurvivalCompleted)
-            survivalDoor.CompleteSurvival();
-    }
-
-    public void ZombieKilled()
-    {
-        enemiesKilled++;
-
-        Debug.Log("Enemies killed : " + enemiesKilled);
-
-        if(enemiesKilled == nObjective)
+        if (gm.surv)
         {
-            survivalDoor.CompleteSurvival();
+            SurvText.text = "To Kill: " + nObjective;
+            if (nObjective <= 0)
+            {
+                survivalDoor.CompleteSurvival();
+                SurvText.text = "COMPLETED";
+            }
+        }
+        else
+            SurvText.text = "";
+
+    }
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            gm.surv = this;
+            gm.SurvStage = true;
         }
     }
 

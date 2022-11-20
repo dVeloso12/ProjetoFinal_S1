@@ -8,9 +8,9 @@ public class StageSpawner : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] List<GameObject> Enemies;
 
-    EnemyManager enemyManagerInstance;
-    GameObject instantiatedPlayer;
-    public List<GameObject> activeEnemiesList;
+    //EnemyManager enemyManagerInstance;
+    //GameObject instantiatedPlayer;
+    public List<GameObject> EnemiesList;
 
     [SerializeField] float timertoSpwan;
     [SerializeField] int maxQuantity, enemiesToSpawnQuantity,distance;
@@ -21,12 +21,11 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] Transform spawnpoint;
 
+    GameManager gm;
+
     void Start()
     {
-        enemyManagerInstance = EnemyManager.Instance;
-
-        //instantiatedPlayer = enemyManagerInstance.instantiatedPlayer;
-        activeEnemiesList = new List<GameObject>();
+        gm = FindObjectOfType<GameManager>();
 
 
 
@@ -50,7 +49,7 @@ public class StageSpawner : MonoBehaviour
             Vector2 randomcircle = (Random.insideUnitCircle * 30);
             Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
             bool sucess=false;
-            int f = 60;
+            int f = 600;
             while (!sucess&&f>0)
             {
 
@@ -61,7 +60,8 @@ public class StageSpawner : MonoBehaviour
                 if (NavMesh.SamplePosition(randomPoint, out hit, 4,-1))
                 {
                    sucess = true;
-                   activeEnemiesList.Add(Instantiate(Enemies[0], hit.position, Quaternion.identity));
+                    
+                   gm.EnemyList.Add(Instantiate(Enemies[0], hit.position, Quaternion.identity));
                 }
                
             }
@@ -76,7 +76,7 @@ public class StageSpawner : MonoBehaviour
         {
             Debug.Log("Spwan"+other.name+other.transform.position);
             SpawnEnemies();
-            gameObject.SetActive(false);
+            this.enabled=false;
         }
     }
 }

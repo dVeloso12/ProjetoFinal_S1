@@ -34,23 +34,29 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public List<int>[] Upgrade_Rarity=new List<int>[3];
 
-    TextMeshProUGUI MoneyText;
+    public List<GameObject> EnemyList=new List<GameObject>();
 
     //[HideInInspector]
     //public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
 
     public int gameState;
 
+    [HideInInspector]
+    public SurvivalScript surv;
+
+    public bool SurvStage = false;
 
     private void Awake()
     {
+
         playerInput = new PlayerInput();
 
         playerInput.Player.Enable();
 
+        
         playerInput.Player.Debug.performed += DebugFunction;
 
-        //MoneyText = GameObject.Find("MoneyC").GetComponent<TextMeshProUGUI>();
+        
     }
 
     void Start()
@@ -58,10 +64,19 @@ public class GameManager : MonoBehaviour
         //screenType = ScreenType.inGame;
         CreateUpgradeLists();
         SaveUiNames();
-
     }
 
-    
+    public void ResetStage()
+    {
+        foreach (GameObject enemy in EnemyList)
+        {
+            enemy.SetActive(false);
+        }
+
+        EnemyList.Clear();
+        SurvStage = false;
+    }
+
     void SaveUiNames()
     {
         UiSaveTypes.Add(WeaponType.Shotgun);
@@ -83,6 +98,17 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    
+
+    public void DeadEnemy(GameObject Enemy)
+    {
+        Debug.Log("s");
+        if (SurvStage)
+            surv.nObjective--;
+        EnemyList.Remove(Enemy);
+
     }
 
     public void CloseAddUpgrade()

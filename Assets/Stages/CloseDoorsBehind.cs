@@ -8,14 +8,14 @@ public class CloseDoorsBehind : MonoBehaviour
     bool canCloseDoor;
     float timer;
 
-    Pathfinder pathfinder;
-    GenerateRun generator;
+    //Pathfinder pathfinder;
+    //GenerateRun generator;
 
 
     private void Start()
     {
-        pathfinder = Pathfinder.Instance;
-        generator = GenerateRun.instance;
+        //pathfinder = Pathfinder.Instance;
+        //generator = GenerateRun.instance;
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class CloseDoorsBehind : MonoBehaviour
      
         if(other.transform.name == "Player")
         {
-            generator.PassedDoor();
+            //generator.PassedDoor();
             canCloseDoor = true;
         }
     }

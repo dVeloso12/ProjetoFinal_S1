@@ -16,7 +16,7 @@ public class ChestScript : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         gm = FindObjectOfType<GameManager>();
         canAppear = false;
-        spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
+        //spawnScript = GenerateRun.instance.EnemiesManagerInstantiated.GetComponent<Spawn>();
     }
     void Update()
     {
@@ -44,15 +44,14 @@ public class ChestScript : MonoBehaviour
             canAppear = false;
             gameObject.GetComponent<Collider>().enabled = false;
 
-            spawnScript.StopOverTimeSpawning();
-            //spawnScript.activeEnemiesList.Clear();
+            //spawnScript.StopOverTimeSpawning();
 
-            for(int i = 0; i < spawnScript.activeEnemiesList.Count; i++)
-            {
-                spawnScript.RemoveEnemiesFromList(spawnScript.activeEnemiesList[i]);
-            }
+            //for(int i = 0; i < spawnScript.activeEnemiesList.Count; i++)
+            //{
+            //    spawnScript.RemoveEnemiesFromList(spawnScript.activeEnemiesList[i]);
+            //}
 
-            //Destroy(gameObject);
+            gm.ResetStage();
         }
     }
 }
