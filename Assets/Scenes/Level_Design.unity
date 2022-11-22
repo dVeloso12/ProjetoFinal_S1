@@ -603,19 +603,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 1
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
   MoveSpeedMod: 1
   HSMod: 2
+  CDMod: 1
   Money: 0
   Upgrades:
   - {fileID: 386185769267273100, guid: e246554db2da5c6489dcbbe25628ac5f, type: 3}
-  - {fileID: 2112212179344269612, guid: 1eb02beeafde69a4598262492d8519fe, type: 3}
-  - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
   - {fileID: 7239278222423649501, guid: 826e0f1b4f3bd634c955d1dfdc7c8365, type: 3}
+  - {fileID: 2112212179344269612, guid: 1eb02beeafde69a4598262492d8519fe, type: 3}
+  - {fileID: 1837065353376744725, guid: 63e0b0b9458cf6e4e8402858e257ee11, type: 3}
+  - {fileID: 4923136937986413836, guid: e5e4ffa07f48aef4cbd03048b942e292, type: 3}
   - {fileID: 5965232406241214392, guid: 2fdfa4db6bafbe74caf933c91a26d6a8, type: 3}
+  - {fileID: 8190231314722129654, guid: c0af88319aff9a44bb29eb7255a80806, type: 3}
+  - {fileID: 3699352609458583086, guid: 0df7f856ccc00f7448d71f49f34dc4dd, type: 3}
+  - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
   EnemyList: []
   gameState: 0
   surv: {fileID: 0}

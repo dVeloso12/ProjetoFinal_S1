@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [Header("General Stuff")]
     [SerializeField] public float PlayerHp;
-    float saveMaxHP;
+    public float saveMaxHP;
     public bool isdead;
     GameManager gm;
 

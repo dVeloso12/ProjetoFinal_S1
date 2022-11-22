@@ -21,10 +21,12 @@ public class Granade : MonoBehaviour
 
     public Image GranadeIcon;
     public float fillAmount;
+    GameManager gm;
 
     void Start()
     {
         playerInput = new PlayerInput();
+        gm = FindObjectOfType<GameManager>();
 
         playerInput.Player.Enable();
 
@@ -41,7 +43,7 @@ public class Granade : MonoBehaviour
         if (NadeTimer > 0)
         {
             NadeTimer -= Time.deltaTime;
-            fillAmount += Time.deltaTime * (1 / NadeCooldown);
+            fillAmount += Time.deltaTime * (1 / (NadeCooldown/gm.CDMod));
             Timer.text = Mathf.Round(NadeTimer).ToString();
             GranadeIcon.fillAmount = fillAmount;
         }
@@ -52,7 +54,7 @@ public class Granade : MonoBehaviour
         if (NadeTimer <= 0)
         {
             Instantiate(Granada, place.position, place.rotation);
-            NadeTimer = NadeCooldown;
+            NadeTimer = NadeCooldown/gm.CDMod;
             fillAmount = 0;
         }
 

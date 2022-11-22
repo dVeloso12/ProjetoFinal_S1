@@ -119,7 +119,7 @@ public class GunController : MonoBehaviour
         muzzleFlash.Play();
 
 
-        FireRateCounting = FireRate*gm.FireRateMod;
+        FireRateCounting = FireRate/gm.FireRateMod;
 
         Ammo--;
 

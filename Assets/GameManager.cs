@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public List<WeaponType> UiSaveTypes;
     //public ScreenType screenType;
 
-    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2;
+    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2,CDMod=1;
 
     public int Money;
 
@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     public bool SurvStage = false;
 
+    bool statsOpen=false;
+
     private void Awake()
     {
 
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
 
         
         playerInput.Player.Debug.performed += DebugFunction;
+
+        playerInput.Player.OpenStats.performed += OpenStats;
 
         
     }
@@ -100,11 +104,23 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    
+    void OpenStats(InputAction.CallbackContext obj)
+    {
+        if (!statsOpen)
+        {
+            SceneManager.LoadScene("PlayerStats", LoadSceneMode.Additive);
+            statsOpen = true;
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync("PlayerStats");
+            statsOpen = false;
+        }
+
+    }
 
     public void DeadEnemy(GameObject Enemy)
     {
-        Debug.Log("s");
         if (SurvStage)
             surv.nObjective--;
         EnemyList.Remove(Enemy);

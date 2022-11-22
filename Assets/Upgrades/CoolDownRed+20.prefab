@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4155592726924336257
+--- !u!1001 &8782318046971933715
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,33 +10,28 @@ PrefabInstance:
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4904174
+      value: 0.6395505
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.28190663
+      value: 0.36763284
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4904174
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19
+      value: 0.6395505
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835001, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: df6968b32d828514cb566cf1e05acc47,
+      objectReference: {fileID: 21300000, guid: 58f2a246977dbae48a1f618de7fbdd95,
         type: 3}
     - target: {fileID: 7738137255732208439, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Name
-      value: MovSpeed+10
+      value: CoolDownRed+20
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208440, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
@@ -145,13 +140,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208441, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
+      propertyPath: Rarity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738137255732208441, guid: f297ca498c3a6d3468702d577b8bd5dd,
+        type: 3}
       propertyPath: EffectName
-      value: MovSpeed_10
+      value: CD_20
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208441, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: Description
-      value: MovSpeed +10%
+      value: CD Time -20%
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208442, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}

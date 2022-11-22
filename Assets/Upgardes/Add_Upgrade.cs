@@ -54,8 +54,8 @@ public class Add_Upgrade : MonoBehaviour
                 f--;
             }
             upg_choice[i] = Instantiate(gm.Upgrades[gm.Upgrade_Rarity[rarity][r]],canvas.transform);
-            upg_choice[i].transform.localPosition = new Vector3(-250+(i*250),50);
-            upg_choice[i].transform.localScale *= 1.5f;
+            upg_choice[i].transform.localPosition = new Vector3(-500+(i*500),50);
+            upg_choice[i].transform.localScale *= 2.5f;
 
             r_numb[i] = r;
             rar_numb[i] = rarity;

@@ -54,19 +54,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4904174
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28190663
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4904174
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16.9
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835001, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 48860231307ca774b891692642e66bed,
+      objectReference: {fileID: 21300000, guid: df6968b32d828514cb566cf1e05acc47,
         type: 3}
     - target: {fileID: 7738137255732208439, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Name
-      value: MovSpeed+20
+      value: MovSpeed+20 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208440, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}

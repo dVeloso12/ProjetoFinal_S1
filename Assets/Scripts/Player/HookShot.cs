@@ -39,12 +39,13 @@ public class HookShot : MonoBehaviour
 
     public Image Grapple;
     public float fillAmount;
+    GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         //controller = GetComponent<CharacterController>();
-
+        gm = FindObjectOfType<GameManager>();
         controller = GetComponent<CharacterController>();
 
         startpos += new Vector3(0, 0.5f, 0);
@@ -76,7 +77,7 @@ public class HookShot : MonoBehaviour
         {
             HookTimer -= Time.deltaTime;
             Timer.text = Mathf.Round(HookTimer).ToString();
-            fillAmount += Time.deltaTime * (1 / HookCooldown);
+            fillAmount += Time.deltaTime * (1 / (HookCooldown/gm.CDMod));
             Grapple.fillAmount = fillAmount;
 
         }
@@ -135,7 +136,7 @@ public class HookShot : MonoBehaviour
             StartCoroutine(HookOn(MovePos.magnitude/speed));
 
 
-            HookTimer = HookCooldown;
+            HookTimer = HookCooldown/gm.CDMod;
             fillAmount = 0;
         }
     }

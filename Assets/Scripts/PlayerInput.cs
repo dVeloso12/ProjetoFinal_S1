@@ -143,6 +143,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenStats"",
+                    ""type"": ""Button"",
+                    ""id"": ""186ac1a5-5442-4e70-a0b2-50163bb2fdfc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -332,6 +341,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Modifier"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31f76c08-5851-40d3-b305-a24b6d9ef66a"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenStats"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -353,6 +373,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
         m_Player_Modifier = m_Player.FindAction("Modifier", throwIfNotFound: true);
+        m_Player_OpenStats = m_Player.FindAction("OpenStats", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -425,6 +446,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Heal;
     private readonly InputAction m_Player_Modifier;
+    private readonly InputAction m_Player_OpenStats;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -442,6 +464,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
         public InputAction @Modifier => m_Wrapper.m_Player_Modifier;
+        public InputAction @OpenStats => m_Wrapper.m_Player_OpenStats;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -490,6 +513,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Modifier.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
                 @Modifier.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
                 @Modifier.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnModifier;
+                @OpenStats.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
+                @OpenStats.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
+                @OpenStats.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenStats;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -533,6 +559,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Modifier.started += instance.OnModifier;
                 @Modifier.performed += instance.OnModifier;
                 @Modifier.canceled += instance.OnModifier;
+                @OpenStats.started += instance.OnOpenStats;
+                @OpenStats.performed += instance.OnOpenStats;
+                @OpenStats.canceled += instance.OnOpenStats;
             }
         }
     }
@@ -552,5 +581,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
         void OnModifier(InputAction.CallbackContext context);
+        void OnOpenStats(InputAction.CallbackContext context);
     }
 }

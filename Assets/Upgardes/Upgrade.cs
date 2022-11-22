@@ -24,7 +24,7 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public string Description;
 
-    public TextMeshProUGUI TextDescription;
+    TextMeshProUGUI TextDescription;
 
     [HideInInspector]
     public int price;
@@ -36,6 +36,7 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         gm = FindObjectOfType<GameManager>();
         OriginScale = transform.localScale;
         Effects = GetComponent<UpgradeEffects>();
+        TextDescription = GetComponentInChildren<TextMeshProUGUI>();
 
         TextDescription.text = Description;
     }

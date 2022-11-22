@@ -14,40 +14,55 @@ public class UpgradeEffects : MonoBehaviour
         gunc = FindObjectOfType<GunController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HSMod_50()
     {
-        
+        gm.HSMod += .5f;
+    }
+    public void HSMod_100()
+    {
+        gm.HSMod += 1f;
+    }
+    public void Damage_10()
+    {
+        gm.DamageMod +=0.1f;
+    }
+    public void MovSpeed_10()
+    {
+        gm.MoveSpeedMod += 0.1f;
+    }
+    public void MovSpeed_20()
+    {
+        gm.MoveSpeedMod += 0.2f;
     }
 
     public void FireRate_10()
     {
-        gm.FireRateMod *= .9f;
-    }
-
-    public void Damage_10()
-    {
-        gm.DamageMod*=1.1f;
-    }
-
-    public void MovSpeed_10()
-    {
-        gm.MoveSpeedMod *= 1.1f;
+        gm.FireRateMod += 0.1f;
     }
 
     public void FireRate_15()
     {
-        gm.FireRateMod *= .85f;
+        gm.FireRateMod += 0.15f;
     }
 
     public void FireRate_20()
     {
-        gm.FireRateMod *= .8f;
+        gm.FireRateMod += .2f;
     }
 
     public void ClipSize_20()
     {
         gunc.AmmoClipSize =(int)(gunc.AmmoClipSize* 1.2f);
         StartCoroutine(gunc.Reload(0));
+    }
+
+    public void CD_10()
+    {
+        gm.CDMod += .1f;
+    }
+
+    public void CD_20()
+    {
+        gm.CDMod += .2f;
     }
 }

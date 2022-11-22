@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         if (TDashCooldown > 0)
         {
             TDashCooldown -= Time.deltaTime;
-            fillAmount += Time.deltaTime * (1 / DashCooldown);
+            fillAmount += Time.deltaTime * (1 / (DashCooldown/gm.CDMod));
             Timer.text = Mathf.Round(TDashCooldown).ToString();
             dashIcon.fillAmount = fillAmount;
         }
@@ -215,7 +215,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 DashDir = transform.forward;
             DashDir.y = 0;
-            TDashCooldown = DashCooldown;
+            TDashCooldown = DashCooldown/gm.CDMod;
             fillAmount = 0;
         }
     }
