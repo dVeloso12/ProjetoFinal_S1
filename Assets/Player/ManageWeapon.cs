@@ -8,6 +8,35 @@ public class ManageWeapon : MonoBehaviour
     GameManager gm;
     void Awake()
     {
+        //gm = FindObjectOfType<GameManager>();
+
+        //gameObject.GetComponent<Pistol>().enabled = false;
+        //gameObject.GetComponent<Shotgun>().enabled = false;
+        //gameObject.GetComponent<AssaultRifle>().enabled = false;
+
+        //switch (gm.weaponType)
+        //{
+        //    case WeaponType.Shotgun:
+        //        gameObject.GetComponent<Shotgun>().enabled = true;
+        //        break;
+
+        //    case WeaponType.AR:
+        //        gameObject.GetComponent<AssaultRifle>().enabled = true;
+        //        break;
+
+        //    case WeaponType.Pistol:
+        //        gameObject.GetComponent<Pistol>().enabled = true;
+        //        break;
+
+        //    default:
+        //        break;
+
+        //}
+    }
+
+    // Update is called once per frame
+    public void ChangeWeapon()
+    {
         gm = FindObjectOfType<GameManager>();
 
         gameObject.GetComponent<Pistol>().enabled = false;
@@ -32,11 +61,5 @@ public class ManageWeapon : MonoBehaviour
                 break;
 
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

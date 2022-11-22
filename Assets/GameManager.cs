@@ -118,7 +118,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
+    
+    public void ChangeWeapon()
+    {
+        //ManageWeapon mg = FindObjectOfType
+        //mg.ChangeWeapon();
+    }
     public void DeadEnemy(GameObject Enemy)
     {
         if (SurvStage)

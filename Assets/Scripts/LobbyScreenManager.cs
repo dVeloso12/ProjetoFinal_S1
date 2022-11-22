@@ -104,6 +104,8 @@ public class LobbyScreenManager : MonoBehaviour
             timer = 0f;
             cLoobby.runReady = true;
             cLoobby.pcMode = false;
+            FindObjectOfType<ManageWeapon>().ChangeWeapon();
+
             cLoobby.LeavePc();
            
         }
@@ -146,6 +148,7 @@ public class LobbyScreenManager : MonoBehaviour
     {
         pcState = pcState.endScreen;
         gameManager.weaponType = gameManager.UiSaveTypes[chooseWeaponIndex];
+       
         
     }
 

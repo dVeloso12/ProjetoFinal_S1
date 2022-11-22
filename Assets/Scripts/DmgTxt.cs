@@ -25,8 +25,8 @@ public class DmgTxt : MonoBehaviour
         despos-= new Vector3(0, descSpeed, 0);
         if (etransform != null)
             transform.position = etransform.position + despos;
-        else
-            transform.position += despos;
+        //else
+        //    transform.position += despos;
         text.alpha -= alphaSpeed;
     }
 
