@@ -13,9 +13,11 @@ public class LobbyScreenManager : MonoBehaviour
     [SerializeField] Collider VRColidder;
     [SerializeField] GameObject vrParticle;
     GameManager gameManager;
-     GameObject ui;
-     GameObject playerWeapons;
+     //GameObject ui;
+     //GameObject playerWeapons;
      PlayerMovement PlayerMovement;
+    HookShot graple;
+    Granade granade;
     //CameraSwitch camcheck;
    public pcState pcState;
     [Header("Ui Components")]
@@ -34,11 +36,11 @@ public class LobbyScreenManager : MonoBehaviour
 
     private void Start()
     {
-        ui = GameObject.Find("PlayerUI");
+        //ui = GameObject.Find("PlayerUI");
         PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
-        playerWeapons = GameObject.Find("GunDirection");
+        //playerWeapons = GameObject.Find("GunDirection");
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //camcheck = GameObject.Find("Player").GetComponent<CameraSwitch>();
+        //camcheck = GameObject.Find("Player").GetComponent<CameraSwitch>();   
         SaveNames();
         pcState = pcState.startScreen;
         m = GameObject.Find("ScreenUi").GetComponent<Canvas>();
@@ -58,9 +60,9 @@ public class LobbyScreenManager : MonoBehaviour
     {
         if(cLoobby.canDisable)
         {
-            ui.SetActive(false);
+            //ui.SetActive(false);
             PlayerMovement.enabled = false;
-            playerWeapons.SetActive(false);
+            //playerWeapons.SetActive(false);
             //gameManager.screenType = ScreenType.outGame;
             gameManager.toComputer();
             timer += Time.deltaTime;
@@ -95,16 +97,16 @@ public class LobbyScreenManager : MonoBehaviour
             SelectScreen.SetActive(false);
             endScreen.SetActive(true);
             cLoobby.canDisable = false;
-            ui.SetActive(true);
+            //ui.SetActive(true);
             PlayerMovement.enabled = true;
-            playerWeapons.SetActive(true);
+            //playerWeapons.SetActive(true);
             gameManager.outComputer();
             cam.gameObject.SetActive(false);
             VRColidder.enabled = true;
             timer = 0f;
             cLoobby.runReady = true;
             cLoobby.pcMode = false;
-            FindObjectOfType<ManageWeapon>().ChangeWeapon();
+            //FindObjectOfType<ManageWeapon>().ChangeWeapon();
 
             cLoobby.LeavePc();
            
