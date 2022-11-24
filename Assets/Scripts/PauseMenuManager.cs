@@ -30,7 +30,6 @@ public class PauseMenuManager : MonoBehaviour
 
     Resolution[] resolutions;
     GameObject saveCurrent,setaCurret;
-    public bool inLoopMenu;
     enum MenuState
     {
         none,Screen,Sound,Credits
@@ -54,22 +53,19 @@ public class PauseMenuManager : MonoBehaviour
     {
         getResolutions();
         state = MenuState.none;
-        MainSelection.SetActive(true);
+      
     }
-
     public void inMenuLoop()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && inLoopMenu)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("aqui");
+            
             if (state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Credits)
             {
                 state = MenuState.none;
                 saveCurrent.SetActive(false);
                 setaCurret.SetActive(false);
             }
-            else if (state == MenuState.none)
-                inLoopMenu = false;
            
         }
         if (state == MenuState.none)
@@ -77,6 +73,21 @@ public class PauseMenuManager : MonoBehaviour
             SecondSelection.SetActive(false);
         }
 
+    }
+    public bool checkWhenLeave(bool start)
+    {
+        if(start)
+        {
+            if (state == MenuState.none)
+                return false;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
     public void setMenu()

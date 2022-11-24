@@ -5,10 +5,62 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
+    bool inMenu;
+    private void Awake()
+    {
+        SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+    }
+    private void Start()
+    {
+        if(PauseMenuManager.instance != null)
+        {
+            PauseMenuManager.instance.canReset();
+            SceneManager.UnloadSceneAsync("PauseMenu");
+        }
 
+    }
     private void Update()
     {
-        gameManager.MenuPauseManager();
+        MenuPauseManager();
     }
+
+    public void MenuPauseManager()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!inMenu)
+            {
+                LoadPauseMenu();
+                inMenu = true;
+            }
+            else
+            {
+                if (!PauseMenuManager.instance.checkWhenLeave(inMenu))
+                {
+                    UnloadPauseMenu();
+                    inMenu = false;
+                }
+            }
+
+        }
+        if (inMenu)
+        {
+            PauseMenuManager.instance.inMenuLoop();
+        }
+    }
+    public void LoadPauseMenu()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        PauseMenuManager.instance.setMenu();
+    }
+    public void UnloadPauseMenu()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        PauseMenuManager.instance.canReset();
+    }
+
 }

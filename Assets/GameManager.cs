@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public List<int>[] Upgrade_Rarity=new List<int>[3];
 
     public List<GameObject> EnemyList=new List<GameObject>();
-
     //[HideInInspector]
     //public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
 
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour
 
     bool statsOpen=false;
 
-    bool inMenu;
 
     private void Awake()
     {
@@ -71,66 +69,7 @@ public class GameManager : MonoBehaviour
         CreateUpgradeLists();
         SaveUiNames();
     }
-    public void MenuPauseManager()
-    {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (!inMenu)
-                {
-                    LoadPauseMenu();
-                    inMenu = true;
-                }
-                else
-                {
-                    UnloadPauseMenu();
-                    inMenu = false;
-                }
-            }
-
-        if (inMenu)
-        {
-            if (PauseMenuManager.instance != null)
-            {
-                PauseMenuManager.instance.inMenuLoop();
-                PauseMenuManager.instance.inLoopMenu = true;
-                //Debug.Log("AQUI");
-
-            }
-
-        }
-
-    }
-    void LoadPauseMenu()
-    {
-        Time.timeScale = 0;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
-       
-        if (PauseMenuManager.instance != null)
-        {
-            PauseMenuManager.instance.setMenu();
-            //PauseMenuManager.instance.inLoopMenu = true;
-           
-        }
-    }
-    void UnloadPauseMenu()
-    {
-        Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        if (PauseMenuManager.instance != null)
-        {
-            PauseMenuManager.instance.canReset();
-            //PauseMenuManager.instance.inLoopMenu = false;
-
-
-        }
-        SceneManager.UnloadSceneAsync("PauseMenu");
-
-    }
-
+   
     public void ResetStage()
     {
         foreach (GameObject enemy in EnemyList)
