@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     bool statsOpen=false;
 
+    bool inMenu;
+
     private void Awake()
     {
 
@@ -65,9 +67,67 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //screenType = ScreenType.inGame;
+       
         CreateUpgradeLists();
         SaveUiNames();
+    }
+    public void MenuPauseManager()
+    {
+
+        //Debug.Log(inMenu);
+      
+      
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (!inMenu)
+                {
+                    LoadPauseMenu();
+                    inMenu = true;
+                }
+                else
+                {
+                    UnloadPauseMenu();
+                    inMenu = false;
+                }
+            }
+       
+        if (inMenu)
+        {
+            if (PauseMenuManager.instance != null)
+            {
+                PauseMenuManager.instance.inMenuLoop();
+
+            }
+
+        }
+
+    }
+    void LoadPauseMenu()
+    {
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+            SceneManager.LoadScene("PauseMenu", LoadSceneMode.Additive);
+       
+        if (PauseMenuManager.instance != null)
+        {
+            PauseMenuManager.instance.setMenu();
+            PauseMenuManager.instance.inLoopMenu = true;
+        }
+    }
+    void UnloadPauseMenu()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        if (PauseMenuManager.instance != null)
+        {
+            PauseMenuManager.instance.canReset();
+
+        }
+        SceneManager.UnloadSceneAsync("PauseMenu");
+
     }
 
     public void ResetStage()

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameplayOrganize : MonoBehaviour
 {   
     [Header("Player Stuff")]
@@ -23,7 +23,7 @@ public class GameplayOrganize : MonoBehaviour
     public bool toGame;
     public bool goToStage;
     public bool goToShop;
-    bool saved;
+    bool locked;
     [Header("Debug Stuff")]
     public GameObject playerIns;
     public GameObject saveBossRoom;
@@ -40,12 +40,13 @@ public class GameplayOrganize : MonoBehaviour
         granade = GameObject.Find("Player").GetComponent<Granade>();
         graple = GameObject.Find("Player").GetComponent<HookShot>();
         playerWeapons = GameObject.Find("GunDirection");
+
     }
     void Start()
     {
         saveStages = null;
   
-
+       
     }
 
     void Update()
@@ -74,7 +75,9 @@ public class GameplayOrganize : MonoBehaviour
             GoToShop();
             goToShop = false;
         }
-            
+       
+
+
     }
     void setPlayerSettings(bool isInLobby)
     {

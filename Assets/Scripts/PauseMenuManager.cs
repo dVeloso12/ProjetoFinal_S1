@@ -8,9 +8,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour
 {
+    public static PauseMenuManager instance;
     [Header("MainScreens")]
     [SerializeField] GameObject MainSelection;
     [SerializeField] GameObject SecondSelection;
+    [SerializeField] GameObject gameNameText;
     [Header("MainScreen")]
     [Header("Screen")]
     [SerializeField] GameObject ScreenObj;
@@ -20,47 +22,77 @@ public class PauseMenuManager : MonoBehaviour
     [Header("Sound")]
     [SerializeField] GameObject SoundObj;
     [SerializeField] GameObject SoundSeta;
+    [SerializeField] AudioMixer Effects, Music;
     [Header("Credits")]
     [SerializeField] GameObject CreditsObj;
     [SerializeField] GameObject CreditsSeta;
 
 
-
-
     Resolution[] resolutions;
     GameObject saveCurrent,setaCurret;
+    public bool inLoopMenu;
     enum MenuState
     {
         none,Screen,Sound,Credits
     };
-    MenuState state;
+     MenuState state;
 
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+       
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        Debug.Log("AGAIN");
+        
+       
+    }
     private void Start()
     {
         getResolutions();
         state = MenuState.none;
+        MainSelection.SetActive(true);
     }
-    private void Update()
+
+    public void inMenuLoop()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && inLoopMenu)
         {
-            if(state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Credits)
+            if (state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Credits)
             {
                 state = MenuState.none;
                 saveCurrent.SetActive(false);
                 setaCurret.SetActive(false);
             }
-            else if(state == MenuState.none)
-            {
-                int y = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.UnloadSceneAsync(y);
-            }
-            
+           
         }
-        if(state ==  MenuState.none)
+        if (state == MenuState.none)
         {
             SecondSelection.SetActive(false);
         }
+
+    }
+
+    public void setMenu()
+    {
+        MainSelection.SetActive(true);
+        gameNameText.SetActive(true);
+        state = MenuState.none;
+    }
+   public void canReset()
+    {
+        MainSelection.SetActive(false);
+        gameNameText.SetActive(false);
+        SecondSelection.SetActive(false);
+        if (saveCurrent != null)
+            saveCurrent.SetActive(false);
+        if (setaCurret != null)
+            setaCurret.SetActive(false);
+        state = MenuState.none;
     }
     public void openScreen()
     {
@@ -171,13 +203,24 @@ public class PauseMenuManager : MonoBehaviour
     }
     public void setVSync(int index)
     {
-        Debug.Log(index);
+        QualitySettings.vSyncCount = index;
     }
     public void SetQuality(int index)
     {
-        Debug.Log(index);
-
         QualitySettings.SetQualityLevel(index);
     }
+    public void ExistGame()
+    {
+        Application.Quit();
+    }
+    public void setVolumeEffects(float vol)
+    {
+        Effects.SetFloat("EffectsVolume",vol); //Ajustar mais tarde
+    }
+    public void setVolumeMusic(float vol)
+    {
+        Music.SetFloat("MusicVolume", vol); //Ajustar mais tarde 
+    }
+
 
 }
