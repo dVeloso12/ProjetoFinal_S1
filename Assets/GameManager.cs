@@ -73,10 +73,6 @@ public class GameManager : MonoBehaviour
     }
     public void MenuPauseManager()
     {
-
-        //Debug.Log(inMenu);
-      
-      
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!inMenu)
@@ -90,12 +86,14 @@ public class GameManager : MonoBehaviour
                     inMenu = false;
                 }
             }
-       
+
         if (inMenu)
         {
             if (PauseMenuManager.instance != null)
             {
                 PauseMenuManager.instance.inMenuLoop();
+                PauseMenuManager.instance.inLoopMenu = true;
+                //Debug.Log("AQUI");
 
             }
 
@@ -113,7 +111,8 @@ public class GameManager : MonoBehaviour
         if (PauseMenuManager.instance != null)
         {
             PauseMenuManager.instance.setMenu();
-            PauseMenuManager.instance.inLoopMenu = true;
+            //PauseMenuManager.instance.inLoopMenu = true;
+           
         }
     }
     void UnloadPauseMenu()
@@ -124,6 +123,8 @@ public class GameManager : MonoBehaviour
         if (PauseMenuManager.instance != null)
         {
             PauseMenuManager.instance.canReset();
+            //PauseMenuManager.instance.inLoopMenu = false;
+
 
         }
         SceneManager.UnloadSceneAsync("PauseMenu");

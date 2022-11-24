@@ -47,7 +47,6 @@ public class PauseMenuManager : MonoBehaviour
        
             instance = this;
             DontDestroyOnLoad(gameObject);
-        Debug.Log("AGAIN");
         
        
     }
@@ -62,12 +61,15 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && inLoopMenu)
         {
+            Debug.Log("aqui");
             if (state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Credits)
             {
                 state = MenuState.none;
                 saveCurrent.SetActive(false);
                 setaCurret.SetActive(false);
             }
+            else if (state == MenuState.none)
+                inLoopMenu = false;
            
         }
         if (state == MenuState.none)
