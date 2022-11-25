@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     public List<int>[] Upgrade_Rarity=new List<int>[3];
 
     public List<GameObject> EnemyList=new List<GameObject>();
-
     //[HideInInspector]
     //public List<Upgrade> GeneralUpgrades, WeaponUpgrades;
 
@@ -47,6 +46,7 @@ public class GameManager : MonoBehaviour
     public bool SurvStage = false;
 
     bool statsOpen=false;
+
 
     private void Awake()
     {
@@ -65,11 +65,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //screenType = ScreenType.inGame;
+       
         CreateUpgradeLists();
         SaveUiNames();
     }
-
+   
     public void ResetStage()
     {
         foreach (GameObject enemy in EnemyList)

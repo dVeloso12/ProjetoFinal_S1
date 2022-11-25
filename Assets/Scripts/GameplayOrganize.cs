@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameplayOrganize : MonoBehaviour
 {   
     [Header("Player Stuff")]
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject PlayerUI;
     [Header("Stages Stuff")]
     [SerializeField] GameObject StageRender;
     [SerializeField] Vector3 PlayerStageSpawn;
@@ -22,26 +23,30 @@ public class GameplayOrganize : MonoBehaviour
     public bool toGame;
     public bool goToStage;
     public bool goToShop;
-    bool saved;
+    bool locked;
     [Header("Debug Stuff")]
     public GameObject playerIns;
     public GameObject saveBossRoom;
     public GameObject saveStages, savelobby, saveshop;
     public static GameplayOrganize instance;
+    HookShot graple;
+    Granade granade;
+    GameObject playerWeapons;
 
     private void Awake()
     {
         instance = this;
         playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
+        granade = GameObject.Find("Player").GetComponent<Granade>();
+        graple = GameObject.Find("Player").GetComponent<HookShot>();
+        playerWeapons = GameObject.Find("GunDirection");
 
     }
     void Start()
     {
         saveStages = null;
-        //playerIns = Instantiate(Player, PlayerLobbySpawn, Quaternion.identity);
-        //Player.transform.position = PlayerLobbySpawn;
-        //Generate_Delete_Looby(true, false);
-
+  
+       
     }
 
     void Update()
@@ -52,14 +57,17 @@ public class GameplayOrganize : MonoBehaviour
             Generate_Delete_Shop(true, false);
             Generate_Delete_Looby(false, true);
             GoToStage();
+            setPlayerSettings(false);
             toGame = false;
         }
         if(toLobby)
         {
+           
             Generate_Detele_Stages(false, true);
             Generate_Delete_Shop(false, true);
             Generate_Delete_Looby(true, false);
             PlayerMove(PlayerLobbySpawn);
+            setPlayerSettings(true);
             toLobby = false;
         }
         if(goToShop)
@@ -67,7 +75,29 @@ public class GameplayOrganize : MonoBehaviour
             GoToShop();
             goToShop = false;
         }
-            
+       
+
+
+    }
+    void setPlayerSettings(bool isInLobby)
+    {
+        if(isInLobby)
+        {
+            granade.enabled = false;
+            graple.enabled = false;
+            PlayerUI.SetActive(false);
+            playerWeapons.SetActive(false);
+        }
+        else
+        {
+            granade.enabled = true;
+            graple.enabled = true;
+            PlayerUI.SetActive(true);
+            playerWeapons.SetActive(true);
+            FindObjectOfType<ManageWeapon>().ChangeWeapon();
+
+
+        }
     }
 
    public void ResetGenerator()
