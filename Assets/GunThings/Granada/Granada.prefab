@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2890465971416483998}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.9}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 3.0003636, y: 3.0003636, z: 3.0003636}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2890465971416483998}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -7000006293778152329, guid: 054e64a946e40c345b9e2bc1a8aa493d, type: 3}
 --- !u!23 &4364710797491857151
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 388c2e88419ba44438ecd56b17430e32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,8 +97,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.07
+  m_Center: {x: 0, y: 0, z: -0.06}
 --- !u!54 &8236021577989185237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c369ae6b804c2142b3b22a5a4728678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 3
-  throwForce: 10
+  timer: 1.5
+  throwForce: 20
   dmg: 30
+  Explosion: {fileID: 1121192042590650, guid: 63d04dcd13853dd4fb4380c4bb216635, type: 3}
+  size: 8

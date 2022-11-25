@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7768548, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -314,6 +314,51 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.572
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.33500195
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.09027712
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.90557706
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411346, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.24403705
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411359, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811287370881411359, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 3284295893118354146, guid: 42a59c3f6e7451540a5d4ee3e4790665,
         type: 3}
       propertyPath: Camera
@@ -324,6 +369,11 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 3631208033975300047, guid: 42a59c3f6e7451540a5d4ee3e4790665,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a59c3f6e7451540a5d4ee3e4790665, type: 3}
 --- !u!4 &2346611641359463259 stripped

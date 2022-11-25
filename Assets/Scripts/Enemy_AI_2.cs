@@ -6,35 +6,35 @@ using UnityEngine.AI;
 public class Enemy_AI_2 : MonoBehaviour
 {
     // Start is called before the first frame update
-    Transform player;
+    protected Transform player;
     NavMeshAgent navagent;
 
 
+    //[Header("Shooting")]
+    [SerializeField] int DistanceToPlayer;
 
 
-
-    [Header("Shooting")]
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] GameObject bulletsParent;
-
-    [SerializeField] float fireRate = 60f;
+    
+    [SerializeField] protected int dmg;
+    [SerializeField] float speed;
 
 
-    float shootingTimer;
-    private void Awake()
+    protected void Awake()
     {
         navagent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().transform;
+        navagent.speed = speed;
+        navagent.stoppingDistance = DistanceToPlayer;
     }
-    void Start()
+    protected void Start()
     {
-        shootingTimer = 0f;
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        shootingTimer += Time.deltaTime;
+        Debug.Log("Update");
+       
         navagent.SetDestination(player.position);
 
         Vector3 directionToLook = (player.position - transform.position);
@@ -45,26 +45,27 @@ public class Enemy_AI_2 : MonoBehaviour
             transform.LookAt(player);
         }
 
-        if (navagent.remainingDistance<navagent.stoppingDistance+1)
-            Shoot();
+        float DistanceToPlayer = (transform.position - player.position).magnitude;
+
+        if (DistanceToPlayer < navagent.stoppingDistance + 1)
+        {
+            Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
+
+            Action();
+        }
+
     }
 
+    protected virtual void Action()
+    {
 
+    }
 
 
     public void Shoot()
     {
 
-        if (shootingTimer > 1f / fireRate)
-        {
-            //Debug.Log("Shooting");
-
-            bulletsParent.transform.LookAt(player);
-
-            Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
-
-            shootingTimer = 0f;
-        }
+        
 
 
     }

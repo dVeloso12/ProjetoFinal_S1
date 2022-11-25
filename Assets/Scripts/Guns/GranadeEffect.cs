@@ -8,6 +8,8 @@ public class GranadeEffect : MonoBehaviour
     public float timer;
     public float throwForce;
     public float dmg;
+    public GameObject Explosion;
+    public int size;
 
     bool Exploded = false;
     void Start()
@@ -29,8 +31,8 @@ public class GranadeEffect : MonoBehaviour
     void Explode()
     {
         Exploded = true;
-        Collider[] collsions = Physics.OverlapSphere(transform.position, transform.localScale.x*3);
-
+        Collider[] collsions = Physics.OverlapSphere(transform.position, size);
+        Debug.Log("asd" + collsions.Length);
 
         for (int i = 0; i < collsions.Length; i++)
         {
@@ -40,6 +42,7 @@ public class GranadeEffect : MonoBehaviour
             {
                 //collsions[i].GetComponent<EnemyManager>().ETakeDmg(dmg);
                 collsions[i].GetComponent<EnemyStatus>().Damage(dmg);
+                Debug.Log("boom");
 
             }
             //Dano no Boss
@@ -53,7 +56,8 @@ public class GranadeEffect : MonoBehaviour
             }
 
         }
-        StartCoroutine(BigPop());
+        Instantiate(Explosion, transform.position,Quaternion.identity);
+        Destroy(gameObject);
 
     }
 
