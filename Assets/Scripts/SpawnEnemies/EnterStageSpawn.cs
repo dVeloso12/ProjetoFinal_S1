@@ -32,7 +32,8 @@ public class EnterStageSpawn : MonoBehaviour
             }
 
             //Debug.Log("Colliding with player 01");
-            spawnScript.SpawnEnemiesWithQuantity(quantityTospawn, quantityToSpawnOverTime);
+            if(spawnScript != null) spawnScript.SpawnEnemiesWithQuantity(quantityTospawn, quantityToSpawnOverTime);
+
             Collider collider = this.GetComponent<Collider>();
             collider.enabled = false;
 

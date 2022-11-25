@@ -3,6 +3,7 @@ using UnityEngine;
 public class EndBossPortal : MonoBehaviour
 {
      GameplayOrganize game;
+    public bool isTutorial;
     void Start()
     {
         game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
@@ -13,7 +14,8 @@ public class EndBossPortal : MonoBehaviour
 
         if (other.transform.name == "Player")
         {
-            game.goToShop = true;
+            if(isTutorial) game.tutorialFinished = true;
+            else game.goToShop = true;
 
         }
     }

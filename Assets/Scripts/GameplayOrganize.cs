@@ -7,6 +7,9 @@ public class GameplayOrganize : MonoBehaviour
     [Header("Player Stuff")]
     [SerializeField] GameObject Player;
     [SerializeField] GameObject PlayerUI;
+    [Header("Tutorial Stuff")]
+    [SerializeField] Vector3 PlayerSpawnTuto;
+    [SerializeField] public bool tutorialFinished;
     [Header("Stages Stuff")]
     [SerializeField] GameObject StageRender;
     [SerializeField] Vector3 PlayerStageSpawn;
@@ -23,6 +26,7 @@ public class GameplayOrganize : MonoBehaviour
     public bool toGame;
     public bool goToStage;
     public bool goToShop;
+    public bool toTutorial;
     bool locked;
     [Header("Debug Stuff")]
     public GameObject playerIns;
@@ -51,6 +55,19 @@ public class GameplayOrganize : MonoBehaviour
 
     void Update()
     {
+        if(toTutorial)
+        {
+            LoadTutorial();
+            PlayerMove(PlayerSpawnTuto);
+            setPlayerSettings(false);
+            toTutorial = false;
+        }
+        if(tutorialFinished)
+        {
+            UnloadTutorial();
+            toLobby = true;
+            tutorialFinished = false;
+        }    
         if(toGame)
         {
             Generate_Detele_Stages(true, false);
@@ -78,6 +95,14 @@ public class GameplayOrganize : MonoBehaviour
        
 
 
+    }
+    void LoadTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive);
+    }
+    void UnloadTutorial()
+    {
+        SceneManager.UnloadSceneAsync("TutorialScene");
     }
     void setPlayerSettings(bool isInLobby)
     {
