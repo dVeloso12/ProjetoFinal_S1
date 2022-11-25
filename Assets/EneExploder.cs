@@ -33,14 +33,12 @@ public class EneExploder : Enemy_AI_2
 
 
         Collider[] collsions = Physics.OverlapSphere(transform.position, ExplosionSize);
-        Debug.Log("asd" + collsions.Length);
 
         for (int i = 0; i < collsions.Length; i++)
         {
             if (collsions[i].gameObject.CompareTag("Player") == true)
             {
                 collsions[i].GetComponent<Player>().Damage(dmg);
-                Debug.Log("boomEnemy");
 
             }
         }

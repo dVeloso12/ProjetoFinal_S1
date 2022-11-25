@@ -38,8 +38,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("adfskhjjasdsdhvasdsliu"+collision.transform.name);
+        if (collision.transform.tag == "Player")
+            collision.transform.GetComponent<Player>().Damage(Damage);
 
+        Debug.Log(collision.transform.name+"cl");
         Destroy(gameObject);
     }
 
@@ -48,6 +50,7 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Player")
             other.GetComponent<Player>().Damage(Damage);
 
+        Debug.Log(other.name);
         Destroy(gameObject);
     }
 

@@ -33,7 +33,7 @@ public class Enemy_AI_2 : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        Debug.Log("Update");
+        //Debug.Log("Update");
        
         navagent.SetDestination(player.position);
 
@@ -49,7 +49,7 @@ public class Enemy_AI_2 : MonoBehaviour
 
         if (DistanceToPlayer < navagent.stoppingDistance + 1)
         {
-            Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
+            //Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
 
             Action();
         }
