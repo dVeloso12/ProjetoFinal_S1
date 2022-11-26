@@ -13,12 +13,16 @@ public class NpcMsgDisplay : MonoBehaviour
     float timer;
     int stageIndex,msgIndex=0;
     List<string> saveCurrentList;
-    ChestScript chest;
+    ChestScript deffChest;
     [Header("All NPC Parts")]
     GameObject canvas;
-     SphereCollider sphereCollider;
+    SphereCollider sphereCollider;
     CapsuleCollider capsuleCollider;
    MeshRenderer renderer;
+    bool toHide;
+    [SerializeField] List<GameObject> toHideList;
+    int toHideIndex;
+    [SerializeField] GameObject shop;
 
 
 
@@ -28,17 +32,45 @@ public class NpcMsgDisplay : MonoBehaviour
         stageIndex = 0;
         msgIndex = 0;
         transform.position = Npc.NpcSpawnPosition[stageIndex];
-        chest = GameObject.Find("ChestStageDeff").GetComponent<ChestScript>();
+        deffChest = GameObject.Find("ChestStageDeff").GetComponent<ChestScript>();
         canvas = GameObject.Find("TutoCanvas");
         sphereCollider = GetComponent<SphereCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         renderer = GetComponent<MeshRenderer>();
+        shop.SetActive(false);
+       
     }
     private void Update()
     {
         if(inRange) rotateNpc();
-        if (chest.canAppear) configChestTuto(true);
+        toHideManager();
         UiManager();
+    }
+    void toHideManager()
+    {
+        if(toHide)
+        {
+            if (toHideList[toHideIndex].name == "ChestStageDeff")
+            {
+                if(toHideList[toHideIndex].GetComponent<ChestScript>().canAppear)
+                {
+                    configChestTuto(true);
+                    toHide = false;
+                    toHideIndex++;
+                }
+               
+            }
+            else if(toHideList[toHideIndex].name == "Boss")
+            {
+                if (toHideList[toHideIndex].GetComponent<BossScript>().isDead)
+                {
+                    configChestTuto(true);
+                    shop.SetActive(true);
+                    toHide = false;
+                    toHideIndex++;
+                }
+            }
+        }
     }
     void UiManager()
     {
@@ -116,6 +148,12 @@ public class NpcMsgDisplay : MonoBehaviour
                     saveCurrentList = Npc.Position_6;
                     break;
                 }
+            case 6:
+                {
+                    saveCurrentList = Npc.Position_7;
+                    configChestTuto(false);
+                    break;
+                }
             default:
                 TutorialDone = true;
                 break;
@@ -133,6 +171,7 @@ public class NpcMsgDisplay : MonoBehaviour
         }
         else
         {
+            toHide = true;
             canvas.SetActive(false);
             renderer.enabled = false;
             sphereCollider.enabled = false;

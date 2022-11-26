@@ -67,6 +67,11 @@ MonoBehaviour:
   - One more thing, usually theres turrets in this type of rooms , u can shoot then
     to disable them.
   - They will activate again when the wall closes!!
+  Position_7:
+  - 'Well done, Soldier !!!
+
+    You killed the Boss!!'
+  - Now enter this portal , this will take you to the Shop.
   NpcSpawnPosition:
   - {x: -99.02, y: 25.51, z: -4.96}
   - {x: -89.329, y: 26.62, z: 2.444}
@@ -74,3 +79,4 @@ MonoBehaviour:
   - {x: 40.09, y: -0.03, z: 2.22}
   - {x: 49.21, y: -0.03, z: -2.15}
   - {x: 61.12, y: -0.03, z: -2.45}
+  - {x: 189.482, y: -8.33, z: -3.478}

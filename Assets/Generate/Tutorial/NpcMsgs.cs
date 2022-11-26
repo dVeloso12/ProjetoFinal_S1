@@ -17,6 +17,8 @@ public class NpcMsgs : ScriptableObject
     [SerializeField] public List<string> Position_5;
     [TextArea(4, 5)]
     [SerializeField] public List<string> Position_6;
+    [TextArea(4, 5)]
+    [SerializeField] public List<string> Position_7;
 
     [SerializeField] public List<Vector3> NpcSpawnPosition;
 
