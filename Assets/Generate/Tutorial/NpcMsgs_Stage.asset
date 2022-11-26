@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cff1f00501652448743553c924a937, type: 3}
+  m_Name: NpcMsgs_Stage
+  m_EditorClassIdentifier: 
+  Position_1:
+  - Frist of all , i will teach you some basic comands that you can use in this training!!
+  - Move you caracter using WASD.
+  - 'You can shoot use gun clicking on Left Mouse!!
+
+'
+  - 'Use your Q to throw your grapple hook.
+
+
+'
+  - 'Use your E to throw your grapple hook.
+
+
+'
+  - 'To use your Dash , u can click Shift-1!!
+
+'
+  - 'To reaload your weapon , use R.
+
+'
+  Position_2:
+  - Now that you know how to use your tools, i need to explain to you what your doing
+    here.
+  - We are in war with other nation and this is the safest way for you to train your
+    skills!!
+  - These scenes does not represent the real world , basicly this is a simunlation,
+    nothing here is real.
+  - But we found a way to recreate the enemies, so you are going to fight them here!!
+  - Keep following the path!!
+  Position_3:
+  - Your goal here is to complete each room without dying.
+  - Theres other types of rooms in this simulation, in this one, your goal is capture
+    that crystal!
+  - Go to the plate!!!
+  Position_4:
+  - Because this is your first time , this simualtion will not have any enemie!!
+  - But except them to attack you when you are here and in other room!!
+  - When you finish capturing this plate, a chest will appear and the door will open.
+  Position_5:
+  - In this chest you can choose between 3 upgrades, this is gonna make you stronger!!
+  - Every time that you complete a room , a chest will appear!!
+  - You will need those to make you stronger , because the game will get harder each
+    time that you complete a room.
+  Position_6:
+  - In every 2 rooms , theres gonna appear 1 boss room!!
+  - This type of rooms requieres you to kill one boss for you to move on.
+  - But before you can kill him , you gotta execute some mechanics!!
+  - In this one, theres 2 plates that u need to capture, after that , the wall that
+    protects the boss is going to open!!
+  - After that you can deal damage to him!!!
+  - But that wall is going to close after some seconds.
+  - If you dont kill him in that period, you need to repeat the whole process again
+  - One more thing, usually theres turrets in this type of rooms , u can shoot then
+    to disable them.
+  - They will activate again when the wall closes!!
+  NpcSpawnPosition:
+  - {x: -99.02, y: 25.51, z: -4.96}
+  - {x: -89.329, y: 26.62, z: 2.444}
+  - {x: 11.05, y: 0.76, z: -4.96}
+  - {x: 40.09, y: -0.03, z: 2.22}
+  - {x: 49.21, y: -0.03, z: -2.15}
+  - {x: 61.12, y: -0.03, z: -2.45}

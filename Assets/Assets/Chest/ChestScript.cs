@@ -8,6 +8,7 @@ public class ChestScript : MonoBehaviour
     public bool canAppear;
    bool canUpgrade,setcollider;
 
+
     Spawn spawnScript;
 
     private void Start()
