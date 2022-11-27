@@ -28,10 +28,12 @@ public class GameplayOrganize : MonoBehaviour
     public bool goToShop;
     public bool toTutorial;
     bool locked;
+    [Header("Tutorial Stuff")]
+    [SerializeField] GameObject TutoNpc;
     [Header("Debug Stuff")]
     public GameObject playerIns;
     public GameObject saveBossRoom;
-    public GameObject saveStages, savelobby, saveshop;
+    public GameObject saveStages, savelobby, saveshop,savenpc;
     public static GameplayOrganize instance;
     HookShot graple;
     Granade granade;
@@ -60,13 +62,14 @@ public class GameplayOrganize : MonoBehaviour
             LoadTutorial();
             PlayerMove(PlayerSpawnTuto);
             setPlayerSettings(false);
+            savenpc = Instantiate(TutoNpc);
             toTutorial = false;
         }
         if(tutorialFinished)
         {
-            UnloadTutorial();
-            toLobby = true;
-            tutorialFinished = false;
+            if (savenpc != null) Destroy(savenpc);
+            UnloadTutorial();        
+          tutorialFinished = false;
         }    
         if(toGame)
         {
@@ -75,6 +78,7 @@ public class GameplayOrganize : MonoBehaviour
             Generate_Delete_Looby(false, true);
             GoToStage();
             setPlayerSettings(false);
+    
             toGame = false;
         }
         if(toLobby)
@@ -99,11 +103,13 @@ public class GameplayOrganize : MonoBehaviour
     void LoadTutorial()
     {
         SceneManager.LoadScene("TutorialScene", LoadSceneMode.Additive);
+       
     }
-    void UnloadTutorial()
+   public void UnloadTutorial()
     {
-        SceneManager.UnloadSceneAsync("TutorialScene");
+        SceneManager.UnloadScene("TutorialScene");
     }
+
     void setPlayerSettings(bool isInLobby)
     {
         if(isInLobby)
@@ -124,8 +130,13 @@ public class GameplayOrganize : MonoBehaviour
 
         }
     }
+    public void tpPlayerToLimbo()
+    {
+        PlayerMove(new Vector3(1200f,0,2300f));
 
-   public void ResetGenerator()
+    }
+
+    public void ResetGenerator()
     {
         Generate_Detele_Stages(false, true);
         Generate_Detele_Stages(true, false);

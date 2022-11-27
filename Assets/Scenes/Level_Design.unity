@@ -626,6 +626,7 @@ MonoBehaviour:
   gameState: 0
   surv: {fileID: 0}
   SurvStage: 0
+  orggame: {fileID: 166003453}
 --- !u!4 &166003452
 Transform:
   m_ObjectHideFlags: 0
@@ -666,16 +667,18 @@ MonoBehaviour:
   Shop: {fileID: 9099947202535907637, guid: a9418167e5a4cfc41b6eaf19008bbc7c, type: 3}
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
-  toLobby: 0
+  toLobby: 1
   toGame: 0
   goToStage: 0
   goToShop: 0
-  toTutorial: 1
+  toTutorial: 0
+  TutoNpc: {fileID: 8078951896517334181, guid: 2c287dc846a96894fb17920cc5f01c30, type: 3}
   playerIns: {fileID: 0}
   saveBossRoom: {fileID: 0}
   saveStages: {fileID: 0}
   savelobby: {fileID: 0}
   saveshop: {fileID: 0}
+  savenpc: {fileID: 0}
 --- !u!114 &166003454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28681,7 +28684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184063481980430798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -10000, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -65734,6 +65737,7 @@ MonoBehaviour:
   opened: 0
   readyToGenerate: {fileID: 0}
   GeneratedFinished: {fileID: 0}
+  inTutorial: 0
 --- !u!4 &8936064077921259199
 Transform:
   m_ObjectHideFlags: 0

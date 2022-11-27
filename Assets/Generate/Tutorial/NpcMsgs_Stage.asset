@@ -72,6 +72,29 @@ MonoBehaviour:
 
     You killed the Boss!!'
   - Now enter this portal , this will take you to the Shop.
+  Position_8:
+  - Now we are in the shop, in this place you can buy new upgrades for your caracter!!!
+  - Go talk to the NPC to see what he is offering!!
+  Position_9:
+  - Before you you interact with the NPC , let me give you some money.
+  - Every time that you kill one enemie , you will gain some money.
+  - Interact with NPC and spend you money on upgrades!
+  Position_10:
+  - Now we need to open the portal, so you can continue your run !!
+  - Press H on the computer so we can generate the new levels and enter the portal!!
+  - If you die, your simulation will be over, so try not to die !!
+  Position_11:
+  - Humm , i was analysing your run and i found some problems and error and the code.
+  - I think i already fix them.
+  - Ok, so you died and now we are outside of the simulation.
+  - We are in the looby right now , go to the next room , theres a computer that
+    u can interacted!!
+  - In this computer, you can start a new run!!
+  Position_12:
+  - In this computer you can prepare your run , by choosing your weapons!!
+  - After that just start the run and to the VR Machine !!
+  - Remenber that everything will deal damage to you ... enemies , turrets etc.
+  - Good Luck Soldier !!!
   NpcSpawnPosition:
   - {x: -99.02, y: 25.51, z: -4.96}
   - {x: -89.329, y: 26.62, z: 2.444}
@@ -80,3 +103,8 @@ MonoBehaviour:
   - {x: 49.21, y: -0.03, z: -2.15}
   - {x: 61.12, y: -0.03, z: -2.45}
   - {x: 189.482, y: -8.33, z: -3.478}
+  - {x: -574.86, y: 1.357, z: 235.49}
+  - {x: -542.86, y: 6.528, z: 235.17}
+  - {x: -579.89, y: 1.03, z: 239.38}
+  - {x: -9999.048, y: 0, z: 7.301}
+  - {x: -9998.91, y: 0, z: 16.97}

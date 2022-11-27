@@ -14,8 +14,7 @@ public class EndBossPortal : MonoBehaviour
 
         if (other.transform.name == "Player")
         {
-            if(isTutorial) game.tutorialFinished = true;
-            else game.goToShop = true;
+            game.goToShop = true;
 
         }
     }

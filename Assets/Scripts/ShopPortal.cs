@@ -21,7 +21,7 @@ public class ShopPortal : MonoBehaviour
             gameObject.SetActive(false);
             bt.cantGenerateMore = false;
             bt.opened = false;
-            game.GoToStage();
+            game.tpPlayerToLimbo();
         }
 
     }

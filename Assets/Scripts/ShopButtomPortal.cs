@@ -9,6 +9,7 @@ public class ShopButtomPortal : MonoBehaviour
     public bool cantGenerateMore = false;
     public bool opened = false;
     [SerializeField] TMPro.TextMeshProUGUI readyToGenerate, GeneratedFinished;
+    public bool inTutorial;
 
 
     void Start()
@@ -21,13 +22,26 @@ public class ShopButtomPortal : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
+        if (!inTutorial)
         {
-            Portal.SetActive(true);
-            game.ResetGenerator();
-            cantGenerateMore = true;
-            opened = true;
-            
+            if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
+            {
+                Portal.SetActive(true);
+                game.ResetGenerator();
+                cantGenerateMore = true;
+                opened = true;
+
+            }
+        }
+        else
+        {
+            if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
+            {
+                Portal.SetActive(true);
+                cantGenerateMore = true;
+                opened = true;
+
+            }
         }
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class NpcMsgDisplay : MonoBehaviour
 {
@@ -23,26 +24,34 @@ public class NpcMsgDisplay : MonoBehaviour
     [SerializeField] List<GameObject> toHideList;
     int toHideIndex;
     [SerializeField] GameObject shop;
-
-
+    bool update;
+    GameplayOrganize orggame;
 
     private void Start()
-    {
+    {   
         saveCurrentList = Npc.Position_1;
         stageIndex = 0;
         msgIndex = 0;
         transform.position = Npc.NpcSpawnPosition[stageIndex];
-        deffChest = GameObject.Find("ChestStageDeff").GetComponent<ChestScript>();
         canvas = GameObject.Find("TutoCanvas");
         sphereCollider = GetComponent<SphereCollider>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         renderer = GetComponent<MeshRenderer>();
-        shop.SetActive(false);
-       
+        orggame = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
+        update = true;
     }
     private void Update()
     {
-        if(inRange) rotateNpc();
+        if (update)
+        {
+            deffChest = GameObject.Find("ChestStageDeff").GetComponent<ChestScript>();
+            toHideList.Add(GameObject.Find("ChestStageDeff"));
+            toHideList.Add(GameObject.Find("Boss"));
+            shop = GameObject.Find("ShopTuto");
+            shop.SetActive(false);
+            update = false;
+        }
+        if (inRange) rotateNpc();
         toHideManager();
         UiManager();
     }
@@ -92,11 +101,13 @@ public class NpcMsgDisplay : MonoBehaviour
                     msgIndex = 0;
                     DisplayMsg(saveCurrentList[msgIndex]);
                 }
-                else
-                {
-                    DisplayMsg("TUTO DONE");
-                }
             }        
+        }
+        if(TutorialDone)
+        {
+            orggame.tutorialFinished = true;
+            TutorialDone = false;
+            
         }
     }
     void rotateNpc()
@@ -152,6 +163,31 @@ public class NpcMsgDisplay : MonoBehaviour
                 {
                     saveCurrentList = Npc.Position_7;
                     configChestTuto(false);
+                    break;
+                }
+            case 7:
+                {
+                    saveCurrentList = Npc.Position_8;
+                    break;
+                }
+            case 8:
+                {
+                    saveCurrentList = Npc.Position_9;
+                    break;
+                }
+            case 9:
+                {
+                    saveCurrentList = Npc.Position_10;
+                    break;
+                }
+            case 10:
+                {
+                    saveCurrentList = Npc.Position_11;
+                    break;
+                }
+            case 11:
+                {
+                    saveCurrentList = Npc.Position_12;
                     break;
                 }
             default:

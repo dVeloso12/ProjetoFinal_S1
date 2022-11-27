@@ -10,11 +10,7 @@ public enum WeaponType
     AR,
     Pistol
 };
-//public enum ScreenType
-//{
-//    inGame,
-//    outGame
-//};
+
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -46,6 +42,9 @@ public class GameManager : MonoBehaviour
     public bool SurvStage = false;
 
     bool statsOpen=false;
+    public GameplayOrganize orggame;
+    bool unloadDeadScene;
+    float timer;
 
 
     private void Awake()
@@ -61,6 +60,18 @@ public class GameManager : MonoBehaviour
         playerInput.Player.OpenStats.performed += OpenStats;
 
         
+    }
+    private void Update()
+    {
+        if(unloadDeadScene && timer < 4f)
+        {
+            timer += Time.deltaTime;
+        }
+        else if(unloadDeadScene && timer >4f)
+        {
+            SceneManager.UnloadSceneAsync("GameOver");
+            unloadDeadScene = false;
+        }
     }
 
     void Start()
@@ -145,11 +156,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
-            
-        Time.timeScale = 0f;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+        orggame.toLobby = true;
+        unloadDeadScene = true;
+        //Time.timeScale = 0f;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
     }
     public void toComputer()
     {
