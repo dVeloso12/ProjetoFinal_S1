@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
     }
     public void AddUpgrade()
     {
-        if(gameState==0)
+        Debug.Log("ADDUPGRADEssss");
+        if (gameState==0)
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
         else if(gameState==1)
             SceneManager.LoadScene("ShopUpgrade", LoadSceneMode.Additive);
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
     }
     public void DeadEnemy(GameObject Enemy)
     {
+        Money += 10;
         if (SurvStage)
             surv.nObjective--;
         EnemyList.Remove(Enemy);
@@ -148,7 +150,10 @@ public class GameManager : MonoBehaviour
         if (gameState == 0)
             SceneManager.UnloadSceneAsync("AddUpgrade");
         else if (gameState == 1)
+        {
             SceneManager.UnloadSceneAsync("ShopUpgrade");
+            gameState = 0;
+        }
         Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -30,6 +30,7 @@ public class ChestScript : MonoBehaviour
 
        if(canUpgrade)
         {
+            Debug.Log("ADDUPGRADE");
             gm.AddUpgrade();
             canUpgrade = false;
             Destroy(gameObject);

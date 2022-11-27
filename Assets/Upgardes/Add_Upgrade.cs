@@ -13,13 +13,17 @@ public class Add_Upgrade : MonoBehaviour
     int[] rar_numb = new int[3];
 
     public float[] prob = { 75, 20, 5 };
+    float xMult, yMult;
 
     public Canvas canvas;
     void Start()
     {
 
         gm = FindObjectOfType<GameManager>();
+        xMult = canvas.renderingDisplaySize.x / 1920;
+        yMult = canvas.renderingDisplaySize.y / 1080;
         RandUpgrade();
+        
     }
 
     // Update is called once per frame
@@ -54,8 +58,8 @@ public class Add_Upgrade : MonoBehaviour
                 f--;
             }
             upg_choice[i] = Instantiate(gm.Upgrades[gm.Upgrade_Rarity[rarity][r]],canvas.transform);
-            upg_choice[i].transform.localPosition = new Vector3(-500+(i*500),50);
-            upg_choice[i].transform.localScale *= 2.5f;
+            upg_choice[i].transform.localPosition = new Vector3((-500+(i*500))*xMult,50*yMult);
+            upg_choice[i].transform.localScale *= new Vector2( 2.5f*xMult,2.5f*yMult);
 
             r_numb[i] = r;
             rar_numb[i] = rarity;

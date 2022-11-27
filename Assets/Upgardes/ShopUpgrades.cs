@@ -10,7 +10,7 @@ public class ShopUpgrades : MonoBehaviour
     // Start is called before the first frame update
     GameManager gm;
 
-    Upgrade[] upg_choice = new Upgrade[11];
+    Upgrade[] upg_choice = new Upgrade[12];
 
     public float[] prob = {75,20,5};
 
@@ -19,13 +19,19 @@ public class ShopUpgrades : MonoBehaviour
     public Canvas canvas;
 
     public Button button;
-    
+    float xMult, yMult;
+
     void Start()
     {
 
         gm = FindObjectOfType<GameManager>();
-        RandUpgrade();
+        xMult = canvas.GetComponent<RectTransform>().sizeDelta.x / 1920;
+        yMult = canvas.GetComponent<RectTransform>().sizeDelta.y / 1080;
         button.onClick.AddListener(Back);
+
+
+
+        RandUpgrade();
 
     }
 
@@ -40,7 +46,7 @@ public class ShopUpgrades : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-            for (int j = 0; j < 6-i; j++)
+            for (int j = 0; j < 6; j++)
             {
                 int r = Random.Range(0, gm.Upgrades.Count);
 
@@ -49,13 +55,13 @@ public class ShopUpgrades : MonoBehaviour
                 int r2 = Random.Range(-5, 5);
 
                 upg_choice[i*6+j] = Instantiate(gm.Upgrades[r], canvas.transform);
-                upg_choice[i*6+j].transform.localPosition = new Vector3(-359 + (j * 144), 103+(i*-190));
-                upg_choice[i * 6 + j].transform.localScale = new Vector3(1.04f, 1.52f, 1);
+                upg_choice[i*6+j].transform.localPosition = new Vector3((-776 + (j * 274))*xMult, (238+(i*-540))*yMult);
+                upg_choice[i * 6 + j].transform.localScale *= new Vector2(1.7f*xMult, 1.7f*yMult);
                 upg_choice[i * 6 + j].price = 50 + r2;
 
                 GameObject g = Instantiate(priceText, upg_choice[i * 6 + j].transform);
-                g.transform.localPosition +=  new Vector3(0, 35, 0);
-                g.transform.localScale *= .7f;
+                g.transform.localPosition +=  new Vector3(0, 55*yMult, 0);
+                g.transform.localScale *=new Vector2( .7f*xMult,.7f*yMult);
                 g.GetComponent<TextMeshProUGUI>().text = upg_choice[i * 6 + j].price + " $";
 
 
