@@ -39,13 +39,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public SurvivalScript surv;
 
-    public bool SurvStage = false;
+    public bool SurvStage = false,CleanShop = true;
 
     bool statsOpen=false;
     public GameplayOrganize orggame;
     bool unloadDeadScene;
     float timer;
 
+    public List<Upgrade> ShopUpgardes;
+    
 
     private void Awake()
     {
@@ -109,8 +111,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("ADDUPGRADEssss");
         if (gameState==0)
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
-        else if(gameState==1)
+        else if (gameState == 1) { 
             SceneManager.LoadScene("ShopUpgrade", LoadSceneMode.Additive);
+        }
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -151,6 +154,9 @@ public class GameManager : MonoBehaviour
             SceneManager.UnloadSceneAsync("AddUpgrade");
         else if (gameState == 1)
         {
+            if (CleanShop)
+                ShopUpgardes.Clear();
+            CleanShop = true;
             SceneManager.UnloadSceneAsync("ShopUpgrade");
             gameState = 0;
         }

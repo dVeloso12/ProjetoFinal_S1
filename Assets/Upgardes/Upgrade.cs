@@ -31,14 +31,22 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     GameManager gm;
 
-    void Start()
+    private void Awake()
     {
         gm = FindObjectOfType<GameManager>();
-        OriginScale = transform.localScale;
+        
         Effects = GetComponent<UpgradeEffects>();
         TextDescription = GetComponentInChildren<TextMeshProUGUI>();
 
         TextDescription.text = Description;
+
+
+        int r2 = UnityEngine.Random.Range(-5, 5);
+        price = 50 * Rarity + r2;
+    }
+    void Start()
+    {
+        OriginScale = transform.localScale;
     }
 
     // Update is called once per frame
