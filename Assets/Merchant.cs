@@ -17,12 +17,14 @@ public class Merchant : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        GameManager gm = FindObjectOfType<GameManager>();
-        gm.gameState = 1;
-        gm.AddUpgrade();
-
+        if (other.name == "Player" && Input.GetKey(KeyCode.H))
+        {
+            GameManager gm = FindObjectOfType<GameManager>();
+            gm.gameState = 1;
+            gm.AddUpgrade();
+        }
     }
+    
 }

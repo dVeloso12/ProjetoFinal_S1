@@ -29,14 +29,14 @@ MonoBehaviour:
   - 'To use your Dash , u can click Shift-1!!
 
 '
-  - 'To reaload your weapon , use R.
+  - 'To reload your weapon , use R.
 
 '
   Position_2:
-  - Now that you know how to use your tools, i need to explain to you what your doing
+  - Now that you know how to use your tools, i need to explain what you are doing
     here.
-  - We are in war with other nation and this is the safest way for you to train your
-    skills!!
+  - We are in war with others nations and this is the safest way for you to train
+    your skills!!
   - These scenes does not represent the real world , basicly this is a simunlation,
     nothing here is real.
   - But we found a way to recreate the enemies, so you are going to fight them here!!
@@ -48,7 +48,7 @@ MonoBehaviour:
   - Go to the plate!!!
   Position_4:
   - Because this is your first time , this simualtion will not have any enemie!!
-  - But except them to attack you when you are here and in other room!!
+  - But except them to attack you while you train.
   - When you finish capturing this plate, a chest will appear and the door will open.
   Position_5:
   - In this chest you can choose between 3 upgrades, this is gonna make you stronger!!
@@ -57,7 +57,7 @@ MonoBehaviour:
     time that you complete a room.
   Position_6:
   - In every 2 rooms , theres gonna appear 1 boss room!!
-  - This type of rooms requieres you to kill one boss for you to move on.
+  - This type of rooms requieres you to kill the boss.
   - But before you can kill him , you gotta execute some mechanics!!
   - In this one, theres 2 plates that u need to capture, after that , the wall that
     protects the boss is going to open!!
@@ -71,29 +71,30 @@ MonoBehaviour:
   - 'Well done, Soldier !!!
 
     You killed the Boss!!'
-  - Now enter this portal , this will take you to the Shop.
+  - Now enter this portal that will take you to the Shop.
   Position_8:
   - Now we are in the shop, in this place you can buy new upgrades for your caracter!!!
   - Go talk to the NPC to see what he is offering!!
   Position_9:
-  - Before you you interact with the NPC , let me give you some money.
-  - Every time that you kill one enemie , you will gain some money.
-  - Interact with NPC and spend you money on upgrades!
+  - Before you interact with the NPC , let me give you some money.
+  - You can gain money by killing enemies.
+  - Interact with NPC and spend your money on upgrades!
   Position_10:
   - Now we need to open the portal, so you can continue your run !!
   - Press H on the computer so we can generate the new levels and enter the portal!!
   - If you die, your simulation will be over, so try not to die !!
   Position_11:
-  - Humm , i was analysing your run and i found some problems and error and the code.
+  - Humm Upsss, i was analysing your run and i found some problems and errors in
+    the simulation code.
   - I think i already fix them.
   - Ok, so you died and now we are outside of the simulation.
   - We are in the looby right now , go to the next room , theres a computer that
-    u can interacted!!
+    you can interacted!!
   - In this computer, you can start a new run!!
   Position_12:
   - In this computer you can prepare your run , by choosing your weapons!!
-  - After that just start the run and to the VR Machine !!
-  - Remenber that everything will deal damage to you ... enemies , turrets etc.
+  - After that just start the run and go to the VR Machine !!
+  - Remember that everything will deal damage to you ... enemies , turrets etc.
   - Good Luck Soldier !!!
   NpcSpawnPosition:
   - {x: -99.02, y: 25.51, z: -4.96}
