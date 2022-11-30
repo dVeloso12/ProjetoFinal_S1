@@ -7,15 +7,22 @@ public class Shotgun : GunController
     public float RandomDeviation;
 
     public int Pellets;
+
+    [SerializeField] Vector3 position;
+
     void Start()
     {
         base.Start();
+        transform.localPosition = position;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
+        transform.localPosition = position;
+
     }
 
     protected override void Shoot()
