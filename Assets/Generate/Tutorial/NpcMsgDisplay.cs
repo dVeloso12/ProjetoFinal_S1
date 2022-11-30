@@ -18,8 +18,7 @@ public class NpcMsgDisplay : MonoBehaviour
     [Header("All NPC Parts")]
     GameObject canvas;
     SphereCollider sphereCollider;
-    CapsuleCollider capsuleCollider;
-   MeshRenderer renderer;
+    public SkinnedMeshRenderer[] meshList;
     bool toHide;
     [SerializeField] List<GameObject> toHideList;
     int toHideIndex;
@@ -35,8 +34,6 @@ public class NpcMsgDisplay : MonoBehaviour
         transform.position = Npc.NpcSpawnPosition[stageIndex];
         canvas = GameObject.Find("TutoCanvas");
         sphereCollider = GetComponent<SphereCollider>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
-        renderer = GetComponent<MeshRenderer>();
         orggame = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
         update = true;
     }
@@ -201,18 +198,23 @@ public class NpcMsgDisplay : MonoBehaviour
         if(canAppear)
         {
             canvas.SetActive(true);
-            renderer.enabled = true;
+            //renderer.enabled = true;
+            foreach(SkinnedMeshRenderer mesh in meshList)
+            {
+                mesh.enabled = true;
+            }
             sphereCollider.enabled = true;
-            capsuleCollider.enabled = true;
         }
         else
         {
             Debug.Log("Hello");
             toHide = true;
             canvas.SetActive(false);
-            renderer.enabled = false;
+            foreach (SkinnedMeshRenderer mesh in meshList)
+            {
+                mesh.enabled = false;
+            }
             sphereCollider.enabled = false;
-            capsuleCollider.enabled = false;
 
 
         }
