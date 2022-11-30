@@ -13,6 +13,9 @@ public class LobbyScreenManager : MonoBehaviour
     [SerializeField] Collider VRColidder;
     [SerializeField] GameObject vrParticle;
     GameManager gameManager;
+
+    [SerializeField] List<GameObject> WeaponNames;
+
      //GameObject ui;
      //GameObject playerWeapons;
      PlayerMovement PlayerMovement;
@@ -46,6 +49,8 @@ public class LobbyScreenManager : MonoBehaviour
         m = GameObject.Find("ScreenUi").GetComponent<Canvas>();
         VRColidder.enabled = false;
         vrParticle.SetActive(false);
+        WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.gray;
+
 
 
     }
@@ -115,7 +120,13 @@ public class LobbyScreenManager : MonoBehaviour
 
     void SaveNames()
     {
-        weaponName.text = gameManager.weaponType.ToString();
+        for(int i = 0; i < WeaponNames.Count; i++)
+        {
+
+            WeaponNames[i].GetComponent<TextMeshProUGUI>().text = gameManager.UiSaveTypes[i].ToString();
+
+        }
+        //weaponName.text = gameManager.weaponType.ToString();
         maxIndexChooseWeapon = gameManager.UiSaveTypes.Count;
         
     }
@@ -123,19 +134,40 @@ public class LobbyScreenManager : MonoBehaviour
     void UpdateUI()
     {
         //Weapon Choose
-        weaponName.text = gameManager.UiSaveTypes[chooseWeaponIndex].ToString();
+        //weaponName.text = gameManager.UiSaveTypes[chooseWeaponIndex].ToString();
     }
 
     public void NextWeapon()
     {
-        if(chooseWeaponIndex+1 > maxIndexChooseWeapon-1)
+        if(chooseWeaponIndex >= maxIndexChooseWeapon - 1)
         {
+            WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.white;
+
+            Debug.Log("Cant pass condition");
             chooseWeaponIndex = 0;
+            WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.gray;
+
         }
         else
         {
+            Debug.Log(chooseWeaponIndex);
+
+            WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.white;
+
             chooseWeaponIndex++;
+
+            if(chooseWeaponIndex <= maxIndexChooseWeapon - 1)
+            {
+                WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.gray;
+            }
+
+            
+
+
         }
+
+        
+
         
     }
     public void toChooseWeaponScreen()

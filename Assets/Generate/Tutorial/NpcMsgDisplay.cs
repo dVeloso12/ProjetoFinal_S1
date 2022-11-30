@@ -207,6 +207,7 @@ public class NpcMsgDisplay : MonoBehaviour
         }
         else
         {
+            Debug.Log("Hello");
             toHide = true;
             canvas.SetActive(false);
             renderer.enabled = false;

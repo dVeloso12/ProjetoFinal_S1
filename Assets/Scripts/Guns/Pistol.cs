@@ -2,23 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Pistol : GunController
 {
 
     [SerializeField] int CritRate=10;
     [SerializeField] float CritDmg=1.5f;
-    
+
+    [SerializeField] Vector3 position;
+
+    Animator pistolAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
+        transform.localPosition = position;
+        pistolAnimator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
+        transform.localPosition = position;
     }
 
     protected override void Shoot()
@@ -86,5 +94,20 @@ public class Pistol : GunController
         shoot = !shoot;
 
         base.Shoot();
+    }
+
+    public override void ActivateReload(InputAction.CallbackContext obj)
+    {
+        pistolAnimator.SetTrigger("Reload");
+    }
+    public void Reloaded()
+    {
+        Debug.Log("Reloading");
+        Ammo = 0;
+        Ammo = AmmoClipSize;
+
+        Debug.Log("Ammo : " + Ammo);
+
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 }

@@ -35,7 +35,7 @@ public class GunController : MonoBehaviour
     public int AmmoClipSize;
     protected int Ammo;
 
-    TextMeshProUGUI AmmoCount;
+    protected TextMeshProUGUI AmmoCount;
 
     public Transform _camera;
 
@@ -133,11 +133,14 @@ public class GunController : MonoBehaviour
         StartCoroutine(Reload(ReloadSpeed));
     }
 
-    public IEnumerator Reload(float time)
+    public virtual IEnumerator Reload(float time)
     {
         Ammo = 0;
         yield return new WaitForSeconds(time);
         Ammo = AmmoClipSize;
+
+        Debug.Log("Ammo : " + Ammo);
+
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 
