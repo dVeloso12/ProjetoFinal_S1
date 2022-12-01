@@ -7,7 +7,7 @@ public class Enemy_AI_2 : MonoBehaviour
 {
     // Start is called before the first frame update
     protected Transform player;
-    NavMeshAgent navagent;
+    protected NavMeshAgent navagent;
 
 
     //[Header("Shooting")]
@@ -51,7 +51,7 @@ public class Enemy_AI_2 : MonoBehaviour
         {
             //Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
 
-            Action();
+            //Action();
         }
 
     }

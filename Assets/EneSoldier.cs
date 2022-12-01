@@ -9,12 +9,14 @@ public class EneSoldier : Enemy_AI_2
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject bulletsParent;
     [SerializeField] float fireRate = 60f;
+    Animator animator;
     float shootingTimer=0;
 
 
     private void Awake()
     {
         base.Awake();
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -24,6 +26,10 @@ public class EneSoldier : Enemy_AI_2
     // Update is called once per frame
     void Update()
     {
+        if (navagent.velocity.magnitude<1)
+            animator.SetBool("IsMoving", false);
+        else
+            animator.SetBool("IsMoving", true);
         base.Update();
         shootingTimer += Time.deltaTime;
 
