@@ -48,7 +48,6 @@ MonoBehaviour:
     type: 3}
   ListStages:
   - {fileID: 846282554252985859, guid: ebd6d2d4245002a4797047156f5a472c, type: 3}
-  - {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c, type: 3}
   - {fileID: 7226158457161330035, guid: 1861deb2f149abb469a6f1a91242a8a3, type: 3}
   maxNStages: 2
   BossRoom: {fileID: 1422000883687176487, guid: df9c7b43966f846469d647d58570a7a9,
