@@ -14,6 +14,7 @@ public class BossWall : MonoBehaviour
     public float speed;
     public bool WallUp;
     public bool canIncrease;
+    public bool platesDones;
 
 
     void Start()
@@ -29,6 +30,7 @@ public class BossWall : MonoBehaviour
 
         if (PlateLeft.GetComponent<PlateBossRoom>().plateReady && PlateRight.GetComponent<PlateBossRoom>().plateReady && WallUp)
         {
+            platesDones = true;
             DecreaseWall();     
         }
         if(canIncrease)
@@ -60,6 +62,7 @@ public class BossWall : MonoBehaviour
             this.GetComponent<BoxCollider>().enabled = true;
             PlateLeft.GetComponent<PlateBossRoom>()._resetValues = true;
             PlateRight.GetComponent<PlateBossRoom>()._resetValues = true;
+            platesDones = false;
         }
     }
 }
