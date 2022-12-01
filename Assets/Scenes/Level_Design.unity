@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
+  weaponType: 1
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
@@ -25584,7 +25584,7 @@ PrefabInstance:
     - target: {fileID: 1422000883687176485, guid: df9c7b43966f846469d647d58570a7a9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1422000883687176485, guid: df9c7b43966f846469d647d58570a7a9,
         type: 3}
@@ -29862,7 +29862,7 @@ Transform:
   m_Children:
   - {fileID: 1721529595969714656}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1184063482044387089
 GameObject:
@@ -61280,7 +61280,7 @@ Transform:
   - {fileID: 361946994}
   - {fileID: 7754292999298900250}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7367099655512799130
 Transform:

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum State
+public enum BossState
 {
     Iddle,Shooting
 }
 public enum AttackType
 {
-    NormalAttack
+    NormalAttack,BeamAttack,onBeamAttack
 }
 public class BossScript : MonoBehaviour
 {
+
     [SerializeField] List<GameObject> ListParts;
     [SerializeField] List<BossWall> BossWalls;
     [SerializeField] float DmgPhaseTimer;
@@ -25,7 +26,7 @@ public class BossScript : MonoBehaviour
     public bool resetTurrets;
     float timer;
 
-    public State state;
+    public BossState state;
     public AttackType type;
 
     public Image bossHp;
@@ -42,6 +43,9 @@ public class BossScript : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject pointOfBarrel;
     public GameObject Weapon;
+    public RedHollowControl beam;
+
+    float attackTimer;
 
     private void Start()
     {
@@ -52,7 +56,7 @@ public class BossScript : MonoBehaviour
         animator = GetComponent<Animator>();
         saveMaxHp = BossHp;
         bossHp.fillAmount = 1f;
-        state = State.Iddle;
+        state = global::BossState.Iddle;
         type = AttackType.NormalAttack;
         
     }
@@ -89,15 +93,17 @@ public class BossScript : MonoBehaviour
 
                 return projectedVectorAngle;
             }
+            if(!beam.isAttacking)
+            {
+                float angleY = vector3AngleOnPlane(transform.position, Player.transform.position, -transform.up, -transform.forward);
+                Vector3 rotationY = new Vector3(0, angleY - offset, 0);
+                transform.Rotate(rotationY, Space.Self);
 
-            float angleY = vector3AngleOnPlane(transform.position,Player.transform.position, -transform.up, -transform.forward);
-            Vector3 rotationY = new Vector3(0, angleY-offset, 0);
-            transform.Rotate(rotationY, Space.Self);
 
-
-            float angleYW = vector3AngleOnPlane(Weapon.transform.position, Player.transform.position, -Weapon.transform.up, -Weapon.transform.right);
-            Vector3 rotationYW = new Vector3(0, angleYW, 0);
-            Weapon.transform.Rotate(rotationYW, Space.Self);
+                float angleYW = vector3AngleOnPlane(Weapon.transform.position, Player.transform.position, -Weapon.transform.up, -Weapon.transform.right);
+                Vector3 rotationYW = new Vector3(0, angleYW, 0);
+                Weapon.transform.Rotate(rotationYW, Space.Self);
+            }
  
         }
     }
@@ -107,30 +113,70 @@ public class BossScript : MonoBehaviour
         {
             if (BossWalls[0].platesDones == true && BossWalls[1].platesDones == true)
             {
-                state = State.Shooting;
+                state = global::BossState.Shooting;
+
+                
                 offset = 0f;
             }
             else
             {
-                state = State.Iddle;
+                state = global::BossState.Iddle;
                 offset = 40f;
             }
         }
      
 
-        if (state == State.Iddle)
+        if (state == global::BossState.Iddle)
         {
             animator.SetTrigger("toIddle");
 
-        }else if(state == State.Shooting)
+        }else if(state == global::BossState.Shooting)
         {
             if(type == AttackType.NormalAttack)
             {
+                attackTimer += Time.deltaTime;
                 animator.SetTrigger("toShoot");
                 firing = true;
+                if(attackTimer >= 7f)
+                {
+                    ChooseAttack();
+                    attackTimer = 0f;
+                }
+            }
+            if(type == AttackType.BeamAttack)
+            {
+                beam.canAttack = true;
+                type = AttackType.onBeamAttack;
+                
+            }
+            if(type == AttackType.onBeamAttack)
+            {
+                if(!beam.canAttack)
+                {
+                    ChooseAttack();
+                }
             }
         }
         
+    }
+
+     void ChooseAttack()
+    {
+
+        int value = Random.Range(0, 2);
+        switch (value)
+        {
+            case 0:
+                {
+                    type = AttackType.NormalAttack;
+                    break;
+                }
+            case 1:
+                {
+                    type = AttackType.BeamAttack;
+                    break;
+                }
+        }
     }
 
     void AttackLogic()

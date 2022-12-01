@@ -1242,7 +1242,7 @@ MonoBehaviour:
   cableLight: {fileID: 2100000, guid: 269519e4792cdb243b39da87cc7eb8ab, type: 2}
   plate: {fileID: 7763902857478384211}
   canLightUp: 0
-  speed: 1
+  speed: 4
 --- !u!1 &2838637108863435387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7349,7 +7349,7 @@ MonoBehaviour:
   cableLight: {fileID: 2100000, guid: f4bfaf3c2bfd87344ab7fa805f03926d, type: 2}
   plate: {fileID: 3809281969869428599}
   canLightUp: 0
-  speed: 1
+  speed: 4
 --- !u!1 &4860283337752515904
 GameObject:
   m_ObjectHideFlags: 0
@@ -14719,7 +14719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plate: {fileID: 7763902857478384211}
-  Crystal: {fileID: 5380741090343159883}
+  Crystal: {fileID: 2838637108863435387}
 --- !u!1 &7224488242759506468
 GameObject:
   m_ObjectHideFlags: 0
@@ -14903,37 +14903,6 @@ MonoBehaviour:
   plate: {fileID: 7763902857478384211}
   canLightUp: 0
   speed: 1
---- !u!1 &7291210996061924216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6041228456510901883}
-  m_Layer: 0
-  m_Name: PointBarrel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6041228456510901883
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7291210996061924216}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.136, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2608763359928317984}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &7685967175933191953
 GameObject:
   m_ObjectHideFlags: 0
@@ -15716,7 +15685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Plate: {fileID: 3809281969869428599}
-  Crystal: {fileID: 6899724921270848065}
+  Crystal: {fileID: 8860741430541025494}
 --- !u!1 &8860741430541025494
 GameObject:
   m_ObjectHideFlags: 0
@@ -16027,7 +15996,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pointOfBarrel
       value: 
-      objectReference: {fileID: 7291210996061924216}
+      objectReference: {fileID: 1094072204275669327}
     - target: {fileID: 6395957947640986495, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
         type: 3}
       propertyPath: BossWalls.Array.data[0]
@@ -16040,15 +16009,15 @@ PrefabInstance:
       objectReference: {fileID: 1706661039930649932}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163a1df7d8e2f9345b14eb3bd488fedc, type: 3}
---- !u!1 &1581579602899090704 stripped
+--- !u!1 &1094072204275669327 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8278920424298666382, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
+  m_CorrespondingSourceObject: {fileID: 7509938025627598289, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
     type: 3}
   m_PrefabInstance: {fileID: 7428199435617821854}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2608763359928317984 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4837556991101836478, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
+--- !u!1 &1581579602899090704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8278920424298666382, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
     type: 3}
   m_PrefabInstance: {fileID: 7428199435617821854}
   m_PrefabAsset: {fileID: 0}
