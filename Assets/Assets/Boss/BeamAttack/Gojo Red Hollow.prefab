@@ -39241,7 +39241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9d37ecf8b024043bbab2285ae463e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 0.536
+  hue: 0
   animator: {fileID: 0}
   stateBeam: 0
   canAttack: 0

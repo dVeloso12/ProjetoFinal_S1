@@ -24,7 +24,7 @@ public class BossScript : MonoBehaviour
     public float BossHp;
     public bool isDead;
     public bool resetTurrets;
-    float timer;
+    public float timer;
 
     public BossState state;
     public AttackType type;
@@ -44,6 +44,7 @@ public class BossScript : MonoBehaviour
     public GameObject pointOfBarrel;
     public GameObject Weapon;
     public RedHollowControl beam;
+    [SerializeField] float maxNormalAttackTimer = 4f;
 
     float attackTimer;
 
@@ -57,7 +58,7 @@ public class BossScript : MonoBehaviour
         saveMaxHp = BossHp;
         bossHp.fillAmount = 1f;
         state = global::BossState.Iddle;
-        type = AttackType.NormalAttack;
+        ChooseAttack();
         
     }
     void Update()
@@ -72,7 +73,7 @@ public class BossScript : MonoBehaviour
         RaycastHit hit;
         int layerMask = 1 << 6;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity,layerMask))
+        if (Physics.Raycast(pointOfBarrel.transform.position, pointOfBarrel.transform.forward, out hit, Mathf.Infinity,layerMask))
         {
             Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.green);
         }
@@ -103,6 +104,7 @@ public class BossScript : MonoBehaviour
                 float angleYW = vector3AngleOnPlane(Weapon.transform.position, Player.transform.position, -Weapon.transform.up, -Weapon.transform.right);
                 Vector3 rotationYW = new Vector3(0, angleYW, 0);
                 Weapon.transform.Rotate(rotationYW, Space.Self);
+
             }
  
         }
@@ -137,7 +139,7 @@ public class BossScript : MonoBehaviour
                 attackTimer += Time.deltaTime;
                 animator.SetTrigger("toShoot");
                 firing = true;
-                if(attackTimer >= 7f)
+                if(attackTimer >= maxNormalAttackTimer)
                 {
                     ChooseAttack();
                     attackTimer = 0f;
@@ -162,20 +164,26 @@ public class BossScript : MonoBehaviour
 
      void ChooseAttack()
     {
-
-        int value = Random.Range(0, 2);
-        switch (value)
+        if (timer <= DmgPhaseTimer)
         {
-            case 0:
-                {
-                    type = AttackType.NormalAttack;
-                    break;
-                }
-            case 1:
-                {
-                    type = AttackType.BeamAttack;
-                    break;
-                }
+            int value = Random.Range(0, 2);
+            switch (value)
+            {
+                case 0:
+                    {
+                        type = AttackType.NormalAttack;
+                        break;
+                    }
+                case 1:
+                    {
+                        type = AttackType.BeamAttack;
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            type = AttackType.NormalAttack;
         }
     }
 
@@ -230,8 +238,9 @@ public class BossScript : MonoBehaviour
         if (BossWalls[0].WallUp == false && BossWalls[1].WallUp == false)
         {
             timer += Time.deltaTime;
-            if (timer >= DmgPhaseTimer)
+            if (timer >= DmgPhaseTimer && type != AttackType.onBeamAttack)
             {
+                state = global::BossState.Iddle;
                 if (!isDead)
                 {
                     BossWalls[0].canIncrease = true;
