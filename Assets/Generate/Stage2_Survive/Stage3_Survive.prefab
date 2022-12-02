@@ -635,6 +635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PossibleEncounters:
+  - {fileID: 11400000, guid: 6d2b98fbf87ede046801eeec7d9e2b19, type: 2}
   Enemies:
   - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
   EnemiesList: []

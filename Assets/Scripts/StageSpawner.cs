@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class StageSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] List<Encounters> PossibleEncounters;
+
     [SerializeField] List<GameObject> Enemies;
 
-    //EnemyManager enemyManagerInstance;
-    //GameObject instantiatedPlayer;
+    
     public List<GameObject> EnemiesList;
 
     [SerializeField] float timertoSpwan;
@@ -43,6 +43,7 @@ public class StageSpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
+        
         NavMeshHit hit;
         for(int i = 0; i < enemiesToSpawnQuantity; i++)
         {
