@@ -52,6 +52,7 @@ public class Enemy_AI_2 : MonoBehaviour
             //Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
 
             //Action();
+          
         }
 
     }

@@ -49,7 +49,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Fill: -2
-    - _LightUp: 1
+    - _LightUp: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

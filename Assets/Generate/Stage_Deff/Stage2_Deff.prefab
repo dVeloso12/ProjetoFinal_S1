@@ -990,8 +990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PossibleEncounters: []
   Enemies:
-  - {fileID: 3529638661535622206, guid: f375d0eace98ce74da1a0a04798ac712, type: 3}
+  - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
   EnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0

@@ -11,7 +11,7 @@ public class EneSoldier : Enemy_AI_2
     [SerializeField] float fireRate = 60f;
     Animator animator;
     float shootingTimer=0;
-
+    
 
     private void Awake()
     {
@@ -26,24 +26,28 @@ public class EneSoldier : Enemy_AI_2
     // Update is called once per frame
     void Update()
     {
-        if (navagent.velocity.magnitude<1)
+        if (navagent.velocity.magnitude < 1)
             animator.SetBool("IsMoving", false);
         else
             animator.SetBool("IsMoving", true);
+
+        
         base.Update();
         shootingTimer += Time.deltaTime;
 
+        if (shootingTimer > 1f / fireRate)
+        {
+            animator.SetBool("CanShoot", true);
+        }
     }
 
     protected override void Action()
     {
-        if (shootingTimer > 1f / fireRate)
-        {
             bulletsParent.transform.LookAt(player);
 
             Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
 
             shootingTimer = 0f;
-        }
+        animator.SetBool("CanShoot", false);
     }
 }
