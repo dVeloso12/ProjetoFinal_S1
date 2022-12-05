@@ -8,6 +8,8 @@ public class ShopPortal : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI readyToGenerate, GeneratedFinished;
     GameplayOrganize game;
     [SerializeField] ShopButtomPortal bt;
+    public bool inTutorial;
+              
     void Start()
     {
         game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
@@ -21,7 +23,10 @@ public class ShopPortal : MonoBehaviour
             gameObject.SetActive(false);
             bt.cantGenerateMore = false;
             bt.opened = false;
-            game.tpPlayerToLimbo();
+            if (inTutorial)
+                game.tpPlayerToLimbo();
+            else
+                game.GoToStage();
         }
 
     }

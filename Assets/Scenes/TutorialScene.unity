@@ -1720,6 +1720,7 @@ MonoBehaviour:
   speed: 1
   WallUp: 0
   canIncrease: 0
+  platesDones: 0
 --- !u!64 &538142613532746150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7291,6 +7292,7 @@ MonoBehaviour:
   speed: 1
   WallUp: 0
   canIncrease: 0
+  platesDones: 0
 --- !u!64 &1953086506306929079
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9277,6 +9279,7 @@ MonoBehaviour:
   readyToGenerate: {fileID: 8296699232658829559}
   GeneratedFinished: {fileID: 8296699233791270010}
   bt: {fileID: 8296699233629596060}
+  inTutorial: 1
 --- !u!33 &2890633421834295088
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14808,9 +14811,18 @@ MonoBehaviour:
   BossHp: 100
   isDead: 0
   resetTurrets: 0
+  timer: 0
+  state: 0
+  type: 0
   bossHp: {fileID: 8204918896294181981}
   border: {fileID: 8204918897098542688}
   activateUIHP: 0
+  offset: 0
+  bulletPrefab: {fileID: 0}
+  pointOfBarrel: {fileID: 0}
+  Weapon: {fileID: 0}
+  beam: {fileID: 0}
+  maxNormalAttackTimer: 4
 --- !u!4 &3407564223165428909
 Transform:
   m_ObjectHideFlags: 0
@@ -35796,6 +35808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PossibleEncounters: []
   Enemies:
   - {fileID: 3529638661535622206, guid: f375d0eace98ce74da1a0a04798ac712, type: 3}
   EnemiesList: []
