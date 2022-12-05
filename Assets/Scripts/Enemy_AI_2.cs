@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class Enemy_AI_2 : MonoBehaviour
 {
     // Start is called before the first frame update
+    GameManager gm;
     protected Transform player;
     protected NavMeshAgent navagent;
 
 
     //[Header("Shooting")]
-    [SerializeField] int DistanceToPlayer;
+    [SerializeField]protected int DistanceToPlayer;
 
 
     
@@ -21,6 +22,7 @@ public class Enemy_AI_2 : MonoBehaviour
 
     protected void Awake()
     {
+        gm = FindObjectOfType<GameManager>();
         navagent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().transform;
         navagent.speed = speed;
@@ -28,6 +30,7 @@ public class Enemy_AI_2 : MonoBehaviour
     }
     protected void Start()
     {
+        dmg = (int)(dmg * gm.DifficultyMod);
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class Enemy_AI_2 : MonoBehaviour
             transform.LookAt(player);
         }
 
-        float DistanceToPlayer = (transform.position - player.position).magnitude;
+       
 
         if (DistanceToPlayer < navagent.stoppingDistance + 1)
         {

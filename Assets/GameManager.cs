@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public bool SurvStage = false,CleanShop = true;
 
+    public float DifficultyMod = 1f,ReaperSpawn=10;
+
     bool statsOpen=false;
     public GameplayOrganize orggame;
     bool unloadDeadScene;

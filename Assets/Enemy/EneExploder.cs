@@ -22,11 +22,20 @@ public class EneExploder : Enemy_AI_2
     void Update()
     {
         base.Update();
+
+        float DistanceToPlayer = (transform.position - player.position).magnitude;
+        if (DistanceToPlayer < 1)
+        {
+            Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
+
+            Action();
+
+        }
     }
 
     protected override void Action()
     {
-
+       
         GameObject expl= Instantiate(Explosion, transform.position, Quaternion.identity);
         expl.transform.localScale = new Vector3(VisualSize, VisualSize, VisualSize);
 

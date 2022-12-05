@@ -6,8 +6,9 @@ using UnityEngine.AI;
 public class StageSpawner : MonoBehaviour
 {
     [SerializeField] List<Encounters> PossibleEncounters;
+    Encounters Encounter;
 
-    [SerializeField] List<GameObject> Enemies;
+    [SerializeField] GameObject REAPER;
 
     
     public List<GameObject> EnemiesList;
@@ -20,6 +21,10 @@ public class StageSpawner : MonoBehaviour
     [SerializeField] string areaName;
 
     [SerializeField] Transform spawnpoint;
+
+    int Current_SemiEncounter=0;
+    float Timer_SemiEncounter=1;
+    bool activated = false;
 
     GameManager gm;
 
@@ -34,10 +39,14 @@ public class StageSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ActivateSpawn)
+        if (activated)
         {
-            SpawnEnemies();
-            ActivateSpawn = false;
+            if (Timer_SemiEncounter <= 0)
+            {
+                SpawnEnemies();
+
+            }
+            Timer_SemiEncounter -= Time.deltaTime;
         }
     }
 
@@ -45,41 +54,88 @@ public class StageSpawner : MonoBehaviour
     {
         
         NavMeshHit hit;
-        for(int i = 0; i < enemiesToSpawnQuantity; i++)
+
+        SemiEncounter sEncounter = Encounter.SemiEncounters[Current_SemiEncounter];
+
+        if (gm.EnemyList.Count < 15)
         {
-            Vector2 randomcircle = (Random.insideUnitCircle * 30);
-            Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
-            bool sucess=false;
-            int f = 600;
-            while (!sucess&&f>0)
+
+            for (int eSet = 0; eSet < sEncounter.EnemySet.Count; eSet++)
             {
 
-                f--;
-                if(f<1)
-                    
-                Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
-                randomcircle = (Random.insideUnitCircle * distance);
-                randomPoint = spawnpoint.position + new Vector3(randomcircle.x,0,randomcircle.y);
-                if (NavMesh.SamplePosition(randomPoint, out hit, 10,-1))
+                for (int i = 0; i < sEncounter.Quantity[eSet]; i++)
                 {
-                   sucess = true;
-                    
-                   gm.EnemyList.Add(Instantiate(Enemies[0], hit.position, Quaternion.identity));
+                    Vector2 randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
+                    Vector3 randomPoint = sEncounter.Position[eSet] + new Vector3(randomcircle.x, 0, randomcircle.y);
+                    bool sucess = false;
+                    int f = 600;
+                    while (!sucess && f > 0)
+                    {
+                        f--;
+                        if (f < 1)
+                            Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                        randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
+                        randomPoint = sEncounter.Position[eSet] + new Vector3(randomcircle.x, 0, randomcircle.y);
+
+                        if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
+                        {
+                            sucess = true;
+                            gm.EnemyList.Add(Instantiate(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
+                        }
+
+                    }
                 }
-               
             }
 
-
+            Timer_SemiEncounter = sEncounter.Time;
+            if (Current_SemiEncounter < Encounter.SemiEncounters.Count - 1)
+                Current_SemiEncounter++;
+            else
+                Current_SemiEncounter = 0;
         }
     }
+
+
+    public void ReaperSpawn()
+    {
+        int r = Random.Range(0, 100);
+
+        if (r < gm.ReaperSpawn)
+        {
+            NavMeshHit hit;
+
+            Vector2 randomcircle = (Random.insideUnitCircle * distance);
+            Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+            bool sucess = false;
+            int f = 600;
+            while (!sucess && f > 0)
+            {
+                f--;
+                if (f < 1)
+                    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                randomcircle = (Random.insideUnitCircle * distance);
+                randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+
+                if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
+                {
+                    sucess = true;
+                    gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
+                }
+            }
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            activated = true;
+            int R = Random.Range(0, PossibleEncounters.Count - 1);
+            Encounter = PossibleEncounters[R];
             Debug.Log("Spwan"+other.name+other.transform.position);
             SpawnEnemies();
-            this.enabled=false;
+            GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

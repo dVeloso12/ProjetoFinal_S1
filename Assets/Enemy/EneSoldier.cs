@@ -45,7 +45,8 @@ public class EneSoldier : Enemy_AI_2
     {
             bulletsParent.transform.LookAt(player);
 
-            Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform);
+            Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform)
+            .GetComponent<Bullet>().Damage=dmg;
 
             shootingTimer = 0f;
         animator.SetBool("CanShoot", false);

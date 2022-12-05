@@ -8,6 +8,8 @@ public class SurvivalScript : MonoBehaviour
     [SerializeField] DoorScript_Survival survivalDoor;
     [SerializeField]public int nObjective;
     TextMeshProUGUI SurvText;
+    float CompletePerc;
+    bool ReaperAttempt=true;
 
     GameManager gm;
 
@@ -17,6 +19,7 @@ public class SurvivalScript : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
         SurvText = GameObject.Find("SurvText").GetComponent<TextMeshProUGUI>();
+        CompletePerc = nObjective;
     }
     void Start()
     {
@@ -32,6 +35,12 @@ public class SurvivalScript : MonoBehaviour
             {
                 survivalDoor.CompleteSurvival();
                 SurvText.text = "COMPLETED";
+            }
+
+            if (ReaperAttempt && nObjective <= CompletePerc * .2f)
+            {
+                GetComponent<StageSpawner>().ReaperSpawn();
+                ReaperAttempt = false;
             }
         }
         else

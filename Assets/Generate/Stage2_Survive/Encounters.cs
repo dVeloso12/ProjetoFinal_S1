@@ -6,11 +6,9 @@ using UnityEngine;
 public class Encounters : ScriptableObject
 {
   
-    [SerializeField] public List<Enemy_AI_2> EnemySet;
-    [SerializeField] public List<int> Quantity;
-    [SerializeField] public List<Vector3> Position;
-    [SerializeField] public List<float> Time;
-    [SerializeField] public List<int> Area;
+    [SerializeField] public List<SemiEncounter> SemiEncounters;
+    [SerializeField] public float Time;
+
 
 
 }

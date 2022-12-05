@@ -223,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033597025602146692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 80, y: -1, z: 0}
+  m_LocalPosition: {x: 80, y: 4.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -262,6 +262,37 @@ Transform:
   - {fileID: 746398222944253952}
   m_Father: {fileID: 5012299610166739931}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2507141155263546617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6973538952472317714}
+  m_Layer: 0
+  m_Name: SpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &6973538952472317714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507141155263546617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 140.91, y: 0.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5012299610166739931}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4728284627313114200
 GameObject:
@@ -410,6 +441,7 @@ Transform:
   - {fileID: 6115168913207433599}
   - {fileID: 3383539981086033734}
   - {fileID: 7415602674803316884}
+  - {fileID: 6973538952472317714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -636,9 +668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PossibleEncounters:
-  - {fileID: 11400000, guid: 6d2b98fbf87ede046801eeec7d9e2b19, type: 2}
-  Enemies:
-  - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
+  - {fileID: 11400000, guid: 7e155c247ec0b83409f9f122bfb1ca1e, type: 2}
+  REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
   EnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0

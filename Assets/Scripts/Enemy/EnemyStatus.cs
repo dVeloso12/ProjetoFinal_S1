@@ -16,9 +16,12 @@ public class EnemyStatus : MonoBehaviour
 
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+
+        maxHealth = Mathf.FloorToInt(maxHealth * gm.DifficultyMod);
+
         currentHealth = maxHealth;
 
-        gm = FindObjectOfType<GameManager>();
 
         HealthBar.text = maxHealth.ToString() + "/" + maxHealth.ToString();
 

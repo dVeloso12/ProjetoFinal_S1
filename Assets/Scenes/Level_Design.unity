@@ -627,6 +627,8 @@ MonoBehaviour:
   surv: {fileID: 0}
   SurvStage: 0
   CleanShop: 1
+  DifficultyMod: 1
+  ReaperSpawn: 50
   orggame: {fileID: 166003453}
   ShopUpgardes: []
 --- !u!4 &166003452
@@ -638,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 166003450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
