@@ -518,6 +518,7 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 0
   HealthBar: {fileID: 4729673664054272013}
+  money: 10
 --- !u!195 &7174237162368465974
 NavMeshAgent:
   m_ObjectHideFlags: 0

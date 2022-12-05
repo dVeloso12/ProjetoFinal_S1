@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: SemiEncounter 2
   m_EditorClassIdentifier: 
   EnemySet:
+  - {fileID: 2810424434365561116, guid: a607f8188364f7b428706dea5493c73d, type: 3}
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
-  - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
-  - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
-  Quantity: 010000000300000003000000
+  - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
+  - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
+  Quantity: 01000000020000000200000002000000
   Position:
-  - {x: 140, y: 0, z: 0}
-  - {x: 80, y: 4, z: -20}
-  - {x: 80, y: -4, z: 20}
-  Area: 010000000500000005000000
-  Time: 40
+  - {x: 5, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 32, y: 0, z: 30}
+  - {x: 32, y: 0, z: -30}
+  Area: 01000000030000000300000003000000
+  Time: 50

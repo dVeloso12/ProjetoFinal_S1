@@ -7,6 +7,7 @@ public class ChestScript : MonoBehaviour
     GameManager gm;
     public bool canAppear;
    bool canUpgrade,setcollider;
+    [SerializeField]GameObject StageSpwaner;
 
 
     Spawn spawnScript;
@@ -46,12 +47,8 @@ public class ChestScript : MonoBehaviour
             canAppear = false;
             gameObject.GetComponent<Collider>().enabled = false;
 
-            //spawnScript.StopOverTimeSpawning();
-
-            //for(int i = 0; i < spawnScript.activeEnemiesList.Count; i++)
-            //{
-            //    spawnScript.RemoveEnemiesFromList(spawnScript.activeEnemiesList[i]);
-            //}
+            StageSpwaner.GetComponent<StageSpawner>().Stop();
+            
 
             gm.ResetStage();
         }

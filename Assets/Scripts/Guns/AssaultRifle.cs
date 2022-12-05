@@ -15,7 +15,7 @@ public class AssaultRifle : GunController
 
     [SerializeField] Vector3 position;
 
-    Animator ARAnimator;
+    
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class AssaultRifle : GunController
         scope.SetActive(false);
         transform.localPosition = position;
 
-        ARAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -244,22 +244,7 @@ public class AssaultRifle : GunController
         Destroy(trail.gameObject, trail.time);
     }
 
-    public override void ActivateReload(InputAction.CallbackContext obj)
-    {
-        ARAnimator.SetTrigger("Reload");
-    }
-        
-    public void Reloaded()
-    {
-        Debug.Log("Reloading");
-        Ammo = 0;
-        Ammo = AmmoClipSize;
-
-        Debug.Log("Ammo : " + Ammo);
-
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
-    }
-
+  
     
 
 }

@@ -66,7 +66,7 @@ public class StageSpawner : MonoBehaviour
                 for (int i = 0; i < sEncounter.Quantity[eSet]; i++)
                 {
                     Vector2 randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
-                    Vector3 randomPoint = sEncounter.Position[eSet] + new Vector3(randomcircle.x, 0, randomcircle.y);
+                    Vector3 randomPoint = sEncounter.Position[eSet]+transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
                     bool sucess = false;
                     int f = 600;
                     while (!sucess && f > 0)
@@ -75,7 +75,7 @@ public class StageSpawner : MonoBehaviour
                         if (f < 1)
                             Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
                         randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
-                        randomPoint = sEncounter.Position[eSet] + new Vector3(randomcircle.x, 0, randomcircle.y);
+                        randomPoint = sEncounter.Position[eSet]+transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
 
                         if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
                         {
@@ -137,5 +137,11 @@ public class StageSpawner : MonoBehaviour
             SpawnEnemies();
             GetComponent<BoxCollider>().enabled = false;
         }
+    }
+
+    public void Stop()
+    {
+        activated = false;
+        GetComponent<BoxCollider>().enabled = true;
     }
 }

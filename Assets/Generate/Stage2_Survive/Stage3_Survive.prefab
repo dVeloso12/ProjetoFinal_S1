@@ -853,6 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAppear: 1
+  StageSpwaner: {fileID: 7332632800022087648}
 --- !u!65 &8865027497852201265
 BoxCollider:
   m_ObjectHideFlags: 0

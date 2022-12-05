@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  weaponType: 2
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
@@ -628,7 +628,7 @@ MonoBehaviour:
   SurvStage: 0
   CleanShop: 1
   DifficultyMod: 1
-  ReaperSpawn: 50
+  ReaperSpawn: 10
   orggame: {fileID: 166003453}
   ShopUpgardes: []
 --- !u!4 &166003452
@@ -8995,6 +8995,7 @@ MonoBehaviour:
   IncreaseAmout: 3
   PlateCompleted: 0
   Chest: {fileID: 0}
+  spwaner: {fileID: 0}
   PlatePorc: 0
 --- !u!65 &737289663
 BoxCollider:
@@ -37059,6 +37060,7 @@ MonoBehaviour:
   readyToGenerate: {fileID: 8936064076618782677}
   GeneratedFinished: {fileID: 8936064077751204696}
   bt: {fileID: 0}
+  inTutorial: 0
 --- !u!64 &2956270908671266383
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class PlateScript : MonoBehaviour
     [SerializeField] float IncreaseAmout; //0.3f
     [SerializeField] public bool PlateCompleted;
     [SerializeField] ChestScript Chest;
+    [SerializeField] StageSpawner spwaner;
+    bool ReaperAttempt = true;
 
     public float PlatePorc;
     int enterPlateTimes;
@@ -20,7 +22,12 @@ public class PlateScript : MonoBehaviour
 
     void Update()
     {
-        if(startedPlate)
+        if (PlatePorc>=.8f && ReaperAttempt)
+        {
+            spwaner.ReaperSpawn();
+            ReaperAttempt = false;
+        }
+        if (startedPlate)
         {
             ScpCrystal.StartAnim = true;
         }

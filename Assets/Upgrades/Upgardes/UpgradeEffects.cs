@@ -53,7 +53,7 @@ public class UpgradeEffects : MonoBehaviour
     public void ClipSize_20()
     {
         gunc.AmmoClipSize =(int)(gunc.AmmoClipSize* 1.2f);
-        StartCoroutine(gunc.Reload(0));
+        gunc.Reloaded();
     }
 
     public void CD_10()

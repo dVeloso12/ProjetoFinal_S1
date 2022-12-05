@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     }
     public void DeadEnemy(GameObject Enemy)
     {
-        Money += 10;
+        
         if (SurvStage)
             surv.nObjective--;
         EnemyList.Remove(Enemy);

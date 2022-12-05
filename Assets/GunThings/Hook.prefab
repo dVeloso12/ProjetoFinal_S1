@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed15476f1ea04a429ed20271014ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Reach: 30
+  Reach: 80
   player: {fileID: 0}
-  Speed: 40
+  Speed: 200
 --- !u!54 &-4691026394873970581
 Rigidbody:
   m_ObjectHideFlags: 0

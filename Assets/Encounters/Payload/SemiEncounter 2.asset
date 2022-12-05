@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemySet:
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
-  - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
-  - {fileID: 5726451810562332883, guid: aa21224bea859a2469dbc6c101450d96, type: 3}
-  Quantity: 010000000300000003000000
+  - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
+  Quantity: 0400000003000000
   Position:
-  - {x: 140, y: 0, z: 0}
-  - {x: 80, y: 4, z: -20}
-  - {x: 80, y: -4, z: 20}
-  Area: 010000000500000005000000
-  Time: 40
+  - {x: 160, y: -2, z: -80}
+  - {x: 40, y: -2, z: -27}
+  Area: 0500000007000000
+  Time: 25

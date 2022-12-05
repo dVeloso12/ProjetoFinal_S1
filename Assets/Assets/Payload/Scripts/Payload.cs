@@ -14,13 +14,15 @@ public class Payload : MonoBehaviour
 
     [Header("For Debug")]
     [SerializeField] PayloadState state;
+    [SerializeField] StageSpawner spwaner;
     public short index;
     public int maxIndex; 
     bool canIddle;
     float animTimer;
     bool startTimerAnim;    
     Animation animator;   
-    bool forceRotate; 
+    bool forceRotate;
+    bool ReaperAttempt=true;
 
     void Start()
     {
@@ -31,12 +33,17 @@ public class Payload : MonoBehaviour
 
     void Update()
     {
+        if (index + 1 == maxIndex&&ReaperAttempt)
+        {
+            spwaner.ReaperSpawn();
+            ReaperAttempt = false;
+        }
         MovePayload();
         PlayAnimations();
         SetSomeOptions();
     }
 
-    //#region Payload Functions
+    #region Payload Functions
 
     void SetSomeOptions()
     {
@@ -135,8 +142,8 @@ public class Payload : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.localRotation, plate.localRotation, Time.deltaTime * speed * ROTATION_SPEED_OFFSET);
 
     }
-    //#endregion
-    //#region Payload Detection
+#endregion
+    #region Payload Detection
     private void OnTriggerEnter(Collider other)
     {
         if(other.transform.name == "Player")
@@ -167,5 +174,5 @@ public class Payload : MonoBehaviour
         }
     }
 
-    //#endregion
+    #endregion
 }

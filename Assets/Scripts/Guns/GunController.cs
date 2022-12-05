@@ -59,6 +59,8 @@ public class GunController : MonoBehaviour
 
     protected bool Modifier = false;
 
+    Animator ARAnimator;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -83,6 +85,8 @@ public class GunController : MonoBehaviour
 
         AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
 
+
+        ARAnimator = GetComponent<Animator>();
         //origin = GunPos;
 
     }
@@ -130,13 +134,13 @@ public class GunController : MonoBehaviour
 
     public virtual void ActivateReload(InputAction.CallbackContext obj)
     {
-        StartCoroutine(Reload(ReloadSpeed));
+        ARAnimator.SetTrigger("Reload");
+        Ammo = 0;
+        //StartCoroutine(Reload(ReloadSpeed));
     }
 
-    public virtual IEnumerator Reload(float time)
+    public void Reloaded()
     {
-        Ammo = 0;
-        yield return new WaitForSeconds(time);
         Ammo = AmmoClipSize;
 
         Debug.Log("Ammo : " + Ammo);

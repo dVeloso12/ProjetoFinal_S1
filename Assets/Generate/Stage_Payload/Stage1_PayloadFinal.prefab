@@ -715,6 +715,7 @@ MonoBehaviour:
   - {fileID: 6763927453004810413}
   - {fileID: 8136400795175213100}
   state: 0
+  spwaner: {fileID: 3784032812252752426}
   index: 0
   maxIndex: 0
 --- !u!111 &3040386369595869382
@@ -1817,6 +1818,37 @@ Transform:
   m_Father: {fileID: 59873717626797983}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &2158130061923280192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3266371347301013768}
+  m_Layer: 0
+  m_Name: SpawnPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3266371347301013768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158130061923280192}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 61.1, y: -1.96, z: -80.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8518435235258234380}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2198359033605887232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAppear: 0
+  StageSpwaner: {fileID: 6138084806766698709}
 --- !u!65 &2759966426069496873
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4751,9 +4784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PossibleEncounters: []
-  Enemies:
-  - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
+  PossibleEncounters:
+  - {fileID: 11400000, guid: 45dff786768d50349823dcc75334cd17, type: 2}
+  REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
   EnemiesList: []
   timertoSpwan: 0
   maxQuantity: 0
@@ -5786,6 +5819,7 @@ Transform:
   - {fileID: 6417281397181033111}
   - {fileID: 1834123661145903100}
   - {fileID: 5906179862751852549}
+  - {fileID: 3266371347301013768}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

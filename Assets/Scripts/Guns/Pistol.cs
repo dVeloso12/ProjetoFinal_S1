@@ -96,18 +96,5 @@ public class Pistol : GunController
         base.Shoot();
     }
 
-    public override void ActivateReload(InputAction.CallbackContext obj)
-    {
-        pistolAnimator.SetTrigger("Reload");
-    }
-    public void Reloaded()
-    {
-        Debug.Log("Reloading");
-        Ammo = 0;
-        Ammo = AmmoClipSize;
-
-        Debug.Log("Ammo : " + Ammo);
-
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
-    }
+   
 }

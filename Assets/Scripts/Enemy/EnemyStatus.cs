@@ -9,7 +9,7 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] float currentHealth;
 
     public TextMeshProUGUI HealthBar;
-
+    public int money;
     GameManager gm;
 
     //Spawn spawnScript;
@@ -44,6 +44,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Death()
     {
+        gm.Money += money;
         gm.DeadEnemy(this.gameObject);
 
         //gameObject.SetActive(false);

@@ -2779,6 +2779,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
+  money: 15
 --- !u!114 &5413215727399478500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3018,7 +3019,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6329014513781864432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.018, y: 1.805, z: 0.2}
+  m_LocalPosition: {x: 0.096, y: 1.805, z: 0.2}
   m_LocalScale: {x: 0.83333325, y: 0.83333325, z: 0.83333325}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3036,8 +3037,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.54854256
+  m_Center: {x: -0.04854264, y: 0, z: 0}
 --- !u!1 &9131345017901802135
 GameObject:
   m_ObjectHideFlags: 0
