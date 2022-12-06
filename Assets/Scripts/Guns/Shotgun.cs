@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shotgun : GunController
 {
@@ -9,11 +10,19 @@ public class Shotgun : GunController
     public int Pellets;
 
     [SerializeField] Vector3 position;
+    
+    Animator shotgunAnimator;
+
+    float animationStartSpeed;
 
     void Start()
     {
         base.Start();
         transform.localPosition = position;
+        shotgunAnimator = GetComponent<Animator>();
+
+
+        animationStartSpeed = shotgunAnimator.speed;
 
     }
 
@@ -45,6 +54,8 @@ public class Shotgun : GunController
             Vector3 textPos=Vector3.zero;
             float textDmg = 0;
             int head = 0, body = 0;
+
+            ShootAnimaton();
 
             if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
@@ -109,5 +120,29 @@ public class Shotgun : GunController
         shoot = !shoot;
 
         base.Shoot();
+    }
+
+
+    public void ShootAnimaton()
+    {
+        shotgunAnimator.speed = animationStartSpeed / gm.FireRateMod;
+        shotgunAnimator.SetTrigger("Shoot");
+    }
+
+    public override void ActivateReload(InputAction.CallbackContext obj)
+    {        
+        shotgunAnimator.SetTrigger("Reload");
+    }
+    public void Reloaded()
+    {
+        shotgunAnimator.speed = animationStartSpeed;
+
+        Debug.Log("Reloading");
+        Ammo = 0;
+        Ammo = AmmoClipSize;
+
+        Debug.Log("Ammo : " + Ammo);
+
+        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
     }
 }

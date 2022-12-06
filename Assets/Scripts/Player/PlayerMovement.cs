@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject GroundCheck;
     [SerializeField] LayerMask groundLayerMask;
 
+    [SerializeField] GameObject GunDirectionOBJ;
+
     PlayerInput playerInput;
 
     public CharacterController controller;
@@ -52,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
     TextMeshProUGUI Timer;
 
+    Animator gunAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
 
         Timer = GameObject.Find("DashC").GetComponent<TextMeshProUGUI>();
         dashIcon = GameObject.Find("dash").GetComponent<Image>();
+
+        gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
     }
 
     private void Awake()
@@ -144,6 +150,12 @@ public class PlayerMovement : MonoBehaviour
             IsRunning = true;
             playerSpeed *= runningModifier;
         }
+
+        if(gunAnimator == null) gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
+
+        if(gunAnimator != null)
+            gunAnimator.SetBool("IsRunning", IsRunning);
+
     }
 
     private void OnDrawGizmos()

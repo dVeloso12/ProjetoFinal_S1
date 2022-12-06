@@ -671,8 +671,8 @@ MonoBehaviour:
   Shop: {fileID: 9099947202535907637, guid: a9418167e5a4cfc41b6eaf19008bbc7c, type: 3}
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
-  toLobby: 0
-  toGame: 1
+  toLobby: 1
+  toGame: 0
   goToStage: 0
   goToShop: 0
   toTutorial: 0

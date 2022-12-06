@@ -11,6 +11,9 @@ public class GunController : MonoBehaviour
     [SerializeField] protected ParticleSystem muzzleFlash;
     [SerializeField] protected ParticleSystem hiteffect;
 
+    [SerializeField] protected float recoilX, recoilY, recoilZ;
+
+    [SerializeField] GameObject GunDirectionOBJ;
 
     //public GameObject bullet;
 
@@ -61,6 +64,8 @@ public class GunController : MonoBehaviour
 
     Animator ARAnimator;
 
+    protected Recoil RecoilScript;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -89,6 +94,7 @@ public class GunController : MonoBehaviour
         ARAnimator = GetComponent<Animator>();
         //origin = GunPos;
 
+        RecoilScript = GunDirectionOBJ.GetComponent<Recoil>();
     }
 
     // Update is called once per frame
@@ -119,6 +125,8 @@ public class GunController : MonoBehaviour
 
     protected virtual void Shoot()
     {
+
+        RecoilScript.RecoilFire(recoilX, recoilY, recoilZ);
 
         muzzleFlash.Play();
 
@@ -166,4 +174,5 @@ public class GunController : MonoBehaviour
     {
         Modifier = !Modifier;
     }
+
 }

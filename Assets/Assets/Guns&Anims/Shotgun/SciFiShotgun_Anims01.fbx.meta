@@ -1,11 +1,17 @@
 fileFormatVersion: 2
-guid: c75f275478ffa87498b11d6f1a28792d
+guid: dc9f899d5cff7d9418887d216c4e4460
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -1941347333660441708
-    second: Shotgun|ShotgunAction
+      74: -2482112868829741196
+    second: IKArms|ShotgunIdle
+  - first:
+      74: -9218725302742966457
+    second: IKArms|ShotgunReload
+  - first:
+      74: -5597462690066187734
+    second: IKArms|ShotgunShoot
   externalObjects: {}
   materials:
     materialImportMode: 2
