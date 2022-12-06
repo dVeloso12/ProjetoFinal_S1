@@ -60,11 +60,18 @@ public class GunController : MonoBehaviour
 
     protected float finaldmg;
 
-    protected bool Modifier = false;
+    protected bool Modifier = false, isRunning = false;
 
     Animator ARAnimator;
 
     protected Recoil RecoilScript;
+
+
+    public bool IsRunning
+    {
+        get { return isRunning; }
+        set { isRunning = value; }
+    }
 
     // Start is called before the first frame update
     protected void Start()
@@ -117,7 +124,7 @@ public class GunController : MonoBehaviour
     public virtual void ActivateShoot(InputAction.CallbackContext obj)
     {
 
-        if(FireRateCounting<=0 && Ammo>0)
+        if(FireRateCounting<=0 && Ammo>0 && !isRunning)
             shoot = !shoot;
 
 

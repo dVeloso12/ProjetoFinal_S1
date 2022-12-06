@@ -151,10 +151,16 @@ public class PlayerMovement : MonoBehaviour
             playerSpeed *= runningModifier;
         }
 
+
         if(gunAnimator == null) gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
 
         if(gunAnimator != null)
+        {
             gunAnimator.SetBool("IsRunning", IsRunning);
+            GunController tempScript = gunAnimator.gameObject.GetComponent<GunController>();
+
+            tempScript.IsRunning = this.IsRunning;
+        }
 
     }
 

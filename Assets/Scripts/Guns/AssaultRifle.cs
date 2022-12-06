@@ -40,8 +40,10 @@ public class AssaultRifle : GunController
     public override void ActivateShoot(InputAction.CallbackContext obj)
     {
 
+        if(!isRunning)
             shoot = !shoot;
             //Debug.Log("Ãsd");
+            //base.ActivateShoot(obj);
 
 
     }
