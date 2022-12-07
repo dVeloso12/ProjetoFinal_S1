@@ -39,6 +39,12 @@ public class GameplayOrganize : MonoBehaviour
     Granade granade;
     GameObject playerWeapons;
 
+
+    public GameObject PlayerProperty
+    {
+        get { return Player; }
+    }
+
     private void Awake()
     {
         instance = this;
@@ -126,6 +132,11 @@ public class GameplayOrganize : MonoBehaviour
             PlayerUI.SetActive(true);
             playerWeapons.SetActive(true);
             FindObjectOfType<ManageWeapon>().ChangeWeapon();
+
+            HealingItem tempRef = PlayerProperty.GetComponentInChildren<HealingItem>();
+
+            if (tempRef != null) tempRef.ResetCount();
+
 
 
         }

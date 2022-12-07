@@ -39,6 +39,9 @@ public class LobbyScreenManager : MonoBehaviour
 
     private void Start()
     {
+
+        chooseWeaponIndex = 0;
+
         //ui = GameObject.Find("PlayerUI");
         PlayerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         //playerWeapons = GameObject.Find("GunDirection");

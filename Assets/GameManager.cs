@@ -172,6 +172,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
         orggame.toLobby = true;
         unloadDeadScene = true;
+
+        //HealingItem tempRef = gameObject.GetComponent<GameplayOrganize>().PlayerProperty.GetComponentInChildren<HealingItem>();
+
+        //if (tempRef != null) tempRef.ResetCount();
+
         //Time.timeScale = 0f;
         //Cursor.visible = true;
         //Cursor.lockState = CursorLockMode.None;
