@@ -40,12 +40,14 @@ public class BossScript : MonoBehaviour
     bool firing;
     float fireTimer;
     float RateOfFire = 1f;
+    public float BossNormalAttackDmg;
     public GameObject bulletPrefab;
     public GameObject pointOfBarrel;
     public GameObject Weapon;
     public RedHollowControl beam;
     [SerializeField] float maxNormalAttackTimer = 4f;
-
+    [HideInInspector]
+    public bool DamagePhase;
     float attackTimer;
 
     private void Start()
@@ -195,7 +197,7 @@ public class BossScript : MonoBehaviour
                 {
                     while (fireTimer >= 1f / RateOfFire)
                     {
-                        Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation);
+                        Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation).GetComponent<BulletScript>().setDmg(BossNormalAttackDmg);
              
                         fireTimer -= 1f / RateOfFire;
                     }
@@ -237,10 +239,12 @@ public class BossScript : MonoBehaviour
     {
         if (BossWalls[0].WallUp == false && BossWalls[1].WallUp == false)
         {
+            DamagePhase = true;
             timer += Time.deltaTime;
             if (timer >= DmgPhaseTimer && type != AttackType.onBeamAttack)
             {
                 state = global::BossState.Iddle;
+                DamagePhase = false;
                 if (!isDead)
                 {
                     BossWalls[0].canIncrease = true;

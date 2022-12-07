@@ -8996,6 +8996,7 @@ MonoBehaviour:
   PlateCompleted: 0
   Chest: {fileID: 0}
   spwaner: {fileID: 0}
+  isTutorial: 0
   PlatePorc: 0
 --- !u!65 &737289663
 BoxCollider:

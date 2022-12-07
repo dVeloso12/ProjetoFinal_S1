@@ -815,6 +815,7 @@ Transform:
   - {fileID: 7421530262667117904}
   - {fileID: 5854588592329957916}
   - {fileID: 6177085225339203407}
+  - {fileID: 5384151283849863464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1633,6 +1634,7 @@ MonoBehaviour:
   RateOfFire: 1
   pointOfBarrel: {fileID: 2857774098343162212}
   firing: 0
+  Damage: 3
   TurretHp: 100
   Boss: {fileID: 4599659398975709158}
   isAlive: 1
@@ -7148,6 +7150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAppear: 0
+  StageSpwaner: {fileID: 0}
 --- !u!65 &4759992501300632539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7406,6 +7409,7 @@ MonoBehaviour:
   RateOfFire: 1
   pointOfBarrel: {fileID: 2424837708271203428}
   firing: 0
+  Damage: 3
   TurretHp: 100
   Boss: {fileID: 4599659398975709158}
   isAlive: 1
@@ -7838,6 +7842,7 @@ MonoBehaviour:
   RateOfFire: 1
   pointOfBarrel: {fileID: 5240203167925968064}
   firing: 0
+  Damage: 3
   TurretHp: 100
   Boss: {fileID: 4599659398975709158}
   isAlive: 1
@@ -14082,6 +14087,8 @@ GameObject:
   - component: {fileID: 5824897534246125253}
   - component: {fileID: 7456248937486676320}
   - component: {fileID: 4655910225916069290}
+  - component: {fileID: 1858600213266046470}
+  - component: {fileID: 6339243953418839297}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -14154,6 +14161,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1858600213266046470
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601680974666900607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 24.826948, y: 26.403505, z: 0.37157533}
+  m_Center: {x: -0.000030517578, y: 4.400522, z: -0.18578576}
+--- !u!114 &6339243953418839297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6601680974666900607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d6c40e5be3cf443bd864d69cbfe0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTutorial: 0
 --- !u!1 &6655755158590598543
 GameObject:
   m_ObjectHideFlags: 0
@@ -14257,7 +14290,7 @@ BoxCollider:
   m_GameObject: {fileID: 6755031633943429377}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.3358154, y: 10.2165985, z: 10.400284}
   m_Center: {x: -0.16790771, y: 4.6082993, z: 0.09291077}
@@ -14268,7 +14301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755031633943429377}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2d6c40e5be3cf443bd864d69cbfe0d9, type: 3}
   m_Name: 
@@ -14528,6 +14561,7 @@ MonoBehaviour:
   RateOfFire: 1
   pointOfBarrel: {fileID: 619864426364026467}
   firing: 0
+  Damage: 3
   TurretHp: 100
   Boss: {fileID: 4599659398975709158}
   isAlive: 1
@@ -15935,6 +15969,81 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &556362345954913577
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1422000883687176485}
+    m_Modifications:
+    - target: {fileID: 4921942289725829091, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_Name
+      value: Border
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99c6e13e08135ec409d4dfb585832803, type: 3}
+--- !u!4 &5384151283849863464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5548647547689372673, guid: 99c6e13e08135ec409d4dfb585832803,
+    type: 3}
+  m_PrefabInstance: {fileID: 556362345954913577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7428199435617821854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16038,6 +16147,11 @@ PrefabInstance:
       propertyPath: pointOfBarrel
       value: 
       objectReference: {fileID: 1094072204275669327}
+    - target: {fileID: 6395957947640986495, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
+        type: 3}
+      propertyPath: BossNormalAttackDmg
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6395957947640986495, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
         type: 3}
       propertyPath: BossWalls.Array.data[0]

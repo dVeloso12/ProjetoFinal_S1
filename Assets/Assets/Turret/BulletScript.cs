@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
-    public GameObject hitPrefab;
-    public GameObject muzzlePrefab;
     public float speed;
     public float lifeTime;
     float timer;
+    public float dmg;
 
     Rigidbody rb;
     Vector3 velocity;
@@ -20,9 +19,11 @@ public class BulletScript : MonoBehaviour
 
     void Start()
     {
-        //var muzzleEffect = Instantiate(muzzlePrefab, transform.position, transform.rotation);
-        //Destroy(muzzleEffect, 5f);
         velocity = transform.forward * speed;
+    }
+    public void setDmg(float newDmg)
+    {
+        dmg = newDmg;
     }
 
     void FixedUpdate()
@@ -30,20 +31,15 @@ public class BulletScript : MonoBehaviour
         timer += Time.deltaTime;
         var displacement = velocity * Time.deltaTime;
         rb.MovePosition(rb.position + displacement);
-        if(timer >= lifeTime)
+        if (timer >= lifeTime)
         {
             Destroy(gameObject);
         }
-        
-    }
 
-    //void OnCollisionEnter(Collision other)
-    //{      
-    //    if(other.collider)
-    //    {
-    //        //var hitEffect = Instantiate(hitPrefab, other.GetContact(0).point, Quaternion.identity);
-    //        //Destroy(hitEffect, 5f);
-    //        Destroy(gameObject);
-    //    }
-    //}
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player") other.GetComponent<Player>().Damage(dmg);
+     
+    }
 }

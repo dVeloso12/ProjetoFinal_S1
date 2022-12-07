@@ -15,6 +15,7 @@ public class TurretScript : MonoBehaviour
     [SerializeField]float RateOfFire;
     [SerializeField] GameObject pointOfBarrel;
     public bool firing;
+    [SerializeField] float Damage = 3f;
     float fireTimer;
     [Header("General Stuff")]
     [SerializeField] float TurretHp;
@@ -77,6 +78,8 @@ public class TurretScript : MonoBehaviour
     public void ResetTurret()
     {
         TurretHp = saveMaxHp;
+        HpBar.fillAmount = 1f;
+        showUI = true;
         isAlive = true;
     }
 
@@ -125,7 +128,7 @@ public class TurretScript : MonoBehaviour
         {
             while (fireTimer >= 1f / RateOfFire)
             {
-                Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation);
+                Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation).GetComponent<BulletScript>().setDmg(Damage);
                 fireTimer -= 1f / RateOfFire;
             }
 

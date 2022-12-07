@@ -46,11 +46,11 @@ public class ManageWeapon : MonoBehaviour
 
 
 
-        pistolPrefab.GetComponentInChildren<Pistol>().enabled = false;
-        if(shotgunPrefab != null) 
-            shotgunPrefab.GetComponentInChildren<Shotgun>().enabled = false;
-        assaultRiflePrefab.GetComponentInChildren<AssaultRifle>().enabled = false;
+        pistolPrefab.SetActive(false);
+        shotgunPrefab.SetActive(false);
+        assaultRiflePrefab.SetActive(false);
 
+       
         switch (gm.weaponType)
         {
             case WeaponType.Shotgun:

@@ -9,16 +9,17 @@ public class HealingItem : MonoBehaviour
     // Start is called before the first frame update
 
     public int MaxCount;
-    int Count;
+    int count;
     public float HealAmount;
 
     protected PlayerInput playerInput;
 
     TextMeshProUGUI CountText;
 
+
     void Start()
     {
-        Count = MaxCount;
+        count = MaxCount;
         playerInput = new PlayerInput();
 
         playerInput.Player.Enable();
@@ -30,17 +31,23 @@ public class HealingItem : MonoBehaviour
 
     // Update is called once per frame
    
+    public void ResetCount()
+    {
+        count = MaxCount;
+        CountText = GameObject.Find("HealsC").GetComponent<TextMeshProUGUI>();
+        CountText.text = count.ToString();
+    }
 
     public virtual void Heal(InputAction.CallbackContext obj)
     {
 
-        if (Count > 0)
+        if (count > 0)
         {
             gameObject.GetComponent<Player>().PlayerHp += HealAmount;
-            Count--;
+            count--;
         }
 
-        CountText.text = Count.ToString();
+        CountText.text = count.ToString();
 
     }
 

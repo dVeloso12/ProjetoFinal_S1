@@ -12,6 +12,7 @@ public class PlateScript : MonoBehaviour
     [SerializeField] ChestScript Chest;
     [SerializeField] StageSpawner spwaner;
     bool ReaperAttempt = true;
+    [SerializeField] bool isTutorial = false;
 
     public float PlatePorc;
     int enterPlateTimes;
@@ -22,7 +23,7 @@ public class PlateScript : MonoBehaviour
 
     void Update()
     {
-        if (PlatePorc>=.8f && ReaperAttempt)
+        if (PlatePorc>=.8f && ReaperAttempt && !isTutorial)
         {
             spwaner.ReaperSpawn();
             ReaperAttempt = false;

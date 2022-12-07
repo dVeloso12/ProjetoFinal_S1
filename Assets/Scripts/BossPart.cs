@@ -13,7 +13,7 @@ public class BossPart : MonoBehaviour
     public void TakeDmgBoss(GameObject check,float dmg)
     {
         
-        if(check.name == PartBodyName)
+        if(check.name == PartBodyName && Boss.GetComponent<BossScript>().DamagePhase)
         {
             //Debug.Log(check.name);
             Boss.GetComponent<BossScript>().TakeDmg(dmg * MultiplierBoostDmg);
