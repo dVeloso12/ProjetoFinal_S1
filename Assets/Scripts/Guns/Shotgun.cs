@@ -129,20 +129,20 @@ public class Shotgun : GunController
         shotgunAnimator.SetTrigger("Shoot");
     }
 
-    public override void ActivateReload(InputAction.CallbackContext obj)
-    {        
-        shotgunAnimator.SetTrigger("Reload");
-    }
-    public void Reloaded()
-    {
-        shotgunAnimator.speed = animationStartSpeed;
+    //public override void ActivateReload(InputAction.CallbackContext obj)
+    //{        
+    //    shotgunAnimator.SetTrigger("Reload");
+    //}
+    //public void Reloaded()
+    //{
+    //    shotgunAnimator.speed = animationStartSpeed;
 
-        Debug.Log("Reloading");
-        Ammo = 0;
-        Ammo = AmmoClipSize;
+    //    Debug.Log("Reloading");
+    //    Ammo = 0;
+    //    Ammo = AmmoClipSize;
 
-        Debug.Log("Ammo : " + Ammo);
+    //    Debug.Log("Ammo : " + Ammo);
 
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
-    }
+    //    AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+    //}
 }
