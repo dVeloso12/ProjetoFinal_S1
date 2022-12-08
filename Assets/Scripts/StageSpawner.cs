@@ -131,11 +131,14 @@ public class StageSpawner : MonoBehaviour
         if (other.tag == "Player")
         {
             activated = true;
-            int R = Random.Range(0, PossibleEncounters.Count - 1);
-            Encounter = PossibleEncounters[R];
-            Debug.Log("Spwan"+other.name+other.transform.position);
-            SpawnEnemies();
-            GetComponent<BoxCollider>().enabled = false;
+            if (Encounter != null)
+            {
+                int R = Random.Range(0, PossibleEncounters.Count - 1);
+                Encounter = PossibleEncounters[R];
+                Debug.Log("Spwan" + other.name + other.transform.position);
+                SpawnEnemies();
+                GetComponent<BoxCollider>().enabled = false;
+            }
         }
     }
 

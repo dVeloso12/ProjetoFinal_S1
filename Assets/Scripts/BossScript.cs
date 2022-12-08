@@ -49,6 +49,7 @@ public class BossScript : MonoBehaviour
     [HideInInspector]
     public bool DamagePhase;
     float attackTimer;
+    public bool isTutorial = false;
 
     private void Start()
     {
@@ -128,36 +129,39 @@ public class BossScript : MonoBehaviour
                 offset = 40f;
             }
         }
-     
 
-        if (state == global::BossState.Iddle)
+        if (!isTutorial)
         {
-            animator.SetTrigger("toIddle");
-
-        }else if(state == global::BossState.Shooting)
-        {
-            if(type == AttackType.NormalAttack)
+            if (state == global::BossState.Iddle)
             {
-                attackTimer += Time.deltaTime;
-                animator.SetTrigger("toShoot");
-                firing = true;
-                if(attackTimer >= maxNormalAttackTimer)
+                animator.SetTrigger("toIddle");
+
+            }
+            else if (state == global::BossState.Shooting)
+            {
+                if (type == AttackType.NormalAttack)
                 {
-                    ChooseAttack();
-                    attackTimer = 0f;
+                    attackTimer += Time.deltaTime;
+                    animator.SetTrigger("toShoot");
+                    firing = true;
+                    if (attackTimer >= maxNormalAttackTimer)
+                    {
+                        ChooseAttack();
+                        attackTimer = 0f;
+                    }
                 }
-            }
-            if(type == AttackType.BeamAttack)
-            {
-                beam.canAttack = true;
-                type = AttackType.onBeamAttack;
-                
-            }
-            if(type == AttackType.onBeamAttack)
-            {
-                if(!beam.canAttack)
+                if (type == AttackType.BeamAttack)
                 {
-                    ChooseAttack();
+                    beam.canAttack = true;
+                    type = AttackType.onBeamAttack;
+
+                }
+                if (type == AttackType.onBeamAttack)
+                {
+                    if (!beam.canAttack)
+                    {
+                        ChooseAttack();
+                    }
                 }
             }
         }

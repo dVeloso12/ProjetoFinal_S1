@@ -25,6 +25,7 @@ public class NpcMsgDisplay : MonoBehaviour
     [SerializeField] GameObject shop;
     bool update;
     GameplayOrganize orggame;
+    GameManager gameManager;
 
     private void Start()
     {   
@@ -35,6 +36,7 @@ public class NpcMsgDisplay : MonoBehaviour
         canvas = GameObject.Find("TutoCanvas");
         sphereCollider = GetComponent<SphereCollider>();
         orggame = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         update = true;
     }
     private void Update()
@@ -170,6 +172,7 @@ public class NpcMsgDisplay : MonoBehaviour
             case 8:
                 {
                     saveCurrentList = Npc.Position_9;
+                    gameManager.Money = 200;
                     break;
                 }
             case 9:

@@ -28,6 +28,7 @@ public class TurretScript : MonoBehaviour
     public bool showUI;
     Camera cam;
     public Vector3 ofseet;
+    public bool isTutorial = false;
 
     private void Start()
     {
@@ -43,9 +44,13 @@ public class TurretScript : MonoBehaviour
        
         if (canAim && isAlive)
         {
-            target = detect.savePlayer;
-            RotateTurret();
-            Shoot();
+            if(!isTutorial)
+            {
+                target = detect.savePlayer;
+                RotateTurret();
+                Shoot();
+            }
+           
             UIManager();
         }
         if (bosscp.resetTurrets)

@@ -20,6 +20,7 @@ public class EndBossPortal : MonoBehaviour
             if (gm.ReaperSpawn < 50)
                 gm.ReaperSpawn += 5;
             game.goToShop = true;
+            if(!isTutorial)
             game.PlayerProperty.GetComponent<HealingItem>().ResetCount();
 
         }
