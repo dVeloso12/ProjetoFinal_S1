@@ -57,7 +57,7 @@ Material:
     - Vector1_D65B033B: 0
     - Vector1_E266B039: 0.05
     - _CutOff: 0
-    - _Fill: -0.5065222
+    - _Fill: 1
     - _Noise_Scale: 50
     - _Noise_Strenght: 1
     - _QueueControl: 0
