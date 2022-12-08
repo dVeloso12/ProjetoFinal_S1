@@ -46,7 +46,7 @@ public class ChestScript : MonoBehaviour
             canUpgrade = true;
             canAppear = false;
             gameObject.GetComponent<Collider>().enabled = false;
-
+            if(StageSpwaner != null)
             StageSpwaner.GetComponent<StageSpawner>().Stop();
             
 
