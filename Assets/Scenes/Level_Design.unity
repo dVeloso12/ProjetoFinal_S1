@@ -674,11 +674,7 @@ MonoBehaviour:
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
   toLobby: 0
-<<<<<<< Updated upstream
   toGame: 0
-=======
-  toGame: 1
->>>>>>> Stashed changes
   goToStage: 0
   goToShop: 0
   toTutorial: 1
