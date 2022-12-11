@@ -2795,6 +2795,7 @@ MonoBehaviour:
   DistanceToPlayer: 30
   dmg: 30
   speed: 10
+  mat: {fileID: 2100000, guid: 1abb72180ae53944c82f017ae391aecc, type: 2}
   bulletPrefab: {fileID: 2602262245937804743, guid: a30601315104e26478020e87194a0dd6,
     type: 3}
   bulletsParent: {fileID: 4768430212777859953}

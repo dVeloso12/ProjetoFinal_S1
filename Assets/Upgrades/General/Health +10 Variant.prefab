@@ -1,42 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4155592726924336257
+--- !u!1001 &376306070161239018
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.4904174
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.28190663
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.4904174
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738137255183835001, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: df6968b32d828514cb566cf1e05acc47,
-        type: 3}
     - target: {fileID: 7738137255732208439, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Name
-      value: MovSpeed+10
+      value: Health +10
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208440, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
@@ -146,18 +120,12 @@ PrefabInstance:
     - target: {fileID: 7738137255732208441, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: EffectName
-      value: MovSpeed_10
+      value: Health_10
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208441, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: Description
-      value: MovSpeed +10%
+      value: Health +10%
       objectReference: {fileID: 0}
-    - target: {fileID: 7738137255732208442, guid: f297ca498c3a6d3468702d577b8bd5dd,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 66be510d169ff4047aeede44f4af254d,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f297ca498c3a6d3468702d577b8bd5dd, type: 3}

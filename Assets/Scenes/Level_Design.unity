@@ -617,6 +617,10 @@ MonoBehaviour:
   Upgrades:
   - {fileID: 386185769267273100, guid: e246554db2da5c6489dcbbe25628ac5f, type: 3}
   - {fileID: 7239278222423649501, guid: 826e0f1b4f3bd634c955d1dfdc7c8365, type: 3}
+  - {fileID: 1333748760100067114, guid: abe41c88ba3d0894eb1c47a180e16b63, type: 3}
+  - {fileID: 2112212179344269612, guid: f5ef7d57177bba34d956ccd8aa7d158c, type: 3}
+  - {fileID: 7952102078823450835, guid: f73686e8bc354c1409c8c7b2772a7e75, type: 3}
+  - {fileID: 8215413957578250614, guid: e6c3393952fa9be4faae3e22ba98b31e, type: 3}
   - {fileID: 2112212179344269612, guid: 1eb02beeafde69a4598262492d8519fe, type: 3}
   - {fileID: 1837065353376744725, guid: 63e0b0b9458cf6e4e8402858e257ee11, type: 3}
   - {fileID: 4923136937986413836, guid: e5e4ffa07f48aef4cbd03048b942e292, type: 3}
@@ -624,11 +628,20 @@ MonoBehaviour:
   - {fileID: 8190231314722129654, guid: c0af88319aff9a44bb29eb7255a80806, type: 3}
   - {fileID: 3699352609458583086, guid: 0df7f856ccc00f7448d71f49f34dc4dd, type: 3}
   - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
+  - {fileID: 6841341761686971749, guid: bc8d7b234641c394f9b293e2437545f4, type: 3}
+  - {fileID: 2318090926900321647, guid: dcce4c3b057b5194fbd8af4ad499e17e, type: 3}
+  - {fileID: 4130442905797761976, guid: c6c43d84c52b9c4439e236848370cfe3, type: 3}
   - {fileID: 6223476977280110873, guid: a2efde58dce47d94e957ea7428aa8994, type: 3}
   - {fileID: 7200334009989630880, guid: 59d628a2e2b603345b19d73c68ae5a3d, type: 3}
   - {fileID: 7137482764467667458, guid: 94fd77c870ee6194ab7679debed6fde7, type: 3}
   - {fileID: 2130999234550567199, guid: f1454bd7f87ae3e43a3e6f9c3218bb33, type: 3}
   - {fileID: 6087208374643911325, guid: b6ebbfd7b6264cb49a241de974012397, type: 3}
+  - {fileID: 6758397473482479067, guid: 03ad083e31a2bea4aa78bad787cfc943, type: 3}
+  - {fileID: 780470959892972904, guid: a0719814dbc2ebc41ab82ed65eef5dda, type: 3}
+  - {fileID: 8924877213281007097, guid: 7138894bf94669447b79fe67c4597758, type: 3}
+  - {fileID: 6889345172862792331, guid: c5a1995468f7d2040bf23f4234f1b08b, type: 3}
+  - {fileID: 5091637413042810483, guid: 47c2163428c16af449befc26301168fe, type: 3}
+  - {fileID: 1728822984069536211, guid: ec043ab8b4ecac548ad3cac701f6989b, type: 3}
   EnemyList: []
   gameState: 0
   surv: {fileID: 0}

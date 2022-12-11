@@ -21,15 +21,18 @@ public class EneExploder : Enemy_AI_2
     // Update is called once per frame
     void Update()
     {
-        base.Update();
-
-        float DistanceToPlayer = (transform.position - player.position).magnitude;
-        if (DistanceToPlayer < 1)
+        if (!Frozen)
         {
-            Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
+            base.Update();
 
-            Action();
+            float DistanceToPlayer = (transform.position - player.position).magnitude;
+            if (DistanceToPlayer < 1)
+            {
+                Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
 
+                Action();
+
+            }
         }
     }
 

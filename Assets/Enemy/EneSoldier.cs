@@ -26,18 +26,20 @@ public class EneSoldier : Enemy_AI_2
     // Update is called once per frame
     void Update()
     {
-        if (navagent.velocity.magnitude < 1)
-            animator.SetBool("IsMoving", false);
-        else
-            animator.SetBool("IsMoving", true);
+        if (!Frozen) {
+            if (navagent.velocity.magnitude < 1)
+                animator.SetBool("IsMoving", false);
+            else
+                animator.SetBool("IsMoving", true);
 
-        
-        base.Update();
-        shootingTimer += Time.deltaTime;
 
-        if (shootingTimer > 1f / fireRate)
-        {
-            animator.SetBool("CanShoot", true);
+            base.Update();
+            shootingTimer += Time.deltaTime;
+
+            if (shootingTimer > 1f / fireRate)
+            {
+                animator.SetBool("CanShoot", true);
+            } 
         }
     }
 

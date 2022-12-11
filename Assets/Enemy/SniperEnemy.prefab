@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2810424432337581046}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -96.69518, z: -8.197696}
+  m_LocalPosition: {x: 0, y: -96.69518, z: -8.197696}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2810424434365561114}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2810424432337581044
 SkinnedMeshRenderer:
@@ -812,7 +812,7 @@ Transform:
   - {fileID: 2810424433271167112}
   - {fileID: 2810424433564968893}
   m_Father: {fileID: 2810424434365561114}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2810424432981460618
 GameObject:
@@ -2715,8 +2715,8 @@ Transform:
   - {fileID: 2810424433444411795}
   - {fileID: 2810424433667009685}
   - {fileID: 2810424432735927207}
-  - {fileID: 2810424432936698733}
   - {fileID: 2810424432337581045}
+  - {fileID: 2810424432936698733}
   - {fileID: 5731643787758183628}
   - {fileID: 1449920255435704189}
   m_Father: {fileID: 0}
@@ -2779,6 +2779,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
+  money: 0
 --- !u!114 &5413215727399478500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2795,7 @@ MonoBehaviour:
   DistanceToPlayer: 30
   dmg: 10
   speed: 7
+  mat: {fileID: 2100000, guid: 59337fb57136e204bb63efcab5056933, type: 2}
   bulletPrefab: {fileID: 2602262245937804743, guid: a30601315104e26478020e87194a0dd6,
     type: 3}
   bulletsParent: {fileID: 4768430212777859953}

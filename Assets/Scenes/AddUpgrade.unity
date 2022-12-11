@@ -555,9 +555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prob:
-  - 70
-  - 20
-  - 10
+  - 80
+  - 15
+  - 5
   canvas: {fileID: 292215847}
 --- !u!4 &1623989490
 Transform:

@@ -259,6 +259,18 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 2831727953722792856, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: Granada
+      value: 
+      objectReference: {fileID: 2890465971416483998, guid: 820ff90a5ec5f384ab835be2d71a348f,
+        type: 3}
+    - target: {fileID: 2831727953722792856, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: IceNade
+      value: 
+      objectReference: {fileID: 2890465971416483998, guid: 356f5d051ed3ad247a63bd12d2c2526b,
+        type: 3}
     - target: {fileID: 4497579820905770016, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: Camera

@@ -158,6 +158,50 @@ public class UpgradeEffects : MonoBehaviour
     }
 
 
+
     #endregion
+
+
+    #region AR
+
+
+    public void SniperPiercing_1()
+    {
+        assaultRifle.piercing++;
+        if (assaultRifle.piercing >= 5)
+            gm.RemoveUgrade(GetComponent<Upgrade>().indexu);
+    }
+
+
+    public void SniperDmgMult_20()
+    {
+        assaultRifle.SniperMult += .2f;
+    }
+
+
+    public void SniperCD_2()
+    {
+        assaultRifle.SniperCD -= .4f;
+        if(assaultRifle.SniperCD<.4f)
+            gm.RemoveUgrade(GetComponent<Upgrade>().indexu);
+    }
+    #endregion
+    #endregion
+
+    #region Skills
+
+    public void IceNade()
+    {
+        FindObjectOfType<Granade>().Ice = true;
+        gm.RemoveUgrade(GetComponent<Upgrade>().indexu);
+
+    }
+
+    public void NadePower_10()
+    {
+        FindObjectOfType<Granade>().power += 10;
+    }
+
+
     #endregion
 }

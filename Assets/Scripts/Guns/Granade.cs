@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Granade : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject Granada;
+    public GameObject Granada,IceNade;
 
     PlayerInput playerInput;
 
@@ -17,10 +17,12 @@ public class Granade : MonoBehaviour
     TextMeshProUGUI Timer;
 
     public float NadeCooldown;
+    public int power;
     private float NadeTimer;
 
     public Image GranadeIcon;
     public float fillAmount;
+    [HideInInspector]public bool Ice=false;
     GameManager gm;
 
     void Start()
@@ -53,7 +55,10 @@ public class Granade : MonoBehaviour
     {
         if (NadeTimer <= 0)
         {
-            Instantiate(Granada, place.position, place.rotation);
+            if(!Ice)
+            Instantiate(Granada, place.position, place.rotation).GetComponent<GranadeEffect>().dmg=power;
+            else
+                Instantiate(IceNade, place.position, place.rotation).GetComponent<IceNade>().timer=power/30f;
             NadeTimer = NadeCooldown/gm.CDMod;
             fillAmount = 0;
         }

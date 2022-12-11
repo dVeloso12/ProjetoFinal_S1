@@ -570,6 +570,7 @@ MonoBehaviour:
   DistanceToPlayer: 3
   dmg: 30
   speed: 10
+  mat: {fileID: 2100000, guid: 72040e441b13de54c9913875c681e121, type: 2}
   Explosion: {fileID: 1121192042590650, guid: 63d04dcd13853dd4fb4380c4bb216635, type: 3}
   ExplosionSize: 6
   VisualSize: 1

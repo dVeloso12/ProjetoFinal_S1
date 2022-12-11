@@ -15,7 +15,12 @@ public class AssaultRifle : GunController
 
     [SerializeField] Vector3 position;
 
-    
+    [HideInInspector]
+    public int piercing = 1;
+
+    [HideInInspector]
+    public float SniperCD = 2;
+
 
     void Start()
     {
@@ -66,7 +71,7 @@ public class AssaultRifle : GunController
             ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
-
+            
 
             if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
@@ -115,65 +120,72 @@ public class AssaultRifle : GunController
     }
     void ShootMod()
     {
-        if(FireRateCounting <= -1 && Ammo > 0)
+        if(FireRateCounting <= 0 && Ammo > 0)
         {
+            int i = 0;
             Vector3 ShootDir = _camera.forward;
 
-            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
-            {
-                Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
-                Quaternion.LookRotation(hit.normal),hit.transform).transform.Rotate(Vector3.right * 90);
-                hiteffect.transform.position = hit.point;
+            RaycastHit[] hits;
+
+            hits = Physics.RaycastAll(_camera.position, ShootDir, Distance);
+            hiteffect.transform.position = hit.point;
                 hiteffect.transform.forward = hit.normal;
                 hiteffect.Emit(1);
 
                 TrailRenderer trail = Instantiate(btrail, ShotingPlace.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, hit.point));
+            foreach(RaycastHit hitt in hits) { 
 
-                if (hit.transform.tag == "Enemy")
+                if (hitt.transform.tag == "Enemy")
                 {
                     finaldmg = dmg * gm.DamageMod * SniperMult;
-                    hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                    hitt.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
 
-                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
-                    Quaternion.LookRotation(hit.normal));
+                    GameObject dmgnum = Instantiate(dmgText, hitt.point + (hitt.normal * .1f),
+                    Quaternion.LookRotation(hitt.normal));
                     //dmgnum.transform.parent = collisionDetected.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hitt.transform);
+                    i++;
+
                 }
 
-                if (hit.transform.tag == "Head")
+                if (hitt.transform.tag == "Head")
                 {
                     finaldmg = dmg * gm.HSMod * gm.DamageMod * SniperMult;
-                    hit.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+                    hitt.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
 
 
-                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
-                    Quaternion.LookRotation(hit.normal));
+                    GameObject dmgnum = Instantiate(dmgText, hitt.point + (hitt.normal * .1f),
+                    Quaternion.LookRotation(hitt.normal));
                     //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hitt.transform);
+                    i++;
+
                 }
                 //Dano no Boss
 
-                if (hit.transform.tag == "Boss")
+                if (hitt.transform.tag == "Boss")
                 {
-                    hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject, base.dmg * gm.DamageMod);
+                    hitt.transform.GetComponent<BossPart>().TakeDmgBoss(hitt.transform.gameObject, base.dmg * gm.DamageMod);
+                    i++;
+
                 }
-                if (hit.transform.tag == "Turret")
+                if (hitt.transform.tag == "Turret")
                 {
-                    hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                    hitt.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
+
+                if (i >= piercing)
+                    break;
 
             }
-            //else
-            //{
-            //    TrailRenderer trail = Instantiate(btrail, ShotingPlace.position, Quaternion.identity);
-            //    StartCoroutine(SpawnTrail(trail, ShootDir));
-            //}
+           
 
             base.Shoot();
+            FireRateCounting += SniperCD;
 
         }
 

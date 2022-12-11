@@ -13,20 +13,25 @@ public class Enemy_AI_2 : MonoBehaviour
 
     //[Header("Shooting")]
     [SerializeField]protected int DistanceToPlayer;
-
-
-    
     [SerializeField] protected int dmg;
     [SerializeField] float speed;
 
 
+    [SerializeField] Material mat;
+    Color original;
+    
+    [HideInInspector]protected bool Frozen = false;
+
+
     protected void Awake()
     {
+        
         gm = FindObjectOfType<GameManager>();
         navagent = GetComponent<NavMeshAgent>();
         player = FindObjectOfType<PlayerMovement>().transform;
         navagent.speed = speed;
         navagent.stoppingDistance = DistanceToPlayer;
+        original = mat.color;
     }
     protected void Start()
     {
@@ -62,15 +67,23 @@ public class Enemy_AI_2 : MonoBehaviour
 
     protected virtual void Action()
     {
-
     }
-
-
     public void Shoot()
     {
+    }
 
-        
+    public void Freeze(float sec)
+    {
+        StartCoroutine(CFreeze(sec));
+    }
 
+    IEnumerator CFreeze(float sec)
+    {
 
+        Frozen = true;
+        mat.color = Color.blue;
+        yield return new WaitForSeconds(sec);
+        mat.color = original;
+        Frozen = false;
     }
 }

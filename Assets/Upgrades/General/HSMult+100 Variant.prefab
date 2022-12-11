@@ -114,6 +114,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1837065353376744725, guid: 63e0b0b9458cf6e4e8402858e257ee11,
         type: 3}
+      propertyPath: Rarity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837065353376744725, guid: 63e0b0b9458cf6e4e8402858e257ee11,
+        type: 3}
+      propertyPath: indexu
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837065353376744725, guid: 63e0b0b9458cf6e4e8402858e257ee11,
+        type: 3}
       propertyPath: EffectName
       value: HSMod_100
       objectReference: {fileID: 0}
@@ -131,7 +141,7 @@ PrefabInstance:
     - target: {fileID: 1837065353376744731, guid: 63e0b0b9458cf6e4e8402858e257ee11,
         type: 3}
       propertyPath: m_Name
-      value: HSMult_100
+      value: HSMult+100 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e0b0b9458cf6e4e8402858e257ee11, type: 3}
