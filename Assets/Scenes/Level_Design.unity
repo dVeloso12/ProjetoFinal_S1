@@ -624,6 +624,11 @@ MonoBehaviour:
   - {fileID: 8190231314722129654, guid: c0af88319aff9a44bb29eb7255a80806, type: 3}
   - {fileID: 3699352609458583086, guid: 0df7f856ccc00f7448d71f49f34dc4dd, type: 3}
   - {fileID: 1333748760100067114, guid: 9b00bfe1c835f96488da10fa2eb42832, type: 3}
+  - {fileID: 6223476977280110873, guid: a2efde58dce47d94e957ea7428aa8994, type: 3}
+  - {fileID: 7200334009989630880, guid: 59d628a2e2b603345b19d73c68ae5a3d, type: 3}
+  - {fileID: 7137482764467667458, guid: 94fd77c870ee6194ab7679debed6fde7, type: 3}
+  - {fileID: 2130999234550567199, guid: f1454bd7f87ae3e43a3e6f9c3218bb33, type: 3}
+  - {fileID: 6087208374643911325, guid: b6ebbfd7b6264cb49a241de974012397, type: 3}
   EnemyList: []
   gameState: 0
   surv: {fileID: 0}
@@ -674,10 +679,10 @@ MonoBehaviour:
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
   toLobby: 0
-  toGame: 0
+  toGame: 1
   goToStage: 0
   goToShop: 0
-  toTutorial: 1
+  toTutorial: 0
   TutoNpc: {fileID: 8078951896517334181, guid: 2c287dc846a96894fb17920cc5f01c30, type: 3}
   playerIns: {fileID: 0}
   saveBossRoom: {fileID: 0}

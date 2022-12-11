@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6504896650162048294}
   m_Layer: 0
   m_Name: PlayerGameObj
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7758063, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -322,6 +322,11 @@ PrefabInstance:
     - target: {fileID: 5353640097496199005, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437769074236399278, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5891474211660522618, guid: 10a96ad5b734308409734b82b3d1e408,

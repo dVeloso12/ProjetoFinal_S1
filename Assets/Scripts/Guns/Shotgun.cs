@@ -5,12 +5,21 @@ using UnityEngine.InputSystem;
 
 public class Shotgun : GunController
 {
-    public float RandomDeviation;
+    float RandomDeviation=0.1f;
+
+    public float Spread = 1;
 
     public int Pellets;
 
+    
+    [HideInInspector]
+    public float PowerShotCD = 10;
+
     [SerializeField] Vector3 position;
     
+    Color originalC;
+    [SerializeField] SkinnedMeshRenderer shotgun;
+
     Animator shotgunAnimator;
 
     float animationStartSpeed;
@@ -23,6 +32,8 @@ public class Shotgun : GunController
 
 
         animationStartSpeed = shotgunAnimator.speed;
+        originalC = shotgun.materials[1].color;
+
 
     }
 
@@ -39,18 +50,21 @@ public class Shotgun : GunController
         int qauntity = Pellets;
         if (Modifier)
         {
+            shotgun.materials[1].color=Color.red;
             qauntity *= Ammo;
             Ammo = 1;
         }
+        
 
         for (int i = 0; i < qauntity; i++)
         {
             Vector3 ShootDir = _camera.forward;
 
-            ShootDir.x += Random.Range(-RandomDeviation, RandomDeviation);
-            ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
-            ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
-
+            
+            ShootDir.x += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
+            ShootDir.y += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
+            ShootDir.z += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
+                                                                               
             Vector3 textPos=Vector3.zero;
             float textDmg = 0;
             int head = 0, body = 0;
@@ -120,9 +134,19 @@ public class Shotgun : GunController
         shoot = !shoot;
 
         base.Shoot();
+        if (Modifier)
+        {
+            FireRateCounting += PowerShotCD;
+            StartCoroutine(NormalMat(FireRateCounting));
+        }
     }
 
+    IEnumerator NormalMat(float i)
+    {
+        yield return new WaitForSeconds(i);
+        shotgun.materials[1].color = originalC;
 
+    }
     public void ShootAnimaton()
     {
         shotgunAnimator.speed = animationStartSpeed / gm.FireRateMod;

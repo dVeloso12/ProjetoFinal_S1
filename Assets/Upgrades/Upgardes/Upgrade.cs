@@ -13,6 +13,8 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     private UpgradeEffects Effects;
 
+    public int indexu;
+
     public bool General = true;
 
     public int Rarity = 1;

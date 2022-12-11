@@ -185,8 +185,11 @@ public class LobbyScreenManager : MonoBehaviour
     {
         pcState = pcState.endScreen;
         gameManager.weaponType = gameManager.UiSaveTypes[chooseWeaponIndex];
-       
-        
+        gameManager.CreateUpgradeLists();
+
+
+
+
     }
 
 }

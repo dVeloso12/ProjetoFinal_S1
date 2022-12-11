@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 public class Pistol : GunController
 {
 
-    [SerializeField] int CritRate=10;
-    [SerializeField] float CritDmg=1.5f;
+    [SerializeField]public int CritRate=10;
+    [SerializeField]public float CritDmg=1.5f;
 
     [SerializeField] Vector3 position;
 

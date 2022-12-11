@@ -33096,9 +33096,13 @@ MonoBehaviour:
   Distance: 10
   DwonSights: {fileID: 8363097799224970400}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
-  RandomDeviation: 0.1
+  Spread: 1
   Pellets: 9
+  PowerShotCD: 3
   position: {x: 0, y: 0, z: 0}
+  original: {fileID: 0}
+  mod: {fileID: 0}
+  shotgun: {fileID: 0}
 --- !u!114 &8933608275006795881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34462,6 +34466,11 @@ PrefabInstance:
       objectReference: {fileID: 7970698349505214132}
     - target: {fileID: 8302318597017331328, guid: 56f15b211a452b743af87f71d7adb75f,
         type: 3}
+      propertyPath: Distance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302318597017331328, guid: 56f15b211a452b743af87f71d7adb75f,
+        type: 3}
       propertyPath: DwonSights
       value: 
       objectReference: {fileID: 8363097799224970400}
@@ -34572,8 +34581,13 @@ PrefabInstance:
     - target: {fileID: 1858256450243950645, guid: 5fe7a563c08211c4e81bb635c0b4107c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7842334066373610171, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
+      propertyPath: mod
+      value: 
+      objectReference: {fileID: 2100000, guid: c5e9e4ed49522804b8d0447d8b819166, type: 2}
     - target: {fileID: 7842334066373610171, guid: 5fe7a563c08211c4e81bb635c0b4107c,
         type: 3}
       propertyPath: Camera
@@ -34601,6 +34615,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7842334066373610171, guid: 5fe7a563c08211c4e81bb635c0b4107c,
         type: 3}
+      propertyPath: shotgun
+      value: 
+      objectReference: {fileID: 2339690653603926375}
+    - target: {fileID: 7842334066373610171, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
+      propertyPath: original
+      value: 
+      objectReference: {fileID: 2100000, guid: 71c6c275e08d0eb43b993fdfb4fa10cd, type: 2}
+    - target: {fileID: 7842334066373610171, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
       propertyPath: DwonSights
       value: 
       objectReference: {fileID: 8363097799224970400}
@@ -34614,8 +34638,29 @@ PrefabInstance:
       propertyPath: GunDirectionOBJ
       value: 
       objectReference: {fileID: 7970698350875170744}
+    - target: {fileID: 8270662855891908604, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b11a73c48cfb86044aba3bace7cd1b88, type: 2}
+    - target: {fileID: 8270662855891908604, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 71c6c275e08d0eb43b993fdfb4fa10cd, type: 2}
+    - target: {fileID: 8270662855891908604, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 790e04542438f5742a226b5aa9b56907, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fe7a563c08211c4e81bb635c0b4107c, type: 3}
+--- !u!137 &2339690653603926375 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8270662855891908604, guid: 5fe7a563c08211c4e81bb635c0b4107c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5962497956415891099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4628863160353768468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1333640302236148367, guid: 5fe7a563c08211c4e81bb635c0b4107c,

@@ -43,6 +43,7 @@ public class StageSpawner : MonoBehaviour
         {
             if (Timer_SemiEncounter <= 0)
             {
+                Debug.Log(activated);
                 SpawnEnemies();
 
             }
@@ -52,7 +53,8 @@ public class StageSpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
-        
+        Debug.Log(activated);
+
         NavMeshHit hit;
 
         SemiEncounter sEncounter = Encounter.SemiEncounters[Current_SemiEncounter];
@@ -130,8 +132,9 @@ public class StageSpawner : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log(activated+"asd");
             activated = true;
-            if (Encounter != null)
+            if (Encounter == null)
             {
                 int R = Random.Range(0, PossibleEncounters.Count - 1);
                 Encounter = PossibleEncounters[R];

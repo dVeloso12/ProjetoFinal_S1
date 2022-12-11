@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
 
      PlayerInput playerInput;
 
+    List<Upgrade> TempUpgrade;
+
+    //[HideInInspector]
     public List<Upgrade> Upgrades = new List<Upgrade>();
 
     [HideInInspector]
@@ -80,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       
+        TempUpgrade = new List<Upgrade>(Upgrades);
         CreateUpgradeLists();
         SaveUiNames();
     }
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void DebugFunction(InputAction.CallbackContext obj)
     {
-        gameState = 1;
+        gameState = 0;
         AddUpgrade();
     }
     public void AddUpgrade()
@@ -192,14 +195,27 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void CreateUpgradeLists()
+    public void CreateUpgradeLists()
     {
+        
+        Upgrades.Clear();
+
+
+        foreach (Upgrade upgrade1 in TempUpgrade)
+        {
+            if (upgrade1.General || upgrade1.WeaponAffected == weaponType)
+                Upgrades.Add(upgrade1);
+        }
+
+
         for (int j = 0; j < 3; j++)
             Upgrade_Rarity[j] = new List<int>();
 
         int i = 0;
+
         foreach(Upgrade upgrade in Upgrades)
         {
+            upgrade.indexu = i;
             switch (upgrade.Rarity)
             {
                 case 1:
@@ -214,6 +230,35 @@ public class GameManager : MonoBehaviour
 
             }
             i++;  
+        }
+    }
+
+
+    public void RemoveUgrade(int index)
+    {
+        Upgrades.RemoveAt(index);
+
+        for (int j = 0; j < 3; j++)
+            Upgrade_Rarity[j] = new List<int>();
+        
+        int i = 0;
+        foreach (Upgrade upgrade in Upgrades)
+        {
+            upgrade.indexu = i;
+            switch (upgrade.Rarity)
+            {
+                case 1:
+                    Upgrade_Rarity[0].Add(i);
+                    break;
+                case 2:
+                    Upgrade_Rarity[1].Add(i);
+                    break;
+                case 3:
+                    Upgrade_Rarity[2].Add(i);
+                    break;
+
+            }
+            i++;
         }
     }
 }

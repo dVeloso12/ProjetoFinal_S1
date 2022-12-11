@@ -12,7 +12,22 @@ ModelImporter:
   - first:
       74: -5597462690066187734
     second: IKArms|ShotgunShoot
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Barrel.002
+    second: {fileID: 2100000, guid: 790e04542438f5742a226b5aa9b56907, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: InsidePaint.003
+    second: {fileID: 2100000, guid: b11a73c48cfb86044aba3bace7cd1b88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OutPaint.002
+    second: {fileID: 2100000, guid: 71c6c275e08d0eb43b993fdfb4fa10cd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,7 +56,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

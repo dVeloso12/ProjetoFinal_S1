@@ -54,9 +54,11 @@ public class Add_Upgrade : MonoBehaviour
             while ((rarity == rar_numb[0] || rarity == rar_numb[1]) && (r == r_numb[0] || r == r_numb[1])&&f>0)
             {
                 r = Random.Range(0, gm.Upgrade_Rarity[rarity].Count);
-                //Debug.Log(rarity + " " + r);
                 f--;
             }
+
+            Debug.Log(rarity + "lol " + r);
+
             upg_choice[i] = Instantiate(gm.Upgrades[gm.Upgrade_Rarity[rarity][r]],canvas.transform);
             upg_choice[i].transform.localPosition = new Vector3((-500+(i*500))*xMult,50*yMult);
             upg_choice[i].transform.localScale *= new Vector2( 2.5f*xMult,2.5f*yMult);
