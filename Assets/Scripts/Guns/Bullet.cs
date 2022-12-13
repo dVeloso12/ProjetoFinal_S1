@@ -39,19 +39,23 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player")
+        {
             collision.transform.GetComponent<Player>().Damage(Damage);
 
-        Debug.Log(collision.transform.name+"cl");
+            Debug.Log(collision.transform.name + "cl");
+        }
         Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
+        {
             other.GetComponent<Player>().Damage(Damage);
 
-        Debug.Log(other.name);
-        Destroy(gameObject);
+            Debug.Log(other.name);
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Des()
