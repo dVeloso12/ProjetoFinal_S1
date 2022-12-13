@@ -11,10 +11,20 @@ public class DamagingEffects : MonoBehaviour
     float effectDuration, effectCD, effectDMG;
 
     float currentTimer, timePassed;
+    float poisonRange;
 
 
     EnemyStatus statusScript;
     Enemy_AI_2 AIScript;
+
+    public float PoisonRange
+    {
+        get { return poisonRange; }
+    }
+    public BulletTypes Effect
+    {
+        get { return effect; }
+    }
 
     private void Start()
     {
@@ -34,7 +44,7 @@ public class DamagingEffects : MonoBehaviour
             {
                 float errorMargin = 0.1f;
                 
-                Debug.Log("Result : " + (timePassed - effectCD).ToString());
+                //Debug.Log("Result : " + (timePassed - effectCD).ToString());
 
                 if((timePassed - effectCD <= errorMargin && timePassed - effectCD >= 0f) || (timePassed - effectCD >= errorMargin && timePassed - effectCD <= 0f))
                 {
@@ -57,7 +67,7 @@ public class DamagingEffects : MonoBehaviour
     }
 
 
-    public void StartEffect(BulletTypes bulletType, float effectDuration, float effectCD, float effectDMG)
+    public void StartEffect(BulletTypes bulletType, float effectDuration, float effectCD, float effectDMG, float poisonRange)
     {
 
         effect = bulletType;
@@ -66,11 +76,19 @@ public class DamagingEffects : MonoBehaviour
         this.effectDuration = effectDuration;
         this.effectCD = effectCD;
         this.effectDMG = effectDMG;
+        this.poisonRange = poisonRange;
 
         currentTimer = effectDuration;
         timePassed = 0f;
 
-        Debug.LogWarning("Effect Started");
+        Debug.LogWarning("Effect Started in " + gameObject.name);
+    }
+
+    public void SpreadPoison(GameObject target)
+    {
+
+        target.GetComponent<DamagingEffects>().StartEffect(effect, effectDuration, effectCD, effectDMG, poisonRange);
+
     }
 
     public void StopEffect()

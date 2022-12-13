@@ -52,6 +52,23 @@ public class EnemyStatus : MonoBehaviour
         //gameObject.SetActive(false);
         Destroy(gameObject);
 
+        DamagingEffects tempScript = gameObject.GetComponent<DamagingEffects>();
+
+        if (tempScript.Effect == BulletTypes.PoisonBullet)
+        {
+            List<GameObject> tempList = gm.EnemyList;
+            float poisonRange = tempScript.PoisonRange;
+
+            foreach (GameObject temp in tempList)
+            {
+                if(Vector3.Distance(transform.position, temp.transform.position) <= poisonRange)
+                {
+
+                    tempScript.SpreadPoison(temp);
+
+                }
+            }
+        }
     }
 
 }

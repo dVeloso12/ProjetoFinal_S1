@@ -17,7 +17,7 @@ public class PlayerBullets : MonoBehaviour
     [Header("Poison Effect")]
     [SerializeField] float poisonEffectTimer, poisonEffectCD;
     [SerializeField] float poisonEffectDMG;
-
+    [SerializeField] float poisonRange;
 
 
     private void Start()
@@ -38,6 +38,7 @@ public class PlayerBullets : MonoBehaviour
         float effectTimer = 0f;
         float effectCD = 0f;
         float damage = 0f;
+        float range = 0f;
 
         switch (bulletType)
         {
@@ -57,7 +58,7 @@ public class PlayerBullets : MonoBehaviour
                 effectTimer = poisonEffectTimer;
                 effectCD = poisonEffectCD;
                 damage = poisonEffectDMG;
-
+                range = poisonRange;
                 break;
         }
 
@@ -66,7 +67,7 @@ public class PlayerBullets : MonoBehaviour
 
         if(tempScript != null)
         {
-            tempScript.StartEffect(bulletType, effectTimer, effectCD, damage);
+            tempScript.StartEffect(bulletType, effectTimer, effectCD, damage, range);
         }
         
 

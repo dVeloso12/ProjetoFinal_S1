@@ -22560,6 +22560,7 @@ MonoBehaviour:
   poisonEffectTimer: 5
   poisonEffectCD: 1
   poisonEffectDMG: 10
+  poisonRange: 5
 --- !u!1 &5454622147437750938
 GameObject:
   m_ObjectHideFlags: 0
@@ -34369,7 +34370,7 @@ PrefabInstance:
     - target: {fileID: 3239219412681943134, guid: 77314367fe9ba6a4bb27865c10c22cfb,
         type: 3}
       propertyPath: backKick
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3239219412681943134, guid: 77314367fe9ba6a4bb27865c10c22cfb,
         type: 3}
