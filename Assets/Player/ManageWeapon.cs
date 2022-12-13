@@ -56,24 +56,25 @@ public class ManageWeapon : MonoBehaviour
             case WeaponType.Shotgun:
                 if(shotgunPrefab != null)
                 {
-                    shotgunPrefab.GetComponentInChildren<Shotgun>().enabled = true;
                     shotgunPrefab.SetActive(true);
+                    shotgunPrefab.GetComponentInChildren<Shotgun>().enabled = true;
                 }
                 break;
 
             case WeaponType.AR:
                 if (assaultRiflePrefab != null)
                 {
-                    assaultRiflePrefab.GetComponentInChildren<AssaultRifle>().enabled = true;
+                    Debug.LogWarning("Assault rifle name : " + assaultRiflePrefab.name);
                     assaultRiflePrefab.SetActive(true);
+                    assaultRiflePrefab.GetComponentInChildren<AssaultRifle>().enabled = true;
                 }
                 break;
 
             case WeaponType.Pistol:
                 if (pistolPrefab != null)
                 {
-                    pistolPrefab.GetComponentInChildren<Pistol>().enabled = true;
                     pistolPrefab.SetActive(true);
+                    pistolPrefab.GetComponentInChildren<Pistol>().enabled = true;
                 }
                 break;
 

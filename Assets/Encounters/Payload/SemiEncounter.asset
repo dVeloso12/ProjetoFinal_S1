@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SemiEncounter
   m_EditorClassIdentifier: 
   EnemySet:
-  - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
+  - {fileID: 2810424434365561116, guid: ffdc565e91ff5a145bac3b02b677d354, type: 3}
   Quantity: 02000000
   Position:
   - {x: 45, y: -3, z: -45}

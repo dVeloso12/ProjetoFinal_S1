@@ -35,6 +35,8 @@ public class EnemyStatus : MonoBehaviour
             currentHealth -= dmg;
             HealthBar.text = currentHealth.ToString() + "/" + maxHealth.ToString();
 
+            Debug.LogWarning("Receiving DMG");
+
             if (currentHealth <= 0)
             {
                 Death();

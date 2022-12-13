@@ -10,7 +10,6 @@ public class AssaultRifle : GunController
     public float RandomDeviation,SniperMult;
     GameObject scope;
     [SerializeField] GameObject Gun;
-
     [SerializeField]TrailRenderer btrail;
 
     [SerializeField] Vector3 position;
@@ -21,7 +20,6 @@ public class AssaultRifle : GunController
     [HideInInspector]
     public float SniperCD = 2;
 
-
     void Start()
     {
         base.Start();
@@ -30,8 +28,6 @@ public class AssaultRifle : GunController
         scope.GetComponent<Image>().enabled=true;
         scope.SetActive(false);
         transform.localPosition = position;
-
-        
     }
 
     // Update is called once per frame
@@ -113,6 +109,25 @@ public class AssaultRifle : GunController
                 {
                     hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
+
+                Debug.LogWarning("Shot : " + hit.transform.tag);
+
+                if(playerBulletsScript == null)
+                {
+                    Debug.LogError("Player bullets script is null");
+                    playerBulletsScript = Player.gameObject.GetComponent<PlayerBullets>();
+
+                }
+
+                if (playerBulletsScript != null && (hit.transform.tag == "Enemy" || hit.transform.tag == "Head" || hit.transform.tag == "Boss"))
+                {
+
+                    playerBulletsScript.StartBulletEffect(hit.transform.gameObject);
+
+                }
+
+
+
             }
             base.Shoot();
 
@@ -176,6 +191,14 @@ public class AssaultRifle : GunController
                 if (hitt.transform.tag == "Turret")
                 {
                     hitt.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                }
+
+
+                if (playerBulletsScript != null && (hit.transform.tag == "Enemy" || hit.transform.tag == "Head" || hit.transform.tag == "Boss"))
+                {
+
+                    playerBulletsScript.StartBulletEffect(hit.transform.gameObject);
+
                 }
 
                 if (i >= piercing)

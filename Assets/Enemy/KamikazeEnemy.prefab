@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 7174237162368465974}
   - component: {fileID: 1995448785375669333}
   - component: {fileID: 3242487706618451101}
+  - component: {fileID: -132274587413437762}
   m_Layer: 0
   m_Name: KamikazeEnemy
   m_TagString: Enemy
@@ -574,3 +575,15 @@ MonoBehaviour:
   Explosion: {fileID: 1121192042590650, guid: 63d04dcd13853dd4fb4380c4bb216635, type: 3}
   ExplosionSize: 6
   VisualSize: 1
+--- !u!114 &-132274587413437762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726451810562332883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc68780f1327a7d40a6b51b7d2354924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

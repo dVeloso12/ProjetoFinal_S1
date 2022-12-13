@@ -85,7 +85,7 @@ public class BossScript : MonoBehaviour
             Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.red);
         }
     }
-
+   
     void UpdateBossPosition()
     {
         if (Player != null)
@@ -99,14 +99,21 @@ public class BossScript : MonoBehaviour
             }
             if(!beam.isAttacking)
             {
-                float angleY = vector3AngleOnPlane(transform.position, Player.transform.position, -transform.up, -transform.forward);
+                float angleY = vector3AngleOnPlane(Player.transform.position, transform.position, -transform.up, transform.forward);
                 Vector3 rotationY = new Vector3(0, angleY - offset, 0);
                 transform.Rotate(rotationY, Space.Self);
 
+                float angleX = vector3AngleOnPlane(Player.transform.position, Weapon.transform.position, -transform.right, transform.forward);
 
-                float angleYW = vector3AngleOnPlane(Weapon.transform.position, Player.transform.position, -Weapon.transform.up, -Weapon.transform.right);
-                Vector3 rotationYW = new Vector3(0, angleYW, 0);
-                Weapon.transform.Rotate(rotationYW, Space.Self);
+                Vector3 rotationX = new Vector3(angleX, 0, 0);
+                Weapon.transform.localRotation = Quaternion.Euler(rotationX);
+
+
+                //float angleYW = vector3AngleOnPlane(Weapon.transform.position, Player.transform.position, -Weapon.transform.up, -Weapon.transform.right);
+                //Vector3 rotationYW = new Vector3(0, angleYW, 0);
+                //Weapon.transform.Rotate(rotationYW, Space.Self);
+
+                //Weapon.transform.LookAt(Player.transform.position);
 
             }
  
