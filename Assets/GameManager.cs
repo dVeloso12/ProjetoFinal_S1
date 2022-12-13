@@ -19,10 +19,12 @@ public class GameManager : MonoBehaviour
     public List<WeaponType> UiSaveTypes;
     //public ScreenType screenType;
 
-    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2,CDMod=1;
+    public float FireRateMod = 1,DamageMod=1,MoveSpeedMod=1,HSMod=2,CDMod=1, MoneyMod = 1;
 
     public int Money;
 
+
+    
      PlayerInput playerInput;
 
     List<Upgrade> TempUpgrade;

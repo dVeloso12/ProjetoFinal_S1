@@ -94,6 +94,11 @@ public class UpgradeEffects : MonoBehaviour
         player.PlayerHp *= Mathf.FloorToInt(1.3f);
     }
 
+    public void Money_20()
+    {
+        gm.MoneyMod += .2f;
+    }
+
     #endregion
     #endregion
 
@@ -143,7 +148,7 @@ public class UpgradeEffects : MonoBehaviour
             gm.RemoveUgrade(GetComponent<Upgrade>().indexu);
     }
 
-    public void ShotgunSpread_1()
+    public void ShotgunSpread_10()
     {
         shotgun.Spread-=.1f;
         if (shotgun.Spread <= .1f)
@@ -179,7 +184,7 @@ public class UpgradeEffects : MonoBehaviour
     }
 
 
-    public void SniperCD_2()
+    public void SniperCD_20()
     {
         assaultRifle.SniperCD -= .4f;
         if(assaultRifle.SniperCD<.4f)

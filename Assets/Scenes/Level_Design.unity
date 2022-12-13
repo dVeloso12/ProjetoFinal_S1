@@ -606,13 +606,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 1
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
   MoveSpeedMod: 1
   HSMod: 2
   CDMod: 1
+  MoneyMod: 1
   Money: 0
   Upgrades:
   - {fileID: 386185769267273100, guid: e246554db2da5c6489dcbbe25628ac5f, type: 3}

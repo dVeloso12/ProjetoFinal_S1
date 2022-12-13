@@ -44,7 +44,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Death()
     {
-        gm.Money += money;
+        gm.Money += Mathf.RoundToInt( money*gm.MoneyMod);
         gm.DeadEnemy(this.gameObject);
 
         //gameObject.SetActive(false);

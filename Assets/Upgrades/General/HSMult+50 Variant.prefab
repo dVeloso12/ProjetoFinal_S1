@@ -55,23 +55,23 @@ PrefabInstance:
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835000, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255183835001, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9dc41c1ed7191a946a2429d6e3ab8d8b,
+      objectReference: {fileID: 21300000, guid: b3a516a98b4fe954699589a1464970f9,
         type: 3}
     - target: {fileID: 7738137255732208439, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
       propertyPath: m_Name
-      value: HSMult_50
+      value: HSMult+50 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7738137255732208440, guid: f297ca498c3a6d3468702d577b8bd5dd,
         type: 3}
