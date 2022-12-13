@@ -125,7 +125,19 @@ public class Shotgun : GunController
                     hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
 
-                
+                if (playerBulletsScript == null)
+                {
+                    Debug.LogError("Player bullets script is null");
+                    playerBulletsScript = Player.gameObject.GetComponent<PlayerBullets>();
+
+                }
+
+                if (playerBulletsScript != null && (hit.transform.tag == "Enemy" || hit.transform.tag == "Head" || hit.transform.tag == "Boss"))
+                {
+
+                    playerBulletsScript.StartBulletEffect(hit.transform.gameObject);
+
+                }
 
             }
         }

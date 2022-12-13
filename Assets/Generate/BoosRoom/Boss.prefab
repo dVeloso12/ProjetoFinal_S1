@@ -1073,16 +1073,22 @@ MonoBehaviour:
   BossHp: 100
   isDead: 0
   resetTurrets: 0
+  timer: 0
   state: 0
   type: 0
   bossHp: {fileID: 0}
   border: {fileID: 0}
   activateUIHP: 0
   offset: 40
-  bulletPrefab: {fileID: 0}
+  BossNormalAttackDmg: 0
+  bulletPrefab: {fileID: 5241641513879122478, guid: cde7aea0730505e4d9179f14f4427120,
+    type: 3}
   pointOfBarrel: {fileID: 0}
   Weapon: {fileID: 0}
   beam: {fileID: 2826671670459437879}
+  maxNormalAttackTimer: 4
+  DamagePhase: 0
+  isTutorial: 0
 --- !u!135 &4284653486207403898
 SphereCollider:
   m_ObjectHideFlags: 0
