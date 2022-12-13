@@ -11,12 +11,16 @@ public class EneSoldier : Enemy_AI_2
     [SerializeField] float fireRate = 60f;
     Animator animator;
     float shootingTimer=0;
-    
+
+    [SerializeField] bool isSniper = false;
+
+    LineRenderer line;
 
     private void Awake()
     {
         base.Awake();
         animator = GetComponent<Animator>();
+        line = GetComponentInChildren<LineRenderer>();
     }
     void Start()
     {
@@ -28,16 +32,26 @@ public class EneSoldier : Enemy_AI_2
     {
         if (!Frozen) {
             if (navagent.velocity.magnitude < 1)
+            {
                 animator.SetBool("IsMoving", false);
+                if(isSniper)
+                    line.enabled = true;
+
+            }
             else
+            {
                 animator.SetBool("IsMoving", true);
+                if (isSniper)
+                    line.enabled = false;
+
+            }
 
 
             base.Update();
             shootingTimer += Time.deltaTime;
 
             if (shootingTimer > 1f / fireRate)
-            {
+            {                
                 animator.SetBool("CanShoot", true);
             } 
         }

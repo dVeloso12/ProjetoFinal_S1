@@ -23,7 +23,6 @@ public class SniperLaser : MonoBehaviour
     private void Update()
     {
         line.SetPosition(0, transform.position);
-        line.enabled = true;
     }
 
     // Update is called once per frame
