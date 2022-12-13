@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 1516095419981826286}
   m_Layer: 0
   m_Name: Plate
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,6 +1006,7 @@ MonoBehaviour:
   PlateCompleted: 0
   Chest: {fileID: 2316427097686792164}
   spwaner: {fileID: 2627821412647053385}
+  isTutorial: 0
   PlatePorc: 0
 --- !u!1 &4579286648533682570
 GameObject:

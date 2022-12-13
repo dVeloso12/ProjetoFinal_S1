@@ -98,7 +98,7 @@ public class Recoil : MonoBehaviour
         if(directionToMove.z > 0f)
             directionToMove.z *= -1;
 
-        Debug.Log("Dir to Move : " + directionToMove);
+        //Debug.Log("Dir to Move : " + directionToMove);
 
         Debug.DrawLine(tempPos, directionToMove * 100f, Color.red, 5f);
         targetPosition += directionToMove * backKick;

@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 2810424433120199791}
   m_Layer: 0
   m_Name: Arm1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2812,10 +2812,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6063059
+  m_Radius: 0.56331855
   m_Height: 2.253921
   m_Direction: 1
-  m_Center: {x: 0, y: 0.96999645, z: 0}
+  m_Center: {x: 0, y: 0.96999645, z: -0.042987317}
 --- !u!111 &8942151812884167932
 Animation:
   m_ObjectHideFlags: 0

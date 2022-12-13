@@ -22436,7 +22436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23810298c1a14874c9de94c489636e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 20
+  playerSpeed: 10
   jumpForce: 3
   runningModifier: 2
   GroundCheck: {fileID: 7970698349203952583}
@@ -22506,7 +22506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c05bce5850b6a40b58aaf8a3053217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHp: 100
+  PlayerHp: 10000
   saveMaxHP: 0
   isdead: 0
   mouseSensivity: 0

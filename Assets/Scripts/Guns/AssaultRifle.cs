@@ -15,7 +15,7 @@ public class AssaultRifle : GunController
     [SerializeField] Vector3 position;
 
     [HideInInspector]
-    public int piercing = 1;
+    public int piercing = 3;
 
     [HideInInspector]
     public float SniperCD = 2;
@@ -67,7 +67,7 @@ public class AssaultRifle : GunController
             ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
-            
+            Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 
             if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
@@ -137,19 +137,34 @@ public class AssaultRifle : GunController
     {
         if(FireRateCounting <= 0 && Ammo > 0)
         {
-            int i = 0;
+            int i = 0,j=0;
             Vector3 ShootDir = _camera.forward;
 
             RaycastHit[] hits;
-
+            
             hits = Physics.RaycastAll(_camera.position, ShootDir, Distance);
-            hiteffect.transform.position = hit.point;
-                hiteffect.transform.forward = hit.normal;
+
+            
+            if (hits.Length != 0)
+            {
+                hiteffect.transform.position = hits[0].point;
+                hiteffect.transform.forward = hits[0].normal;
                 hiteffect.Emit(1);
 
-                TrailRenderer trail = Instantiate(btrail, ShotingPlace.position, Quaternion.identity);
-                StartCoroutine(SpawnTrail(trail, hit.point));
-            foreach(RaycastHit hitt in hits) { 
+                TrailRenderer trail = Instantiate(btrail, _camera.position, Quaternion.identity);
+                Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward + "" + hits.Length+""+ShotingPlace.position+""+hits[0].point);
+                StartCoroutine(SpawnTrail(trail, hits[0].point));
+            }
+
+            foreach (var v in hits)
+            {
+                Debug.Log(v.transform.tag+j);
+                j++;
+            }
+           
+            foreach(RaycastHit hitt in hits) {
+
+                Debug.Log("HeaadMUuuuuu"+i);
 
                 if (hitt.transform.tag == "Enemy")
                 {
@@ -175,6 +190,7 @@ public class AssaultRifle : GunController
                     GameObject dmgnum = Instantiate(dmgText, hitt.point + (hitt.normal * .1f),
                     Quaternion.LookRotation(hitt.normal));
                     //dmgnum.transform.parent = hit.transform;
+                    Debug.Log("HeaadMU");
                     dmgnum.transform.Rotate(Vector3.up * 180);
                     dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hitt.transform);
                     i++;
@@ -194,13 +210,14 @@ public class AssaultRifle : GunController
                 }
 
 
-                if (playerBulletsScript != null && (hit.transform.tag == "Enemy" || hit.transform.tag == "Head" || hit.transform.tag == "Boss"))
-                {
+                //if (playerBulletsScript != null && (hit.transform.tag == "Enemy" || hit.transform.tag == "Head" || hit.transform.tag == "Boss"))
+                //{
 
-                    playerBulletsScript.StartBulletEffect(hit.transform.gameObject);
+                //    playerBulletsScript.StartBulletEffect(hit.transform.gameObject);
 
-                }
+                //}
 
+                Debug.Log(i);
                 if (i >= piercing)
                     break;
 
