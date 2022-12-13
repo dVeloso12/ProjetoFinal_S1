@@ -22,6 +22,11 @@ public class Enemy_AI_2 : MonoBehaviour
     
     [HideInInspector]protected bool Frozen = false;
 
+
+    public int Range
+    {
+        get { return DistanceToPlayer; }
+    }
     public float Speed
     {
         get { return speed; }
