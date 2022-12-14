@@ -14,7 +14,7 @@ public class Granade : MonoBehaviour
 
     public Transform place;
 
-    TextMeshProUGUI Timer;
+    //TextMeshProUGUI Timer;
 
     public float NadeCooldown;
     public int power;
@@ -34,8 +34,8 @@ public class Granade : MonoBehaviour
 
         playerInput.Player.Granade.performed += CreateNade;
 
-        Timer = GameObject.Find("GranadeC").GetComponent<TextMeshProUGUI>();
-        GranadeIcon = GameObject.Find("granade").GetComponent<Image>();
+        //Timer = GameObject.Find("GranadeC").GetComponent<TextMeshProUGUI>();
+        GranadeIcon = GameObject.Find("GrenadeImage").GetComponent<Image>();
 
     }
 
@@ -46,7 +46,7 @@ public class Granade : MonoBehaviour
         {
             NadeTimer -= Time.deltaTime;
             fillAmount += Time.deltaTime * (1 / (NadeCooldown/gm.CDMod));
-            Timer.text = Mathf.Round(NadeTimer).ToString();
+            //Timer.text = Mathf.Round(NadeTimer).ToString();
             GranadeIcon.fillAmount = fillAmount;
         }
     }

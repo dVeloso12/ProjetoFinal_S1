@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     GameManager gm;
 
-    TextMeshProUGUI Timer;
+    //TextMeshProUGUI Timer;
 
     Animator gunAnimator;
 
@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
         IsGrounded = false;
         IsRunning = false;
 
-        Timer = GameObject.Find("DashC").GetComponent<TextMeshProUGUI>();
-        dashIcon = GameObject.Find("dash").GetComponent<Image>();
+        //Timer = GameObject.Find("DashC").GetComponent<TextMeshProUGUI>();
+        dashIcon = GameObject.Find("DashImage").GetComponent<Image>();
 
         gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
     }
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         {
             TDashCooldown -= Time.deltaTime;
             fillAmount += Time.deltaTime * (1 / (DashCooldown/gm.CDMod));
-            Timer.text = Mathf.Round(TDashCooldown).ToString();
+            //Timer.text = Mathf.Round(TDashCooldown).ToString();
             dashIcon.fillAmount = fillAmount;
         }
     }

@@ -42,8 +42,8 @@ public class GunController : MonoBehaviour
     public float ReloadSpeed;
     public int AmmoClipSize;
     protected int Ammo;
+    [SerializeField] TextMeshProUGUI bullettxt;
 
-    protected TextMeshProUGUI AmmoCount;
 
     public Transform _camera;
 
@@ -98,9 +98,9 @@ public class GunController : MonoBehaviour
 
         Ammo = AmmoClipSize;
 
-        AmmoCount = GameObject.Find("AmmoC").GetComponent<TextMeshProUGUI>();
 
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+
+        UpdateBulletTxt();
 
 
         ARAnimator = GetComponent<Animator>();
@@ -124,11 +124,13 @@ public class GunController : MonoBehaviour
             Shoot();
 
         FireRateCounting -= Time.deltaTime;
-
         AimDown();
     }
 
-
+    void UpdateBulletTxt()
+    {
+        bullettxt.text = Ammo.ToString();
+    }
     protected void SetFOV(float fov)
     {
        Camera.m_Lens.FieldOfView = fov;
@@ -155,7 +157,8 @@ public class GunController : MonoBehaviour
 
         Ammo--;
 
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+        //AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+        UpdateBulletTxt();
     }
 
 
@@ -171,9 +174,10 @@ public class GunController : MonoBehaviour
     {
         Ammo = AmmoClipSize;
 
-        Debug.Log("Ammo : " + Ammo);
+        //Debug.Log("Ammo : " + Ammo);
 
-        AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+        //AmmoCount.text = Ammo.ToString() + "/" + AmmoClipSize.ToString();
+        UpdateBulletTxt();
     }
 
     public virtual void AimDown()
