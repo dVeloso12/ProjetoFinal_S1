@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class AssaultRifle : GunController
 {
@@ -35,6 +36,7 @@ public class AssaultRifle : GunController
     {
         base.Update();
         transform.localPosition = position;
+        
     }
 
     
