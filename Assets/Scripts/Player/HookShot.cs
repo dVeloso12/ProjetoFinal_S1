@@ -35,7 +35,7 @@ public class HookShot : MonoBehaviour
 
     float HookTimer=0;
 
-    public TextMeshProUGUI Timer;
+    //public TextMeshProUGUI Timer;
 
     public Image Grapple;
     public float fillAmount;
@@ -61,9 +61,9 @@ public class HookShot : MonoBehaviour
         else
         playerInput.Player.Hook.performed += HookShoot;
 
-        Timer = GameObject.Find("HookC").GetComponent<TextMeshProUGUI>();
+        //Timer = GameObject.Find("HookC").GetComponent<TextMeshProUGUI>();
 
-        Grapple = GameObject.Find("grapple").GetComponent<Image>();
+        Grapple = GameObject.Find("HookImage").GetComponent<Image>();
 
     }
 
@@ -76,7 +76,7 @@ public class HookShot : MonoBehaviour
         if (HookTimer > 0)
         {
             HookTimer -= Time.deltaTime;
-            Timer.text = Mathf.Round(HookTimer).ToString();
+            //Timer.text = Mathf.Round(HookTimer).ToString();
             fillAmount += Time.deltaTime * (1 / (HookCooldown/gm.CDMod));
             Grapple.fillAmount = fillAmount;
 
