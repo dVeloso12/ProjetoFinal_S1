@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -61,11 +62,13 @@ public class Upgrade : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.localScale *= 1.2f;
+        transform.position +=new Vector3(0,0 ,.1f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         transform.localScale = OriginScale;
+        transform.position -= new Vector3(0, 0, .1f);
     }
 
     public void OnPointerClick(PointerEventData eventData)
