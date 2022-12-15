@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public float DifficultyMod = 1f,ReaperSpawn=10;
 
-    bool statsOpen=false;
+    public bool statsOpen=false;
     public GameplayOrganize orggame;
     bool unloadDeadScene;
     float timer;
@@ -128,15 +128,20 @@ public class GameManager : MonoBehaviour
 
     void OpenStats(InputAction.CallbackContext obj)
     {
-        if (!statsOpen)
+        StatusManager status = FindObjectOfType<StatusManager>();
+        if (status != null)
         {
-            SceneManager.LoadScene("PlayerStats", LoadSceneMode.Additive);
-            statsOpen = true;
-        }
-        else
-        {
-            SceneManager.UnloadSceneAsync("PlayerStats");
-            statsOpen = false;
+            if (!statsOpen)
+            {
+                statsOpen = true;
+                status.doingAnim = true;
+            }
+            else
+            {
+                statsOpen = false;
+                status.doingAnim = true;
+
+            }
         }
 
     }
