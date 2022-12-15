@@ -31,7 +31,6 @@ public class StatScreenUpdate : MonoBehaviour
 
         statText[5].text = "CD Reduction: " + (gm.CDMod-1) * 100 + "%";
 
-        statText[6].text = "Money Mult: " + Math.Round(gm.MoneyMod, 1) + "X";
     }
     
 }
