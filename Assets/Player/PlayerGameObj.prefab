@@ -106,13 +106,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 0
   m_VerticalAxis:
-    Value: 50.360226
+    Value: 61.002476
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
-    m_InputAxisValue: 0.15
+    m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -70
     m_MaxValue: 70
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
-    Value: -77.33235
+    Value: 27.16827
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7773756, y: 1}
+    m_SensorSize: {x: 1.7787958, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -254,6 +254,11 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: Distance
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: FireRate
@@ -381,6 +386,21 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 4497579820905770016, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: recoilZ
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497579820905770016, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: FireRate
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497579820905770016, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: backKick
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4497579820905770016, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: bullettxt
@@ -538,22 +558,22 @@ PrefabInstance:
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.099837735
+      value: 0.7353106
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.046937786
+      value: 0.4331524
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8994508
+      value: -0.449115
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.42286813
+      value: 0.264562
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -568,12 +588,12 @@ PrefabInstance:
     - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2160607
+      value: 0.21606082
       objectReference: {fileID: 0}
     - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4800157
+      value: -0.48001575
       objectReference: {fileID: 0}
     - target: {fileID: 8933608275006795881, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -582,8 +602,13 @@ PrefabInstance:
       objectReference: {fileID: 7657076051010084586}
     - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
+      propertyPath: PlayerHp
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
       propertyPath: saveMaxHP
-      value: 10000
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}

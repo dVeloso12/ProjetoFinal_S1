@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 1.5
-  throwForce: 20
-  dmg: 30
+  throwForce: 30
+  dmg: 80
   Explosion: {fileID: 1121192042590650, guid: 63d04dcd13853dd4fb4380c4bb216635, type: 3}
   size: 8

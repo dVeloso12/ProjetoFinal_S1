@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bd5f2354b4ecd49b59104b473cd0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 65
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
   money: 15
@@ -2785,8 +2785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19674065a9995a4459daf6a573c1ac8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceToPlayer: 30
-  dmg: 10
+  DistanceToPlayer: 50
+  dmg: 7
   speed: 7
   mat: {fileID: 2100000, guid: 1666fb81395f51e4293b01cca8f58481, type: 2}
   bulletPrefab: {fileID: 2602262245937804743, guid: a30601315104e26478020e87194a0dd6,
@@ -2891,13 +2891,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5745287473536446549}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6335900448520109130}
-  m_RootOrder: 8
+  m_Father: {fileID: 5731643787758183628}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3031,7 +3031,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6335900448520109130}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &8099401924616556438
 SphereCollider:
@@ -3082,7 +3082,6 @@ Transform:
   - {fileID: 2810424432936698733}
   - {fileID: 2810424432337581045}
   - {fileID: 5731643787758183628}
-  - {fileID: 6125742218929998349}
   - {fileID: 5662344731573473427}
   m_Father: {fileID: 2810424434365561114}
   m_RootOrder: 0
@@ -3117,7 +3116,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6125742218929998349}
   m_Father: {fileID: 6335900448520109130}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

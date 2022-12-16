@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3692862165edbf94980f45667eb90bd3, type: 3}
-  m_Name: SemiEncounter 3
+  m_Name: SemiEncounter 6
   m_EditorClassIdentifier: 
   EnemySet:
-  - {fileID: 2810424434365561116, guid: a607f8188364f7b428706dea5493c73d, type: 3}
-  - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
-  Quantity: 030000000700000005000000
+  - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
+  - {fileID: 2810424434365561116, guid: a607f8188364f7b428706dea5493c73d, type: 3}
+  Quantity: 050000000700000003000000
   Position:
-  - {x: 63.25, y: -2, z: -64.92}
-  - {x: 63.25, y: -2, z: -64.92}
-  - {x: 63.25, y: -2, z: -64.92}
-  Area: 050000000500000005000000
+  - {x: 190.23, y: -2, z: -17.5}
+  - {x: 190.23, y: -2, z: -17.5}
+  - {x: 190.23, y: -2, z: -17.5}
+  Area: 030000000300000003000000
   Time: 5

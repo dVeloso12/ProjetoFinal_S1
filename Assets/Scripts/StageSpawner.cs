@@ -13,8 +13,8 @@ public class StageSpawner : MonoBehaviour
     
     public List<GameObject> EnemiesList;
 
-    [SerializeField] float timertoSpwan;
-    [SerializeField] int maxQuantity, enemiesToSpawnQuantity,distance;
+    //[SerializeField] float timertoSpwan;
+    [SerializeField] int /*maxQuantity, enemiesToSpawnQuantity,*/distance;
 
     [SerializeField] bool ActivateSpawn = false;
 

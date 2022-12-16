@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
+  weaponType: 1
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
   surv: {fileID: 0}
   SurvStage: 0
   CleanShop: 1
-  DifficultyMod: 3
+  DifficultyMod: 1
   ReaperSpawn: 10
   statsOpen: 0
   orggame: {fileID: 166003453}
