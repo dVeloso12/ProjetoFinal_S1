@@ -4904,6 +4904,7 @@ GameObject:
   - component: {fileID: 5633407295272261986}
   - component: {fileID: 2604893721334202727}
   - component: {fileID: 7519101644353254523}
+  - component: {fileID: 8832071864550631850}
   m_Layer: 0
   m_Name: Cockpit
   m_TagString: Untagged
@@ -4992,6 +4993,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7755846056203458376, guid: f577c99a22d014c4f9a146698c888e3d, type: 3}
+--- !u!65 &8832071864550631850
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6388310523962556665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8031522, y: 0.82080215, z: 0.7864135}
+  m_Center: {x: -0.8582712, y: 0.095774084, z: 0.29348457}
 --- !u!1 &6473145498539679447
 GameObject:
   m_ObjectHideFlags: 0

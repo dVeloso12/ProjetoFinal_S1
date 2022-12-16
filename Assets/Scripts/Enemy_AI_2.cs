@@ -61,6 +61,7 @@ public class Enemy_AI_2 : MonoBehaviour
         if (angleDiference > .5f || angleDiference < -.5f)
         {
             transform.LookAt(player);
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
         }
 
        
