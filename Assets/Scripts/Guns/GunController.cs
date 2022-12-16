@@ -71,6 +71,9 @@ public class GunController : MonoBehaviour
 
     protected Recoil RecoilScript;
 
+    public TrailRenderer NormalTrail;
+    public Transform barrelMuzzle;
+
 
     public bool IsRunning
     {

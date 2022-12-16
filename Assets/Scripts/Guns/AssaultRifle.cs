@@ -69,15 +69,22 @@ public class AssaultRifle : GunController
             ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
+
+            var tracer = Instantiate(NormalTrail, barrelMuzzle.transform.position, Quaternion.identity);
+            Debug.Log(tracer.transform.position);
+
+            tracer.AddPosition(barrelMuzzle.transform.position);
+            Debug.Log(tracer.transform.position);
+
             //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 
             if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
                 Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
                 Quaternion.LookRotation(hit.normal)).transform.Rotate(Vector3.right * 90);
-                hiteffect.transform.position = hit.point;
-                hiteffect.transform.forward = hit.normal;
-                hiteffect.Emit(1);
+                //hiteffect.transform.position = hit.point;
+                //hiteffect.transform.forward = hit.normal;
+                //hiteffect.Emit(1);
 
                 if (hit.transform.tag == "Enemy")
                 {
@@ -128,9 +135,10 @@ public class AssaultRifle : GunController
 
                 }
 
-
+                //Debug.DrawRay(_camera.position, ShootDir * hit.distance, Color.green);
 
             }
+     
             base.Shoot();
 
         }

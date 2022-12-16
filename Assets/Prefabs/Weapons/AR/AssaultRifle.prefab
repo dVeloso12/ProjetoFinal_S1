@@ -15032,7 +15032,7 @@ Transform:
   m_Children:
   - {fileID: 113358553959176942}
   m_Father: {fileID: 4846272600401498336}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 1.173, z: 0}
 --- !u!198 &715782172917709849
 ParticleSystem:
@@ -20425,7 +20425,7 @@ Transform:
   - {fileID: 957466346108224259}
   - {fileID: 5411137423141646324}
   m_Father: {fileID: 4846272600401498336}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &7415808237571036279
 ParticleSystem:
@@ -25530,7 +25530,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4846272600401498336
 Transform:
   m_ObjectHideFlags: 0
@@ -25547,6 +25547,7 @@ Transform:
   - {fileID: 2026017394716911679}
   - {fileID: 2565092335844013737}
   - {fileID: 2109539680805814274}
+  - {fileID: 1833359611196448458}
   - {fileID: 2115557417215592021}
   - {fileID: 3289020695618982051}
   m_Father: {fileID: 0}
@@ -25598,6 +25599,7 @@ MonoBehaviour:
   dmg: 15
   ReloadSpeed: 0.8
   AmmoClipSize: 30
+  bullettxt: {fileID: 0}
   _camera: {fileID: 0}
   Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
@@ -25605,6 +25607,7 @@ MonoBehaviour:
   Distance: 50
   DwonSights: {fileID: 0}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
+  NormalTrail: {fileID: 0}
   RandomDeviation: 0.01
   SniperMult: 2
   Gun: {fileID: 0}
@@ -25644,6 +25647,37 @@ Transform:
   - {fileID: 802724069320639987}
   m_Father: {fileID: 6495926017029072820}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5431283899241238721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833359611196448458}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1833359611196448458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431283899241238721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.53, y: 156.21, z: 100.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4846272600401498336}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5526645810556257463
 GameObject:
