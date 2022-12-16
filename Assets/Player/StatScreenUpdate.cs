@@ -14,10 +14,10 @@ public class StatScreenUpdate : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
         player = FindObjectOfType < Player >();
-        UpdateStats();
+        
     }
 
-    void UpdateStats()
+    public void UpdateStats()
     {
         statText[0].text = "Health: " + player.PlayerHp + "/" + player.saveMaxHP;
 

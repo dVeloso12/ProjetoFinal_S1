@@ -70,11 +70,9 @@ public class AssaultRifle : GunController
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
 
-            var tracer = Instantiate(NormalTrail, barrelMuzzle.transform.position, Quaternion.identity);
-            Debug.Log(tracer.transform.position);
-
-            tracer.AddPosition(barrelMuzzle.transform.position);
-            Debug.Log(tracer.transform.position);
+            //var tracer = Instantiate(NormalTrail, barrelMuzzle.transform.position, Quaternion.identity);
+            //tracer.AddPosition(barrelMuzzle.transform.position);
+            
 
             //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 

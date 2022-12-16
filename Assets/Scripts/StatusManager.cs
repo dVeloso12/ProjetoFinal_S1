@@ -7,11 +7,13 @@ public class StatusManager : MonoBehaviour
     GameManager gameManager;
     Animation anim;
     public bool doingAnim;
+    StatScreenUpdate state;
     void Start()
     {
         doingAnim = false;
         gameManager = FindObjectOfType<GameManager>();
         anim = GetComponent<Animation>();
+        state = FindObjectOfType<StatScreenUpdate>();
     }
 
     // Update is called once per frame
@@ -19,8 +21,10 @@ public class StatusManager : MonoBehaviour
     {
         if(gameManager.statsOpen && doingAnim)
         {
+            state.UpdateStats();
             anim.Play("ShowPlayerStatus");
             doingAnim = false;
+            
         }
         else if(!gameManager.statsOpen && doingAnim)
         {
