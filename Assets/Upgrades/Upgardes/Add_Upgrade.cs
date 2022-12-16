@@ -20,8 +20,8 @@ public class Add_Upgrade : MonoBehaviour
     {
 
         gm = FindObjectOfType<GameManager>();
-        xMult = 1;
-        yMult = 1;
+        xMult = canvas.renderingDisplaySize.x / 1920;
+        yMult = canvas.renderingDisplaySize.y / 1080;
         RandUpgrade();
         
     }
@@ -60,8 +60,8 @@ public class Add_Upgrade : MonoBehaviour
             Debug.Log(rarity + "lol " + r);
 
             upg_choice[i] = Instantiate(gm.Upgrades[gm.Upgrade_Rarity[rarity][r]],canvas.transform);
-            upg_choice[i].transform.localPosition = new Vector3((-330+(i*330))*xMult,30*yMult);
-            upg_choice[i].transform.localScale *= new Vector2(3f, 3f);
+            upg_choice[i].transform.localPosition = new Vector3((-500+(i*500))*xMult,50*yMult);
+            upg_choice[i].transform.localScale *= new Vector2(1.7f * xMult, 1.7f * yMult);
 
             r_numb[i] = r;
             rar_numb[i] = rarity;
