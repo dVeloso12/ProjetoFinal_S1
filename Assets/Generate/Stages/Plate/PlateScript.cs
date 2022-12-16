@@ -5,9 +5,11 @@ using UnityEngine;
 public class PlateScript : MonoBehaviour
 {
     [SerializeField] GameObject Crystal;
+    GameManager gm;
     CrystalScript ScpCrystal;
     bool startedPlate;
     [SerializeField] float IncreaseAmout; //0.3f
+    float orIncrease;
     [SerializeField] public bool PlateCompleted;
     [SerializeField] ChestScript Chest;
     [SerializeField] StageSpawner spwaner;
@@ -18,11 +20,19 @@ public class PlateScript : MonoBehaviour
     int enterPlateTimes;
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+        orIncrease = IncreaseAmout;
         ScpCrystal = Crystal.GetComponent<CrystalScript>();
+        if (gm.DifficultyMod <= 3)
+            IncreaseAmout = orIncrease / (gm.DifficultyMod);
+        else
+            IncreaseAmout = orIncrease / 3;
     }
 
     void Update()
     {
+        
+
         if (PlatePorc>=.8f && ReaperAttempt && !isTutorial)
         {
             spwaner.ReaperSpawn();

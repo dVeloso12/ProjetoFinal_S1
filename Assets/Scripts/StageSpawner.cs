@@ -138,7 +138,7 @@ public class StageSpawner : MonoBehaviour
             {
                 int R = Random.Range(0, PossibleEncounters.Count - 1);
                 Encounter = PossibleEncounters[R];
-                Debug.Log("Spwan" + other.name + other.transform.position);
+                //Debug.Log("Spwan" + other.name + other.transform.position);
                 SpawnEnemies();
                 GetComponent<BoxCollider>().enabled = false;
             }

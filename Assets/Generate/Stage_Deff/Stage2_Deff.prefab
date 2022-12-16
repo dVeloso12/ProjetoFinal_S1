@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crystal: {fileID: 2073698889788779828}
-  IncreaseAmout: 30
+  IncreaseAmout: 25
   PlateCompleted: 0
   Chest: {fileID: 2316427097686792164}
   spwaner: {fileID: 2627821412647053385}

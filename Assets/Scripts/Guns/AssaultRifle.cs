@@ -69,7 +69,7 @@ public class AssaultRifle : GunController
             ShootDir.y += Random.Range(-RandomDeviation, RandomDeviation);
             ShootDir.z += Random.Range(-RandomDeviation, RandomDeviation);
 
-            Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
+            //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 
             if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
             {
@@ -259,12 +259,16 @@ public class AssaultRifle : GunController
     public override void _Modifier(InputAction.CallbackContext obj)
     {
         base._Modifier(obj);
-        if (Modifier)
+        Debug.Log("ARMOD");
+        if (gameObject.activeSelf)
         {
-            StartCoroutine(ActivateScope());
+            if (Modifier)
+            {
+                StartCoroutine(ActivateScope());
+            }
+            else
+                DeactivateScope();
         }
-        else
-            DeactivateScope();
     }
 
     IEnumerator ActivateScope()

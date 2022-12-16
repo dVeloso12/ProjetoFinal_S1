@@ -6,8 +6,10 @@ enum PayloadState { Iddle,IddleToMove,onMoving,onRotate,Stopped,MoveToIddle}
 public class Payload : MonoBehaviour
 {
     const float ROTATION_SPEED_OFFSET = 20F;
+    GameManager gm;
     [Header("Payload Plates")]
     public float speed;
+    float orSpeed;
     public bool Ended;
     public bool canMove;
     public List<Transform> ListPlates;
@@ -26,9 +28,15 @@ public class Payload : MonoBehaviour
 
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         animator = GetComponent<Animation>();
         maxIndex = ListPlates.Count;
         state = PayloadState.Iddle;
+        orSpeed = speed;
+        if(gm.DifficultyMod<=3)
+        speed = orSpeed / (gm.DifficultyMod);
+        else
+            speed = orSpeed / (3);
     }
 
     void Update()
@@ -38,6 +46,7 @@ public class Payload : MonoBehaviour
             spwaner.ReaperSpawn();
             ReaperAttempt = false;
         }
+        
         MovePayload();
         PlayAnimations();
         SetSomeOptions();

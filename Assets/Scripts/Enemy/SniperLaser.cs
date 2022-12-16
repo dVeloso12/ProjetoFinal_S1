@@ -39,8 +39,8 @@ public class SniperLaser : MonoBehaviour
             {
                 line.SetPosition(1, hit.point);
 
-                Debug.Log("Hit Name : " + hit.transform.name);
-                Debug.Log("Hit Pos : " + hit.point);
+                //Debug.Log("Hit Name : " + hit.transform.name);
+                //Debug.Log("Hit Pos : " + hit.point);
 
             }
             

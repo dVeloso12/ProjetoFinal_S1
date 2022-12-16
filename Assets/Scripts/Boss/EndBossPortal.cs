@@ -13,6 +13,7 @@ public class EndBossPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("sd");
 
         if (other.transform.name == "Player")
         {

@@ -23,7 +23,10 @@ public class SurvivalScript : MonoBehaviour
     }
     void Start()
     {
-        
+        if(gm.DifficultyMod<=3)
+        nObjective += (int)((gm.DifficultyMod - 1) * 10);
+        else
+            nObjective += (int)((3 - 1) * 10);
     }
 
     void Update()

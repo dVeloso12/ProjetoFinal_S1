@@ -725,7 +725,7 @@ MonoBehaviour:
   surv: {fileID: 0}
   SurvStage: 0
   CleanShop: 1
-  DifficultyMod: 1
+  DifficultyMod: 3
   ReaperSpawn: 10
   statsOpen: 0
   orggame: {fileID: 166003453}
