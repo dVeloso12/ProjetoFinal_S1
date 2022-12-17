@@ -7,7 +7,7 @@ public class SurvivalScript : MonoBehaviour
 {
     [SerializeField] DoorScript_Survival survivalDoor;
     [SerializeField]public int nObjective;
-    TextMeshProUGUI SurvText;
+    public TextMeshProUGUI SurvText;
     float CompletePerc;
     bool ReaperAttempt=true;
 
@@ -33,11 +33,11 @@ public class SurvivalScript : MonoBehaviour
     {
         if (gm.surv)
         {
-            SurvText.text = "To Kill: " + nObjective;
+            SurvText.text = "Kill " + nObjective+ " enemies.";
             if (nObjective <= 0)
             {
                 survivalDoor.CompleteSurvival();
-                SurvText.text = "COMPLETED";
+                SurvText.text = "Stage completed!";
             }
 
             if (ReaperAttempt && nObjective <= CompletePerc * .2f)

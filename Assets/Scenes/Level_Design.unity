@@ -17660,6 +17660,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 734296009}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!65 &1179573644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25292,6 +25295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 706916642}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!65 &1735211948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26189,7 +26195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -768, y: 48}
+  m_AnchoredPosition: {x: -165, y: 448}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1908261992
@@ -26214,15 +26220,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23f22d811f8f65d46ba9543139c0f83b, type: 2}
+  m_sharedMaterial: {fileID: -7491756226866594038, guid: 23f22d811f8f65d46ba9543139c0f83b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278387711
-  m_fontColor: {r: 1, g: 0.013207495, b: 0.013207495, a: 1}
+    rgba: 4284061657
+  m_fontColor: {r: 0.8490566, g: 0.5928685, b: 0.34763262, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -26246,7 +26253,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -27842,6 +27849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 6033600161179289556}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!65 &128403436423957322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33887,6 +33897,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 2068755210909594087}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!1 &2060016893127069844
 GameObject:
   m_ObjectHideFlags: 0
@@ -46490,6 +46503,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 1542122063208046226}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!64 &4733499141099049684
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62408,6 +62424,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 6562854344969454085}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!1 &7635024693073793538
 GameObject:
   m_ObjectHideFlags: 0

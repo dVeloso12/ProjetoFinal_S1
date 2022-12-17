@@ -197,7 +197,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 8fb5a55e53a15fa488cb5ac9b92927b2, type: 2}
 --- !u!114 &9152405314691044734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5511963812613921542}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: SpawnSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4049134831911265104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.93, y: 0, z: 29.97}
+  m_LocalPosition: {x: 37.1, y: -0.36, z: 27.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Crystal: {fileID: 2073698889788779828}
-  IncreaseAmout: 25
+  IncreaseAmout: 5
   PlateCompleted: 0
   Chest: {fileID: 2316427097686792164}
   spwaner: {fileID: 2627821412647053385}
@@ -1202,9 +1202,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 22882e71810813b40b8eca66ccce4944, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
   EnemiesList: []
-  timertoSpwan: 0
-  maxQuantity: 0
-  enemiesToSpawnQuantity: 2
   distance: 30
   ActivateSpawn: 0
   areaName: 

@@ -5,18 +5,10 @@ using UnityEngine;
 public class CloseDoorsBehind : MonoBehaviour
 {
     [SerializeField] GameObject Door;
-    bool canCloseDoor;
-    float timer;
+    public bool canCloseDoor;
+    public float timer;
+   [SerializeField] SurvivalScript surv;
 
-    //Pathfinder pathfinder;
-    //GenerateRun generator;
-
-
-    private void Start()
-    {
-        //pathfinder = Pathfinder.Instance;
-        //generator = GenerateRun.instance;
-    }
 
     private void Update()
     {
@@ -25,9 +17,10 @@ public class CloseDoorsBehind : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > 3f)
             {
-                Door.SetActive(true);
+                Door.GetComponent<DoorScript_Survival>().Hide_ShowDoor(true);
                 timer = 0;
                 canCloseDoor = false;
+                surv.SurvText.enabled = false;
             }
             
           
@@ -36,11 +29,14 @@ public class CloseDoorsBehind : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-     
+
+        Debug.Log(other.transform.name);
         if(other.transform.name == "Player")
         {
             //generator.PassedDoor();
             canCloseDoor = true;
+            Door.GetComponent<DoorScript_Survival>().PlayerPass(true);
+
         }
     }
 }

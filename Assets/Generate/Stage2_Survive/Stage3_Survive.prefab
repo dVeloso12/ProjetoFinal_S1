@@ -287,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2507141155263546617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140.91, y: 0.36, z: 0}
+  m_LocalPosition: {x: 80, y: 5.34, z: -17.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -671,9 +671,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e155c247ec0b83409f9f122bfb1ca1e, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
   EnemiesList: []
-  timertoSpwan: 0
-  maxQuantity: 0
-  enemiesToSpawnQuantity: 8
   distance: 70
   ActivateSpawn: 0
   areaName: DeffStage
@@ -691,7 +688,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   survivalDoor: {fileID: 486438381064149391}
-  nObjective: 5
+  nObjective: 20
+  SurvText: {fileID: 0}
   isSurvivalCompleted: 0
 --- !u!1 &8009464338807910584
 GameObject:
@@ -719,7 +717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8009464338807910584}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 165.131, y: 6.83, z: 0.6}
+  m_LocalPosition: {x: 165.4, y: 6.83, z: 0.6}
   m_LocalScale: {x: 0.18547113, y: 0.18547115, z: 0.18547113}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -752,6 +750,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 4728284627313114200}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 2370987351405485575}
 --- !u!1 &8875800816205898905
 GameObject:
   m_ObjectHideFlags: 0

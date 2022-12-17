@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Encounter
   m_EditorClassIdentifier: 
   SemiEncounters:
-  - {fileID: 11400000, guid: 91f2a36037cc4a14a89b6b29c206ef1d, type: 2}
   - {fileID: 11400000, guid: 133ea179f1268224c88d9d529b253ae1, type: 2}
+  - {fileID: 11400000, guid: c8e003990973152439152a9c14814de2, type: 2}
   - {fileID: 11400000, guid: c8e003990973152439152a9c14814de2, type: 2}
   Time: 0

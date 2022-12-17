@@ -55,7 +55,7 @@ public class Recoil : MonoBehaviour
 
         //Debug.Log("Current weapon pos : " + currentPlayerPos);
 
-        Debug.Log("Default Rotation : " + defaultRotation);
+        //Debug.Log("Default Rotation : " + defaultRotation);
 
         targetRotation = Vector3.Lerp(targetRotation, defaultRotation, returnSpeed * Time.deltaTime);
         currentRotation = Vector3.Slerp(currentRotation, targetRotation, snapiness * Time.deltaTime);
@@ -83,7 +83,7 @@ public class Recoil : MonoBehaviour
       
         Vector3 directionToMove = GunBarrel.transform.up;
 
-        Debug.Log("Activated weapon : " + activatedWeapon.name);
+        //Debug.Log("Activated weapon : " + activatedWeapon.name);
 
         //if (player != null)
         //{

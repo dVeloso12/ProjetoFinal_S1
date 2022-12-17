@@ -47,7 +47,7 @@ MonoBehaviour:
   enemiesManagerPrefab: {fileID: 7220906309362943887, guid: fe30d99690f79d34b8b80e28e98e3d3f,
     type: 3}
   ListStages:
-  - {fileID: 7226158457161330035, guid: 1861deb2f149abb469a6f1a91242a8a3, type: 3}
+  - {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c, type: 3}
   maxNStages: 1
   BossRoom: {fileID: 2370507209647789660, guid: 9082724edf0d5eb42b3e11b2202e503b,
     type: 3}
