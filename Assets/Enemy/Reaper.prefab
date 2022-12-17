@@ -2817,7 +2817,7 @@ MonoBehaviour:
   maxHealth: 250
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
-  money: 300
+  money: 50
 --- !u!114 &5413215727399478500
 MonoBehaviour:
   m_ObjectHideFlags: 0

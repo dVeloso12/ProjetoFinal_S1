@@ -2772,7 +2772,7 @@ MonoBehaviour:
   maxHealth: 65
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
-  money: 15
+  money: 5
 --- !u!114 &5413215727399478500
 MonoBehaviour:
   m_ObjectHideFlags: 0
