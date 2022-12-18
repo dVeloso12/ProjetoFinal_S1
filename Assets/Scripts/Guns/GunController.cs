@@ -73,7 +73,7 @@ public class GunController : MonoBehaviour
 
     public TrailRenderer NormalTrail;
     public Transform barrelMuzzle;
-
+    public int layerMask;
 
     public bool IsRunning
     {
@@ -85,7 +85,9 @@ public class GunController : MonoBehaviour
     protected void Start()
     {
         playerInput = new PlayerInput();
-        
+
+        layerMask = 1 << 9;
+        layerMask = ~layerMask;
 
         playerInput.Player.Enable();
 

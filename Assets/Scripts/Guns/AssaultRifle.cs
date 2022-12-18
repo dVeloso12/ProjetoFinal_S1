@@ -77,7 +77,7 @@ public class AssaultRifle : GunController
 
             //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 
-            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
+            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance, layerMask))
             {
                 Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
                 Quaternion.LookRotation(hit.normal)).transform.Rotate(Vector3.right * 90);

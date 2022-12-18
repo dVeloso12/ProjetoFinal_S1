@@ -678,16 +678,19 @@ MonoBehaviour:
   Player: {fileID: 0}
   ShotingPlace: {fileID: 126178334482453677}
   FireRate: 2
-  dmg: 7
+  dmg: 13
   ReloadSpeed: 2
-  AmmoClipSize: 6
+  AmmoClipSize: 7
+  bullettxt: {fileID: 0}
   _camera: {fileID: 0}
   Camera: {fileID: 0}
   MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
     type: 3}
-  Distance: 10
+  Distance: 15
   DwonSights: {fileID: 0}
   dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
+  NormalTrail: {fileID: 0}
+  barrelMuzzle: {fileID: 0}
   Spread: 1
   Pellets: 9
   PowerShotCD: 10

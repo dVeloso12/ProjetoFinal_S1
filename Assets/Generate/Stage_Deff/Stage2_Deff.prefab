@@ -286,6 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Door: {fileID: 3917414286871387308}
+  canCloseDoor: 0
+  timer: 0
+  surv: {fileID: 0}
 --- !u!1 &846282553433788268
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +766,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 098e215937daac44e9e00d6e4a47f25f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -954,7 +957,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f2062fec30f0084489544e1e4dd6d33c, type: 2}
-  - {fileID: 2100000, guid: 8f07f3acb177c7048b4782b2ca50f0ab, type: 2}
+  - {fileID: 2100000, guid: 098e215937daac44e9e00d6e4a47f25f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1201,10 +1204,7 @@ MonoBehaviour:
   PossibleEncounters:
   - {fileID: 11400000, guid: 22882e71810813b40b8eca66ccce4944, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
-  EnemiesList: []
   distance: 30
-  ActivateSpawn: 0
-  areaName: 
   spawnpoint: {fileID: 2924131090228564773}
 --- !u!1 &5654687814601644159
 GameObject:

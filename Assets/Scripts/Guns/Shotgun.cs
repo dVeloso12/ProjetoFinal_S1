@@ -71,7 +71,7 @@ public class Shotgun : GunController
 
             ShootAnimaton();
 
-            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance))
+            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance,layerMask))
             {
                 Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
                 Quaternion.LookRotation(hit.normal),hit.transform).transform.Rotate(Vector3.right * 90);

@@ -76,14 +76,14 @@ public class BossScript : MonoBehaviour
         RaycastHit hit;
         int layerMask = 1 << 6;
 
-        if (Physics.Raycast(pointOfBarrel.transform.position, pointOfBarrel.transform.forward, out hit, Mathf.Infinity,layerMask))
-        {
-            Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.green);
-        }
-        else
-        {
-            Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.red);
-        }
+        //if (Physics.Raycast(pointOfBarrel.transform.position, pointOfBarrel.transform.forward, out hit, Mathf.Infinity,layerMask))
+        //{
+        //    Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.green);
+        //}
+        //else
+        //{
+        //    Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.red);
+        //}
     }
    
     void UpdateBossPosition()
@@ -118,7 +118,7 @@ public class BossScript : MonoBehaviour
 
                 //Weapon.transform.LookAt(Player.transform.position);
 
-                Debug.DrawLine(Weapon.transform.position, Weapon.transform.right * 10f, Color.green, 10f);
+                //Debug.DrawLine(Weapon.transform.position, Weapon.transform.right * 10f, Color.green, 10f);
 
             }
  
@@ -192,7 +192,7 @@ public class BossScript : MonoBehaviour
                         type = AttackType.NormalAttack;
                         break;
                     }
-                case 4:
+                case 1:
                     {
                         type = AttackType.BeamAttack;
                         break;

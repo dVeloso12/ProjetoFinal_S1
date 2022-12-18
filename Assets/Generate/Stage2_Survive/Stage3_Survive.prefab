@@ -357,7 +357,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 098e215937daac44e9e00d6e4a47f25f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -670,10 +670,7 @@ MonoBehaviour:
   PossibleEncounters:
   - {fileID: 11400000, guid: 7e155c247ec0b83409f9f122bfb1ca1e, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
-  EnemiesList: []
   distance: 70
-  ActivateSpawn: 0
-  areaName: DeffStage
   spawnpoint: {fileID: 7415602674803316884}
 --- !u!114 &2370987351405485575
 MonoBehaviour:

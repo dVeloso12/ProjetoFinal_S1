@@ -2769,10 +2769,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bd5f2354b4ecd49b59104b473cd0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 45
+  maxHealth: 40
   currentHealth: 0
   HealthBar: {fileID: 4146868192729360504}
-  money: 5
+  money: 2
 --- !u!114 &5413215727399478500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2786,7 +2786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceToPlayer: 50
-  dmg: 5
+  dmg: 15
   speed: 10
   mat: {fileID: 2100000, guid: 1abb72180ae53944c82f017ae391aecc, type: 2}
   bulletPrefab: {fileID: 2602262245937804743, guid: a30601315104e26478020e87194a0dd6,

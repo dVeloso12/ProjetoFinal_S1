@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/AddUpgrade.unity
-    guid: 7b4a42e6c4ff42d4d95f2e7cc692f64c
-  - enabled: 1
     path: Assets/Scenes/Level_Design.unity
     guid: f966c3549068f1d4bb1329b6a2b37cbb
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: bf424177de785fe4398f9d7e4cc15bb3
+  - enabled: 1
+    path: Assets/Scenes/AddUpgrade.unity
+    guid: 7b4a42e6c4ff42d4d95f2e7cc692f64c
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 78901cd97dbbfcf40825d18c12c247ee
@@ -26,7 +29,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseMenu.unity
     guid: beb07197b8e902b4d84a66c0a81465f6
-  - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
-    guid: bf424177de785fe4398f9d7e4cc15bb3
   m_configObjects: {}

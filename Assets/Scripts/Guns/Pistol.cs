@@ -31,7 +31,9 @@ public class Pistol : GunController
 
     protected override void Shoot()
     {
-        if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance))
+    
+
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance,layerMask))
         {
             Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
             Quaternion.LookRotation(hit.normal), hit.transform).transform.Rotate(Vector3.right * 90);

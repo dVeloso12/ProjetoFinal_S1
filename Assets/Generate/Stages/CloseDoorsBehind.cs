@@ -8,6 +8,12 @@ public class CloseDoorsBehind : MonoBehaviour
     public bool canCloseDoor;
     public float timer;
    [SerializeField] SurvivalScript surv;
+    DoorScript_Survival survdoor;
+
+    private void Start()
+    {
+        survdoor = Door.GetComponent<DoorScript_Survival>();
+    }
 
 
     private void Update()
@@ -17,7 +23,12 @@ public class CloseDoorsBehind : MonoBehaviour
             timer += Time.deltaTime;
             if(timer > 3f)
             {
-                Door.GetComponent<DoorScript_Survival>().Hide_ShowDoor(true);
+                if(survdoor != null) survdoor.Hide_ShowDoor(true);
+                else
+                {
+                    Door.SetActive(true);
+                }
+
                 timer = 0;
                 canCloseDoor = false;
                 surv.SurvText.enabled = false;
@@ -35,7 +46,7 @@ public class CloseDoorsBehind : MonoBehaviour
         {
             //generator.PassedDoor();
             canCloseDoor = true;
-            Door.GetComponent<DoorScript_Survival>().PlayerPass(true);
+            if(survdoor != null) survdoor.PlayerPass(true);
 
         }
     }
