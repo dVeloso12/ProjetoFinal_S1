@@ -10,15 +10,15 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] GameObject REAPER;
 
-    
-    public List<GameObject> EnemiesList;
 
-    //[SerializeField] float timertoSpwan;
+    //public List<GameObject> EnemiesList;
+
+    ////[SerializeField] float timertoSpwan;
     [SerializeField] int /*maxQuantity, enemiesToSpawnQuantity,*/distance;
 
-    [SerializeField] bool ActivateSpawn = false;
+    //[SerializeField] bool ActivateSpawn = false;
 
-    [SerializeField] string areaName;
+    //[SerializeField] string areaName;
 
     [SerializeField] Transform spawnpoint;
 
@@ -75,7 +75,8 @@ public class StageSpawner : MonoBehaviour
                     {
                         f--;
                         if (f < 1)
-                            Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                            Debug.Log("Unsucessfull"+randomPoint);
+                        //    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
                         randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
                         randomPoint = sEncounter.Position[eSet]+transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
 
@@ -113,8 +114,8 @@ public class StageSpawner : MonoBehaviour
             while (!sucess && f > 0)
             {
                 f--;
-                if (f < 1)
-                    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+                //if (f < 1)
+                //    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
                 randomcircle = (Random.insideUnitCircle * distance);
                 randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
 
@@ -138,7 +139,7 @@ public class StageSpawner : MonoBehaviour
             {
                 int R = Random.Range(0, PossibleEncounters.Count - 1);
                 Encounter = PossibleEncounters[R];
-                //Debug.Log("Spwan" + other.name + other.transform.position);
+                Debug.Log("Spwan" + other.name + other.transform.position);
                 SpawnEnemies();
                 GetComponent<BoxCollider>().enabled = false;
             }

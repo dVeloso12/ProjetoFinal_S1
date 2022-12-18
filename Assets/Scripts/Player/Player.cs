@@ -75,8 +75,8 @@ public class Player : MonoBehaviour
 
     void UpdateUI()
     {
-        hp_bar.fillAmount = (PlayerHp+17) * 0.74f / saveMaxHP;
-        hp_head.fillAmount = (PlayerHp+ 20) * 0.824f / saveMaxHP;
+        hp_bar.fillAmount = PlayerHp/*+17) * 0.74f*/ / saveMaxHP;
+        hp_head.fillAmount = PlayerHp/*+ 20) * 0.824f*/ / saveMaxHP;
     }
 
     public void Damage(float dmg)

@@ -85,6 +85,7 @@ public class GunController : MonoBehaviour
     protected void Start()
     {
         playerInput = new PlayerInput();
+        
 
         playerInput.Player.Enable();
 
@@ -123,7 +124,7 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     protected  virtual void Update()
     {
-        if (shoot)
+        if (shoot&&!isRunning)
             Shoot();
 
         FireRateCounting -= Time.deltaTime;
@@ -142,7 +143,7 @@ public class GunController : MonoBehaviour
     public virtual void ActivateShoot(InputAction.CallbackContext obj)
     {
 
-        if(FireRateCounting<=0 && Ammo>0 && !isRunning)
+        if(FireRateCounting<=0 && Ammo>0 )//&& !isRunning)
             shoot = !shoot;
 
 
@@ -168,14 +169,18 @@ public class GunController : MonoBehaviour
 
     public virtual void ActivateReload(InputAction.CallbackContext obj)
     {
-        ARAnimator.SetTrigger("Reload");
-        Ammo = 0;
+        if (Ammo != AmmoClipSize)
+        {
+            ARAnimator.SetTrigger("Reload");
+            Ammo = 0;
+        }
         //StartCoroutine(Reload(ReloadSpeed));
     }
 
     public void Reloaded()
     {
         Ammo = AmmoClipSize;
+        ARAnimator.ResetTrigger("Reload");
 
         //Debug.Log("Ammo : " + Ammo);
 

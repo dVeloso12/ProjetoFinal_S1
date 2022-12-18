@@ -41,7 +41,7 @@ public class HealingItem : MonoBehaviour
     public virtual void Heal(InputAction.CallbackContext obj)
     {
 
-        if (count > 0)
+        if (count > 0&& gameObject.GetComponent<Player>().PlayerHp< gameObject.GetComponent<Player>().saveMaxHP)
         {
             gameObject.GetComponent<Player>().PlayerHp += HealAmount;
             count--;

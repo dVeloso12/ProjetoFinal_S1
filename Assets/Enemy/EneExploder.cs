@@ -26,7 +26,7 @@ public class EneExploder : Enemy_AI_2
             base.Update();
 
             float DistanceToPlayer = (transform.position - player.position).magnitude;
-            if (DistanceToPlayer < 1)
+            if (DistanceToPlayer < 3)
             {
                 Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
 

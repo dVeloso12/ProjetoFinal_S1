@@ -819,6 +819,7 @@ Transform:
   - {fileID: 4708698015216692827}
   - {fileID: 380860788934756618}
   - {fileID: 5277919911329628840}
+  - {fileID: 5650120990489453122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1645,6 +1646,7 @@ MonoBehaviour:
   HpBar: {fileID: 3861037251212177178}
   showUI: 0
   ofseet: {x: 0, y: 1.2, z: 0}
+  isTutorial: 0
 --- !u!65 &1404873192818594659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7420,6 +7422,7 @@ MonoBehaviour:
   HpBar: {fileID: 4836755297543062665}
   showUI: 0
   ofseet: {x: 0, y: 1.2, z: 0}
+  isTutorial: 0
 --- !u!65 &2070888331120561120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7853,6 +7856,7 @@ MonoBehaviour:
   HpBar: {fileID: 241153913841179058}
   showUI: 0
   ofseet: {x: 0, y: 0, z: 0}
+  isTutorial: 0
 --- !u!65 &5240203166708683333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13318,8 +13322,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7771027421610257809}
   - component: {fileID: 4917335778436258712}
-  - component: {fileID: 8183945011575130022}
   - component: {fileID: 7339145475854298286}
+  - component: {fileID: 2377881417791331735}
   m_Layer: 0
   m_Name: SpawnCollider
   m_TagString: Untagged
@@ -13335,8 +13339,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5475358905026549785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 33.83, y: 3.94, z: 0}
+  m_LocalScale: {x: 1, y: 1.9518, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1422000883687176485}
@@ -13355,21 +13359,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 4, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8183945011575130022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5475358905026549785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec56822c48281c144baf9f1c00d5704c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quantityTospawn: 9
-  quantityToSpawnOverTime: 5
-  survivalScript: {fileID: 0}
 --- !u!54 &7339145475854298286
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13386,6 +13375,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2377881417791331735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475358905026549785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44a84c4ddbb45b4295b09dc393e5429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleEncounters:
+  - {fileID: 11400000, guid: c38a3c397bb8b4e49ba2d681b735e786, type: 2}
+  REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
+  distance: 0
+  spawnpoint: {fileID: 0}
 --- !u!1 &5570116016735985225
 GameObject:
   m_ObjectHideFlags: 0
@@ -14190,6 +14196,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTutorial: 0
+--- !u!1 &6614218134645781941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5650120990489453122}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5650120990489453122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614218134645781941}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 122.41, y: -9.52, z: 29.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1422000883687176485}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6655755158590598543
 GameObject:
   m_ObjectHideFlags: 0
@@ -14572,6 +14609,7 @@ MonoBehaviour:
   HpBar: {fileID: 3861037251212177178}
   showUI: 0
   ofseet: {x: 0, y: 0, z: 0}
+  isTutorial: 0
 --- !u!65 &7722597440704128892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15841,7 +15879,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 151ca9b1cc109bb40b002b263a168a08,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 151ca9b1cc109bb40b002b263a168a08,
         type: 3}

@@ -36,6 +36,7 @@ public class AssaultRifle : GunController
     {
         base.Update();
         transform.localPosition = position;
+       
         
     }
 
@@ -43,10 +44,10 @@ public class AssaultRifle : GunController
     public override void ActivateShoot(InputAction.CallbackContext obj)
     {
 
-        if(!isRunning)
-            shoot = !shoot;
-            //Debug.Log("Ãsd");
-            //base.ActivateShoot(obj);
+        //if (!isRunning)
+        shoot = !shoot;
+        //Debug.Log("Ãsd");
+        //base.ActivateShoot(obj);
 
 
     }
@@ -148,73 +149,72 @@ public class AssaultRifle : GunController
             int i = 0,j=0;
             Vector3 ShootDir = _camera.forward;
 
-            RaycastHit[] hits;
-            
-            hits = Physics.RaycastAll(_camera.position, ShootDir, Distance);
 
-            
-            if (hits.Length != 0)
+
+
+            if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance))
             {
-                hiteffect.transform.position = hits[0].point;
-                hiteffect.transform.forward = hits[0].normal;
+
+                hiteffect.transform.position = hit.point;
+                hiteffect.transform.forward = hit.normal;
                 hiteffect.Emit(1);
 
                 TrailRenderer trail = Instantiate(btrail, _camera.position, Quaternion.identity);
-                Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward + "" + hits.Length+""+ShotingPlace.position+""+hits[0].point);
-                StartCoroutine(SpawnTrail(trail, hits[0].point));
-            }
+                //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward + "" + hit.Length+""+ ShotingPlace.position+""+ hit[0].point);
+                StartCoroutine(SpawnTrail(trail, hit.point));
+            
 
-            foreach (var v in hits)
-            {
-                Debug.Log(v.transform.tag+j);
-                j++;
-            }
+            //foreach (var v in hit)
+            //{
+            //    Debug.Log(v.transform.tag+j);
+            //    j++;
+            //}
            
-            foreach(RaycastHit hitt in hits) {
+            //foreach(RaycastHit hit in hit) {
 
-                Debug.Log("HeaadMUuuuuu"+i);
+            //    Debug.Log("HeaadMUuuuuu"+i);
 
-                if (hitt.transform.tag == "Enemy")
+                if (hit.transform.tag == "Enemy")
                 {
                     finaldmg = dmg * gm.DamageMod * SniperMult;
-                    hitt.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
+                    hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
-
-                    GameObject dmgnum = Instantiate(dmgText, hitt.point + (hitt.normal * .1f),
-                    Quaternion.LookRotation(hitt.normal));
+                    
+                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .9f),
+                    Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = collisionDetected.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hitt.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
                     i++;
 
                 }
 
-                if (hitt.transform.tag == "Head")
+                if (hit.transform.tag == "Head")
                 {
                     finaldmg = dmg * gm.HSMod * gm.DamageMod * SniperMult;
-                    hitt.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
+                    hit.transform.GetComponentInParent<EnemyStatus>().Damage(finaldmg);
 
 
-                    GameObject dmgnum = Instantiate(dmgText, hitt.point + (hitt.normal * .1f),
-                    Quaternion.LookRotation(hitt.normal));
+                    GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
+                    Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = hit.transform;
                     Debug.Log("HeaadMU");
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hitt.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
                     i++;
 
                 }
                 //Dano no Boss
 
-                if (hitt.transform.tag == "Boss")
+                if (hit.transform.tag == "Boss")
                 {
-                    hitt.transform.GetComponent<BossPart>().TakeDmgBoss(hitt.transform.gameObject, base.dmg * gm.DamageMod);
+                    hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject, base.dmg * gm.DamageMod);
                     i++;
 
                 }
-                if (hitt.transform.tag == "Turret")
+                if (hit.transform.tag == "Turret")
                 {
-                    hitt.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
+                    hit.transform.GetComponent<TurretScript>().TakeDmg(base.dmg * gm.DamageMod);
                 }
 
 
@@ -225,9 +225,9 @@ public class AssaultRifle : GunController
 
                 //}
 
-                Debug.Log(i);
-                if (i >= piercing)
-                    break;
+                //Debug.Log(i);
+                //if (i >= piercing)
+                //    break;
 
             }
            

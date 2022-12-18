@@ -161,7 +161,7 @@ public class Shotgun : GunController
     }
     public void ShootAnimaton()
     {
-        shotgunAnimator.speed = animationStartSpeed / gm.FireRateMod;
+        //shotgunAnimator.speed = animationStartSpeed * gm.FireRateMod;
         shotgunAnimator.SetTrigger("Shoot");
     }
 

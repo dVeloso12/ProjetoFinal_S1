@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0223178fc84c68648aad234ce4fd8fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DistanceToPlayer: 3
+  DistanceToPlayer: 5
   dmg: 50
   speed: 10
   mat: {fileID: 2100000, guid: 72040e441b13de54c9913875c681e121, type: 2}

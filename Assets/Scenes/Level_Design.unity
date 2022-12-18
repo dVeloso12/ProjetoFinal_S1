@@ -717,7 +717,6 @@ MonoBehaviour:
   - {fileID: 6758397473482479067, guid: 03ad083e31a2bea4aa78bad787cfc943, type: 3}
   - {fileID: 780470959892972904, guid: a0719814dbc2ebc41ab82ed65eef5dda, type: 3}
   - {fileID: 8924877213281007097, guid: 7138894bf94669447b79fe67c4597758, type: 3}
-  - {fileID: 6889345172862792331, guid: c5a1995468f7d2040bf23f4234f1b08b, type: 3}
   - {fileID: 5091637413042810483, guid: 47c2163428c16af449befc26301168fe, type: 3}
   - {fileID: 1728822984069536211, guid: ec043ab8b4ecac548ad3cac701f6989b, type: 3}
   EnemyList: []
@@ -16473,7 +16472,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.509
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
