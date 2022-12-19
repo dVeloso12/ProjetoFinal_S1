@@ -149,10 +149,10 @@ public class AssaultRifle : GunController
             int i = 0,j=0;
             Vector3 ShootDir = _camera.forward;
 
+            
 
 
-
-            if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance))
+            if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance * 2f))
             {
 
                 hiteffect.transform.position = hit.point;

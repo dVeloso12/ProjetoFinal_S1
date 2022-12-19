@@ -171,7 +171,8 @@ public class GunController : MonoBehaviour
 
     public virtual void ActivateReload(InputAction.CallbackContext obj)
     {
-        if (Ammo != AmmoClipSize)
+        Debug.Log("Ammo clip size : " + AmmoClipSize);
+        if (Ammo < AmmoClipSize)
         {
             ARAnimator.SetTrigger("Reload");
             Ammo = 0;
