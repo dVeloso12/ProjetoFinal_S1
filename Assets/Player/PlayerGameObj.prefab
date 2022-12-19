@@ -112,7 +112,7 @@ MonoBehaviour:
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
-    m_InputAxisValue: -0.55
+    m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -70
     m_MaxValue: 70
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
-    m_InputAxisValue: 0.90000004
+    m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180
     m_MaxValue: 180
@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7744191, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -344,11 +344,21 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 5353640097496198308, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5353640097496198993, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5353640097496199003, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: _cinemachine
+      value: 
+      objectReference: {fileID: 7657076051010084586}
     - target: {fileID: 5353640097496199005, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_RootOrder
@@ -433,6 +443,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.572
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.52974194
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.07851919
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.83538973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.123822786
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21606077
       objectReference: {fileID: 0}
     - target: {fileID: 8933608275006795881, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}

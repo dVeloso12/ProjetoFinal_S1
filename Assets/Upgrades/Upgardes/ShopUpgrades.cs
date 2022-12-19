@@ -30,7 +30,7 @@ public class ShopUpgrades : MonoBehaviour
         gm = FindObjectOfType<GameManager>();
         xMult = canvas.GetComponent<RectTransform>().sizeDelta.x / 1920;
         yMult = canvas.GetComponent<RectTransform>().sizeDelta.y / 1080;
-        button.onClick.AddListener(Back);
+        //button.onClick.AddListener(Back);
 
         if (gm.ShopUpgardes.Count != 0)
         {
@@ -109,14 +109,14 @@ public class ShopUpgrades : MonoBehaviour
 
     }
 
-    void Back()
+    public void Back()
     {
         for (int i = 0; i < upg_choice.Length; i++)
         {
             if (upg_choice[i] == null)
                 gm.ShopUpgardes[i] = null;
         }
-
+        Debug.Log(gm.gameState);
         gm.CleanShop = false;
         gm.CloseAddUpgrade();
     }

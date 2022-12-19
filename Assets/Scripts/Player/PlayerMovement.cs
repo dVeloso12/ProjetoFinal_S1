@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -55,6 +56,8 @@ public class PlayerMovement : MonoBehaviour
     //TextMeshProUGUI Timer;
 
     Animator gunAnimator;
+
+    public CinemachineVirtualCamera _cinemachine;
 
     // Start is called before the first frame update
     void Start()
@@ -236,6 +239,19 @@ public class PlayerMovement : MonoBehaviour
             TDashCooldown = DashCooldown/gm.CDMod;
             fillAmount = 0;
         }
+    }
+
+
+    public void ChangeCameraHSense(float hori)
+    {
+        _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = hori*2;
+        
+    }
+
+    public void ChangeCameraVSense(float verti)
+    {
+        
+        _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = verti * 2;
     }
 
 }

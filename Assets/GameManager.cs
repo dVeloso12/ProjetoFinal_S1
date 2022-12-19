@@ -72,14 +72,15 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(unloadDeadScene && timer < 4f)
+        if(unloadDeadScene && timer < 2.5f)
         {
             timer += Time.deltaTime;
         }
-        else if(unloadDeadScene && timer >4f)
+        else if(unloadDeadScene && timer >=2.5f)
         {
             SceneManager.UnloadSceneAsync("GameOver");
             unloadDeadScene = false;
+            timer = 0;
         }
     }
 
@@ -92,12 +93,14 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
+        FindObjectOfType<GunController>().OnDeath();
         FireRateMod = 1;
         DamageMod = 1;
         MoveSpeedMod = 1;
         HSMod = 1;
         MoneyMod = 1;
         Money = 0;
+        DifficultyMod = 1;
 
     }
    
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void DebugFunction(InputAction.CallbackContext obj)
     {
-        gameState = 0;
+        gameState = 1;
         AddUpgrade();
     }
     public void AddUpgrade()
@@ -191,8 +194,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
-        orggame.toLobby = true;
         unloadDeadScene = true;
+
+        ShopUpgardes.Clear();
+        orggame.toLobby = true;
+
+        ResetStage();
 
         //HealingItem tempRef = gameObject.GetComponent<GameplayOrganize>().PlayerProperty.GetComponentInChildren<HealingItem>();
 

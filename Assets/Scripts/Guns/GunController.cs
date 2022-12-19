@@ -41,7 +41,7 @@ public class GunController : MonoBehaviour
 
     public float ReloadSpeed;
     public int AmmoClipSize;
-    protected int Ammo;
+    protected int Ammo,orAmmo;
     [SerializeField] TextMeshProUGUI bullettxt;
 
 
@@ -81,6 +81,11 @@ public class GunController : MonoBehaviour
         set { isRunning = value; }
     }
 
+
+    private void Awake()
+    {
+        orAmmo = AmmoClipSize;
+    }
     // Start is called before the first frame update
     protected void Start()
     {
@@ -208,6 +213,14 @@ public class GunController : MonoBehaviour
     public virtual void _Modifier(InputAction.CallbackContext obj)
     {
         Modifier = !Modifier;
+    }
+
+
+    public void OnDeath()
+    {
+        AmmoClipSize = orAmmo;
+        Ammo = AmmoClipSize;
+        UpdateBulletTxt();
     }
 
 }

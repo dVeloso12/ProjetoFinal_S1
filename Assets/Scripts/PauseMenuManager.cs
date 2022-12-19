@@ -23,16 +23,21 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] GameObject SoundObj;
     [SerializeField] GameObject SoundSeta;
     [SerializeField] AudioMixer Effects, Music;
+    [Header("Mouse")]
+    [SerializeField] GameObject Mouse;
+    [SerializeField] GameObject MouseSeta;
+    [SerializeField] PlayerMovement Player;
     [Header("Credits")]
     [SerializeField] GameObject CreditsObj;
     [SerializeField] GameObject CreditsSeta;
+   
 
 
     Resolution[] resolutions;
     GameObject saveCurrent,setaCurret;
     enum MenuState
     {
-        none,Screen,Sound,Credits
+        none,Screen,Sound,Mouse,Credits
     };
      MenuState state;
 
@@ -51,6 +56,7 @@ public class PauseMenuManager : MonoBehaviour
     }
     private void Start()
     {
+        Player = FindObjectOfType<PlayerMovement>();
         getResolutions();
         state = MenuState.none;
       
@@ -60,7 +66,7 @@ public class PauseMenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
-            if (state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Credits)
+            if (state == MenuState.Screen || state == MenuState.Sound || state == MenuState.Mouse || state == MenuState.Credits)
             {
                 state = MenuState.none;
                 saveCurrent.SetActive(false);
@@ -111,8 +117,8 @@ public class PauseMenuManager : MonoBehaviour
     {
         if(state == MenuState.none)
         {
-            ScreenSeta.SetActive(true);
-            ScreenObj.SetActive(true);
+            MouseSeta.SetActive(true);
+            Mouse.SetActive(true);
             SecondSelection.SetActive(true);
             state = MenuState.Screen;
             saveCurrent = ScreenObj;
@@ -123,8 +129,8 @@ public class PauseMenuManager : MonoBehaviour
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
-            ScreenSeta.SetActive(true);
-            ScreenObj.SetActive(true);
+            MouseSeta.SetActive(true);
+            Mouse.SetActive(true);
             state = MenuState.Screen;
             saveCurrent = ScreenObj;
             setaCurret = ScreenSeta;
@@ -134,7 +140,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void openSound()
     {
-        if(state == MenuState.none)
+        if (state == MenuState.none)
         {
             SoundObj.SetActive(true);
             SoundSeta.SetActive(true);
@@ -154,9 +160,37 @@ public class PauseMenuManager : MonoBehaviour
             setaCurret = SoundSeta;
             state = MenuState.Sound;
         }
+
+
+
     }
 
-    public void openCredits()
+    public void openMouse()
+    {
+    
+        if (state == MenuState.none)
+        {
+            Mouse.SetActive(true);
+            MouseSeta.SetActive(true);
+            SecondSelection.SetActive(true);
+            saveCurrent = Mouse;
+            setaCurret = MouseSeta;
+            state = MenuState.Mouse;
+        }
+        else
+        {
+            saveCurrent.SetActive(false);
+            setaCurret.SetActive(false);
+
+            Mouse.SetActive(true);
+            MouseSeta.SetActive(true);
+            saveCurrent = Mouse;
+            setaCurret = MouseSeta;
+            state = MenuState.Mouse;
+        }
+    }
+
+        public void openCredits()
     {
         if(state == MenuState.none)
         {
@@ -205,6 +239,8 @@ public class PauseMenuManager : MonoBehaviour
         resolution.value = currentRes;
         resolution.RefreshShownValue();
     }
+
+
     public void SetFullscreen(bool isFull)
     {
         Screen.fullScreen = isFull;
@@ -233,6 +269,16 @@ public class PauseMenuManager : MonoBehaviour
     public void setVolumeMusic(float vol)
     {
         Music.SetFloat("MusicVolume", vol); //Ajustar mais tarde 
+    }
+
+    public void setHorizontalSense(float sense)
+    {
+        Player.ChangeCameraHSense(sense);
+    }
+
+    public void setVerticalSense(float sense)
+    {
+        Player.ChangeCameraVSense(sense);
     }
 
 

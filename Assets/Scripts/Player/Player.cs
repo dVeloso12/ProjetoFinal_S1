@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float PlayerHp;
     public float saveMaxHP;
     public bool isdead;
+    float orHP;
     GameManager gm;
 
     Image hp_head,hp_bar;
@@ -20,12 +21,18 @@ public class Player : MonoBehaviour
 
     float previousMouseSensivity;
 
+    private void Awake()
+    {
+        orHP = saveMaxHP;
+    }
+
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
         hp_head = GameObject.Find("Bar-HpHead").GetComponent<Image>();
         hp_bar = GameObject.Find("Hp-Bar").GetComponent<Image>();
         saveMaxHP = PlayerHp;
+        
 
         GameObject temp = gameObject.transform.parent.gameObject;
 
@@ -59,10 +66,12 @@ public class Player : MonoBehaviour
         if (isdead)
         {
             gm.GameOver();
+            saveMaxHP = orHP;
+            PlayerHp = saveMaxHP;
             gm.ResetPlayer();
 
             isdead = false;
-            PlayerHp = saveMaxHP;
+            
         }
 
         if(mouseSensivity != previousMouseSensivity)
@@ -88,8 +97,12 @@ public class Player : MonoBehaviour
         //Debug.LogWarning("Player Hit. HP : " + PlayerHp);
         if(PlayerHp <= 0)
         {
-            
+            saveMaxHP = orHP;
+            PlayerHp = saveMaxHP;
+            GetComponent<HealingItem>().ResetCount();
+            gm.ResetPlayer();
             gm.GameOver();
+            
         }
     }
 
