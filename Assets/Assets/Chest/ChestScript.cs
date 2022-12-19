@@ -34,7 +34,8 @@ public class ChestScript : MonoBehaviour
             Debug.Log("ADDUPGRADE");
             gm.AddUpgrade();
             canUpgrade = false;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

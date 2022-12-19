@@ -38,6 +38,7 @@ public class GameplayOrganize : MonoBehaviour
     HookShot graple;
     Granade granade;
     GameObject playerWeapons;
+    GameManager gm;
 
 
     public GameObject PlayerProperty
@@ -52,6 +53,7 @@ public class GameplayOrganize : MonoBehaviour
         granade = GameObject.Find("Player").GetComponent<Granade>();
         graple = GameObject.Find("Player").GetComponent<HookShot>();
         playerWeapons = GameObject.Find("GunDirection");
+        gm = GameObject.FindObjectOfType<GameManager>();
 
     }
     void Start()
@@ -74,7 +76,8 @@ public class GameplayOrganize : MonoBehaviour
         if(tutorialFinished)
         {
             if (savenpc != null) Destroy(savenpc);
-            UnloadTutorial();        
+            UnloadTutorial();
+            gm.ResetPlayer();
           tutorialFinished = false;
         }    
         if(toGame)

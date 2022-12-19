@@ -59,7 +59,10 @@ public class Player : MonoBehaviour
         if (isdead)
         {
             gm.GameOver();
+            gm.ResetPlayer();
+
             isdead = false;
+            PlayerHp = saveMaxHP;
         }
 
         if(mouseSensivity != previousMouseSensivity)
@@ -82,7 +85,7 @@ public class Player : MonoBehaviour
     public void Damage(float dmg)
     {
         PlayerHp -= dmg;
-        Debug.LogWarning("Player Hit. HP : " + PlayerHp);
+        //Debug.LogWarning("Player Hit. HP : " + PlayerHp);
         if(PlayerHp <= 0)
         {
             

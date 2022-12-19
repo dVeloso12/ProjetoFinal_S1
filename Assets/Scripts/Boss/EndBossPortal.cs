@@ -5,17 +5,19 @@ public class EndBossPortal : MonoBehaviour
      GameplayOrganize game;
     public bool isTutorial;
     GameManager gm;
+    NpcMsgDisplay npc;
     void Start()
     {
         game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
-        gm = FindObjectOfType<GameManager>();
+        gm = GameObject.FindObjectOfType<GameManager>();
+        npc = GameObject.FindObjectOfType<NpcMsgDisplay>();
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("sd");
 
-        if (other.transform.name == "Player")
+        if (other.transform.name == "Player" && npc.canTP)
         {
             gm.DifficultyMod += .3f;
             if (gm.ReaperSpawn < 50)

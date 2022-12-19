@@ -89,6 +89,17 @@ public class GameManager : MonoBehaviour
         CreateUpgradeLists();
         SaveUiNames();
     }
+
+    public void ResetPlayer()
+    {
+        FireRateMod = 1;
+        DamageMod = 1;
+        MoveSpeedMod = 1;
+        HSMod = 1;
+        MoneyMod = 1;
+        Money = 0;
+
+    }
    
     public void ResetStage()
     {

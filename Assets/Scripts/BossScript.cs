@@ -19,6 +19,7 @@ public class BossScript : MonoBehaviour
     [SerializeField] float DmgPhaseTimer;
     [SerializeField] ChestScript Chest;
     [SerializeField] GameObject portal;
+    [SerializeField] List<GameObject> ListColliderWall;
      Animator animator;
 
     public float BossHp;
@@ -54,8 +55,8 @@ public class BossScript : MonoBehaviour
     private void Start()
     {
         border = GameObject.Find("Border").GetComponent<Image>();
-        border.enabled = false;
         bossHp = GameObject.Find("bosshp").GetComponent<Image>();
+        border.enabled = false;
         bossHp.enabled = false;
         animator = GetComponent<Animator>();
         saveMaxHp = BossHp;
@@ -291,6 +292,10 @@ public class BossScript : MonoBehaviour
             isDead = true;
             animator.SetTrigger("canDie");
             activateUIHP = false;
+            foreach (GameObject wall in ListColliderWall)
+            {
+                wall.GetComponent<BoxCollider>().enabled = false;
+            }
             gameObject.SetActive(false);
             Chest.canAppear = true;
             portal.SetActive(true);

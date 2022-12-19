@@ -27,6 +27,9 @@ public class NpcMsgDisplay : MonoBehaviour
     GameplayOrganize orggame;
     GameManager gameManager;
 
+    public bool canTP;
+    public bool canInteract;
+
     private void Start()
     {   
         saveCurrentList = Npc.Position_1;
@@ -167,17 +170,19 @@ public class NpcMsgDisplay : MonoBehaviour
             case 7:
                 {
                     saveCurrentList = Npc.Position_8;
+                    canTP = true;
                     break;
                 }
             case 8:
                 {
-                    saveCurrentList = Npc.Position_9;
+                    saveCurrentList = Npc.Position_9;   
                     gameManager.Money = 200;
                     break;
                 }
             case 9:
                 {
                     saveCurrentList = Npc.Position_10;
+                    canInteract = true;
                     break;
                 }
             case 10:
