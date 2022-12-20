@@ -28,7 +28,7 @@ public class CrystalScript : MonoBehaviour
         if(StartAnim)
         {
             timer += Time.deltaTime;
-            if(timer < 1f)transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z);
+            if(timer < 1f)transform.position = new Vector3(transform.position.x, transform.position.y + 0.01f * timer, transform.position.z);
             transform.Rotate(new Vector3(0f, 0.2f, 0f));
         }
     }

@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-        FindObjectOfType<GunController>().OnDeath();
+        //FindObjectOfType<GunController>().OnDeath();
         FireRateMod = 1;
         DamageMod = 1;
         MoveSpeedMod = 1;

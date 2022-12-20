@@ -28,7 +28,7 @@ public class NpcMsgDisplay : MonoBehaviour
     GameManager gameManager;
 
     public bool canTP;
-    public bool canInteract;
+    public bool canInteract,canInteractOnPc;
 
     private void Start()
     {   
@@ -188,6 +188,7 @@ public class NpcMsgDisplay : MonoBehaviour
             case 10:
                 {
                     saveCurrentList = Npc.Position_11;
+                    canInteractOnPc = true;
                     break;
                 }
             case 11:

@@ -39,7 +39,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         none,Screen,Sound,Mouse,Credits
     };
-     MenuState state;
+    MenuState state;
 
     private void Awake()
     {
@@ -117,8 +117,8 @@ public class PauseMenuManager : MonoBehaviour
     {
         if(state == MenuState.none)
         {
-            MouseSeta.SetActive(true);
-            Mouse.SetActive(true);
+            ScreenSeta.SetActive(true);
+            ScreenObj.SetActive(true);
             SecondSelection.SetActive(true);
             state = MenuState.Screen;
             saveCurrent = ScreenObj;
@@ -129,8 +129,8 @@ public class PauseMenuManager : MonoBehaviour
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
-            MouseSeta.SetActive(true);
-            Mouse.SetActive(true);
+            ScreenSeta.SetActive(true);
+            ScreenObj.SetActive(true);
             state = MenuState.Screen;
             saveCurrent = ScreenObj;
             setaCurret = ScreenSeta;
@@ -227,7 +227,21 @@ public class PauseMenuManager : MonoBehaviour
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
-            op.Add(option);
+            bool check = false;
+            foreach (string x in op)
+            {
+                if (x == option)
+                {
+                    check = true;
+                }
+                else check = false;
+
+            }
+            if (!check)
+            {
+                op.Add(option);
+            }
+
 
             if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height)

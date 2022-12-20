@@ -10,11 +10,16 @@ public class ShopButtomPortal : MonoBehaviour
     public bool opened = false;
     [SerializeField] TMPro.TextMeshProUGUI readyToGenerate, GeneratedFinished;
     public bool inTutorial;
+    NpcMsgDisplay npc;
 
 
     void Start()
     {
         game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
+        if(inTutorial)
+        {
+            npc = FindObjectOfType<NpcMsgDisplay>();
+        }
     }
     private void Update()
     {
@@ -35,12 +40,15 @@ public class ShopButtomPortal : MonoBehaviour
         }
         else
         {
-            if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
+            if (npc.canInteractOnPc)
             {
-                Portal.SetActive(true);
-                cantGenerateMore = true;
-                opened = true;
+                if (other.transform.name == "Player" && Input.GetKey(KeyCode.H) && !cantGenerateMore)
+                {
+                    Portal.SetActive(true);
+                    cantGenerateMore = true;
+                    opened = true;
 
+                }
             }
         }
     }
