@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
         UpdateUI();
         if (isdead)
         {
+            FindObjectOfType<GunController>().OnDeath();
             gm.GameOver();
             saveMaxHP = orHP;
             PlayerHp = saveMaxHP;
@@ -99,6 +100,7 @@ public class Player : MonoBehaviour
         {
             saveMaxHP = orHP;
             PlayerHp = saveMaxHP;
+            FindObjectOfType<GunController>().OnDeath();
             GetComponent<HealingItem>().ResetCount();
             gm.ResetPlayer();
             gm.GameOver();
