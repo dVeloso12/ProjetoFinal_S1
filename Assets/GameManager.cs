@@ -93,11 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayer()
     {
-<<<<<<< Updated upstream
-        //FindObjectOfType<GunController>().OnDeath();
-=======
-        
->>>>>>> Stashed changes
+        FindObjectOfType<GunController>().OnDeath();
         FireRateMod = 1;
         DamageMod = 1;
         MoveSpeedMod = 1;

@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -30,8 +32,12 @@ public class PauseMenuManager : MonoBehaviour
     [Header("Credits")]
     [SerializeField] GameObject CreditsObj;
     [SerializeField] GameObject CreditsSeta;
-   
 
+
+    public Volume volume;
+    Bloom bloom;
+    ChromaticAberration chro;
+    public float tes;
 
     Resolution[] resolutions;
     GameObject saveCurrent,setaCurret;
@@ -52,6 +58,7 @@ public class PauseMenuManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         
+        
        
     }
     private void Start()
@@ -59,8 +66,19 @@ public class PauseMenuManager : MonoBehaviour
         Player = FindObjectOfType<PlayerMovement>();
         getResolutions();
         state = MenuState.none;
-      
+        volume = FindObjectOfType<Volume>();
+        volume.profile.TryGet<Bloom>(out bloom);
+        volume.profile.TryGet<ChromaticAberration>(out chro);
+
+
     }
+    //private void Update()
+    //{
+    //    VolumeParameter<float> f = new VolumeParameter<float>();
+    //    f.value = tes;
+    //    bloom.intensity.SetValue(f);
+    //    chro.intensity.SetValue(f);
+    //}
     public void inMenuLoop()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
