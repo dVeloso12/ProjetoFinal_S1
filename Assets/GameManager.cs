@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
 
     public int Money;
 
-
-    
      PlayerInput playerInput;
 
     List<Upgrade> TempUpgrade;
@@ -129,7 +127,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddUpgrade()
     {
-        Debug.Log("ADDUPGRADEssss");
+        //Debug.Log("ADDUPGRADEssss");
         if (gameState==0)
         SceneManager.LoadScene("AddUpgrade", LoadSceneMode.Additive);
         else if (gameState == 1) { 

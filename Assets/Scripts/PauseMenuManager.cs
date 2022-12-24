@@ -34,10 +34,9 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] GameObject CreditsSeta;
 
 
-    public Volume volume;
+    Volume volume;
     Bloom bloom;
     ChromaticAberration chro;
-    public float tes;
 
     Resolution[] resolutions;
     GameObject saveCurrent,setaCurret;
@@ -46,6 +45,7 @@ public class PauseMenuManager : MonoBehaviour
         none,Screen,Sound,Mouse,Credits
     };
     MenuState state;
+    float bloomvalue, chrovalue;
 
     private void Awake()
     {
@@ -69,16 +69,11 @@ public class PauseMenuManager : MonoBehaviour
         volume = FindObjectOfType<Volume>();
         volume.profile.TryGet<Bloom>(out bloom);
         volume.profile.TryGet<ChromaticAberration>(out chro);
-
-
     }
-    //private void Update()
-    //{
-    //    VolumeParameter<float> f = new VolumeParameter<float>();
-    //    f.value = tes;
-    //    bloom.intensity.SetValue(f);
-    //    chro.intensity.SetValue(f);
-    //}
+    private void Update()
+    {
+        updateValues();
+    }
     public void inMenuLoop()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -90,7 +85,7 @@ public class PauseMenuManager : MonoBehaviour
                 saveCurrent.SetActive(false);
                 setaCurret.SetActive(false);
             }
-           
+
         }
         if (state == MenuState.none)
         {
@@ -208,7 +203,7 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
-        public void openCredits()
+     public void openCredits()
     {
         if(state == MenuState.none)
         {
@@ -313,5 +308,24 @@ public class PauseMenuManager : MonoBehaviour
         Player.ChangeCameraVSense(sense);
     }
 
+    public void setBloom(float value)
+    {
+        bloomvalue = value;
+    }
+
+    public void setCromaticAberration(float value)
+    {
+        chrovalue = value;
+    }
+    void updateValues()
+    {
+        VolumeParameter<float> fBloom = new VolumeParameter<float>();
+        VolumeParameter<float> fChro = new VolumeParameter<float>();
+        fBloom.value = bloomvalue;
+        fChro.value = chrovalue;
+        bloom.intensity.SetValue(fBloom);
+        chro.intensity.SetValue(fChro);
+
+    }
 
 }
