@@ -9,6 +9,7 @@ public class CloseDoorsBehind : MonoBehaviour
     public float timer;
    [SerializeField] SurvivalScript surv;
     DoorScript_Survival survdoor;
+    [SerializeField] DeffStageController deffcont;
 
     private void Start()
     {
@@ -47,6 +48,7 @@ public class CloseDoorsBehind : MonoBehaviour
             //generator.PassedDoor();
             canCloseDoor = true;
             if(survdoor != null) survdoor.PlayerPass(true);
+            if (deffcont != null) deffcont.disableObjTxt();
 
         }
     }

@@ -23,6 +23,12 @@ public class DeffStageController : MonoBehaviour
         txtPlate.text = "Capture the Plate\n Plate: "+value.ToString()+"%";
     }
 
+    public void disableObjTxt()
+    {
+        txtPlate.enabled = false;
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "Player")

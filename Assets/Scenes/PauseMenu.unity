@@ -2137,8 +2137,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   CreditsObj: {fileID: 1745927542}
   CreditsSeta: {fileID: 1892610577}
-  volume: {fileID: 0}
-  tes: 0
 --- !u!1 &293707606
 GameObject:
   m_ObjectHideFlags: 0
@@ -8553,7 +8551,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10559,8 +10557,8 @@ RectTransform:
   m_Father: {fileID: 1441266916}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0}
-  m_AnchorMax: {x: 0.1, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12071,7 +12069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23f22d811f8f65d46ba9543139c0f83b, type: 2}
   m_sharedMaterial: {fileID: -7491756226866594038, guid: 23f22d811f8f65d46ba9543139c0f83b,

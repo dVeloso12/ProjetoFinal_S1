@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 2810424434365561116, guid: a607f8188364f7b428706dea5493c73d, type: 3}
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
   - {fileID: 2810424434365561116, guid: 2b49d368187e99a428dda1ef9b80da0f, type: 3}
-  Quantity: 020000000500000008000000
+  Quantity: 010000000300000005000000
   Position:
   - {x: 19.29, y: -2, z: -14.98}
   - {x: 19.29, y: -2, z: -14.98}

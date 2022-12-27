@@ -289,6 +289,7 @@ MonoBehaviour:
   canCloseDoor: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 8326579027125360108}
 --- !u!1 &846282553433788268
 GameObject:
   m_ObjectHideFlags: 0

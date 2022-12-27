@@ -68,7 +68,9 @@ public class PauseMenuManager : MonoBehaviour
         state = MenuState.none;
         volume = FindObjectOfType<Volume>();
         volume.profile.TryGet<Bloom>(out bloom);
+        bloomvalue = (float)bloom.intensity;
         volume.profile.TryGet<ChromaticAberration>(out chro);
+        chrovalue = (float)chro.intensity;
     }
     private void Update()
     {

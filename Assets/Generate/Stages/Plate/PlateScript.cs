@@ -21,6 +21,7 @@ public class PlateScript : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+        PlatePorc = 0f;
         orIncrease = IncreaseAmout;
         ScpCrystal = Crystal.GetComponent<CrystalScript>();
         if (gm.DifficultyMod <= 3)
@@ -45,7 +46,7 @@ public class PlateScript : MonoBehaviour
         if(PlatePorc >= 1f)
         {
             PlateCompleted = true;
-            PlatePorc = 0f;
+            //PlatePorc = 0f;
         }
         if(PlateCompleted)
         {

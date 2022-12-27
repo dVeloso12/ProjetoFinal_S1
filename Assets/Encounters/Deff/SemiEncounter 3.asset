@@ -15,7 +15,7 @@ MonoBehaviour:
   EnemySet:
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
   - {fileID: 2810424434365561116, guid: 7cee7b8193392fe439722cad5fe23e54, type: 3}
-  Quantity: 0200000002000000
+  Quantity: 0100000001000000
   Position:
   - {x: 30, y: 0, z: 18}
   - {x: 30, y: 0, z: -18}
