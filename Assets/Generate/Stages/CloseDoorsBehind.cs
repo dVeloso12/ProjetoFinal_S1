@@ -6,6 +6,7 @@ public class CloseDoorsBehind : MonoBehaviour
 {
     [SerializeField] GameObject Door;
     public bool canCloseDoor;
+    public bool playSound;
     public float timer;
    [SerializeField] SurvivalScript surv;
     DoorScript_Survival survdoor;
@@ -31,8 +32,9 @@ public class CloseDoorsBehind : MonoBehaviour
                 }
 
                 timer = 0;
+                playSound = true;
                 canCloseDoor = false;
-                surv.SurvText.enabled = false;
+                //surv.SurvText.enabled = false;
             }
             
           

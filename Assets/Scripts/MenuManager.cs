@@ -37,6 +37,7 @@ public class MenuManager : MonoBehaviour
             {
                 if (!PauseMenuManager.instance.checkWhenLeave(inMenu))
                 {
+                    PauseMenuManager.instance.PlayMenuSound();
                     UnloadPauseMenu();
                     inMenu = false;
                 }

@@ -10,6 +10,7 @@ public class SurvivalScript : MonoBehaviour
     public TextMeshProUGUI SurvText;
     float CompletePerc;
     bool ReaperAttempt=true;
+    public bool completed;
 
     GameManager gm;
 
@@ -37,6 +38,7 @@ public class SurvivalScript : MonoBehaviour
             if (nObjective <= 0)
             {
                 survivalDoor.CompleteSurvival();
+                completed = true;
                 SurvText.text = "Stage completed!";
             }
 

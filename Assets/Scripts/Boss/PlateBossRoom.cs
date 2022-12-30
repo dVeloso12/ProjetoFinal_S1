@@ -19,11 +19,11 @@ public class PlateBossRoom : MonoBehaviour
     float beamTimer,plateTimer;
     public bool canIncreaseBeam;
     bool startPlate;
-
     private void Start()
     {
         BeamCrystal.SetFloat("_Fill", 0f);
         PlateLoad.SetFloat("_Fill", 0f);
+        
     }
 
     void Update()

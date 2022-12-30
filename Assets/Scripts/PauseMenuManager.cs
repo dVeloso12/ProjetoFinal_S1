@@ -47,6 +47,8 @@ public class PauseMenuManager : MonoBehaviour
     MenuState state;
     float bloomvalue, chrovalue;
 
+    AudioSource audio;
+
     private void Awake()
     {
         if(instance != null)
@@ -63,6 +65,7 @@ public class PauseMenuManager : MonoBehaviour
     }
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         Player = FindObjectOfType<PlayerMovement>();
         getResolutions();
         state = MenuState.none;
@@ -86,6 +89,8 @@ public class PauseMenuManager : MonoBehaviour
                 state = MenuState.none;
                 saveCurrent.SetActive(false);
                 setaCurret.SetActive(false);
+                audio.Play();
+                
             }
 
         }
@@ -94,6 +99,10 @@ public class PauseMenuManager : MonoBehaviour
             SecondSelection.SetActive(false);
         }
 
+    }
+    public void PlayMenuSound()
+    {
+        audio.Play();
     }
     public bool checkWhenLeave(bool start)
     {
@@ -132,6 +141,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         if(state == MenuState.none)
         {
+            audio.Play();
             ScreenSeta.SetActive(true);
             ScreenObj.SetActive(true);
             SecondSelection.SetActive(true);
@@ -141,6 +151,7 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
+            audio.Play();
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
@@ -157,6 +168,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (state == MenuState.none)
         {
+            audio.Play();
             SoundObj.SetActive(true);
             SoundSeta.SetActive(true);
             SecondSelection.SetActive(true);
@@ -166,6 +178,7 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
+            audio.Play();
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
@@ -185,6 +198,7 @@ public class PauseMenuManager : MonoBehaviour
     
         if (state == MenuState.none)
         {
+            audio.Play();
             Mouse.SetActive(true);
             MouseSeta.SetActive(true);
             SecondSelection.SetActive(true);
@@ -194,6 +208,7 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
+            audio.Play();
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
@@ -209,6 +224,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         if(state == MenuState.none)
         {
+            audio.Play();
             CreditsObj.SetActive(true);
             CreditsSeta.SetActive(true);
             SecondSelection.SetActive(true);
@@ -218,6 +234,7 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
+            audio.Play();
             saveCurrent.SetActive(false);
             setaCurret.SetActive(false);
 
@@ -273,23 +290,29 @@ public class PauseMenuManager : MonoBehaviour
     public void SetFullscreen(bool isFull)
     {
         Screen.fullScreen = isFull;
+        audio.Play();
     }
     public void SetResolution(int index)
     {
         Resolution res = resolutions[index];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        audio.Play();
     }
     public void setVSync(int index)
     {
         QualitySettings.vSyncCount = index;
+        audio.Play();
     }
     public void SetQuality(int index)
     {
         QualitySettings.SetQualityLevel(index);
+        audio.Play();
     }
     public void ExistGame()
     {
+        audio.Play();
         Application.Quit();
+
     }
     public void setVolumeEffects(float vol)
     {

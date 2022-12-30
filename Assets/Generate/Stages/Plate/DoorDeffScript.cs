@@ -9,9 +9,11 @@ public class DoorDeffScript : MonoBehaviour
     [SerializeField] ChestScript Chest;
     PlateScript plateScrp;
     bool doorOpened;
+    AudioSource audio;
     //GameManager gm;
     void Start()
     {
+        audio = GetComponent<AudioSource>();    
         plateScrp = Plate.GetComponent<PlateScript>();
         //gm = FindObjectOfType<GameManager>();
     }

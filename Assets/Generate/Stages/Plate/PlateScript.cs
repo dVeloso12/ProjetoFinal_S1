@@ -18,6 +18,11 @@ public class PlateScript : MonoBehaviour
 
     public float PlatePorc;
     int enterPlateTimes;
+
+    AudioSource audio;
+    bool startAudio, StopAudio;
+    bool onPlate, onMenu;
+
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
@@ -28,6 +33,10 @@ public class PlateScript : MonoBehaviour
             IncreaseAmout = orIncrease / (gm.DifficultyMod);
         else
             IncreaseAmout = orIncrease / 3;
+
+        audio = GetComponent<AudioSource>();
+        StopAudio = false;
+
     }
 
     void Update()
@@ -52,13 +61,44 @@ public class PlateScript : MonoBehaviour
         {
             Chest.canAppear = true;
         }
+        AudioManager();
+    }
+
+    void AudioManager()
+    {
+        if (Time.deltaTime == 0)
+        {
+            audio.Stop();
+            onMenu = true;
+        }
+        else if (Time.deltaTime != 0 && onPlate && onMenu)
+        {
+            startAudio = true;
+            onMenu = false;
+        }
+
+        if (startAudio)
+            {
+                audio.Play();
+                startAudio = false;
+            }
+            if (StopAudio || PlateCompleted)
+            {
+                audio.Stop();
+                StopAudio = false;
+            }
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         if(enterPlateTimes == 0)
         {
             startedPlate = true;
-            enterPlateTimes++;
+            enterPlateTimes++;   
+        }
+        if (other.transform.name == "Player")
+        {
+            startAudio = true;
         }
     }
 
@@ -70,9 +110,24 @@ public class PlateScript : MonoBehaviour
             {
                 PlatePorc += IncreaseAmout * 0.005f * Time.deltaTime;
                 ScpCrystal.FillPorc = PlatePorc;
+                onPlate = true;
+
+
             }
       
         }
     }
-   
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.name == "Player")
+        {
+            if (!PlateCompleted)
+            {
+                StopAudio = true;
+            }
+            onPlate = false;
+
+        }
+    }
+
 }

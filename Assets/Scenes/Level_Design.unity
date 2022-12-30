@@ -770,10 +770,10 @@ MonoBehaviour:
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
   toLobby: 0
-  toGame: 1
+  toGame: 0
   goToStage: 0
   goToShop: 0
-  toTutorial: 0
+  toTutorial: 1
   TutoNpc: {fileID: 8078951896517334181, guid: 2c287dc846a96894fb17920cc5f01c30, type: 3}
   playerIns: {fileID: 0}
   saveBossRoom: {fileID: 0}
@@ -17662,8 +17662,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 734296009}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!65 &1179573644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25297,8 +25299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 706916642}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!65 &1735211948
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27987,8 +27991,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 6033600161179289556}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!65 &128403436423957322
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34225,8 +34231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 2068755210909594087}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!1 &2060016893127069844
 GameObject:
   m_ObjectHideFlags: 0
@@ -46831,8 +46839,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 1542122063208046226}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!64 &4733499141099049684
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62752,8 +62762,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door: {fileID: 6562854344969454085}
   canCloseDoor: 0
+  playSound: 0
   timer: 0
   surv: {fileID: 0}
+  deffcont: {fileID: 0}
 --- !u!1 &7635024693073793538
 GameObject:
   m_ObjectHideFlags: 0
