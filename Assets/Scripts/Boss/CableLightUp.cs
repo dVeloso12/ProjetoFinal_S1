@@ -7,13 +7,17 @@ public class CableLightUp : MonoBehaviour
     [SerializeField] Material cableLight;
     [SerializeField] GameObject plate;
 
+    AudioSource audio;
+
     public bool canLightUp;
     public float speed;
 
     float timerLight;
+    bool soundOn;
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         resetValues();
     }
 
@@ -21,16 +25,23 @@ public class CableLightUp : MonoBehaviour
     {
         if (canLightUp) cableLight.SetFloat("_LightUp", 1);
         else cableLight.SetFloat("_LightUp", 0);
+
+        if(soundOn)
+        {
+            audio.Play();
+        }
     }
 
     public void IncreaseLight()
     {
         canLightUp = true;
+        soundOn = true;
         timerLight += Time.deltaTime * speed;
         cableLight.SetFloat("_Fill", timerLight);
+      
         if(timerLight >= 17f)
         {
-            timerLight = 17f;
+            timerLight = 17f;  
             plate.GetComponent<PlateBossRoom>().plateReady = true;
         }
     }

@@ -25,13 +25,16 @@ public class RedHollowControl : MonoBehaviour{
     [SerializeField] BeamDmg beam;
     [SerializeField] float beamDmg;
 
-
-
+    AudioSource audio;
+    [SerializeField] AudioClip charge, attack;
     public float timer;
+
+    [SerializeField] bool isTutorial;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(!isTutorial)audio = GetComponent<AudioSource>();
         animator = transform.GetChild(0).GetComponent<Animator>();
         beam.dmg = beamDmg;
         beam.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -52,6 +55,7 @@ public class RedHollowControl : MonoBehaviour{
                 if(timer >= maxChargeStart)
                 {
                     stateBeam = StateBeam.ChargeBeam;
+                    if (!isTutorial) audio.Stop();
                     timer = 0;
                 }
             }
@@ -89,8 +93,33 @@ public class RedHollowControl : MonoBehaviour{
                     
                 }
             }
+           if(!isTutorial)AudioManager();
         }
 
+    }
+
+    void AudioManager()
+    {
+        if (Time.deltaTime != 0)
+        {
+            if (stateBeam == StateBeam.ChargeStart)
+            {
+                audio.PlayOneShot(charge);
+
+            }
+            else if (stateBeam == StateBeam.BeamAttack||stateBeam == StateBeam.ChargeBeam)
+            {
+                audio.PlayOneShot(attack);
+            }
+            else if (stateBeam == StateBeam.End)
+            {
+                audio.Stop();
+            }
+        }
+        else
+        {
+            audio.Pause();
+        }
     }
 
     public void Play_Charging() {

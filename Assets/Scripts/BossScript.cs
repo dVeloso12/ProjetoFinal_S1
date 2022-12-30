@@ -52,8 +52,12 @@ public class BossScript : MonoBehaviour
     float attackTimer;
     public bool isTutorial = false;
 
+    AudioSource audio;
+    bool audioPlay;
+
     private void Start()
     {
+        if(!isTutorial) audio = GetComponent<AudioSource>();
         border = GameObject.Find("Border").GetComponent<Image>();
         bossHp = GameObject.Find("bosshp").GetComponent<Image>();
         border.enabled = false;
@@ -73,18 +77,8 @@ public class BossScript : MonoBehaviour
         UIManager();
         BossState();
         AttackLogic();
+        if(isTutorial)AudioManager();
 
-        RaycastHit hit;
-        int layerMask = 1 << 6;
-
-        //if (Physics.Raycast(pointOfBarrel.transform.position, pointOfBarrel.transform.forward, out hit, Mathf.Infinity,layerMask))
-        //{
-        //    Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.green);
-        //}
-        //else
-        //{
-        //    Debug.DrawRay(pointOfBarrel.transform.position, pointOfBarrel.transform.forward * 100f, Color.red);
-        //}
     }
    
     void UpdateBossPosition()
@@ -206,6 +200,21 @@ public class BossScript : MonoBehaviour
         }
     }
 
+    void AudioManager()
+    {
+        if(Time.deltaTime != 0 )
+        {
+            if(audioPlay)
+            {
+                audio.Play();
+                audioPlay = false;
+            }
+
+        }else
+        {
+            audio.Pause();
+        }
+    }
     void AttackLogic()
     {
         if(type == AttackType.NormalAttack)
@@ -214,6 +223,7 @@ public class BossScript : MonoBehaviour
                 {
                     while (fireTimer >= 1f / RateOfFire)
                     {
+                        audioPlay = true;
                         Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation).GetComponent<BulletScript>().setDmg(BossNormalAttackDmg);
              
                         fireTimer -= 1f / RateOfFire;

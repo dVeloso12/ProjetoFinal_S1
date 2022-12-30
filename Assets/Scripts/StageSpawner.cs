@@ -9,7 +9,7 @@ public class StageSpawner : MonoBehaviour
     Encounters Encounter;
 
     [SerializeField] GameObject REAPER;
-
+    [SerializeField] bool Boss;
 
     //public List<GameObject> EnemiesList;
 
@@ -28,11 +28,20 @@ public class StageSpawner : MonoBehaviour
 
     GameManager gm;
 
+    AudioSource audio;
+    bool isPlaying, doAudio;
+    float soundTimer;
+
+
     void Start()
     {
+        if(!Boss)
+        {
+            audio = GetComponent<AudioSource>();
+            audio.volume = 0.5f;
+        }
+       
         gm = FindObjectOfType<GameManager>();
-
-
 
     }
 
@@ -49,8 +58,34 @@ public class StageSpawner : MonoBehaviour
             }
             Timer_SemiEncounter -= Time.deltaTime;
         }
+        if(!Boss) SoundManager();
     }
+    void SoundManager()
+    {
+        if (Time.deltaTime != 0)
+        {
+            if (isPlaying)
+            {
+                soundTimer += Time.deltaTime;
+                if (doAudio)
+                {
+                    audio.Play();
+                    doAudio = false;
+                }
+                if (soundTimer > audio.clip.length)
+                {
+                    doAudio = true;
+                    soundTimer = 0f;
+                }
+            }
 
+        }
+        else
+        {
+            audio.Pause();
+            doAudio = true;
+        }
+    }
     void SpawnEnemies()
     {
         Debug.Log(activated);
@@ -135,6 +170,12 @@ public class StageSpawner : MonoBehaviour
         {
             Debug.Log(activated+"asd");
             activated = true;
+            if(!Boss)
+            {
+                isPlaying = true;
+                doAudio = true;
+            }
+        
             if (Encounter == null)
             {
                 int R = Random.Range(0, PossibleEncounters.Count - 1);

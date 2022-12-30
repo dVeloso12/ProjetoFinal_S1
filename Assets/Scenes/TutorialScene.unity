@@ -15604,7 +15604,10 @@ MonoBehaviour:
   maxBeamAttack: 10
   beam: {fileID: 3302375033883514249}
   beamDmg: 2
+  charge: {fileID: 0}
+  attack: {fileID: 0}
   timer: 0
+  isTutorial: 1
 --- !u!114 &2845320806004312576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96251,6 +96254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PossibleEncounters: []
   REAPER: {fileID: 0}
+  Boss: 0
   distance: 30
   spawnpoint: {fileID: 6319124576725952955}
 --- !u!1 &6586326017436713606
@@ -112449,6 +112453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 7650722040631145072}
+  isTutorial: 1
 --- !u!1 &6879306959657709696
 GameObject:
   m_ObjectHideFlags: 0
@@ -112836,6 +112841,7 @@ MonoBehaviour:
   - {fileID: 3987396799415157454}
   - {fileID: 6020749564017550526}
   canPlayAudio: 0
+  isTutorial: 1
 --- !u!33 &7067980166878415628
 MeshFilter:
   m_ObjectHideFlags: 0

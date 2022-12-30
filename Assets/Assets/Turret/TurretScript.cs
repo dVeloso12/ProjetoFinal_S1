@@ -30,9 +30,12 @@ public class TurretScript : MonoBehaviour
     public Vector3 ofseet;
     public bool isTutorial = false;
 
+    AudioSource audio;
+
     private void Start()
     {
         bosscp = Boss.GetComponent<BossScript>();
+        audio = GetComponent<AudioSource>();
         saveMaxHp = TurretHp;        
         HpBar.enabled = false;
         HpBar.fillAmount = 1f;
@@ -133,6 +136,7 @@ public class TurretScript : MonoBehaviour
         {
             while (fireTimer >= 1f / RateOfFire)
             {
+                audio.Play();
                 Instantiate(bulletPrefab, pointOfBarrel.transform.position, pointOfBarrel.transform.rotation).GetComponent<BulletScript>().setDmg(Damage);
                 fireTimer -= 1f / RateOfFire;
             }

@@ -16,8 +16,15 @@ public class SurvivalScript : MonoBehaviour
 
     public bool isSurvivalCompleted;
 
+    AudioSource audio;
+    bool isPlaying,doAudio;
+    float soundTimer;
+
     private void Awake()
     {
+        audio = GetComponent<AudioSource>();
+        audio.volume = 0.5f;
+
         gm = FindObjectOfType<GameManager>();
         SurvText = GameObject.Find("SurvText").GetComponent<TextMeshProUGUI>();
         CompletePerc = nObjective;
@@ -40,6 +47,7 @@ public class SurvivalScript : MonoBehaviour
                 survivalDoor.CompleteSurvival();
                 completed = true;
                 SurvText.text = "Stage completed!";
+                audio.Stop();
             }
 
             if (ReaperAttempt && nObjective <= CompletePerc * .2f)
@@ -51,6 +59,34 @@ public class SurvivalScript : MonoBehaviour
         else
             SurvText.text = "";
 
+        SoundManager();
+
+    }
+
+    void SoundManager()
+    {
+        if (Time.deltaTime != 0)
+        {
+            if (isPlaying)
+            {
+                soundTimer += Time.deltaTime;
+                if (doAudio)
+                {
+                    audio.Play();
+                    doAudio = false;
+                }
+                if(soundTimer > audio.clip.length)
+                {
+                    doAudio = true;
+                    soundTimer = 0f;
+                }
+            }
+
+        }else
+        {
+            audio.Pause();
+            doAudio = true;
+        }
     }
     
 
@@ -59,6 +95,8 @@ public class SurvivalScript : MonoBehaviour
         if (other.tag == "Player")
         {
             gm.surv = this;
+            isPlaying = true;
+            doAudio = true;
             gm.SurvStage = true;
         }
     }

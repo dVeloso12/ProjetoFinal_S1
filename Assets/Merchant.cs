@@ -6,11 +6,28 @@ public class Merchant : MonoBehaviour
 {
     public bool isTutorial;
     NpcMsgDisplay npc;
+    AudioSource audio;
+    bool doAudio;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        if(isTutorial) npc = FindObjectOfType<NpcMsgDisplay>();                   
+        if(isTutorial) npc = FindObjectOfType<NpcMsgDisplay>();
+        audio = GetComponent<AudioSource>();
+    }
+    private void Update()
+    {
+        SoundManager();
+    }
+
+    void SoundManager()
+    {
+       if(doAudio)
+        {
+            audio.Play();
+            doAudio = false;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -31,6 +48,14 @@ public class Merchant : MonoBehaviour
             }
                 
         }
+     
     }
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            doAudio = true;
+        }
+    }
+
 }
