@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 DashDir;
     public Image dashIcon;
     public float fillAmount;
-
+    public AudioSource footspets,dashsound;
+    bool moving,inair;
 
     public Transform cameraTransform;
 
@@ -73,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         dashIcon = GameObject.Find("DashImage").GetComponent<Image>();
 
         gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
+        footspets.pitch = 1.3f + gm.MoveSpeedMod * .1f;
+        footspets.Play();
+        footspets.Pause();
+
     }
 
     private void Awake()
@@ -147,15 +152,20 @@ public class PlayerMovement : MonoBehaviour
         {
             IsRunning = false;
             playerSpeed /= runningModifier;
+            footspets.pitch = 1.1f + gm.MoveSpeedMod * .2f;
+
         }
         else
         {
             IsRunning = true;
             playerSpeed *= runningModifier;
+            footspets.pitch = 1.3f + gm.MoveSpeedMod * .2f;
+
         }
 
 
-        if(gunAnimator == null) gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
+
+        if (gunAnimator == null) gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
 
         if(gunAnimator != null)
         {
@@ -182,7 +192,10 @@ public class PlayerMovement : MonoBehaviour
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
+            //StartCoroutine(StopSteps());
+            inair = false;
         }
+        else inair = true;
 
 
         //Vector3 camRotation = cameraTransform.eulerAngles;
@@ -197,13 +210,29 @@ public class PlayerMovement : MonoBehaviour
 
         move.Normalize(); //para evitar movimento mais r�pido na diagonal
 
+        if(moving && move.magnitude < .1f||inair)
+        {
+            
+            moving = false;
+
+            footspets.Pause();
+        }
+        if(!moving && move.magnitude > .1f&&!inair)
+        {
+            moving = true;
+            footspets.UnPause();
+            
+        }
+
+        
+
         if (DashActive)
         {
             if (VDashTime > 0)
             {
                 controller.Move(DashDir * DashSpeed * Time.deltaTime);
                 VDashTime -= Time.deltaTime;
-
+                dashsound.Play();
             }
             else
             {
@@ -253,6 +282,23 @@ public class PlayerMovement : MonoBehaviour
         
         _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = verti * 2;
     }
+
+     IEnumerator StopSteps()
+    {
+        yield return new WaitForSeconds(.5f);
+
+        if (groundedPlayer || playerVelocity.y < 0)
+        {
+            
+            inair = false;
+        }
+        else inair = true;
+
+    }
+
+
+
+
 
 }
 

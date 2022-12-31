@@ -54,7 +54,7 @@ public class Shotgun : GunController
             qauntity *= Ammo;
             Ammo = 1;
         }
-        
+        sound.Play();
 
         for (int i = 0; i < qauntity; i++)
         {
@@ -148,6 +148,7 @@ public class Shotgun : GunController
         base.Shoot();
         if (Modifier)
         {
+            
             FireRateCounting += PowerShotCD;
             StartCoroutine(NormalMat(FireRateCounting));
         }

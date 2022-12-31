@@ -10,6 +10,7 @@ public class GranadeEffect : MonoBehaviour
     public float dmg;
     public GameObject Explosion;
     public int size;
+    public AudioSource explosionSound;
 
     bool Exploded = false;
     void Start()
@@ -18,6 +19,7 @@ public class GranadeEffect : MonoBehaviour
 
         rb.AddForce(transform.forward*throwForce, ForceMode.Impulse);
         
+
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class GranadeEffect : MonoBehaviour
         if (timer <= 0&&!Exploded)
             Explode();
         timer -= Time.deltaTime;
+       
     }
 
     void Explode()
@@ -57,15 +60,16 @@ public class GranadeEffect : MonoBehaviour
 
         }
         Instantiate(Explosion, transform.position,Quaternion.identity);
-        Destroy(gameObject);
+
+        explosionSound.Play();
+        StartCoroutine(BigPop());
 
     }
 
 
     IEnumerator BigPop()
     {
-        Debug.Log("sad");
-        transform.localScale *= 1.8f;
+        
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
 
