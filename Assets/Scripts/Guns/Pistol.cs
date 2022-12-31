@@ -31,7 +31,8 @@ public class Pistol : GunController
 
     protected override void Shoot()
     {
-    
+
+        sound.Play();
 
         if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance,layerMask))
         {

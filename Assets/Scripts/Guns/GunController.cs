@@ -45,6 +45,9 @@ public class GunController : MonoBehaviour
     [SerializeField] TextMeshProUGUI bullettxt;
 
 
+    public AudioSource sound,reload;
+
+    
     public Transform _camera;
 
     public CinemachineVirtualCamera Camera;
@@ -164,6 +167,8 @@ public class GunController : MonoBehaviour
         muzzleFlash.Play();
 
 
+        
+
         FireRateCounting = FireRate/gm.FireRateMod;
 
         Ammo--;
@@ -180,6 +185,7 @@ public class GunController : MonoBehaviour
         if (Ammo < AmmoClipSize)
         {
             ARAnimator.SetTrigger("Reload");
+            reload.Play();
             Ammo = 0;
         }
         //StartCoroutine(Reload(ReloadSpeed));

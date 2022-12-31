@@ -9,7 +9,7 @@ public class IceNade : MonoBehaviour
     public float duration;
     public GameObject Explosion;
     public int size;
-
+    public AudioSource explosionSound;
     bool Exploded = false;
     void Start()
     {
@@ -57,15 +57,16 @@ public class IceNade : MonoBehaviour
 
         }
         Instantiate(Explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        explosionSound.Play();
+        StartCoroutine(BigPop());
+
 
     }
 
 
     IEnumerator BigPop()
     {
-        Debug.Log("sad");
-        transform.localScale *= 1.8f;
+        
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
 

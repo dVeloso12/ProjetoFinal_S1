@@ -21,6 +21,8 @@ public class AssaultRifle : GunController
     [HideInInspector]
     public float SniperCD = 2;
 
+    public AudioSource sniperSound;
+
     void Start()
     {
         base.Start();
@@ -64,6 +66,7 @@ public class AssaultRifle : GunController
     {
         if (FireRateCounting <= 0 && Ammo > 0)
         {
+            sound.Play();
             Vector3 ShootDir = _camera.forward;
 
             ShootDir.x += Random.Range(-RandomDeviation, RandomDeviation);
@@ -149,7 +152,7 @@ public class AssaultRifle : GunController
             int i = 0,j=0;
             Vector3 ShootDir = _camera.forward;
 
-            
+            sniperSound.Play();
 
 
             if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance * 2f))
