@@ -77,7 +77,7 @@ public class GameplayOrganize : MonoBehaviour
         {
             if (savenpc != null) Destroy(savenpc);
             UnloadTutorial();
-            gm.ResetPlayer();
+            //gm.ResetPlayer();
           tutorialFinished = false;
         }    
         if(toGame)

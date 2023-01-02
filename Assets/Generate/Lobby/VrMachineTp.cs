@@ -7,7 +7,7 @@ public class VrMachineTp : MonoBehaviour
     public GameplayOrganize game;
     void Start()
     {
-        game = GameObject.Find("GameManager").GetComponent<GameplayOrganize>();
+        game = GameObject.FindObjectOfType<GameplayOrganize>();
     }
 
 
