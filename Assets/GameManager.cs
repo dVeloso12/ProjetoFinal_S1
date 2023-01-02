@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public SurvivalScript surv;
 
-    public bool SurvStage = false,CleanShop = true;
+    public bool SurvStage = false,CleanShop = true,isTurorial;
 
     public float DifficultyMod = 1f,ReaperSpawn=10;
 
@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
         TempUpgrade = new List<Upgrade>(Upgrades);
         CreateUpgradeLists();
         SaveUiNames();
+        isTurorial = GetComponent<GameplayOrganize>().toTutorial;
     }
 
     public void ResetPlayer()
@@ -99,6 +100,7 @@ public class GameManager : MonoBehaviour
         MoneyMod = 1;
         Money = 0;
         DifficultyMod = 1;
+        ShopUpgardes.Clear();
 
     }
    

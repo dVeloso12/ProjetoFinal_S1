@@ -77,7 +77,7 @@ public class BossScript : MonoBehaviour
         UIManager();
         BossState();
         AttackLogic();
-        if(isTutorial)AudioManager();
+        if(!isTutorial)AudioManager();
 
     }
    

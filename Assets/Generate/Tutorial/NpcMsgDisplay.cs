@@ -198,6 +198,7 @@ public class NpcMsgDisplay : MonoBehaviour
                 }
             default:
                 TutorialDone = true;
+                FindObjectOfType<GameManager>().isTurorial = false;
                 break;
         }
     }

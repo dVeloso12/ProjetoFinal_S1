@@ -54,6 +54,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        FindObjectOfType<GunController>().PauseManager();
         PauseMenuManager.instance.setMenu();
     }
     public void UnloadPauseMenu()

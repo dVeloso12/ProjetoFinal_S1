@@ -26,7 +26,7 @@ public class CableLightUp : MonoBehaviour
         if (canLightUp) cableLight.SetFloat("_LightUp", 1);
         else cableLight.SetFloat("_LightUp", 0);
 
-        if(soundOn)
+        if(soundOn&&!FindObjectOfType<GameManager>().isTurorial)
         {
             audio.Play();
         }

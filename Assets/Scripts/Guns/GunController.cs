@@ -234,4 +234,9 @@ public class GunController : MonoBehaviour
         UpdateBulletTxt();
     }
 
+
+    public void  PauseManager()
+    {
+        FireRateCounting = .1f;
+    }
 }

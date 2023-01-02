@@ -32,16 +32,20 @@ public class StageSpawner : MonoBehaviour
     bool isPlaying, doAudio;
     float soundTimer;
 
-
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
     void Start()
     {
-        if(!Boss)
+        gm = FindObjectOfType<GameManager>();
+        if (!Boss)
         {
             audio = GetComponent<AudioSource>();
             audio.volume = 0.5f;
         }
+        Debug.Log(gm.name);
        
-        gm = FindObjectOfType<GameManager>();
 
     }
 
@@ -166,23 +170,26 @@ public class StageSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (true)
         {
-            Debug.Log(activated+"asd");
-            activated = true;
-            if(!Boss)
+            if (other.tag == "Player"&& enabled)
             {
-                isPlaying = true;
-                doAudio = true;
-            }
-        
-            if (Encounter == null)
-            {
-                int R = Random.Range(0, PossibleEncounters.Count - 1);
-                Encounter = PossibleEncounters[R];
-                Debug.Log("Spwan" + other.name + other.transform.position);
-                SpawnEnemies();
-                GetComponent<BoxCollider>().enabled = false;
+                Debug.Log(activated + "asd");
+                activated = true;
+                if (!Boss)
+                {
+                    isPlaying = true;
+                    doAudio = true;
+                }
+
+                if (Encounter == null)
+                {
+                    int R = Random.Range(0, PossibleEncounters.Count - 1);
+                    Encounter = PossibleEncounters[R];
+                    Debug.Log("Spwan" + other.name + other.transform.position);
+                    SpawnEnemies();
+                    GetComponent<BoxCollider>().enabled = false;
+                }
             }
         }
     }
