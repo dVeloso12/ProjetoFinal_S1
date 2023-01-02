@@ -118,6 +118,11 @@ public class GunController : MonoBehaviour
 
 
         ARAnimator = GetComponent<Animator>();
+
+        if(ARAnimator == null)
+        {
+            ARAnimator = GetComponentInChildren<Animator>();
+        }
         //origin = GunPos;
 
         RecoilScript = GunDirectionOBJ.GetComponent<Recoil>();
