@@ -266,6 +266,11 @@ PrefabInstance:
       objectReference: {fileID: 3724787768183518131}
     - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
+      propertyPath: FireRate
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
       propertyPath: sniperSound
       value: 
       objectReference: {fileID: 656208325951261321}
@@ -337,7 +342,7 @@ PrefabInstance:
     - target: {fileID: 2115734720981359589, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: FireRate
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2115734720981359589, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -544,6 +549,11 @@ PrefabInstance:
       propertyPath: reload
       value: 
       objectReference: {fileID: 5763774661298077873}
+    - target: {fileID: 6744843803466863544, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: FireRate
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7136800257006318545, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.x
