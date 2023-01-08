@@ -625,8 +625,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1333640302236148367}
-  - component: {fileID: 7842334066373610171}
   - component: {fileID: 3615314856193884029}
+  - component: {fileID: 3193260035777278636}
   m_Layer: 0
   m_Name: SciFiShotgun_Anims01
   m_TagString: Untagged
@@ -656,48 +656,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7842334066373610171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858256450243950645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1ffa2bea83ace44a9099491ace5cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 0}
-  hiteffect: {fileID: 6053650348763132647}
-  backKick: 0
-  recoilY: 0
-  recoilZ: 0
-  snapiness: 0
-  returnSpeed: 0
-  GunDirectionOBJ: {fileID: 0}
-  Player: {fileID: 0}
-  ShotingPlace: {fileID: 126178334482453677}
-  FireRate: 2
-  dmg: 13
-  ReloadSpeed: 2
-  AmmoClipSize: 7
-  bullettxt: {fileID: 0}
-  _camera: {fileID: 0}
-  Camera: {fileID: 0}
-  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
-    type: 3}
-  Distance: 15
-  DwonSights: {fileID: 0}
-  dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
-  NormalTrail: {fileID: 0}
-  barrelMuzzle: {fileID: 0}
-  layerMask: 0
-  Spread: 1
-  Pellets: 9
-  PowerShotCD: 10
-  position: {x: -1.72, y: -3, z: -0.24}
-  shotgun: {fileID: 0}
 --- !u!95 &3615314856193884029
 Animator:
   serializedVersion: 4
@@ -718,6 +676,52 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3193260035777278636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858256450243950645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1ffa2bea83ace44a9099491ace5cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 0}
+  hiteffect: {fileID: 0}
+  backKick: 7
+  recoilY: 0.5
+  recoilZ: 20
+  snapiness: 5
+  returnSpeed: 5
+  GunDirectionOBJ: {fileID: 0}
+  Player: {fileID: 0}
+  weaponAudioSource: {fileID: 0}
+  ShotingPlace: {fileID: 0}
+  FireRate: 1.5
+  dmg: 13
+  ReloadSpeed: 2
+  AmmoClipSize: 7
+  bullettxt: {fileID: 0}
+  sound: {fileID: 0}
+  reload: {fileID: 0}
+  _camera: {fileID: 0}
+  Camera: {fileID: 0}
+  MarkSprite: {fileID: 5045060902409239707, guid: a2e4305f9dca2e9449cbf4b9c6c03c92,
+    type: 3}
+  Distance: 15
+  DwonSights: {fileID: 0}
+  dmgText: {fileID: 3776391706775092100, guid: 6c611e2bd5d94904e89b4fabc925c75b, type: 3}
+  NormalTrail: {fileID: 7046537910668669121, guid: c6463de4b4f59a844870637d4af8d5b7,
+    type: 3}
+  barrelMuzzle: {fileID: 0}
+  layerMask: 0
+  Spread: 1
+  Pellets: 9
+  PowerShotCD: 10
+  position: {x: -0.02, y: -4.29, z: 0.11}
+  shotgun: {fileID: 0}
 --- !u!1 &2118266452585515899
 GameObject:
   m_ObjectHideFlags: 0
