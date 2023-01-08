@@ -46,9 +46,8 @@ public class SurvivalScript : MonoBehaviour
             {
                 GetComponent<StageSpawner>().activated = false;
                 survivalDoor.CompleteSurvival();
-                GetComponent<StageSpawner>().activated = false;
                 completed = true;
-                SurvText.text = "";
+                SurvText.text = "Stage completed!";
                 audio.Stop();
             }
 
@@ -91,8 +90,6 @@ public class SurvivalScript : MonoBehaviour
         }
     }
     
-    
-
 
     private void OnTriggerEnter(Collider other)
     {
