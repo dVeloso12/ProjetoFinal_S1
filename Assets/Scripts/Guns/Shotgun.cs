@@ -24,8 +24,6 @@ public class Shotgun : GunController
 
     float animationStartSpeed;
 
-    [SerializeField] AudioClip shotgunSound;
-
     void Start()
     {
         base.Start();
@@ -56,8 +54,7 @@ public class Shotgun : GunController
             qauntity *= Ammo;
             Ammo = 1;
         }
-        weaponAudioSource.clip = shotgunSound;
-        weaponAudioSource.Play();
+        sound.Play();
 
         for (int i = 0; i < qauntity; i++)
         {

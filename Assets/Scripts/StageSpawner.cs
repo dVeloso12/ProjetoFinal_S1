@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.VFX;
+
 public class StageSpawner : MonoBehaviour
 {
     [SerializeField] List<Encounters> PossibleEncounters;
@@ -10,9 +10,6 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] GameObject REAPER;
     [SerializeField] bool Boss;
-
-    [SerializeField] float VFXTimer;
-    [SerializeField] GameObject spawnEffectPrefab;
 
     //public List<GameObject> EnemiesList;
 
@@ -128,9 +125,6 @@ public class StageSpawner : MonoBehaviour
                         {
                             sucess = true;
                             gm.EnemyList.Add(Instantiate(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
-                            Debug.Log("Instantiating");
-                            //StartCoroutine(InstantiateEnemy(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
-
                         }
 
                     }
@@ -144,6 +138,7 @@ public class StageSpawner : MonoBehaviour
                 Current_SemiEncounter = 0;
         }
     }
+
 
     public void ReaperSpawn()
     {
@@ -169,32 +164,11 @@ public class StageSpawner : MonoBehaviour
                 {
                     sucess = true;
                     gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
-                    Debug.Log("Instantiating");
-                    //StartCoroutine(InstantiateEnemy(REAPER, hit.position, Quaternion.identity));
                 }
             }
         }
     }
 
-    public IEnumerator InstantiateEnemy(GameObject toSpawn, Vector3 PositionToSpawn, Quaternion RotationToSpawn)
-    {
-
-        Debug.Log("Inside Func");
-
-        GameObject spawnEffect = Instantiate(spawnEffectPrefab, PositionToSpawn, RotationToSpawn);
-
-        VFXTimer = spawnEffect.GetComponent<VisualEffect>().GetFloat("Lifetime");
-
-        Debug.Log("VFX Timer : " + VFXTimer);
-
-        spawnEffect.GetComponent<VisualEffect>().Play(); 
-
-        yield return new WaitForSeconds(VFXTimer);
-
-        GameObject.Destroy(spawnEffect);
-
-        gm.EnemyList.Add(Instantiate(toSpawn, PositionToSpawn, RotationToSpawn));
-    }
 
     private void OnTriggerEnter(Collider other)
     {
