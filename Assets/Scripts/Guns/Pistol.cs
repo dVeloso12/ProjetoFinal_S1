@@ -7,12 +7,14 @@ using UnityEngine.InputSystem;
 public class Pistol : GunController
 {
 
-    [SerializeField]public int CritRate=10;
-    [SerializeField]public float CritDmg=1.5f;
+    [SerializeField] public int CritRate = 10;
+    [SerializeField] public float CritDmg = 1.5f;
 
     [SerializeField] Vector3 position;
 
     Animator pistolAnimator;
+
+    [SerializeField] AudioClip pistolSound;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +36,10 @@ public class Pistol : GunController
     protected override void Shoot()
     {
 
-        sound.Play();
+        weaponAudioSource.clip = pistolSound;
+        weaponAudioSource.Play();
 
-        if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance,layerMask))
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance, layerMask))
         {
             Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
             Quaternion.LookRotation(hit.normal), hit.transform).transform.Rotate(Vector3.right * 90);
@@ -61,7 +64,7 @@ public class Pistol : GunController
                 dmgnum.transform.Rotate(Vector3.up * 180);
                 if (r < CritRate)
                     color = Color.yellow;
-                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color,hit.transform);
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color, hit.transform);
             }
 
             if (hit.transform.tag == "Head")
@@ -80,7 +83,7 @@ public class Pistol : GunController
                 dmgnum.transform.Rotate(Vector3.up * 180);
                 if (r < CritRate)
                     color = Color.cyan;
-                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color,hit.transform);
+                dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, color, hit.transform);
             }
 
             //Dano no Boss
@@ -114,5 +117,5 @@ public class Pistol : GunController
         base.Shoot();
     }
 
-   
+
 }

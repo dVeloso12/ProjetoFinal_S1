@@ -7,7 +7,7 @@ using Cinemachine;
 
 public class GunController : MonoBehaviour
 {
-    
+
     [SerializeField] protected ParticleSystem muzzleFlash;
     [SerializeField] protected ParticleSystem hiteffect;
 
@@ -20,13 +20,18 @@ public class GunController : MonoBehaviour
     protected PlayerBullets playerBulletsScript;
     [SerializeField] protected GameObject Player;
 
+
+    [Header("Sounds")]
+    [SerializeField] protected AudioSource weaponAudioSource;
+    [SerializeField] protected AudioClip reloadSound;
+
     //public GameObject bullet;
 
     public Transform ShotingPlace;
 
     protected PlayerInput playerInput;
 
-    protected bool shoot=false;
+    protected bool shoot = false;
 
     public float FireRate;
 
@@ -41,13 +46,11 @@ public class GunController : MonoBehaviour
 
     public float ReloadSpeed;
     public int AmmoClipSize;
-    protected int Ammo,orAmmo;
+    protected int Ammo, orAmmo;
     [SerializeField] TextMeshProUGUI bullettxt;
 
 
-    public AudioSource sound,reload;
 
-    
     public Transform _camera;
 
     public CinemachineVirtualCamera Camera;
@@ -62,7 +65,7 @@ public class GunController : MonoBehaviour
 
     Transform origin;
 
-    bool AimingDown=false;
+    bool AimingDown = false;
 
     public GameObject dmgText;
 
@@ -102,7 +105,7 @@ public class GunController : MonoBehaviour
         playerInput.Player.Shoot.performed += ActivateShoot;
         playerInput.Player.Reload.performed += ActivateReload;
 
-        
+
         playerInput.Player.Modifier.performed += _Modifier;
         playerInput.Player.Modifier.canceled += _Modifier;
 
@@ -119,7 +122,7 @@ public class GunController : MonoBehaviour
 
         ARAnimator = GetComponent<Animator>();
 
-        if(ARAnimator == null)
+        if (ARAnimator == null)
         {
             ARAnimator = GetComponentInChildren<Animator>();
         }
@@ -131,15 +134,15 @@ public class GunController : MonoBehaviour
     }
     private void OnEnable()
     {
-        if(RecoilScript == null) RecoilScript = GunDirectionOBJ.GetComponent<Recoil>();
+        if (RecoilScript == null) RecoilScript = GunDirectionOBJ.GetComponent<Recoil>();
 
         RecoilScript.ChangeRecoilValues(snapiness, returnSpeed, gameObject);
     }
 
     // Update is called once per frame
-    protected  virtual void Update()
+    protected virtual void Update()
     {
-        if (shoot&&!isRunning)
+        if (shoot && !isRunning)
             Shoot();
 
         FireRateCounting -= Time.deltaTime;
@@ -152,13 +155,13 @@ public class GunController : MonoBehaviour
     }
     protected void SetFOV(float fov)
     {
-       Camera.m_Lens.FieldOfView = fov;
+        Camera.m_Lens.FieldOfView = fov;
     }
 
     public virtual void ActivateShoot(InputAction.CallbackContext obj)
     {
 
-        if(FireRateCounting<=0 && Ammo>0 )//&& !isRunning)
+        if (FireRateCounting <= 0 && Ammo > 0)//&& !isRunning)
             shoot = !shoot;
 
 
@@ -172,9 +175,9 @@ public class GunController : MonoBehaviour
         muzzleFlash.Play();
 
 
-        
 
-        FireRateCounting = FireRate/gm.FireRateMod;
+
+        FireRateCounting = FireRate / gm.FireRateMod;
 
         Ammo--;
 
@@ -190,7 +193,8 @@ public class GunController : MonoBehaviour
         if (Ammo < AmmoClipSize)
         {
             ARAnimator.SetTrigger("Reload");
-            reload.Play();
+            weaponAudioSource.clip = reloadSound;
+            weaponAudioSource.Play();
             Ammo = 0;
         }
         //StartCoroutine(Reload(ReloadSpeed));
@@ -235,7 +239,7 @@ public class GunController : MonoBehaviour
     }
 
 
-    public void  PauseManager()
+    public void PauseManager()
     {
         FireRateCounting = .1f;
     }

@@ -8,10 +8,10 @@ using TMPro;
 public class AssaultRifle : GunController
 {
 
-    public float RandomDeviation,SniperMult;
+    public float RandomDeviation, SniperMult;
     GameObject scope;
     [SerializeField] GameObject Gun;
-    [SerializeField]TrailRenderer btrail;
+    [SerializeField] TrailRenderer btrail;
 
     [SerializeField] Vector3 position;
 
@@ -21,14 +21,15 @@ public class AssaultRifle : GunController
     [HideInInspector]
     public float SniperCD = 2;
 
-    public AudioSource sniperSound;
+    [SerializeField] AudioClip sniperSound, autoSound;
+
 
     void Start()
     {
         base.Start();
         playerInput.Player.Shoot.canceled += ActivateShoot;
         scope = GameObject.Find("Scope");
-        scope.GetComponent<Image>().enabled=true;
+        scope.GetComponent<Image>().enabled = true;
         scope.SetActive(false);
         transform.localPosition = position;
     }
@@ -38,11 +39,11 @@ public class AssaultRifle : GunController
     {
         base.Update();
         transform.localPosition = position;
-       
-        
+
+
     }
 
-    
+
     public override void ActivateShoot(InputAction.CallbackContext obj)
     {
 
@@ -56,7 +57,7 @@ public class AssaultRifle : GunController
     protected override void Shoot()
     {
         if (Modifier)
-        ShootMod();
+            ShootMod();
         else ShootBase();
 
 
@@ -66,7 +67,10 @@ public class AssaultRifle : GunController
     {
         if (FireRateCounting <= 0 && Ammo > 0)
         {
-            sound.Play();
+
+            weaponAudioSource.clip = autoSound;
+            weaponAudioSource.Play();
+
             Vector3 ShootDir = _camera.forward;
 
             ShootDir.x += Random.Range(-RandomDeviation, RandomDeviation);
@@ -76,7 +80,7 @@ public class AssaultRifle : GunController
 
             //var tracer = Instantiate(NormalTrail, barrelMuzzle.transform.position, Quaternion.identity);
             //tracer.AddPosition(barrelMuzzle.transform.position);
-            
+
 
             //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward);
 
@@ -97,7 +101,7 @@ public class AssaultRifle : GunController
                     Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white, hit.transform);
                 }
                 if (hit.transform.tag == "Head")
                 {
@@ -108,7 +112,7 @@ public class AssaultRifle : GunController
                     Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red, hit.transform);
                 }
                 //Dano no Boss
 
@@ -123,7 +127,7 @@ public class AssaultRifle : GunController
 
                 Debug.LogWarning("Shot : " + hit.transform.tag);
 
-                if(playerBulletsScript == null)
+                if (playerBulletsScript == null)
                 {
                     Debug.LogError("Player bullets script is null");
                     playerBulletsScript = Player.gameObject.GetComponent<PlayerBullets>();
@@ -140,19 +144,20 @@ public class AssaultRifle : GunController
                 //Debug.DrawRay(_camera.position, ShootDir * hit.distance, Color.green);
 
             }
-     
+
             base.Shoot();
 
         }
     }
     void ShootMod()
     {
-        if(FireRateCounting <= 0 && Ammo > 0)
+        if (FireRateCounting <= 0 && Ammo > 0)
         {
-            int i = 0,j=0;
+            int i = 0, j = 0;
             Vector3 ShootDir = _camera.forward;
 
-            sniperSound.Play();
+            weaponAudioSource.clip = sniperSound;
+            weaponAudioSource.Play();
 
 
             if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance * 2f))
@@ -165,29 +170,29 @@ public class AssaultRifle : GunController
                 TrailRenderer trail = Instantiate(btrail, _camera.position, Quaternion.identity);
                 //Debug.Log(_camera.position + "  " + ShootDir + "" + _camera.forward + "" + hit.Length+""+ ShotingPlace.position+""+ hit[0].point);
                 StartCoroutine(SpawnTrail(trail, hit.point));
-            
 
-            //foreach (var v in hit)
-            //{
-            //    Debug.Log(v.transform.tag+j);
-            //    j++;
-            //}
-           
-            //foreach(RaycastHit hit in hit) {
 
-            //    Debug.Log("HeaadMUuuuuu"+i);
+                //foreach (var v in hit)
+                //{
+                //    Debug.Log(v.transform.tag+j);
+                //    j++;
+                //}
+
+                //foreach(RaycastHit hit in hit) {
+
+                //    Debug.Log("HeaadMUuuuuu"+i);
 
                 if (hit.transform.tag == "Enemy")
                 {
                     finaldmg = dmg * gm.DamageMod * SniperMult;
                     hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
-                    
+
                     GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .9f),
                     Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = collisionDetected.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white, hit.transform);
                     i++;
 
                 }
@@ -203,7 +208,7 @@ public class AssaultRifle : GunController
                     //dmgnum.transform.parent = hit.transform;
                     Debug.Log("HeaadMU");
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red, hit.transform);
                     i++;
 
                 }
@@ -233,7 +238,7 @@ public class AssaultRifle : GunController
                 //    break;
 
             }
-           
+
 
             base.Shoot();
             FireRateCounting += SniperCD;
@@ -244,7 +249,7 @@ public class AssaultRifle : GunController
 
     }
 
-    public override void AimDown() 
+    public override void AimDown()
     {
 
         if (Modifier)
@@ -297,7 +302,7 @@ public class AssaultRifle : GunController
         Gun.SetActive(true);
     }
 
-    IEnumerator SpawnTrail(TrailRenderer trail,Vector3 hit)
+    IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hit)
     {
         float time = 0;
         Vector3 startpos = trail.transform.position;
@@ -305,7 +310,7 @@ public class AssaultRifle : GunController
         //{
         //    trail.transform.position = Vector3.Lerp(startpos, hit.point, time);
         //    time += Time.deltaTime / .1f;
-            yield return null;
+        yield return null;
 
         //}
         trail.transform.position = hit;
@@ -313,8 +318,8 @@ public class AssaultRifle : GunController
         Destroy(trail.gameObject, trail.time);
     }
 
-  
-    
+
+
 
 }
 

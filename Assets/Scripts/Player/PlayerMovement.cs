@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     bool groundedPlayer;
     float gravityValue = -15;
     int JumpAmount = 1;
-    public float jumpTimer=0;
+    public float jumpTimer = 0;
 
 
     //Dash Stuff
@@ -39,18 +39,17 @@ public class PlayerMovement : MonoBehaviour
     public float DashSpeed;
     bool DashActive;
     public float DashCooldown;
-    float TDashCooldown=0;
+    float TDashCooldown = 0;
     public float DashTime;
     float VDashTime;
     Vector3 DashDir;
     public Image dashIcon;
     public float fillAmount;
-    public AudioSource footspets,dashsound;
-    bool moving,inair;
+    bool moving, inair;
 
     public Transform cameraTransform;
 
-    Vector3 move,playerVelocity;
+    Vector3 move, playerVelocity;
 
     GameManager gm;
 
@@ -59,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
     Animator gunAnimator;
 
     public CinemachineVirtualCamera _cinemachine;
+
+    [Header("Sounds")]
+    [SerializeField] AudioSource playerAudioSource;
+    [SerializeField] AudioClip walkingSound, dashSound;
 
     // Start is called before the first frame update
     void Start()
@@ -74,9 +77,11 @@ public class PlayerMovement : MonoBehaviour
         dashIcon = GameObject.Find("DashImage").GetComponent<Image>();
 
         gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
-        footspets.pitch = 1.3f + gm.MoveSpeedMod * .1f;
-        footspets.Play();
-        footspets.Pause();
+
+        playerAudioSource.clip = walkingSound;
+        playerAudioSource.pitch = 1.3f + gm.MoveSpeedMod * .1f;
+        playerAudioSource.Play();
+        playerAudioSource.Pause();
 
     }
 
@@ -110,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         if (jump)
         {
 
-                Jump();
+            Jump();
             jump = false;
         }
 
@@ -120,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         if (TDashCooldown > 0)
         {
             TDashCooldown -= Time.deltaTime;
-            fillAmount += Time.deltaTime * (1 / (DashCooldown/gm.CDMod));
+            fillAmount += Time.deltaTime * (1 / (DashCooldown / gm.CDMod));
             //Timer.text = Mathf.Round(TDashCooldown).ToString();
             dashIcon.fillAmount = fillAmount;
         }
@@ -144,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
         jumpTimer -= Time.deltaTime;
     }
 
-   
+
     private void Run(InputAction.CallbackContext context)
     {
 
@@ -152,14 +157,18 @@ public class PlayerMovement : MonoBehaviour
         {
             IsRunning = false;
             playerSpeed /= runningModifier;
-            footspets.pitch = 1.1f + gm.MoveSpeedMod * .2f;
+
+            playerAudioSource.clip = walkingSound;
+            playerAudioSource.pitch = 1.1f + gm.MoveSpeedMod * .2f;
 
         }
         else
         {
             IsRunning = true;
             playerSpeed *= runningModifier;
-            footspets.pitch = 1.3f + gm.MoveSpeedMod * .2f;
+
+            playerAudioSource.clip = walkingSound;
+            playerAudioSource.pitch = 1.3f + gm.MoveSpeedMod * .2f;
 
         }
 
@@ -167,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (gunAnimator == null) gunAnimator = GunDirectionOBJ.GetComponentInChildren<Animator>();
 
-        if(gunAnimator != null)
+        if (gunAnimator != null)
         {
             gunAnimator.SetBool("IsRunning", IsRunning);
             GunController tempScript = gunAnimator.gameObject.GetComponent<GunController>();
@@ -210,21 +219,23 @@ public class PlayerMovement : MonoBehaviour
 
         move.Normalize(); //para evitar movimento mais r�pido na diagonal
 
-        if(moving && move.magnitude < .1f||inair)
+        if (moving && move.magnitude < .1f || inair)
         {
-            
+
             moving = false;
 
-            footspets.Pause();
+            playerAudioSource.Pause();
         }
-        if(!moving && move.magnitude > .1f&&!inair)
+        if (!moving && move.magnitude > .1f && !inair)
         {
             moving = true;
-            footspets.UnPause();
-            
+
+            playerAudioSource.clip = walkingSound;
+            playerAudioSource.UnPause();
+
         }
 
-        
+
 
         if (DashActive)
         {
@@ -232,7 +243,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 controller.Move(DashDir * DashSpeed * Time.deltaTime);
                 VDashTime -= Time.deltaTime;
-                dashsound.Play();
+
+                playerAudioSource.clip = dashSound;
+                playerAudioSource.Play();
             }
             else
             {
@@ -265,7 +278,7 @@ public class PlayerMovement : MonoBehaviour
             else
                 DashDir = transform.forward;
             DashDir.y = 0;
-            TDashCooldown = DashCooldown/gm.CDMod;
+            TDashCooldown = DashCooldown / gm.CDMod;
             fillAmount = 0;
         }
     }
@@ -273,23 +286,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void ChangeCameraHSense(float hori)
     {
-        _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = hori*2;
-        
+        _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = hori * 2;
+
     }
 
     public void ChangeCameraVSense(float verti)
     {
-        
+
         _cinemachine.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = verti * 2;
     }
 
-     IEnumerator StopSteps()
+    IEnumerator StopSteps()
     {
         yield return new WaitForSeconds(.5f);
 
         if (groundedPlayer || playerVelocity.y < 0)
         {
-            
+
             inair = false;
         }
         else inair = true;

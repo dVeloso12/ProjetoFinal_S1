@@ -5,24 +5,26 @@ using UnityEngine.InputSystem;
 
 public class Shotgun : GunController
 {
-    float RandomDeviation=0.1f;
+    float RandomDeviation = 0.1f;
 
     public float Spread = 1;
 
     public int Pellets;
 
-    
+
     [HideInInspector]
     public float PowerShotCD = 10;
 
     [SerializeField] Vector3 position;
-    
+
     Color originalC;
     [SerializeField] SkinnedMeshRenderer shotgun;
 
     Animator shotgunAnimator;
 
     float animationStartSpeed;
+
+    [SerializeField] AudioClip shotgunSound;
 
     void Start()
     {
@@ -50,31 +52,32 @@ public class Shotgun : GunController
         int qauntity = Pellets;
         if (Modifier)
         {
-            shotgun.materials[1].color=Color.red;
+            shotgun.materials[1].color = Color.red;
             qauntity *= Ammo;
             Ammo = 1;
         }
-        sound.Play();
+        weaponAudioSource.clip = shotgunSound;
+        weaponAudioSource.Play();
 
         for (int i = 0; i < qauntity; i++)
         {
             Vector3 ShootDir = _camera.forward;
 
-            
-            ShootDir.x += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
-            ShootDir.y += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
-            ShootDir.z += Random.Range(-RandomDeviation*Spread, RandomDeviation*Spread);
-                                                                               
-            Vector3 textPos=Vector3.zero;
+
+            ShootDir.x += Random.Range(-RandomDeviation * Spread, RandomDeviation * Spread);
+            ShootDir.y += Random.Range(-RandomDeviation * Spread, RandomDeviation * Spread);
+            ShootDir.z += Random.Range(-RandomDeviation * Spread, RandomDeviation * Spread);
+
+            Vector3 textPos = Vector3.zero;
             float textDmg = 0;
             int head = 0, body = 0;
 
             ShootAnimaton();
 
-            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance,layerMask))
+            if (Physics.Raycast(_camera.position, ShootDir, out hit, Distance, layerMask))
             {
                 Instantiate(MarkSprite, hit.point + (hit.normal * .1f),
-                Quaternion.LookRotation(hit.normal),hit.transform).transform.Rotate(Vector3.right * 90);
+                Quaternion.LookRotation(hit.normal), hit.transform).transform.Rotate(Vector3.right * 90);
                 hiteffect.transform.position = hit.point;
                 hiteffect.transform.forward = hit.normal;
                 hiteffect.Emit(1);
@@ -84,12 +87,12 @@ public class Shotgun : GunController
 
 
                     finaldmg = dmg * gm.DamageMod;
-                   
+
                     GameObject dmgnum = Instantiate(dmgText, hit.point + (hit.normal * .1f),
                    Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.white, hit.transform);
                     textDmg += finaldmg;
                     hit.transform.GetComponent<EnemyStatus>().Damage(finaldmg);
 
@@ -107,17 +110,17 @@ public class Shotgun : GunController
                     Quaternion.LookRotation(hit.normal));
                     //dmgnum.transform.parent = hit.transform;
                     dmgnum.transform.Rotate(Vector3.up * 180);
-                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red,hit.transform);
+                    dmgnum.GetComponent<DmgTxt>().ChangeText((int)finaldmg, Color.red, hit.transform);
 
                     textDmg += finaldmg;
                     head++;
                 }
 
-                    //Dano no Boss
-                    if (hit.transform.tag == "Boss")
+                //Dano no Boss
+                if (hit.transform.tag == "Boss")
                 {
 
-                    hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject,base.dmg * gm.DamageMod); 
+                    hit.transform.GetComponent<BossPart>().TakeDmgBoss(hit.transform.gameObject, base.dmg * gm.DamageMod);
                 }
                 //Debug.Log(collisionDetected.transform.tag);
                 if (hit.transform.tag == "Turret")
@@ -148,7 +151,7 @@ public class Shotgun : GunController
         base.Shoot();
         if (Modifier)
         {
-            
+
             FireRateCounting += PowerShotCD;
             StartCoroutine(NormalMat(FireRateCounting));
         }
