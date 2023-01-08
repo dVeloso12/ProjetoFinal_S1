@@ -218,11 +218,15 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     m_SensorSize: {x: 1.7786626, y: 1}
 =======
     m_SensorSize: {x: 1.7777778, y: 1}
 >>>>>>> Stashed changes
+=======
+    m_SensorSize: {x: 1.7760416, y: 1}
+>>>>>>> parent of 60846ea (Update)
 =======
     m_SensorSize: {x: 1.7760416, y: 1}
 >>>>>>> parent of 60846ea (Update)
@@ -690,6 +694,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7657076051010084586}
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
@@ -712,6 +717,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
+=======
+    - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: PlayerHp
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: saveMaxHP
+      value: 300
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
+>>>>>>> parent of 60846ea (Update)
 =======
     - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -1039,8 +1058,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
 <<<<<<< HEAD
+<<<<<<< HEAD
   OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
     type: 2}
+=======
+  OutputAudioMixerGroup: {fileID: 0}
+>>>>>>> parent of 60846ea (Update)
 =======
   OutputAudioMixerGroup: {fileID: 0}
 >>>>>>> parent of 60846ea (Update)
@@ -1329,7 +1352,10 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of 60846ea (Update)
 =======
 >>>>>>> parent of 60846ea (Update)
 --- !u!4 &2346611641359463259 stripped
