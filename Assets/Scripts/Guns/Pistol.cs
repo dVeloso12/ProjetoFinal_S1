@@ -14,8 +14,6 @@ public class Pistol : GunController
 
     Animator pistolAnimator;
 
-    [SerializeField] AudioClip pistolSound;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +34,7 @@ public class Pistol : GunController
     protected override void Shoot()
     {
 
-        weaponAudioSource.clip = pistolSound;
-        weaponAudioSource.Play();
+        sound.Play();
 
         if (Physics.Raycast(_camera.position, _camera.forward, out hit, Distance,layerMask))
         {

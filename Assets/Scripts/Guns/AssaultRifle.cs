@@ -21,8 +21,7 @@ public class AssaultRifle : GunController
     [HideInInspector]
     public float SniperCD = 2;
 
-    [SerializeField] AudioClip sniperSound, autoSound;
-
+    public AudioSource sniperSound;
 
     void Start()
     {
@@ -67,10 +66,7 @@ public class AssaultRifle : GunController
     {
         if (FireRateCounting <= 0 && Ammo > 0)
         {
-
-            weaponAudioSource.clip = autoSound;
-            weaponAudioSource.Play();
-
+            sound.Play();
             Vector3 ShootDir = _camera.forward;
 
             ShootDir.x += Random.Range(-RandomDeviation, RandomDeviation);
@@ -156,8 +152,7 @@ public class AssaultRifle : GunController
             int i = 0,j=0;
             Vector3 ShootDir = _camera.forward;
 
-            weaponAudioSource.clip = sniperSound;
-            weaponAudioSource.Play();
+            sniperSound.Play();
 
 
             if (Physics.Raycast(_camera.position, ShootDir, out base.hit, Distance * 2f))

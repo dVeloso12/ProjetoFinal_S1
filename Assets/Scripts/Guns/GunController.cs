@@ -20,11 +20,6 @@ public class GunController : MonoBehaviour
     protected PlayerBullets playerBulletsScript;
     [SerializeField] protected GameObject Player;
 
-
-    [Header ("Sounds")]
-    [SerializeField] protected AudioSource weaponAudioSource;
-    [SerializeField] protected AudioClip reloadSound;
-
     //public GameObject bullet;
 
     public Transform ShotingPlace;
@@ -49,6 +44,8 @@ public class GunController : MonoBehaviour
     protected int Ammo,orAmmo;
     [SerializeField] TextMeshProUGUI bullettxt;
 
+
+    public AudioSource sound,reload;
 
     
     public Transform _camera;
@@ -193,8 +190,7 @@ public class GunController : MonoBehaviour
         if (Ammo < AmmoClipSize)
         {
             ARAnimator.SetTrigger("Reload");
-            weaponAudioSource.clip = reloadSound;
-            weaponAudioSource.Play();
+            reload.Play();
             Ammo = 0;
         }
         //StartCoroutine(Reload(ReloadSpeed));
