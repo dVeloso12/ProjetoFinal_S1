@@ -55,6 +55,8 @@ public class BossScript : MonoBehaviour
     AudioSource audio;
     bool audioPlay;
 
+    [SerializeField] StageSpawner spawn;
+
     private void Start()
     {
         if(!isTutorial) audio = GetComponent<AudioSource>();
@@ -309,6 +311,7 @@ public class BossScript : MonoBehaviour
             gameObject.SetActive(false);
             Chest.canAppear = true;
             portal.SetActive(true);
+            if(!isTutorial) spawn.activated = false;
             
         }
         else

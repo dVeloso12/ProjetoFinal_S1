@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: {fileID: 4789169541958354316}
+  boss: {fileID: 8891093035243689391}
 --- !u!1 &1187812224825547219
 GameObject:
   m_ObjectHideFlags: 0
@@ -16959,7 +16960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d6c40e5be3cf443bd864d69cbfe0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTutorial: 1
+  isTutorial: 0
 --- !u!1 &7826960074952828218
 GameObject:
   m_ObjectHideFlags: 0
@@ -18235,6 +18236,7 @@ MonoBehaviour:
   Boss: 1
   distance: 0
   spawnpoint: {fileID: 0}
+  activated: 0
 --- !u!1 &8703161483391212547
 GameObject:
   m_ObjectHideFlags: 0
@@ -23715,6 +23717,11 @@ PrefabInstance:
       propertyPath: Chest
       value: 
       objectReference: {fileID: 5398175008231352984}
+    - target: {fileID: 6395957947640986495, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
+        type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 3279362188080805945}
     - target: {fileID: 6395957947640986495, guid: 163a1df7d8e2f9345b14eb3bd488fedc,
         type: 3}
       propertyPath: BossHp

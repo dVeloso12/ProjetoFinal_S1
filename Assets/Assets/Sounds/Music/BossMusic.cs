@@ -7,6 +7,7 @@ public class BossMusic : MonoBehaviour
     AudioSource audio;
     [SerializeField] CheckIfPlayerPassBy check;
     bool canPlay,isPlaying;
+    [SerializeField] BossScript boss;
 
     void Start()
     {
@@ -39,5 +40,6 @@ public class BossMusic : MonoBehaviour
                 isPlaying = true;
             }
         }
+        if (boss.isDead) audio.Stop();
     }
 }

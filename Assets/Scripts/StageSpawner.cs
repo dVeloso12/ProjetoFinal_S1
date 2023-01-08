@@ -24,7 +24,7 @@ public class StageSpawner : MonoBehaviour
 
     int Current_SemiEncounter=0;
     float Timer_SemiEncounter=1;
-    bool activated = false;
+    public bool activated = false;
 
     GameManager gm;
 
@@ -63,6 +63,7 @@ public class StageSpawner : MonoBehaviour
             Timer_SemiEncounter -= Time.deltaTime;
         }
         if(!Boss) SoundManager();
+        
     }
     void SoundManager()
     {
