@@ -13,7 +13,7 @@ public class Shotgun : GunController
 
     
     [HideInInspector]
-    public float PowerShotCD = 10;
+    public float PowerShotCD = 5;
 
     [SerializeField] Vector3 position;
     
@@ -50,7 +50,7 @@ public class Shotgun : GunController
         int qauntity = Pellets;
         if (Modifier)
         {
-            shotgun.materials[1].color=Color.red;
+            shotgun.materials[1].color=Color.grey;
             qauntity *= Ammo;
             Ammo = 1;
         }
