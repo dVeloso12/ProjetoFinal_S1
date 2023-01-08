@@ -11,6 +11,7 @@ public class CloseDoorsBehind : MonoBehaviour
    [SerializeField] SurvivalScript surv;
     DoorScript_Survival survdoor;
     [SerializeField] DeffStageController deffcont;
+    [SerializeField] AudioSource audio;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class CloseDoorsBehind : MonoBehaviour
 
                 timer = 0;
                 playSound = true;
+                if(audio != null) audio.Stop();
                 canCloseDoor = false;
                 //surv.SurvText.enabled = false;
             }

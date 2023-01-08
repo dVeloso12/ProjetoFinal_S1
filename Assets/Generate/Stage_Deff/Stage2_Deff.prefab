@@ -291,6 +291,7 @@ MonoBehaviour:
   timer: 0
   surv: {fileID: 0}
   deffcont: {fileID: 8326579027125360108}
+  audio: {fileID: 5541163603965175607}
 --- !u!1 &846282553433788268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1524,7 @@ MonoBehaviour:
   PossibleEncounters:
   - {fileID: 11400000, guid: 22882e71810813b40b8eca66ccce4944, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
+  Boss: 0
   distance: 30
   spawnpoint: {fileID: 2924131090228564773}
 --- !u!114 &8326579027125360108
@@ -1538,6 +1540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 1516095419981826286}
+  isTutorial: 0
 --- !u!82 &5541163603965175607
 AudioSource:
   m_ObjectHideFlags: 0

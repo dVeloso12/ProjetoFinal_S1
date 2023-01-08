@@ -74,6 +74,8 @@ public class PauseMenuManager : MonoBehaviour
         bloomvalue = (float)bloom.intensity;
         volume.profile.TryGet<ChromaticAberration>(out chro);
         chrovalue = (float)chro.intensity;
+        Effects.SetFloat("Master", 10);
+        Music.SetFloat("Master", 10);
     }
     private void Update()
     {
@@ -316,11 +318,75 @@ public class PauseMenuManager : MonoBehaviour
     }
     public void setVolumeEffects(float vol)
     {
-        Effects.SetFloat("EffectsVolume",vol); //Ajustar mais tarde
+        switch(vol)
+        {
+            case 0:
+                {
+                    Effects.SetFloat("Master", -80);
+                    break;
+                }
+            case 1:
+                {
+                    Effects.SetFloat("Master", -40);
+                    break;
+                }
+            case 2:
+                {
+                    Effects.SetFloat("Master", -20);
+                    break;
+                }
+            case 3:
+                {
+                    Effects.SetFloat("Master", -10);
+                    break;
+                }
+            case 4:
+                {
+                    Effects.SetFloat("Master", 0);
+                    break;
+                }
+            case 5:
+                {
+                    Effects.SetFloat("Master", 10);
+                    break;
+                }
+        }
     }
     public void setVolumeMusic(float vol)
     {
-        Music.SetFloat("MusicVolume", vol); //Ajustar mais tarde 
+        switch (vol)
+        {
+            case 0:
+                {
+                    Music.SetFloat("Master", -80);
+                    break;
+                }
+            case 1:
+                {
+                    Music.SetFloat("Master", -40);
+                    break;
+                }
+            case 2:
+                {
+                    Music.SetFloat("Master", -20);
+                    break;
+                }
+            case 3:
+                {
+                    Music.SetFloat("Master", -10);
+                    break;
+                }
+            case 4:
+                {
+                    Music.SetFloat("Master", 0);
+                    break;
+                }
+            case 5:
+                {
+                    Music.SetFloat("Master", 10);
+                    break;
+                }
+        }
     }
 
     public void setHorizontalSense(float sense)

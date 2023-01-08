@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 0
   m_VerticalAxis:
-    Value: 33.656155
+    Value: 13.956012
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
-    Value: 132.68925
+    Value: 62.394432
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7760416, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -267,7 +267,7 @@ PrefabInstance:
     - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: FireRate
-      value: 0.43
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 176741875798921061, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -279,6 +279,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 656208325951261321, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
     - target: {fileID: 999299772902674021, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_IsActive
@@ -309,6 +315,12 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 1773846245091067881, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
     - target: {fileID: 1950210071357752886, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -359,6 +371,24 @@ PrefabInstance:
       propertyPath: position.z
       value: 0.11
       objectReference: {fileID: 0}
+    - target: {fileID: 2366569871418529000, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
+    - target: {fileID: 3281626664030736179, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
+    - target: {fileID: 3724787768183518131, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
     - target: {fileID: 3736885341635649902, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -403,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201181012571519794, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: MaxCount
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4327306755062836678, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
@@ -519,6 +554,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5763774661298077873, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
     - target: {fileID: 5891474211660522618, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: Camera
@@ -602,33 +643,39 @@ PrefabInstance:
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8915231
+      value: 0.96392953
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2696435
+      value: 0.11798007
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3483905
+      value: -0.23681346
       objectReference: {fileID: 0}
     - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.105371624
+      value: 0.028984763
       objectReference: {fileID: 0}
     - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21606097
+      value: 0.21606094
       objectReference: {fileID: 0}
     - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.48001558
+      value: -0.48001564
       objectReference: {fileID: 0}
+    - target: {fileID: 8496385204674844025, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+        type: 2}
     - target: {fileID: 8933608275006795881, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: Camera
@@ -637,12 +684,12 @@ PrefabInstance:
     - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: PlayerHp
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 9121938402488562547, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: saveMaxHP
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
@@ -661,7 +708,8 @@ AudioSource:
   m_GameObject: {fileID: 889024777493393767}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8af9b84117aab4a48ba134e04951246a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.55
@@ -757,7 +805,8 @@ AudioSource:
   m_GameObject: {fileID: 889024777493393767}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8661ec677881a5a4ea46398c20eb9e79, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
@@ -853,7 +902,8 @@ AudioSource:
   m_GameObject: {fileID: 889024777493393767}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: f19e3fdb9c8082647a2c32beca28ba84, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.28
@@ -1477,7 +1527,8 @@ AudioSource:
   m_GameObject: {fileID: 8059017324341321826}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 56e1d39a6a60ae047a0c3ba3540db2c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -1573,7 +1624,8 @@ AudioSource:
   m_GameObject: {fileID: 8059017324341321826}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 479abb4c3fe51ec459074d6c7733d25c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 406c929b7299afb469c82778f8d15d5b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4

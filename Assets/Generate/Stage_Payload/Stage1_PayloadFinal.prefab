@@ -4332,6 +4332,7 @@ MonoBehaviour:
   timer: 0
   surv: {fileID: 0}
   deffcont: {fileID: 0}
+  audio: {fileID: 6508715210666226708}
 --- !u!1 &5668965482414054007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4808,6 +4809,7 @@ MonoBehaviour:
   PossibleEncounters:
   - {fileID: 11400000, guid: 45dff786768d50349823dcc75334cd17, type: 2}
   REAPER: {fileID: 2810424434365561116, guid: 57d222c737088014689fc01593d33a31, type: 3}
+  Boss: 0
   distance: 100
   spawnpoint: {fileID: 1834123661145903100}
 --- !u!82 &6508715210666226708

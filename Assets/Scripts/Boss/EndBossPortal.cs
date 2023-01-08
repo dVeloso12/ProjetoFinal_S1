@@ -16,15 +16,23 @@ public class EndBossPortal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.transform.name == "Player" && npc.canTP)
+        
+        if (other.transform.name == "Player")
         {
-            gm.DifficultyMod += .3f;
-            if (gm.ReaperSpawn < 50)
-                gm.ReaperSpawn += 5;
-            game.goToShop = true;
-            if(!isTutorial)
-            game.PlayerProperty.GetComponent<HealingItem>().ResetCount();
+            if( !isTutorial )
+            {
+                gm.DifficultyMod += .3f;
+                if (gm.ReaperSpawn < 50)
+                    gm.ReaperSpawn += 5;
+                game.goToShop = true;
+                if (!isTutorial)
+                    game.PlayerProperty.GetComponent<HealingItem>().ResetCount();
+            }
+            else if( isTutorial && npc.canTP)
+            {
+                game.goToShop = true;
+            }
+           
 
         }
     }

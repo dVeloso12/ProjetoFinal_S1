@@ -12,12 +12,12 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
-  m_SuspendThreshold: -80
+  m_SuspendThreshold: 20
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 50551cd5968ef12489430c97a56f782d
-    name: MusicVolume
+    name: Master
   m_AudioMixerGroupViews:
   - guids:
     - d2a331a142024d449a102193450cced0
