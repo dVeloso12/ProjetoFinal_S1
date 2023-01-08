@@ -45,8 +45,9 @@ public class SurvivalScript : MonoBehaviour
             if (nObjective <= 0)
             {
                 survivalDoor.CompleteSurvival();
+                GetComponent<StageSpawner>().activated = false;
                 completed = true;
-                SurvText.text = "Stage completed!";
+                SurvText.text = "";
                 audio.Stop();
             }
 
@@ -89,6 +90,8 @@ public class SurvivalScript : MonoBehaviour
         }
     }
     
+    
+
 
     private void OnTriggerEnter(Collider other)
     {
