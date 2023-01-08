@@ -44,9 +44,10 @@ public class SurvivalScript : MonoBehaviour
             SurvText.text = "Kill " + nObjective+ " enemies.";
             if (nObjective <= 0)
             {
+                GetComponent<StageSpawner>().activated = false;
                 survivalDoor.CompleteSurvival();
                 completed = true;
-                SurvText.text = "Stage completed!";
+                SurvText.text = "";
                 audio.Stop();
             }
 

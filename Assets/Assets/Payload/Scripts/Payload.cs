@@ -59,6 +59,7 @@ public class Payload : MonoBehaviour
         if(Ended)
         {
             GetComponent<Collider>().enabled = false;
+            spwaner.activated = false;
         }
     }
     void PlayAnimations()
