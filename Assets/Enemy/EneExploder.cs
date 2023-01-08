@@ -16,6 +16,7 @@ public class EneExploder : Enemy_AI_2
     void Start()
     {
         base.Start();
+        Swalk.Play();
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class EneExploder : Enemy_AI_2
             base.Update();
 
             float DistanceToPlayer = (transform.position - player.position).magnitude;
+
             if (DistanceToPlayer < 3)
             {
                 Debug.Log(DistanceToPlayer + " " + (navagent.stoppingDistance + 1));
@@ -38,7 +40,8 @@ public class EneExploder : Enemy_AI_2
 
     protected override void Action()
     {
-       
+        SAction.Play();
+
         GameObject expl= Instantiate(Explosion, transform.position, Quaternion.identity);
         expl.transform.localScale = new Vector3(VisualSize, VisualSize, VisualSize);
 

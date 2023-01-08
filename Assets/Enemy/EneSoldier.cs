@@ -10,6 +10,7 @@ public class EneSoldier : Enemy_AI_2
     [SerializeField] GameObject bulletsParent;
     [SerializeField] float fireRate = 60f;
     Animator animator;
+    bool SoundPlaying = false;
     float shootingTimer=0;
 
     [SerializeField] bool isSniper = false;
@@ -36,13 +37,20 @@ public class EneSoldier : Enemy_AI_2
                 animator.SetBool("IsMoving", false);
                 if(isSniper)
                     line.enabled = true;
-
+                Swalk.Stop();
+                SoundPlaying = false;
             }
             else
             {
                 animator.SetBool("IsMoving", true);
                 if (isSniper)
                     line.enabled = false;
+
+                if (!SoundPlaying)
+                {
+                    SoundPlaying = true;
+                    Swalk.Play();
+                }
 
             }
 
@@ -59,6 +67,7 @@ public class EneSoldier : Enemy_AI_2
 
     protected override void Action()
     {
+            SAction.Play();
             bulletsParent.transform.LookAt(player);
 
             Instantiate(bulletPrefab, bulletsParent.transform.position, bulletsParent.transform.rotation, bulletsParent.transform)

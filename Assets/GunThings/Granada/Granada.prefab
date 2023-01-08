@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c369ae6b804c2142b3b22a5a4728678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 3
+  timer: 1.5
   throwForce: 30
   dmg: 100
   Explosion: {fileID: 1121192042590650, guid: 63d04dcd13853dd4fb4380c4bb216635, type: 3}

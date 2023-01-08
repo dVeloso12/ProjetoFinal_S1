@@ -22,6 +22,9 @@ public class Enemy_AI_2 : MonoBehaviour
     
     [HideInInspector]protected bool Frozen = false;
 
+    [SerializeField] protected AudioSource Swalk;
+    [SerializeField]protected AudioSource SAction;
+
 
     public int Range
     {
