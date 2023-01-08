@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  weaponType: 2
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1

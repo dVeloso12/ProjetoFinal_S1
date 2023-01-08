@@ -64,6 +64,7 @@ public class StageSpawner : MonoBehaviour
 
             }
             Timer_SemiEncounter -= Time.deltaTime;
+
         }
         if(!Boss) SoundManager();
         
