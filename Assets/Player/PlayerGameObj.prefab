@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RecenterTarget: 0
   m_VerticalAxis:
-    Value: 13.956012
+    Value: 39.501507
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_HorizontalAxis:
-    Value: 62.394432
+    Value: 84.10904
     m_SpeedMode: 0
     m_MaxSpeed: 200
     m_AccelTime: 0.1
@@ -217,7 +217,7 @@ MonoBehaviour:
     ModeOverride: 2
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786626, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -344,6 +344,36 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9399281
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.3374827
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.048362724
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698349505214132, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.017364725
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.21606074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970698350875170747, guid: 10a96ad5b734308409734b82b3d1e408,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.48001567
+      objectReference: {fileID: 0}
     - target: {fileID: 8114400787622937801, guid: 10a96ad5b734308409734b82b3d1e408,
         type: 3}
       propertyPath: Camera
@@ -354,7 +384,8 @@ PrefabInstance:
       propertyPath: Camera
       value: 
       objectReference: {fileID: 7657076051010084586}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2115734720981359589, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10a96ad5b734308409734b82b3d1e408, type: 3}
 --- !u!4 &2346611641359463259 stripped
 Transform:

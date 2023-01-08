@@ -13,12 +13,13 @@ public class Shotgun : GunController
 
     
     [HideInInspector]
-    public float PowerShotCD = 5;
+    public float PowerShotCD = 3;
 
     [SerializeField] Vector3 position;
     
     Color originalC;
     [SerializeField] SkinnedMeshRenderer shotgun;
+    [SerializeField] AudioClip shotgunSound;
 
     Animator shotgunAnimator;
 
@@ -54,7 +55,8 @@ public class Shotgun : GunController
             qauntity *= Ammo;
             Ammo = 1;
         }
-        sound.Play();
+        weaponAudioSource.clip = shotgunSound;
+        weaponAudioSource.Play();
 
         for (int i = 0; i < qauntity; i++)
         {
