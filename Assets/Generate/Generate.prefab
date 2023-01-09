@@ -48,14 +48,8 @@ MonoBehaviour:
     type: 3}
   ListStages:
   - {fileID: 7226158457161330035, guid: 1861deb2f149abb469a6f1a91242a8a3, type: 3}
-  - {fileID: 5012299610166739929, guid: a6fd776edca0ebb4fadc9141e02d112c, type: 3}
-  - {fileID: 846282554252985859, guid: ebd6d2d4245002a4797047156f5a472c, type: 3}
-  maxNStages: 2
+  maxNStages: 1
   BossRoom: {fileID: 2370507209647789660, guid: 9082724edf0d5eb42b3e11b2202e503b,
     type: 3}
   StageStart: {fileID: 5163347092726083996, guid: 008070c272c516e46acbf92b1439473b,
     type: 3}
-  SpawnerList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}

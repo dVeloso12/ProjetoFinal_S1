@@ -26,6 +26,9 @@ public class Payload : MonoBehaviour
     bool forceRotate;
     bool ReaperAttempt=true;
 
+    AudioSource audio;
+    bool canPlay, isPlaying;
+
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
@@ -37,6 +40,9 @@ public class Payload : MonoBehaviour
         speed = orSpeed / (gm.DifficultyMod);
         else
             speed = orSpeed / (3);
+
+        audio = GetComponent<AudioSource>();
+        isPlaying = true;
     }
 
     void Update()
@@ -50,6 +56,7 @@ public class Payload : MonoBehaviour
         MovePayload();
         PlayAnimations();
         SetSomeOptions();
+        AudioManager();
     }
 
     #region Payload Functions
@@ -69,6 +76,7 @@ public class Payload : MonoBehaviour
             animator.Play("IddleToMoveMode");
             canMove = false;
             startTimerAnim = true;
+            canPlay = true;
             state = PayloadState.IddleToMove;
 
         }
@@ -76,6 +84,7 @@ public class Payload : MonoBehaviour
         {
             animator.Play("MoveToIddleMode");
             canIddle = false;
+            canPlay = false;
 
         }
         if (startTimerAnim)
@@ -146,13 +155,13 @@ public class Payload : MonoBehaviour
     void MoveToPlate(Transform plate)
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, plate.localPosition, Time.deltaTime*speed);
+       
     }
     void RotateToPlate(Transform plate)
     {
         transform.rotation = Quaternion.RotateTowards(transform.localRotation, plate.localRotation, Time.deltaTime * speed * ROTATION_SPEED_OFFSET);
-
     }
-#endregion
+    #endregion
     #region Payload Detection
     private void OnTriggerEnter(Collider other)
     {
@@ -162,8 +171,33 @@ public class Payload : MonoBehaviour
             if(state == PayloadState.Iddle)
             {
               canMove = true;
+                
             }
 
+        }
+    }
+    void AudioManager()
+    {
+        if (canPlay)
+        {
+            if (Time.deltaTime != 0)
+            {
+                if (isPlaying)
+                {
+                    audio.Play();
+                    isPlaying = false;
+                }
+         
+            }
+            else if (Time.deltaTime == 0)
+            {
+              audio.Pause();
+              isPlaying = true;
+            }
+        }
+        else
+        {
+            audio.Stop();
         }
     }
     private void OnTriggerStay(Collider other)
@@ -171,7 +205,7 @@ public class Payload : MonoBehaviour
         if (other.transform.name == "Player")
         {
             if (state != PayloadState.IddleToMove) state = PayloadState.onMoving;
-                
+            
         }
     }
 
@@ -180,7 +214,8 @@ public class Payload : MonoBehaviour
         if (other.transform.name == "Player")
         {         
                 state = PayloadState.Stopped;
-     
+              
+
         }
     }
 
