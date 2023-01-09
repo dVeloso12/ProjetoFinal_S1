@@ -774,10 +774,10 @@ MonoBehaviour:
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
   toLobby: 0
-  toGame: 1
+  toGame: 0
   goToStage: 0
   goToShop: 0
-  toTutorial: 0
+  toTutorial: 1
   TutoNpc: {fileID: 8078951896517334181, guid: 2c287dc846a96894fb17920cc5f01c30, type: 3}
   playerIns: {fileID: 0}
   saveBossRoom: {fileID: 0}
@@ -60293,6 +60293,10 @@ MonoBehaviour:
   endScreen: {fileID: 255982209444392691}
   weaponName: {fileID: 2587163077011367504}
   cam: {fileID: 2587163076984717519}
+  WeaponImage: {fileID: 0}
+  ArImage: {fileID: 0}
+  PistolImage: {fileID: 0}
+  ShotgunImage: {fileID: 0}
 --- !u!4 &6273770262479691018
 Transform:
   m_ObjectHideFlags: 0

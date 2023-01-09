@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PauseMenuManager : MonoBehaviour
     [Header("MainScreens")]
     [SerializeField] GameObject MainSelection;
     [SerializeField] GameObject SecondSelection;
-    [SerializeField] GameObject gameNameText;
+    [SerializeField] Image gameNameText;
     [Header("MainScreen")]
     [Header("Screen")]
     [SerializeField] GameObject ScreenObj;
@@ -125,13 +126,13 @@ public class PauseMenuManager : MonoBehaviour
     public void setMenu()
     {
         MainSelection.SetActive(true);
-        gameNameText.SetActive(true);
+        gameNameText.enabled = true;
         state = MenuState.none;
     }
    public void canReset()
     {
         MainSelection.SetActive(false);
-        gameNameText.SetActive(false);
+        gameNameText.enabled = false;
         SecondSelection.SetActive(false);
         if (saveCurrent != null)
             saveCurrent.SetActive(false);

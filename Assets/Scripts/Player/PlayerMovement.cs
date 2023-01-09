@@ -179,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
         if (gunAnimator != null)
         {
             gunAnimator.SetBool("IsRunning", IsRunning);
+            Debug.Log("Running : " + IsRunning);
             GunController tempScript = gunAnimator.gameObject.GetComponent<GunController>();
 
             tempScript.IsRunning = this.IsRunning;
