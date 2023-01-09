@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Cinemachine;
+using UnityEngine.UI;
 public enum pcState
 {
     SelectScreen,chooseWeapon,startScreen,endScreen
@@ -37,6 +38,10 @@ public class LobbyScreenManager : MonoBehaviour
     Canvas m;
     float timer;
 
+    [Header("Weapons Images")]
+    [SerializeField] GameObject WeaponImage;
+    [SerializeField] Sprite ArImage, PistolImage, ShotgunImage;
+
     private void Start()
     {
 
@@ -54,7 +59,7 @@ public class LobbyScreenManager : MonoBehaviour
         vrParticle.SetActive(false);
         WeaponNames[chooseWeaponIndex].GetComponent<TextMeshProUGUI>().color = Color.gray;
 
-
+        UpdateWeapon();
 
     }
 
@@ -169,10 +174,37 @@ public class LobbyScreenManager : MonoBehaviour
 
         }
 
-        
+        UpdateWeapon();
 
-        
     }
+
+    void UpdateWeapon()
+    {
+        Sprite toSwitchTo = null;
+
+        switch (chooseWeaponIndex)
+        {
+            case 0:
+
+                toSwitchTo = ShotgunImage;
+
+                break;
+            case 1:
+
+                toSwitchTo = ArImage;
+
+                break;
+            case 2:
+
+                toSwitchTo = PistolImage;
+
+                break;
+
+        }
+
+        WeaponImage.GetComponent<Image>().sprite = toSwitchTo;
+    }
+
     public void toChooseWeaponScreen()
     {
         pcState = pcState.chooseWeapon;
