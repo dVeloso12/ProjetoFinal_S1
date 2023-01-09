@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
     float timer;
 
     public List<Upgrade> ShopUpgardes;
-    
+
+    public bool SpawnEffecT;
 
     private void Awake()
     {

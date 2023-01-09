@@ -55,3 +55,7 @@ MonoBehaviour:
     type: 3}
   StageStart: {fileID: 5163347092726083996, guid: 008070c272c516e46acbf92b1439473b,
     type: 3}
+  SpawnerList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

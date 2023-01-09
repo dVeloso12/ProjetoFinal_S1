@@ -45,7 +45,6 @@ public class GameplayOrganize : MonoBehaviour
     GameObject playerWeapons;
     GameManager gm;
 
-
     public GameObject PlayerProperty
     {
         get { return Player; }

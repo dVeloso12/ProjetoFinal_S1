@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.VFX;
 public class StageSpawner : MonoBehaviour
 {
     [SerializeField] List<Encounters> PossibleEncounters;
@@ -10,6 +10,9 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] GameObject REAPER;
     [SerializeField] bool Boss;
+
+    [SerializeField] float VFXTimer;
+    [SerializeField] GameObject spawnEffectPrefab;
 
     //public List<GameObject> EnemiesList;
 
@@ -22,8 +25,8 @@ public class StageSpawner : MonoBehaviour
 
     [SerializeField] Transform spawnpoint;
 
-    int Current_SemiEncounter=0;
-    float Timer_SemiEncounter=1;
+    int Current_SemiEncounter = 0;
+    float Timer_SemiEncounter = 1;
     public bool activated = false;
 
     GameManager gm;
@@ -31,6 +34,9 @@ public class StageSpawner : MonoBehaviour
     AudioSource audio;
     bool isPlaying, doAudio;
     float soundTimer;
+
+    [Header("VFX Scales")]
+    [SerializeField] float SniperScale, NormalScale, ReaperScale;
 
     private void Awake()
     {
@@ -45,7 +51,7 @@ public class StageSpawner : MonoBehaviour
             audio.volume = 0.5f;
         }
         Debug.Log(gm.name);
-       
+
 
     }
 
@@ -62,8 +68,8 @@ public class StageSpawner : MonoBehaviour
             }
             Timer_SemiEncounter -= Time.deltaTime;
         }
-        if(!Boss) SoundManager();
-        
+        if (!Boss) SoundManager();
+
     }
     void SoundManager()
     {
@@ -108,22 +114,25 @@ public class StageSpawner : MonoBehaviour
                 for (int i = 0; i < sEncounter.Quantity[eSet]; i++)
                 {
                     Vector2 randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
-                    Vector3 randomPoint = sEncounter.Position[eSet]+transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+                    Vector3 randomPoint = sEncounter.Position[eSet] + transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
                     bool sucess = false;
                     int f = 600;
                     while (!sucess && f > 0)
                     {
                         f--;
                         if (f < 1)
-                            Debug.Log("Unsucessfull"+randomPoint);
+                            Debug.Log("Unsucessfull" + randomPoint);
                         //    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
                         randomcircle = (Random.insideUnitCircle * sEncounter.Area[eSet]);
-                        randomPoint = sEncounter.Position[eSet]+transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+                        randomPoint = sEncounter.Position[eSet] + transform.position + new Vector3(randomcircle.x, 0, randomcircle.y);
 
                         if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
                         {
                             sucess = true;
-                            gm.EnemyList.Add(Instantiate(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
+                            //gm.EnemyList.Add(Instantiate(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
+                            Debug.Log("Instantiating");
+                            //StartCoroutine(InstantiateEnemy(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity));
+                            StartSpawn(sEncounter.EnemySet[eSet], hit.position, Quaternion.identity, NormalScale);
                         }
 
                     }
@@ -137,7 +146,6 @@ public class StageSpawner : MonoBehaviour
                 Current_SemiEncounter = 0;
         }
     }
-
 
     public void ReaperSpawn()
     {
@@ -162,18 +170,57 @@ public class StageSpawner : MonoBehaviour
                 if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
                 {
                     sucess = true;
-                    gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
+                    //gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
+                    Debug.Log("Instantiating");
+                    //StartCoroutine(InstantiateEnemy(REAPER, hit.position, Quaternion.identity));
+                    StartSpawn(REAPER, hit.position, Quaternion.identity, ReaperScale);
                 }
             }
         }
     }
 
+    public void StartSpawn(GameObject toSpawn, Vector3 PositionToSpawn, Quaternion RotationToSpawn, float VFXScale)
+    {
+        if (gm.SpawnEffecT)
+        {
+            StartCoroutine(InstantiateEnemy(toSpawn, PositionToSpawn, RotationToSpawn, VFXScale));
+        }
+        else
+        {
+            gm.EnemyList.Add(Instantiate(toSpawn, PositionToSpawn, RotationToSpawn));
+        }
+            
+    }
+
+    public IEnumerator InstantiateEnemy(GameObject toSpawn, Vector3 PositionToSpawn, Quaternion RotationToSpawn, float VFXScale)
+    {
+
+        Debug.Log("Inside Func");
+
+        GameObject spawnEffect = Instantiate(spawnEffectPrefab, PositionToSpawn, RotationToSpawn);
+
+        spawnEffect.transform.localScale = Vector3.one * VFXScale;
+
+        VFXTimer = spawnEffect.GetComponent<VisualEffect>().GetFloat("Lifetime");
+
+        Debug.Log("VFX Timer : " + VFXTimer);
+        Debug.Log("VFx SCale: " + spawnEffect.transform.localScale);
+        spawnEffect.transform.Rotate(90f, 0f, 0f);
+
+        spawnEffect.GetComponent<VisualEffect>().Play();
+
+        yield return new WaitForSeconds(VFXTimer);
+
+        GameObject.Destroy(spawnEffect);
+
+        gm.EnemyList.Add(Instantiate(toSpawn, PositionToSpawn, RotationToSpawn));
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (true)
         {
-            if (other.tag == "Player"&& enabled)
+            if (other.tag == "Player" && enabled)
             {
                 Debug.Log(activated + "asd");
                 activated = true;

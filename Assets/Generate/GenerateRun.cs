@@ -23,7 +23,6 @@ public class GenerateRun : MonoBehaviour
     public static GenerateRun instance;
     GameObject enemiesManagerInstantiated;
 
-
     public GameObject EnemiesManagerInstantiated
     {
         get { return enemiesManagerInstantiated; }
