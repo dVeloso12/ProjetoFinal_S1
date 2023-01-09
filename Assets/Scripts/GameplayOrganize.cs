@@ -58,7 +58,7 @@ public class GameplayOrganize : MonoBehaviour
         graple = GameObject.Find("Player").GetComponent<HookShot>();
         playerWeapons = GameObject.Find("GunDirection");
         gm = GameObject.FindObjectOfType<GameManager>();
-        LoadGame();
+        //LoadGame();
        
 
     }
@@ -86,7 +86,7 @@ public class GameplayOrganize : MonoBehaviour
             UnloadTutorial();
             //gm.ResetPlayer();
             tutorialFinished = false;
-            EditSave();
+            //EditSave();
         }    
         if(toGame)
         {
