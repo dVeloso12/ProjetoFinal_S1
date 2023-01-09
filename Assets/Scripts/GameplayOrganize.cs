@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using UnityEngine.UI;
+
 public class GameplayOrganize : MonoBehaviour
 {   
     [Header("Player Stuff")]
     [SerializeField] GameObject Player;
     [SerializeField] GameObject PlayerUI;
+    [SerializeField] Image BossUIborder;
+    [SerializeField] Image BossUIhpbar;
     [Header("Tutorial Stuff")]
     [SerializeField] Vector3 PlayerSpawnTuto;
     [SerializeField] public bool tutorialFinished;
@@ -54,6 +59,8 @@ public class GameplayOrganize : MonoBehaviour
         graple = GameObject.Find("Player").GetComponent<HookShot>();
         playerWeapons = GameObject.Find("GunDirection");
         gm = GameObject.FindObjectOfType<GameManager>();
+        //LoadGame();
+       
 
     }
     void Start()
@@ -65,6 +72,7 @@ public class GameplayOrganize : MonoBehaviour
 
     void Update()
     {
+        
         if(toTutorial)
         {
             LoadTutorial();
@@ -78,7 +86,8 @@ public class GameplayOrganize : MonoBehaviour
             if (savenpc != null) Destroy(savenpc);
             UnloadTutorial();
             //gm.ResetPlayer();
-          tutorialFinished = false;
+            tutorialFinished = false;
+            //EditSave();
         }    
         if(toGame)
         {
@@ -127,6 +136,8 @@ public class GameplayOrganize : MonoBehaviour
             graple.enabled = false;
             PlayerUI.SetActive(false);
             playerWeapons.SetActive(false);
+            BossUIhpbar.enabled = false;
+            BossUIborder.enabled = false;
         }
         else
         {
@@ -144,6 +155,45 @@ public class GameplayOrganize : MonoBehaviour
 
         }
     }
+    void EditSave()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedData.txt"))
+        {
+            Debug.Log("Salvei");
+            string[] lines = File.ReadAllLines(Application.persistentDataPath + "/savedData.txt");
+            lines[0] = toTutorial.ToString();
+            lines[1] = true.ToString();
+            Debug.Log("Tutorial : " + lines[0]);
+            Debug.Log("ToLobby : " + lines[1]);
+            File.WriteAllLines(Application.persistentDataPath + "/savedData.txt", lines);
+        }
+    }
+
+    void LoadGame()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedData.txt"))
+        {
+            Debug.Log(Application.persistentDataPath + "/savedData.txt");
+            string[] lines = File.ReadAllLines(Application.persistentDataPath + "/savedData.txt");
+            Debug.Log("Tutorial : "+lines[0]);
+            Debug.Log("ToLobby : " + lines[1]);
+            toTutorial = bool.Parse(lines[0]);
+            toLobby = bool.Parse(lines[1]);
+
+
+        }
+        else
+        {
+            Debug.Log("Criei");
+            toTutorial = true;
+            string[] lines = { toTutorial.ToString(), toLobby.ToString()};
+            File.WriteAllLines(Application.persistentDataPath + "/savedData.txt", lines);
+            Debug.Log("Tutorial : " + lines[0]);
+            Debug.Log("ToLobby : " + lines[1]);
+        }
+    }
+
+
     public void tpPlayerToLimbo()
     {
         PlayerMove(new Vector3(1200f,0,2300f));

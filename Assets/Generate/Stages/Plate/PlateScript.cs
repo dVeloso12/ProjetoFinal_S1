@@ -55,7 +55,7 @@ public class PlateScript : MonoBehaviour
         if(PlatePorc >= 1f)
         {
             PlateCompleted = true;
-            spwaner.activated = false;
+            if(spwaner != null) spwaner.activated = false;
             //PlatePorc = 0f;
         }
         if(PlateCompleted)

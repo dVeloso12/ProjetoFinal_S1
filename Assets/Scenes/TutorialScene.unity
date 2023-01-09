@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: {fileID: 7049839364722121481}
+  boss: {fileID: 6395957948169440042}
 --- !u!82 &177852972
 AudioSource:
   m_ObjectHideFlags: 0
@@ -95843,6 +95844,7 @@ MonoBehaviour:
   maxNormalAttackTimer: 4
   DamagePhase: 0
   isTutorial: 1
+  spawn: {fileID: 0}
 --- !u!1 &6395957948169440045
 GameObject:
   m_ObjectHideFlags: 0
@@ -96257,6 +96259,7 @@ MonoBehaviour:
   Boss: 0
   distance: 30
   spawnpoint: {fileID: 6319124576725952955}
+  activated: 0
 --- !u!1 &6586326017436713606
 GameObject:
   m_ObjectHideFlags: 0
@@ -120636,6 +120639,7 @@ MonoBehaviour:
   timer: 0
   surv: {fileID: 0}
   deffcont: {fileID: 6877762567558094498}
+  audio: {fileID: 0}
 --- !u!64 &8401476747913736766
 MeshCollider:
   m_ObjectHideFlags: 0

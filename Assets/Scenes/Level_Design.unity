@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5af85e847e9134688f73c17cf9104d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 2
+  weaponType: 1
   UiSaveTypes: 
   FireRateMod: 1
   DamageMod: 1
@@ -759,6 +759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 6504896650162048298, guid: bc0a64542fa007743b4664b1a628927a, type: 3}
   PlayerUI: {fileID: 1256665554}
+  BossUIborder: {fileID: 2020338815250996422}
+  BossUIhpbar: {fileID: 2020338816040824571}
   PlayerSpawnTuto: {x: -107.53, y: 24.876, z: 0}
   tutorialFinished: 0
   StageRender: {fileID: 7642057016816043298, guid: 34efefea8bb7e014ba3e1b119d3f07ec,
@@ -771,10 +773,10 @@ MonoBehaviour:
   ShopSpawnPos: {x: -536, y: 0, z: 237.8}
   PlayerShopSpawn: {x: -580.9204, y: 1, z: 238}
   toLobby: 0
-  toGame: 1
+  toGame: 0
   goToStage: 0
   goToShop: 0
-  toTutorial: 0
+  toTutorial: 1
   TutoNpc: {fileID: 8078951896517334181, guid: 2c287dc846a96894fb17920cc5f01c30, type: 3}
   playerIns: {fileID: 0}
   saveBossRoom: {fileID: 0}
