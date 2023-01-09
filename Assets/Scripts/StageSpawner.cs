@@ -149,34 +149,34 @@ public class StageSpawner : MonoBehaviour
 
     public void ReaperSpawn()
     {
-        int r = Random.Range(0, 100);
+        //int r = Random.Range(0, 100);
 
-        if (r < gm.ReaperSpawn)
-        {
-            NavMeshHit hit;
+        //if (r < gm.ReaperSpawn)
+        //{
+        //    NavMeshHit hit;
 
-            Vector2 randomcircle = (Random.insideUnitCircle * distance);
-            Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
-            bool sucess = false;
-            int f = 600;
-            while (!sucess && f > 0)
-            {
-                f--;
-                //if (f < 1)
-                //    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
-                randomcircle = (Random.insideUnitCircle * distance);
-                randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+        //    Vector2 randomcircle = (Random.insideUnitCircle * distance);
+        //    Vector3 randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
+        //    bool sucess = false;
+        //    int f = 600;
+        //    while (!sucess && f > 0)
+        //    {
+        //        f--;
+        //        //if (f < 1)
+        //        //    Debug.Log(f + "Attempt: " + randomPoint + "   " + NavMesh.GetAreaFromName(areaName));
+        //        randomcircle = (Random.insideUnitCircle * distance);
+        //        randomPoint = spawnpoint.position + new Vector3(randomcircle.x, 0, randomcircle.y);
 
-                if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
-                {
-                    sucess = true;
-                    //gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
-                    Debug.Log("Instantiating");
-                    //StartCoroutine(InstantiateEnemy(REAPER, hit.position, Quaternion.identity));
-                    StartSpawn(REAPER, hit.position, Quaternion.identity, ReaperScale);
-                }
-            }
-        }
+        //        if (NavMesh.SamplePosition(randomPoint, out hit, 10, -1))
+        //        {
+        //            sucess = true;
+        //            //gm.EnemyList.Add(Instantiate(REAPER, hit.position, Quaternion.identity));
+        //            Debug.Log("Instantiating");
+        //            //StartCoroutine(InstantiateEnemy(REAPER, hit.position, Quaternion.identity));
+        //            StartSpawn(REAPER, hit.position, Quaternion.identity, ReaperScale);
+        //        }
+        //    }
+        //}
     }
 
     public void StartSpawn(GameObject toSpawn, Vector3 PositionToSpawn, Quaternion RotationToSpawn, float VFXScale)
@@ -208,6 +208,7 @@ public class StageSpawner : MonoBehaviour
         spawnEffect.transform.Rotate(90f, 0f, 0f);
 
         spawnEffect.GetComponent<VisualEffect>().Play();
+
 
         yield return new WaitForSeconds(VFXTimer);
 

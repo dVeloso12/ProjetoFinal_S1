@@ -319,75 +319,82 @@ public class PauseMenuManager : MonoBehaviour
     }
     public void setVolumeEffects(float vol)
     {
-        switch(vol)
-        {
-            case 0:
-                {
-                    Effects.SetFloat("Master", -80);
-                    break;
-                }
-            case 1:
-                {
-                    Effects.SetFloat("Master", -40);
-                    break;
-                }
-            case 2:
-                {
-                    Effects.SetFloat("Master", -20);
-                    break;
-                }
-            case 3:
-                {
-                    Effects.SetFloat("Master", -10);
-                    break;
-                }
-            case 4:
-                {
-                    Effects.SetFloat("Master", 0);
-                    break;
-                }
-            case 5:
-                {
-                    Effects.SetFloat("Master", 10);
-                    break;
-                }
-        }
+        float volume = vol * 20 - 80;
+        Effects.SetFloat("Master", volume);
+
+
+        //switch(vol)
+        //{
+        //    case 0:
+        //        {
+        //            Effects.SetFloat("Master", -80);
+        //            break;
+        //        }
+        //    case 1:
+        //        {
+        //            Effects.SetFloat("Master", -40);
+        //            break;
+        //        }
+        //    case 2:
+        //        {
+        //            Effects.SetFloat("Master", -20);
+        //            break;
+        //        }
+        //    case 3:
+        //        {
+        //            Effects.SetFloat("Master", -10);
+        //            break;
+        //        }
+        //    case 4:
+        //        {
+        //            Effects.SetFloat("Master", 0);
+        //            break;
+        //        }
+        //    case 5:
+        //        {
+        //            Effects.SetFloat("Master", 10);
+        //            break;
+        //        }
+        //}
     }
     public void setVolumeMusic(float vol)
     {
-        switch (vol)
-        {
-            case 0:
-                {
-                    Music.SetFloat("Master", -80);
-                    break;
-                }
-            case 1:
-                {
-                    Music.SetFloat("Master", -40);
-                    break;
-                }
-            case 2:
-                {
-                    Music.SetFloat("Master", -20);
-                    break;
-                }
-            case 3:
-                {
-                    Music.SetFloat("Master", -10);
-                    break;
-                }
-            case 4:
-                {
-                    Music.SetFloat("Master", 0);
-                    break;
-                }
-            case 5:
-                {
-                    Music.SetFloat("Master", 10);
-                    break;
-                }
-        }
+
+        float volume = vol * 20 - 80;
+        Music.SetFloat("Master", volume);
+        //switch (vol)
+        //{
+        //    case 0:
+        //        {
+        //            Music.SetFloat("Master", -80);
+        //            break;
+        //        }
+        //    case 1:
+        //        {
+        //            Music.SetFloat("Master", -40);
+        //            break;
+        //        }
+        //    case 2:
+        //        {
+        //            Music.SetFloat("Master", -20);
+        //            break;
+        //        }
+        //    case 3:
+        //        {
+        //            Music.SetFloat("Master", -10);
+        //            break;
+        //        }
+        //    case 4:
+        //        {
+        //            Music.SetFloat("Master", 0);
+        //            break;
+        //        }
+        //    case 5:
+        //        {
+        //            Music.SetFloat("Master", 10);
+        //            break;
+        //        }
+        //}
     }
 
     public void setHorizontalSense(float sense)

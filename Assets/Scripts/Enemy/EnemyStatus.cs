@@ -7,6 +7,7 @@ public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] float maxHealth;
     [SerializeField] float currentHealth;
+    
 
     public TextMeshProUGUI HealthBar;
     public int money;
@@ -17,6 +18,7 @@ public class EnemyStatus : MonoBehaviour
     private void Start()
     {
         gm = FindObjectOfType<GameManager>();
+
 
         maxHealth = Mathf.FloorToInt(maxHealth * gm.DifficultyMod);
 

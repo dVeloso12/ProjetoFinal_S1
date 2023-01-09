@@ -827,6 +827,7 @@ MonoBehaviour:
   VFXTimer: 2
   spawnEffectPrefab: {fileID: 7906392221316873935, guid: c6177c357868dda40af60f802bfc85c8,
     type: 3}
+  spawn: {fileID: 0}
   distance: 70
   spawnpoint: {fileID: 7415602674803316884}
   activated: 0
