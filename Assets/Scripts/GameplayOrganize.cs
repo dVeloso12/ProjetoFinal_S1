@@ -44,6 +44,7 @@ public class GameplayOrganize : MonoBehaviour
     Granade granade;
     GameObject playerWeapons;
     GameManager gm;
+    [SerializeField] bool canUseSaveSystems;
 
     public GameObject PlayerProperty
     {
@@ -58,7 +59,8 @@ public class GameplayOrganize : MonoBehaviour
         graple = GameObject.Find("Player").GetComponent<HookShot>();
         playerWeapons = GameObject.Find("GunDirection");
         gm = GameObject.FindObjectOfType<GameManager>();
-        //LoadGame();
+        
+        if(canUseSaveSystems)LoadGame();
        
 
     }
@@ -86,7 +88,7 @@ public class GameplayOrganize : MonoBehaviour
             UnloadTutorial();
             //gm.ResetPlayer();
             tutorialFinished = false;
-            //EditSave();
+            if(canUseSaveSystems)EditSave();
         }    
         if(toGame)
         {

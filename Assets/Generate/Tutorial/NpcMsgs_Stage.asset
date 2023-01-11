@@ -32,6 +32,15 @@ MonoBehaviour:
   - 'To reload your weapon , use R.
 
 '
+  - If you take damage from your enemies, you can press F to heal.
+  - One last thing, every single weapon as one special ability when you use your
+    Right Mouse Button to use those.
+  - 'Shotgun : Uses all of your clip ammo in one shot.
+
+    Auto Rifle : Turn the
+    one into a sniper.
+
+    Pistol : Increase the damage dealt in the head.'
   Position_2:
   - Now that you know how to use your tools, i need to explain what you are doing
     here.
